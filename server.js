@@ -57,8 +57,9 @@ app.use("/index", indexRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  // res.render("index");
-  res.redirect("/index");
+  // need to render page to be able to style
+  res.render("index.ejs");
+  // res.render("/index"); ----> kenny's path
 });
 
 app.listen(PORT, () => {
