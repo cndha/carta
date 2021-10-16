@@ -11,9 +11,13 @@ module.exports = (db) => {
 
     // //html will use templatevars to populate the text area with its original data
     // res.render("ejs_template_for_edit", templateVars);
+
+
+    res.send("GET to /edit/:id");
   });
 
   router.post("/:id", (req, res) => {
+
 
     // //button or hyperlink will need to supply the map id they clicked on
     // const mapIdToSearch = res.body.mapId;
@@ -36,6 +40,7 @@ module.exports = (db) => {
 
     // db.functionToUpdateMap(objectToPass);
     // res.redirect('/profile');
+    res.send("POST to /edit/:id");
   });
   return router;
 };

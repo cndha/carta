@@ -16,6 +16,7 @@ module.exports = (db) => {
     // //pass the templateVars to render so ejs can make
     // //the page and call on the info in the user object when needed
     // res.render("name_chosen_for_profile_template.ejs", templateVars);
+    res.send("GET to /profile");
   });
 
   //assuming /profile/ loads all maps
@@ -28,6 +29,7 @@ module.exports = (db) => {
     // db.functionToGetMapData(mapIdToSearch);
 
     // res.redirect('/');
+    res.send("POST to profile/delete/:id")
   });
 
   router.get("/favorites", (req, res) => {
@@ -39,6 +41,7 @@ module.exports = (db) => {
     // const templateVars = db.favouriteMaps(userId);
 
     // res.render("ejs_template_for_favorites", templateVars);
+    res.render("GET to /profile/favorites");
   });
 
   router.get("/contributions", (req, res) => {
@@ -50,6 +53,7 @@ module.exports = (db) => {
     // const templateVars = db.contributedMaps(userId);
 
     // res.render("ejs_template_for_contributions", templateVars);
+    res.send("GET to /profile/contributions");
   });
   return router;
 };

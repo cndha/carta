@@ -39,29 +39,26 @@ app.use(cookieParser());
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const usersRoutes = require("./routes/users");
-const widgetsRoutes = require("./routes/widgets");
-const loginRoutes = require("./routes/login");
 const exploreRoutes = require("./routes/explore");
-// const profileRoutes = require("./routes/profile");
-// const editRoutes = require("./routes/edit");
+const profileRoutes = require("./routes/profile");
+const editRoutes = require("./routes/edit");
+const createRoutes = require("./routes/create");
+const indexRoutes = require("./routes/index");
 
 // Mount all resource routes
-// Note: Feel free to replace the example routes below with your own
-app.use("/api/users", usersRoutes(db));
-app.use("/api/widgets", widgetsRoutes(db));
-// Note: mount other resources here, using the same pattern above
-app.use("/login", loginRoutes(db));
 app.use("/explore", exploreRoutes(db));
-// app.use("/profile", profileRoutes(db));
-// app.use("/edit", editRoutes(db));
+app.use("/profile", profileRoutes(db));
+app.use("/edit", editRoutes(db));
+app.use("/create", createRoutes(db));
+app.use("/index", indexRoutes(db));
 
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.render("index");
+  // res.render("index");
+  res.redirect("/index");
 });
 
 app.listen(PORT, () => {

@@ -2,12 +2,14 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = (db) => {
-  router.get("/create", (req, res) => {
+  router.get("/", (req, res) => {
+
     // //reminder to give error if not logged in
     // res.render("ejs_template_for_create", templateVars);
+    res.send("GET to /create");
   });
 
-  router.post("/create", (req, res) => {
+  router.post("/", (req, res) => {
 
     // //grab user_id from cookies
     // const user_id = req.cookies["user_id"];
@@ -25,6 +27,7 @@ module.exports = (db) => {
 
     // //go back to profile page
     // res.redirect('/profile');
+    res.send("POST to /create");
   });
   return router;
 };
