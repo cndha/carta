@@ -6,12 +6,19 @@ module.exports = (db) => {
   //this page will be initially populated by this get
   router.get("/", (req, res) => {
 
-    // //function to return query to grab maps from database (maybe max 10?)
-    // const templateVars = db.queryToSelectAllMapsToDisplay();
+    // functionToQuerySomeMapsToDisplayFromDatabase()
+    // pass the templateVars to render so ejs can fill the page with a list of maps
 
-    // //pass the templateVars to render so ejs can fill
-    // //the page with a list of maps
-    // res.render("name_chosen_for_explore_template.ejs", templateVariable);
+    // db.functionToQuerySomeMapsToDisplayFromDatabase()
+    //   .then((allMapsWeGot) => {
+    //     const templateVars = allMapsWeGot;
+    //     res.render("name_chosen_for_explore_template.ejs", templateVars);
+    //   })
+    //   .catch(e => {
+    //     console.error(e);
+    //     res.send(e)
+    //   });
+
     res.send("GET to /explore")
   });
 
@@ -32,14 +39,21 @@ module.exports = (db) => {
   //when someone clicks a map image or title or looking at a single map
   router.get("/:id", (req, res) => {
 
-    // //button or hyperlink will need to supply the map id they clicked on
+    // button or hyperlink will need to supply the map id they clicked on
     // const mapIdToSearch = res.body.mapId;
+    // database function to return map data given its id from the form (res.body.mapId) to pass to render
 
-    // // database function to return map data to pass to render
-    // const templateVariable = db.functionToGetMapData(mapIdToSearch);
+    // db.functionToQueryForAMapWithThisId(mapIdToSearch)
+    //   .then((AMapWithThisId) => {
+    //     const templateVars = AMapWithThisId;
+    //     res.render("name_chosen_for_explore/:id_template.ejs", templateVars);
+    //   })
+    //   .catch(e => {
+    //     console.error(e);
+    //     res.send(e)
+    //   });
 
-    // res.render("name_chosen_for_explore_template.ejs", templateVariable);
-    res.send("GET to /explore/most_popular");
+    res.send("GET to /explore/:id");
   });
   return router;
 };
