@@ -15,10 +15,8 @@ module.exports = (db) => {
   router.get("/", (req, res) => {
 
     //need to see if there is user_id key in cookie
-    //const templateVars = {userId here incase they are at index and logged in};
-    // res.render("ejs template name",templateVars);
-
-    res.send("GET to /index");
+    const templateVars = { hello: "userId here incase they are at index and logged in" };
+    res.render("index", templateVars);
   });
   return router;
 };
