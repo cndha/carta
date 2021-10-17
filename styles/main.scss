@@ -169,6 +169,46 @@ label {
   width: 1px;
   overflow: hidden;
 }
+.box-body{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.profile {
+  margin-top: 80px;
+  width: 300px;
+}
+.table {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 3px solid var(--color-light);
+}
+.content-large{
+  width: 600px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 3px solid var(--color-light);
+}
+.content-large h3 {
+  margin-top: 0.5em;
+  color: var(--color-light);
+  font-size: 1.4em;
+}
+.content-large span {
+  color: var(--color-light);
+  justify-items:left;
+}
+
+// MAPS
+.map {
+  width: 100%;
+  background-color: white;
+}
+
 
 //FOOTER
 footer{
