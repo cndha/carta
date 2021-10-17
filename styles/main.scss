@@ -1,10 +1,17 @@
 body {
+  min-height: 100vh;
+  background-color: #243918;
+  line-height:150%;
+  font-family: 'Lato', 'helvetica', sans-serif;
+  font-size: 1.4em;
+  font-weight: 700;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  background-color: rgb(36, 57, 24);
 }
+
+
  .main-container {
   display: flex;
   flex-direction: column;
