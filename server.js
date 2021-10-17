@@ -57,7 +57,7 @@ app.use("/index", indexRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.redirect('/index');
 });
 
 app.listen(PORT, () => {
