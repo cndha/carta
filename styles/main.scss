@@ -76,7 +76,7 @@ nav a:hover{
 #explore {
   height: 100%;
   width: 100%;
-  background-color: var(--color-light);
+  background-color: transparent;
   flex-basis: 0;
   display: flex;
   flex-direction: column;
@@ -118,7 +118,6 @@ nav a:hover{
   --btn-width: 6rem;
   --bez: cubic-bezier(0, 0, 0.43, 1.49);
 }
-
 form {
   position: relative;
   width: 300px;
@@ -178,6 +177,7 @@ footer{
   background-color: white;
   z-index: 10;
   bottom: 0;
+  position: fixed;
   margin-top: 2em;
   font-size: 1.4em;
   font-weight: 700;
