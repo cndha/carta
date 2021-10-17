@@ -2,9 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = (db) => {
-
+  
   router.get("/:id", (req, res) => {
-
     //this will give cookie a key user_id and :id will be the id
     //this will be like signing in a user
     res.cookie('user_id', req.params.id);
