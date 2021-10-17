@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = (db) => {
+
+  // when create button is pressed, renders localhost:8080/create
   router.get("/", (req, res) => {
 
     if (!req.cookies["user_id"]) {
@@ -13,6 +15,7 @@ module.exports = (db) => {
     res.send("GET to /create");
   });
 
+  // when confirm button is pressed, inserts a map into db, redirects to /profile
   router.post("/", (req, res) => {
 
     if (!req.cookies["user_id"]) {
@@ -24,10 +27,8 @@ module.exports = (db) => {
     // const user_id = req.cookies["user_id"];
 
     // taking form fields (or put directly into database INSERT function)
-    // validating for which fields are required will either be front end or server
 
     //validation
-
     // let objectToPass = {
     //   title: req.body.title,
     //   description: req.body.description,
@@ -35,37 +36,29 @@ module.exports = (db) => {
     //   category: req.body.category
     // };
 
-    if (!req.body.title) {
-      res.status(400);
-      res.send("ERROR 400: Title attribute is required!");
-      return;
-    }
+    // if (!req.body.title) {
+    //   res.status(400);
+    //   res.send("ERROR 400: Title attribute is required!");
+    //   return;
+    // }
 
-    if (req.body.title = "") {
-      res.status(400);
-      res.send("ERROR 400: Title cannot be empty!");
-      return;
-    }
+    // if (req.body.title = "") {
+    //   res.status(400);
+    //   res.send("ERROR 400: Title cannot be empty!");
+    //   return;
+    // }
 
-    if (!req.body.description) {
-      res.status(400);
-      res.send("ERROR 400: description attribute is required!");
-      return;
-    }
+    // if (!req.body.description) {
+    //   res.status(400);
+    //   res.send("ERROR 400: description attribute is required!");
+    //   return;
+    // }
 
-    if (req.body.description = "") {
-      res.status(400);
-      res.send("ERROR 400: Description cannot be empty!");
-      return;
-    }
-
-    if (!req.body.category) {
-
-      return;
-    }
-
-
-
+    // if (req.body.description = "") {
+    //   res.status(400);
+    //   res.send("ERROR 400: Description cannot be empty!");
+    //   return;
+    // }
 
     // a function that takes in the form's fields and inserts those values into database
     // INSERT INTO maps (the fields here) VALUES (the values)

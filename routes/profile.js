@@ -4,6 +4,7 @@ const router = express.Router();
 module.exports = (db) => {
 
   //does profile immediately load all your maps?
+  //when you click on your profile, renders localhost:8080/profile
   router.get("/", (req, res) => {
 
     //get the cookie id
@@ -17,7 +18,7 @@ module.exports = (db) => {
     // db.querySelectAll(userId)
     //   .then((allMapsWeGot) => {
     //     const templateVars = allMapsWeGot;
-    // res.render("name_chosen_for_profile_template.ejs", templateVars);
+    //     res.render("name_chosen_for_profile_template.ejs", templateVars);
     //   })
     //   .catch(e => {
     //     console.error(e);
@@ -27,8 +28,8 @@ module.exports = (db) => {
     res.send("GET to /profile");
   });
 
-  //assuming /profile/ loads all maps
-  router.post("/delete/:id", (req, res) => {
+  //when you click the delete button, deletes map from db with that id, goes back to profile after
+  router.delete("/delete/:id", (req, res) => {
 
     if (!req.cookies["user_id"]) {
       res.send("ERROR 401: You are unauthorized!");
@@ -41,10 +42,11 @@ module.exports = (db) => {
     // // database function to DELETE map entry where id equals mapIdToSearch
     // db.functionToGetMapData(mapIdToSearch);
 
-    // res.redirect('/');
+    // res.redirect('/profile');
     res.send("POST to profile/delete/:id")
   });
 
+  //when you click your favorites, renders localhost:8080/profile/favorites
   router.get("/favorites", (req, res) => {
 
     if (!req.cookies["user_id"]) {
@@ -60,7 +62,7 @@ module.exports = (db) => {
     // db.favouriteMaps(userId)
     //   .then((favoriteMaps) => {
     //     const templateVars = favoriteMaps;
-    // res.render("name_chosen_for_profile_template.ejs", templateVars);
+    // res.render("name_chosen_for_favorites_template.ejs", templateVars);
     //   })
     //   .catch(e => {
     //     console.error(e);
@@ -70,6 +72,7 @@ module.exports = (db) => {
     res.send("GET to /profile/favorites");
   });
 
+  //when you click your contributions, renders localhost:8080/profile/contributions
   router.get("/contributions", (req, res) => {
 
     if (!req.cookies["user_id"]) {
