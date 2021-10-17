@@ -17,6 +17,9 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
     rel="stylesheet">
+  <!--  FONT AWESOME -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   <!-- EXTERNAL JS -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
@@ -31,18 +34,33 @@
   <div class="main-container">
 
     <nav>
-      <!-- Replace links with proper routes <%> --- <%>  -->
-      <a href="/placeholder/index"><img src="/IMGS/header-circle-small.png"></a>
+      <!-- Replace links with proper routes -->
+      <img src="/IMGS/header-circle-small.png">
       <ul>
         <li><a href="placeholder">sign up</a></li>
         <li><a href="placeholder">login</a></li>
       </ul>
     </nav>
+    <!-- explore -->
+    <div id="explore">
+      <div class="brand-display">
+        <img src="/IMGS/title-display.png">
+      </div>
+      <form onsubmit="event.preventDefault();" role="search">
+        <label for="search">explore</label>
+        <input id="search" type="search" placeholder="explore" autofocus required />
+        <button type="submit" id="btn-explore"><i class="fas fa-search" style="color: #243918;"></i></button>
+      </form>
+    </div>
 
-    <img src="/IMGS/title-display.png">
-    <br>
-
+    <!-- MAIN CONTAINER -->
   </div>
 </body>
-
+<!-- FOOTER -->
+<footer>
+  <div>
+    <p><a href="placeholder">about</a></p>
+    <p><i class="fas fa-arrow-up"></i></p>
+  </div>
+</footer>
 </html>
