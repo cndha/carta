@@ -29,7 +29,7 @@ nav {
   z-index: 10;
   position: fixed;
   top: 0;
-  margin-top: 1em;
+  padding-top: 1em;
   margin-bottom: 2em;
   font-size: 1.4em;
   font-weight: 700;
@@ -74,6 +74,7 @@ nav a:hover{
   border-radius: 50% 50% 50% 50%;
 }
 #explore {
+  margin-top: 120px;
   height: 100%;
   width: 100%;
   background-color: transparent;
@@ -204,9 +205,12 @@ label {
 }
 
 // MAPS
-.map {
+#map {
+  height: 500px;
   width: 100%;
-  background-color: white;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  border: 3px solid var(--color-light);
 }
 
 
