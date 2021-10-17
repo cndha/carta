@@ -7,6 +7,7 @@ body {
 
 }
 .main-container {
+  height: 100%;
   min-height: 100vh;
   margin-left: 5%;
   margin-right: 5%;
@@ -56,6 +57,7 @@ nav a:hover{
   padding-bottom: 3px;
 }
 #landing{
+  height: 100%;
   width: 100%;
   min-height: 100vh;
   margin-top: 80px;
