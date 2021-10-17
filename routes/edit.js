@@ -40,9 +40,9 @@ module.exports = (db) => {
     // const mapIdToSearch = res.body.mapId;
 
     // let objectToPass = {
-    //   map_id = mapIdToSearch,
-    //   title = res.body.title,
-    //   description = res.body.description
+    //   map_id : mapIdToSearch,
+    //   title : res.body.title,
+    //   description : res.body.description
     // }
 
     // if statements to see what changes occur in functionToUpdateMap(objectToPass)
