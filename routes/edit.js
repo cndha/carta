@@ -2,13 +2,16 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = (db) => {
-  //edit fields should be populated by its original data
+
+  //when edit button is pressed for a map, renders localhost8080/edit/:id
   router.get("/:id", (req, res) => {
 
     if (!req.cookies["user_id"]) {
       res.send("ERROR 401: You are unauthorized!");
       return;
     }
+
+    //edit fields should be populated by its original data
 
     // //button or hyperlink will need to supply the map id they clicked on
     // const mapIdToSearch = res.body.mapId;
@@ -29,7 +32,8 @@ module.exports = (db) => {
     res.send("GET to /edit/:id");
   });
 
-  router.post("/:id", (req, res) => {
+  //when confirm is pressed, updates that map with that id on db, redirects to /profile
+  router.patch("/:id", (req, res) => {
 
     if (!req.cookies["user_id"]) {
       res.send("ERROR 401: You are unauthorized!");
