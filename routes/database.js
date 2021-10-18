@@ -10,12 +10,9 @@ const pool = new Pool({
 
 const getUserById = function (id) {
 
-  const sql = `SELECT * FROM users WHERE id = $1;`;
-  console.log("getUserById", sql, id);
   return pool
-    .query(sql, [id])
+    .query(`SELECT * FROM users WHERE id = $1;`, [id])
     .then(res => {
-      console.log("getUserById: res.rows", res.rows);
       if (res.rows.length === 0) {
         return null;
       }

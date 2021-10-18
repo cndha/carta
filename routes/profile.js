@@ -6,13 +6,7 @@ module.exports = (db) => {
   //when you click on your profile, renders localhost:8080/profile
   router.get("/", (req, res) => {
 
-    // get the cookie id
     const userId = req.cookies["user_id"];
-
-    //have a function to query SELECT * FROM users WHERE user_id = cookieid or any other info -> querySelectProfile()
-    //pass the output from function to templateVars
-
-    //pass the templateVars to render so ejs can call on the user object when needed
 
     db.getUserById(userId)
       .then((profile) => {
