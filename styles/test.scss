@@ -7,6 +7,7 @@ body {
 
 }
 .main-container {
+  height: 100%;
   min-height: 100vh;
   margin-left: 5%;
   margin-right: 5%;
@@ -21,8 +22,42 @@ body {
   align-items: center;
  }
 
-
+//NAV
+nav {
+  height: 80px;
+  width: 90%;
+  background-color: #243918;
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  margin-top: 1em;
+  margin-bottom: 2em;
+  font-size: 1.4em;
+  font-weight: 700;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+nav li {
+  display: inline;
+  margin-left: 3rem;
+}
+nav a {
+  text-decoration: none;
+  color: white;
+}
+nav a:hover{
+  border-bottom: 3px solid var(--color-light);
+  padding-bottom: 3px;
+}
 #landing{
+  height: 100%;
   width: 100%;
   min-height: 100vh;
   margin-top: 80px;
@@ -36,21 +71,14 @@ body {
 }
 
 .btn-outline{
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
+  background-color: transparent;
+  box-sizing: 3px var(--color-light);
+  border-radius: 50% 50% 50% 50%;
 }
 #explore {
-  margin-top: 120px;
   height: 100%;
   width: 100%;
-  background-color: transparent;
+  background-color: var(--color-light);
   flex-basis: 0;
   display: flex;
   flex-direction: column;
@@ -82,10 +110,9 @@ body {
   --dur: .3s;
   --color-dark: #2f2f2f;
   --color-light: #fff;
-  --color-cream: #faf7ef;
   --color-brand: #243918;
   --font-fam: 'Lato', 'helvetica', sans-serif;
-  --font-title: 1.4em;
+    --font-title: 1.4em;
   --font-display: 1.4em;
   --font-bold: 700;
   --font-medium: 500;
@@ -93,8 +120,8 @@ body {
   --btn-width: 6rem;
   --bez: cubic-bezier(0, 0, 0.43, 1.49);
 }
+
 form {
-  margin-top: 30px;
   position: relative;
   width: 300px;
   background: var(--color-light);
@@ -103,10 +130,10 @@ form {
 input, button {
   height: var(--height);
   font-family: var(--font-fam);
-  font-weight: var(--font-medium);
+  font-weight: var(--font-bold);
   border: 0;
   color: var(--color-dark);
-  font-size: 1.4rem;
+  font-size: 1.8rem;
 }
 input[type="search"] {
   outline: 0; 
@@ -145,118 +172,6 @@ label {
   width: 1px;
   overflow: hidden;
 }
-.box-body{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-.profile {
-  margin-top: 80px;
-  width: 300px;
-}
-.table {
-  margin-top: 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-bottom: 3px solid var(--color-light);
-}
-.content-large{
-  width: 600px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  border-top: 3px solid var(--color-light);
-}
-.content-large h3 {
-  margin-top: 0.5em;
-  color: var(--color-light);
-  font-size: 1.4em;
-}
-.content-large span {
-  color: var(--color-light);
-  justify-items:left;
-}
-
-// MAPS
-// .map {
-// }
-#map {
-  height: 600px;
-  width: 100%;
-  margin-top: 80px;
-  margin-bottom: 80px;
-  border: 3px solid var(--color-light);
-}
-.marker {
-  background-image: url('/IMGS/marker-light.png');
-  background-size: cover;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-.mapboxgl-popup {
-  max-width: 200px;
-}
-
-.mapboxgl-popup-content {
-  text-align: left;
-  font-family: var(--font-fam);
-}
-
-h1 {
-  font-size: 22px;
-  margin: 0;
-  font-weight: 400;
-  line-height: 20px;
-  padding: 20px 2px;
-}
-
-a {
-  color: #404040;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #101010;
-}
-
-/* The page is split between map and sidebar - the sidebar gets 1/3, map
-gets 2/3 of the page. You can adjust this to your personal liking. */
-// DB BUTTONS
-.db-buttons {
-  display: inline-block;
-  margin-top: 40px;
-}
-a.button1{
-  display:inline-block;
-  padding:0.35em 1.2em;
-  border:0.1em solid #FFFFFF;
-  margin:0 0.3em 0.3em 0;
-  border-radius:0.12em;
-  box-sizing: border-box;
-  text-decoration:none;
-  font-family:var(--font-fam);
-  font-weight:300;
-  color:#FFFFFF;
-  text-align:center;
-  transition: all 0.2s;
-  }
-  
-  a.button1:hover{
-    color:#000000;
-    background-color:#FFFFFF;
-  }
-
-  @media all and (max-width:30em){
-    a.button1{
-    display:block;
-    margin:0.4em auto;
-  }
-}
-
 
 //FOOTER
 footer{
@@ -265,7 +180,6 @@ footer{
   background-color: white;
   z-index: 10;
   bottom: 0;
-  position: fixed;
   margin-top: 2em;
   font-size: 1.4em;
   font-weight: 700;
@@ -305,3 +219,15 @@ footer a {
 //    50% {top:0em};
 //    100% {top:0em;};
 //   }
+
+// <thead>thead</thead>
+// <tbody> tbody </tbody>
+// <tr>
+//   <td><span class="clickable" data-toggle="collapse" id="row1" data-target=".row1"><i class="fas fa-plus" id="test"></i>&nbsp</span>Bakery FG</td>
+//   <td>1,610</td>
+//   </tr>
+//   <tr class="collapse row1">
+//     <td>Khara Boondhi-L</td>
+//     <td>980</td>
+//     <td>0.50%</td>
+//     </tr>

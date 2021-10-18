@@ -2,15 +2,24 @@
 <html lang="en">
 
 <head>
-  <!-- External CSS -->
-
   <!-- STYLE SHEETS -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <!-- <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" /> -->
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/nav.scss" type="text/css" />
   <link rel="stylesheet" href="/styles/main.scss" type="text/css" />
+  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+  <!-- LEAFLET -->
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
+
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""></script>
+
 
   <!-- GOOGLE FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,6 +28,9 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
     rel="stylesheet">
+  <!--  FONT AWESOME -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   <!-- EXTERNAL JS -->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
@@ -27,6 +39,7 @@
   <!-- HEAD -->
 
   <title>carta: explore</title>
+
 </head>
 
 <body>
@@ -40,11 +53,74 @@
         <li><a href="placeholder">login</a></li>
       </ul>
     </nav>
+    <!-- explore -->
+    <div id="explore">
+      <div class="brand-display">
+        <img src="/IMGS/title-display.png">
+      </div>
 
-    <img src="/IMGS/title-display.png">
-    <br>
+      <!-- FORM GET -->
+      <form onsubmit="event.preventDefault();" role="search">
+        <label for="search">explore</label>
+        <input id="search" type="search" placeholder="explore" autofocus required />
+        <button type="submit" id="btn-explore"><i class="fas fa-search" style="color: #243918;"></i></button>
+      </form>
 
-  </div>
+
+      <!-- PROFILE -->
+      <!-- https://datatables.net/examples/api/row_details.html -->
+      <div class="box-body">
+        <div class="profile">
+          <img src="/IMGS/profile-placeholder.png">
+        </div>
+        <div class="table">
+          <div class="content-large">
+            <h3>create map</h3>
+            <span>something</span>
+            <i class="fas fa-plus" style="color: white;"></i>
+          </div>
+          <div class="content-large">
+            <h3>your maps</h3>
+            <span>something</span>
+            <i class="fas fa-plus" style="color: white;"></i>
+          </div>
+          <div class="content-large">
+            <h3>edit maps</h3>
+            <span>something</span>
+            <i class="fas fa-plus" style="color: white;"></i>
+          </div>
+          <div class="content-large">
+            <h3>delete maps</h3>
+            <span>something</span>
+            <i class="fas fa-plus" style="color: white;"></i>
+          </div>
+        </div>
+        <!-- COLLAPSING TABLE -->
+        <!-- MAPS -->
+      </div>
+      <div class="box-body">
+        <div class="db-buttons">
+          <a href="something" class="button1">most popular 🔥</a>
+          <a href="something" class="button1">restaurants</a>
+          <a href="something" class="button1">gyms</a>
+          <a href="something" class="button1">locations</a>
+          <a href="something" class="button1">beaches</a>
+        </div>
+      </div>
+       <div id="mapid"></div>
+      <h1>MAP</h1>
+      </div>
+      <!-- MAIN CONTAINER -->
+    </div>
 </body>
+<!-- FOOTER -->
+<footer>
+  <div>
+    <p><a href="placeholder">about</a></p>
+    <p><i class="fas fa-arrow-up"></i></p>
+  </div>
+</footer>
+
+</html>
 
 </html>

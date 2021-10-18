@@ -6,7 +6,46 @@
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/nav.ccss" type="text/css" />
+  <link rel="stylesheet" href="../styles/nav.scss" type="text/css" />
+  <link rel="stylesheet" href="/styles/main.scss" type="text/css" />
+
+  <!-- GOOGLE MAPS API -->
+  <!-- API KEY -->
+  <!-- AIzaSyBdW5sNMekf0HSYHTsMUuBy-NlIb1hERSs -->
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdW5sNMekf0HSYHTsMUuBy-NlIb1hERSs&callback=initMap"></script>
+
+  <!-- MAPBOX -->
+  <!-- pk.eyJ1IjoiY29wbzEyMyIsImEiOiJja3V2dTdvdHMxcjdrMm9xanBtaGdkaHc4In0.cBeBLEBv8OE9UnZgr7EEzQ -->
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+  <script type="text/javascript">
+    mapboxgl.accessToken = 'pk.eyJ1IjoiY29wbzEyMyIsImEiOiJja3V2dWhpcHQxc212MnVvNmNobW5qbGxqIn0.K8m4xAmOmIPQ0-BFKN4mCw';
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [-123.116226, 49.246292],
+      zoom: 13,
+    });
+  </script>
+
+
+<!-- ajax -->
+  <script>
+$(function() {
+  const $button = $('#load-more-posts');
+  $button.on('click', function () {
+    console.log('Button clicked, performing ajax call...');
+    $.ajax('more-posts.html', { method: 'GET' })
+    .then(function (morePostsHtml) {
+      console.log('Success: ', morePostsHtml);
+      $button.replaceWith(morePostsHtml);
+    });
+  });
+});
+</script>
 
   <!-- GOOGLE FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,13 +62,10 @@
   <script type="text/javascript" src="/scripts/app.js"></script>
   <script type="text/javascript" src="/routes/index.js"></script>
   <script type="text/javascript" src="/server.js"></script>
-  <!-- MAPBOX -->
-  <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
-  <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+  <!-- HEAD -->
 
   <title>carta: explore</title>
 
-  <!-- HEAD -->
 </head>
 
 <body>
@@ -37,6 +73,7 @@
 
     <nav>
       <!-- Replace links with proper routes or single page refresh -->
+      <img src="/IMGS/header-circle-small.png">
       <!-- Replace links with proper routes  -->
       <a href="/placeholder/index"><img src="/IMGS/header-circle-small.png"></a>
       <ul>
@@ -49,7 +86,17 @@
       <div class="brand-display">
         <img src="/IMGS/title-display.png">
       </div>
+
+      <!-- FORM GET -->
+      <form onsubmit="event.preventDefault();" role="search">
+        <label for="search">explore</label>
+        <input id="search" type="search" placeholder="explore" autofocus required />
+        <button type="submit" id="btn-explore"><i class="fas fa-search" style="color: #243918;"></i></button>
+      </form>
+
+
       <!-- PROFILE -->
+      <!-- https://datatables.net/examples/api/row_details.html -->
       <div class="box-body">
         <div class="profile">
           <img src="/IMGS/profile-placeholder.png">
@@ -76,76 +123,23 @@
             <i class="fas fa-plus" style="color: white;"></i>
           </div>
         </div>
-
-      <!-- FORM GET -->
-      <form onsubmit="event.preventDefault();" role="search">
-        <label for="search">explore</label>
-        <input id="search" type="search" placeholder="explore" autofocus required />
-        <button type="submit" id="btn-explore"><i class="fas fa-search" style="color: #243918;"></i></button>
-      </form>
-
-
-      <!-- PROFILE -->
-      <!-- https://datatables.net/examples/api/row_details.html -->
-      <div class="box-body"></div>
-      <!-- MAPS -->
-      <div id="map"></div>
-      <script>
-        mapboxgl.accessToken = 'pk.eyJ1IjoiY29wbzEyMyIsImEiOiJja3V2dTdvdHMxcjdrMm9xanBtaGdkaHc4In0.cBeBLEBv8OE9UnZgr7EEzQ';
-        var map = new mapboxgl.Map({
-          container: 'map',
-          style: 'mapbox://styles/mapbox/satellite-streets-v11',
-          center: [-123.116226, 49.246292],
-          zoom: 11.15
-        });
-        const geojson = {
-          type: 'FeatureCollection',
-          features: [
-            {
-              type: 'Feature',
-              geometry: {
-                type: 'Point',
-                coordinates: [-123.1340, 49.2712]
-              },
-              properties: {
-                title: 'Mapbox',
-                description: 'Granville Island'
-              }
-            },
-            {
-              type: 'Feature',
-              geometry: {
-                type: 'Point',
-                coordinates: [-123.1683, 49.2684]
-              },
-              properties: {
-                title: 'Mapbox',
-                description: 'Kitsilano'
-              }
-            }
-          ]
-        };
-        // add markers to map
-        for (const feature of geojson.features) {
-          // create a HTML element for each feature
-          const el = document.createElement('div');
-          el.className = 'marker';
-          // make a marker for each feature and add to the map
-          new mapboxgl.Marker(el).setLngLat(feature.geometry.coordinates).addTo(map)
-            .setPopup(
-              new mapboxgl.Popup({ offset: 25 }) // add popups
-                .setHTML(
-                  `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
-                )
-            );
-        }
-      </script>
+        <!-- COLLAPSING TABLE -->
+        <!-- MAPS -->
+      </div>
+      <div class="box-body">
+        <div class="db-buttons">
+          <a href="something" class="button1">most popular 🔥</a>
+          <a href="something" class="button1">restaurants</a>
+          <a href="something" class="button1">gyms</a>
+          <a href="something" class="button1">locations</a>
+          <a href="something" class="button1">beaches</a>
+        </div>
+      </div>
+      <div id="map" class="map">
+        <h1>map</h1>
+      </div>
       <!-- MAIN CONTAINER -->
     </div>
-    <script>
-
-    </script>
-</div>
 </body>
 <!-- FOOTER -->
 <footer>
@@ -158,4 +152,3 @@
 </html>
 
 </html>
-

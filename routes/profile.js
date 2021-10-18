@@ -17,6 +17,26 @@ module.exports = (db) => {
         console.error(e);
         res.send(e)
       });
+    //get the cookie id
+    //const userId = req.cookies["user_id"];
+
+    //have a function to query SELECT * FROM users WHERE user_id = cookieid or any other info -> querySelectAll()
+    //pass the returned promise from function to templateVars
+
+    //pass the templateVars to render so ejs can call on the user object when needed
+
+    // db.querySelectAll(userId)
+    //   .then((allMapsWeGot) => {
+    //     const templateVars = allMapsWeGot;
+    // res.render("name_chosen_for_profile_template.ejs", templateVars);
+    //   })
+    //   .catch(e => {
+    //     console.error(e);
+    //     res.send(e)
+    //   });
+
+    res.render("profile");
+    // res.send("GET to /profile");
   });
 
   //when you click the delete button, deletes map from db with that id, goes back to profile after

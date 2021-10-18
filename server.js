@@ -104,6 +104,9 @@ app.use("/index", indexRoutes(db));
 app.get("/", (req, res) => {
   res.redirect('/index');
 });
+app.get("/", (req, res) => {
+  res.render("/profile.ejs");
+});
 
 app.get("/", (req, res) => {
   res.render("profile");
