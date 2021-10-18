@@ -9,15 +9,15 @@ module.exports = (db) => {
     // functionToQuerySomeMapsToDisplayFromDatabase()
     // pass the output to client side so client side can render
 
-    // db.functionToQuerySomeMapsToDisplayFromDatabase()
-    //   .then((allMapsWeGot) => {
-    //     res.send(allMapsWeGot);
-    //     console.log(allMapsWeGot);
-    //   })
-    //   .catch(e => {
-    //     console.error(e);
-    //     res.send(e)
-    //   });
+    db.getMapsByKeyword(keyword)
+      .then(results => {
+        res.send(results);
+        console.log(results);
+      })
+      .catch(e => {
+        console.error(e);
+        res.send(e)
+      });
 
     res.send("GET to /explore")
   });
