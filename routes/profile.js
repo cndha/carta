@@ -3,7 +3,6 @@ const router = express.Router();
 
 module.exports = (db) => {
 
-  //does profile immediately load all your maps?
   //when you click on your profile, renders localhost:8080/profile
   router.get("/", (req, res) => {
 
@@ -11,7 +10,7 @@ module.exports = (db) => {
     //const userId = req.cookies["user_id"];
 
     //have a function to query SELECT * FROM users WHERE user_id = cookieid or any other info -> querySelectAll()
-    //pass the returned promise from function to templateVars
+    //pass the output from function to templateVars
 
     //pass the templateVars to render so ejs can call on the user object when needed
 
@@ -36,13 +35,20 @@ module.exports = (db) => {
       return;
     }
 
-    // //button or hyperlink will need to supply the map id they clicked on
+    // button or hyperlink will need to supply the map id they clicked on
     // const mapIdToSearch = res.body.mapId;
 
-    // // database function to DELETE map entry where id equals mapIdToSearch
-    // db.functionToGetMapData(mapIdToSearch);
+    // database function to DELETE map entry where id equals mapIdToSearch
 
-    // res.redirect('/profile');
+    // db.functionToDeleteMap(mapIdToSearch)
+    //   .then(() => {
+    //     res.redirect('/profile');
+    //   })
+    //   .catch(e => {
+    //     console.error(e);
+    //     res.send(e)
+    //   });
+
     res.send("POST to profile/delete/:id")
   });
 

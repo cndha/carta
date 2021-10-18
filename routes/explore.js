@@ -11,7 +11,8 @@ module.exports = (db) => {
 
     // db.functionToQuerySomeMapsToDisplayFromDatabase()
     //   .then((allMapsWeGot) => {
-    //     res.send({allMapsWeGot});
+    //     res.send(allMapsWeGot);
+    //     console.log(allMapsWeGot);
     //   })
     //   .catch(e => {
     //     console.error(e);
@@ -26,7 +27,8 @@ module.exports = (db) => {
 
     // db.popularMaps()
     //   .then((popularMapsWeGot) => {
-    //      res.send({popularMapsWeGot});
+    //     res.send(popularMapsWeGot);
+
     //   })
     //   .catch(e => {
     //     console.error(e);
@@ -46,6 +48,18 @@ module.exports = (db) => {
     //   .then((AMapWithThisId) => {
     //     const templateVars = AMapWithThisId;
     //     res.render("name_chosen_for_explore/:id_template.ejs", templateVars);
+    //   })
+    //   .catch(e => {
+    //     console.error(e);
+    //     res.send(e)
+    //   });
+
+
+    //TEST CODE
+    // db.functionToQueryForAMapWithThisId(1)
+    //   .then((AMapWithThisId) => {
+    //     const templateVars = AMapWithThisId;
+    //     res.render("index", templateVars);
     //   })
     //   .catch(e => {
     //     console.error(e);

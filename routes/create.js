@@ -64,6 +64,12 @@ module.exports = (db) => {
     // INSERT INTO maps (the fields here) VALUES (the values)
     // insert objects with the values grabbed from the html form into the function createMap()
 
+    // const objectToPass = {
+    //   user_id: 1,
+    //   description: "hello world",
+    //   title: "some map"
+    // }
+
     // db.createMap(objectToPass)
     //   .then(() => {
     //     res.redirect('/profile');
