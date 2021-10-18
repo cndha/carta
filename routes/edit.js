@@ -12,24 +12,21 @@ module.exports = (db) => {
     }
 
     //edit fields should be populated by its original data
-
     // //button or hyperlink will need to supply the map id they clicked on
     // const mapIdToSearch = res.body.mapId;
+    let mapIdToSearch = 2;
 
-    // //html will use templatevars to populate the text area with its original data
-    // res.render("ejs_template_for_edit", templateVars)
+    db.getMapById(mapIdToSearch)
+      .then((result) => {
+        const templateVars = result;
+        res.send(templateVars);
+        // res.render("name_chosen_for_explore/:id_template.ejs", templateVars);
+      })
+      .catch(e => {
+        console.error(e);
+        res.send(e)
+      });
 
-    // db.functionToGetMapFromDb(mapIdToSearch)
-    // .then((theMapWeGot) => {
-    //   const templateVars = theMapWeGot;
-    //   res.render("ejs_template_for_edit/:id", templateVars)
-    // })
-    // .catch(e => {
-    //   console.error(e);
-    //   res.send(e)
-    // });
-
-    res.send("GET to /edit/:id");
   });
 
   //when confirm is pressed, updates that map with that id on db, redirects to /profile
