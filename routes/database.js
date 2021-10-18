@@ -16,10 +16,8 @@ const getUserById = function(userId) {
     .query(sqlString, [userId])
     .then(res => {
       if (res.rows.length === 0) {
-        console.log(res.rows)
         return null;
       }
-      console.log(res.rows)
       return res.rows[0];
     })
     .catch(e => { console.error(e) });

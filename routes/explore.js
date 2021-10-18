@@ -38,18 +38,6 @@ module.exports = (db) => {
     //     res.send(e)
     //   });
 
-
-    //TEST CODE
-    // db.functionToQueryForAMapWithThisId(1)
-    //   .then((AMapWithThisId) => {
-    //     const templateVars = AMapWithThisId;
-    //     res.render("index", templateVars);
-    //   })
-    //   .catch(e => {
-    //     console.error(e);
-    //     res.send(e)
-    //   });
-
     res.send("GET to /explore/:id");
   });
 
