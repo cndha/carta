@@ -68,13 +68,17 @@
       <div class="brand-display">
         <img src="/IMGS/title-display.png">
       </div>
-      <%= for (location of locations)%>
+      <% if (locations) { %>
+        <%= for (location of locations) {%>
       <!-- FORM GET -->
       <form onsubmit="event.preventDefault();" role="search">
         <label for="search">explore</label>
         <input id="search" type="search" placeholder="explore" autofocus required />
         <button type="submit" id="btn-explore"><i class="fas fa-search" style="color: #243918;"></i></button>
       </form>
+      <% } %>
+    <% } %>
+
       <!-- PROFILE -->
       <!-- https://datatables.net/examples/api/row_details.html -->
       <div class="box-body">
