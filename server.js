@@ -2,7 +2,7 @@
 require("dotenv").config();
 
 // Web server config
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
@@ -11,41 +11,52 @@ const morgan = require("morgan");
 // PG database client/connection setup
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
-const db = new Pool(dbParams); //comment this out when testing with below
-db.connect(); //comment this out when testing with below
+// const db = new Pool(dbParams); //comment this out when testing with below
+// db.connect(); //comment this out when testing with below
 
 //THIS IS PURELY FOR TESTING THAT DB CALLS WORK WITH ROUTES-------------------------
-// const pool = new Pool(dbParams);
-// pool.connect();
-// const db = {
-//   functionToQuerySomeMapsToDisplayFromDatabase: function () {
-//     return new Promise((resolve, reject) => {
-//       console.log("results from functionToQuerySomeMapsToDisplayFromDatabase");
-//       resolve();
-//     });
-//   },
+const { getUserById } = require("./routes/database");
+const pool = new Pool(dbParams);
+pool.connect();
+const db = {
 
-//   functionToQueryForAMapWithThisId: function (stuff) {
-//     return new Promise((resolve, reject) => {
-//       console.log("results from functionToQueryForAMapWithThisId and the passed in variable is: ", stuff);
-//       resolve();
-//     });
-//   },
+  getUserById: getUserById
 
-//   createMap: function (objToPass) {
-//     return new Promise((resolve, reject) => {
-//       console.log("results from createMap and the passed in obj is: ", objToPass);
-//       resolve();
-//     });
-//   },
+  //   functionToQuerySomeMapsToDisplayFromDatabase: function () {
+  //     return new Promise((resolve, reject) => {
+  //       console.log("results from functionToQuerySomeMapsToDisplayFromDatabase");
+  //       resolve();
+  //     });
+  //   },
 
-//   popularMaps: function () {
-//     return new Promise((resolve, reject) => {
-//       console.log("results for popular maps!");
-//       resolve();
-//     });
-//   }
-// };
+  //   functionToQueryForAMapWithThisId: function (stuff) {
+  //     return new Promise((resolve, reject) => {
+  //       console.log("results from functionToQueryForAMapWithThisId and the passed in variable is: ", stuff);
+  //       resolve();
+  //     });
+  //   },
+
+  //   createMap: function (objToPass) {
+  //     return new Promise((resolve, reject) => {
+  //       console.log("results from createMap and the passed in obj is: ", objToPass);
+  //       resolve();
+  //     });
+  //   },
+
+  //   popularMaps: function () {
+  //     return new Promise((resolve, reject) => {
+  //       console.log("results for popular maps!");
+  //       resolve();
+  //     });
+  //   },
+
+  //   querySelectProfile: function () {
+  //     return new Promise((resolve, reject) => {
+  //       console.log("I'm a profile!!!");
+  //       resolve();
+  //     });
+  //   }
+};
 //----------------------------------------------------------------------------------
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT

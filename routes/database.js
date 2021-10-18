@@ -8,17 +8,19 @@ const pool = new Pool({
 });
 
 
-const getUserById = function(id) {
+const getUserById = function (id) {
 
   return pool
-  .query(`SELECT * FROM users WHERE id = $1;`, [id])
-  .then(res => {
-    if (res.rows.length === 0) {
-      return null;
-    }
-    return res.rows[0];
-  })
-  .catch(err => console.log(err.message));
+    .query(`SELECT * FROM users WHERE id = $1;`, [id])
+    .then(res => {
+      if (res.rows.length === 0) {
+        console.log(res.rows)
+        return null;
+      }
+      console.log(res.rows)
+      return res.rows[0];
+    })
+    .catch(err => console.log(err.message));
 
 }
 exports.getUserById = getUserById;

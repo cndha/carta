@@ -22,22 +22,6 @@ module.exports = (db) => {
     res.send("GET to /explore")
   });
 
-  //when most popular button is pressed, sends popular maps obj to client
-  router.get("/most_popular", (req, res) => {
-
-    // db.popularMaps()
-    //   .then((popularMapsWeGot) => {
-    //     res.send(popularMapsWeGot);
-
-    //   })
-    //   .catch(e => {
-    //     console.error(e);
-    //     res.send(e)
-    //   });
-
-    res.send("GET to /most_popular");
-  });
-
   // when you click on a map to look at, renders localhost:8080/explore/:id
   router.get("/:id", (req, res) => {
     // button or hyperlink will need to supply the map id they clicked on
@@ -67,6 +51,24 @@ module.exports = (db) => {
     //   });
 
     res.send("GET to /explore/:id");
+  });
+
+
+  //DEPRECATED-----------------------------------------------------------------------------
+  //when most popular button is pressed, sends popular maps obj to client
+  router.get("/most_popular", (req, res) => {
+
+    // db.popularMaps()
+    //   .then((popularMapsWeGot) => {
+    //     res.send(popularMapsWeGot);
+
+    //   })
+    //   .catch(e => {
+    //     console.error(e);
+    //     res.send(e)
+    //   });
+
+    res.send("GET to /most_popular");
   });
   return router;
 };
