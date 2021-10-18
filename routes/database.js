@@ -39,3 +39,15 @@ const getMapsByKeyword = function(keyword) {
   .catch(e => { console.error(e) });
 }
 exports.getMapsByKeyword = getMapsByKeyword;
+
+const getMapById = function(mapId) {
+  const sqlString = `SELECT * FROM maps WHERE id = $1`;
+
+  return pool
+  .query(sqlString, [mapId])
+  .then(res => {
+    return res.rows[0];
+  })
+  .catch(e => { console.error(e) });
+}
+exports.getMapById = getMapById;
