@@ -31,6 +31,20 @@
   </script>
 
 
+<!-- ajax -->
+  <script>
+$(function() {
+  const $button = $('#load-more-posts');
+  $button.on('click', function () {
+    console.log('Button clicked, performing ajax call...');
+    $.ajax('more-posts.html', { method: 'GET' })
+    .then(function (morePostsHtml) {
+      console.log('Success: ', morePostsHtml);
+      $button.replaceWith(morePostsHtml);
+    });
+  });
+});
+</script>
 
   <!-- GOOGLE FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -112,13 +126,13 @@
         <!-- MAPS -->
       </div>
       <div class="box-body">
-      <div class="db-buttons">
-        <a href="something" class="button1">most popular 🔥</a>
-        <a href="something" class="button1">restaurants</a>
-        <a href="something" class="button1">gyms</a>
-        <a href="something" class="button1">locations</a>
-        <a href="something" class="button1">beaches</a>
-      </div>
+        <div class="db-buttons">
+          <a href="something" class="button1">most popular 🔥</a>
+          <a href="something" class="button1">restaurants</a>
+          <a href="something" class="button1">gyms</a>
+          <a href="something" class="button1">locations</a>
+          <a href="something" class="button1">beaches</a>
+        </div>
       </div>
       <div id="map" class="map">
         <h1>map</h1>
@@ -133,5 +147,7 @@
     <p><i class="fas fa-arrow-up"></i></p>
   </div>
 </footer>
+
 </html>
+
 </html>

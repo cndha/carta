@@ -1,139 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <!-- STYLE SHEETS -->
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/nav.scss" type="text/css" />
-  <link rel="stylesheet" href="/styles/main.scss" type="text/css" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.js'></script>
+    <!-- STYLE SHEETS -->
+    <!-- <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/nav.scss" type="text/css" />
+    <link rel="stylesheet" href="/styles/main.scss" type="text/css" /> -->
+    <script>
+      const stores = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.034084142948,
+          38.909671288923
+        ]
+      },
+      "properties": {
+        "phoneFormatted": "(202) 234-7336",
+        "phone": "2022347336",
+        "address": "1471 P St NW",
+        "city": "Washington DC",
+        "country": "United States",
+        "crossStreet": "at 15th St NW",
+        "postalCode": "20005",
+        "state": "D.C."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.049766,
+          38.900772
+        ]
+      },
+      "properties": {
+        "phoneFormatted": "(202) 507-8357",
+        "phone": "2025078357",
+        "address": "2221 I St NW",
+        "city": "Washington DC",
+        "country": "United States",
+        "crossStreet": "at 22nd St NW",
+        "postalCode": "20037",
+        "state": "D.C."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.043929,
+          38.910525
+        ]
+      },
+      "properties": {
+        "phoneFormatted": "(202) 387-9338",
+        "phone": "2023879338",
+        "address": "1512 Connecticut Ave NW",
+        "city": "Washington DC",
+        "country": "United States",
+        "crossStreet": "at Dupont Circle",
+        "postalCode": "20036",
+        "state": "D.C."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0672,
+          38.90516896
+        ]
+      },
+      "properties": {
+        "phoneFormatted": "(202) 337-9338",
+        "phone": "2023379338",
+        "address": "3333 M St NW",
+        "city": "Washington DC",
+        "country": "United States",
+        "crossStreet": "at 34th St NW",
+        "postalCode": "20007",
+        "state": "D.C."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.002583742142,
+          38.887041080933
+        ]
+      },
+      "properties": {
+        "phoneFormatted": "(202) 547-9338",
+        "phone": "2025479338",
+        "address": "221 Pennsylvania Ave SE",
+        "city": "Washington DC",
+        "country": "United States",
+        "crossStreet": "btwn 2nd & 3rd Sts. SE",
+        "postalCode": "20003",
+        "state": "D.C."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.933492720127,
+          38.99225245786
+        ]
+      },
+      "properties": {
+        "address": "8204 Baltimore Ave",
+        "city": "College Park",
+        "country": "United States",
+        "postalCode": "20740",
+        "state": "MD"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.097083330154,
+          38.980979
+        ]
+      },
+      "properties": {
+        "phoneFormatted": "(301) 654-7336",
+        "phone": "3016547336",
+        "address": "4831 Bethesda Ave",
+        "cc": "US",
+        "city": "Bethesda",
+        "country": "United States",
+        "postalCode": "20814",
+        "state": "MD"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.359425054188,
+          38.958058116661
+        ]
+      },
+      "properties": {
+        "phoneFormatted": "(571) 203-0082",
+        "phone": "5712030082",
+        "address": "11935 Democracy Dr",
+        "city": "Reston",
+        "country": "United States",
+        "crossStreet": "btw Explorer & Library",
+        "postalCode": "20190",
+        "state": "VA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.10853099823,
+          38.880100922392
+        ]
+      },
+      "properties": {
+        "phoneFormatted": "(703) 522-2016",
+        "phone": "7035222016",
+        "address": "4075 Wilson Blvd",
+        "city": "Arlington",
+        "country": "United States",
+        "crossStreet": "at N Randolph St.",
+        "postalCode": "22203",
+        "state": "VA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.28784,
+          40.008008
+        ]
+      },
+      "properties": {
+        "phoneFormatted": "(610) 642-9400",
+        "phone": "6106429400",
+        "address": "68 Coulter Ave",
+        "city": "Ardmore",
+        "country": "United States",
+        "postalCode": "19003",
+        "state": "PA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.20121216774,
+          39.954030175164
+        ]
+      },
+      "properties": {
+        "phoneFormatted": "(215) 386-1365",
+        "phone": "2153861365",
+        "address": "3925 Walnut St",
+        "city": "Philadelphia",
+        "country": "United States",
+        "postalCode": "19104",
+        "state": "PA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.043959498405,
+          38.903883387232
+        ]
+      },
+      "properties": {
+        "phoneFormatted": "(202) 331-3355",
+        "phone": "2023313355",
+        "address": "1901 L St. NW",
+        "city": "Washington DC",
+        "country": "United States",
+        "crossStreet": "at 19th St",
+        "postalCode": "20036",
+        "state": "D.C."
+      }
+    }
+  ]
+};
+/* Assign a unique ID to each store */
+stores.features.forEach(function (store, i) {
+  store.properties.id = i;
+});
+map.on('load', () => {
+  /* Add the data to your map as a layer */
+  map.addLayer({
+    id: 'locations',
+    type: 'circle',
+    /* Add a GeoJSON source containing place coordinates and information. */
+    source: {
+      type: 'geojson',
+      data: stores
+    }
+  });
+});
+    </script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.css' rel='stylesheet' />
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    color: #404040;
+    font: 400 15px/22px 'Source Sans Pro', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+  }
 
-  <!-- GOOGLE MAPS API -->
-  <!-- API KEY -->
-  <!-- AIzaSyBdW5sNMekf0HSYHTsMUuBy-NlIb1hERSs -->
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdW5sNMekf0HSYHTsMUuBy-NlIb1hERSs&callback=initMap"></script>
+  h1 {
+    font-size: 22px;
+    margin: 0;
+    font-weight: 400;
+    line-height: 20px;
+    padding: 20px 2px;
+  }
 
-  <!-- MAPBOX -->
-  <!-- pk.eyJ1IjoiY29wbzEyMyIsImEiOiJja3V2dTdvdHMxcjdrMm9xanBtaGdkaHc4In0.cBeBLEBv8OE9UnZgr7EEzQ -->
-  <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
-  <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
-  <script type="text/javascript">
-    mapboxgl.accessToken = 'pk.eyJ1IjoiY29wbzEyMyIsImEiOiJja3V2dWhpcHQxc212MnVvNmNobW5qbGxqIn0.K8m4xAmOmIPQ0-BFKN4mCw';
-    var map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11',
-      center: [-123.116226, 49.246292],
-      zoom: 13,
-    });
-  </script>
+  a {
+    color: #404040;
+    text-decoration: none;
+  }
 
+  a:hover {
+    color: #101010;
+  }
 
+  /* The page is split between map and sidebar - the sidebar gets 1/3, map
+  gets 2/3 of the page. You can adjust this to your personal liking. */
+  .sidebar {
+    position: absolute;
+    width: 33.3333%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    border-right: 1px solid rgba(0, 0, 0, 0.25);
+  }
 
-  <!-- GOOGLE FONTS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- LATO weight 100-700-->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
-    rel="stylesheet">
-  <!--  FONT AWESOME -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  <!-- EXTERNAL JS -->
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
-  <script type="text/javascript" src="/routes/index.js"></script>
-  <script type="text/javascript" src="/server.js"></script>
-  <!-- HEAD -->
+  .map {
+    position: absolute;
+    left: 33.3333%;
+    width: 66.6666%;
+    top: 0;
+    bottom: 0;
+  }
 
-  <title>carta: explore</title>
-  <../partials/nav>
+  .heading {
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 10px;
+  }
+</style>  
+  <title>Profile</title>
 </head>
-
 <body>
-  <div class="main-container">
-
-    <nav>
-      <!-- Replace links with proper routes or single page refresh -->
-      <img src="/IMGS/header-circle-small.png">
-      <!-- Replace links with proper routes  -->
-      <a href="/placeholder/index"><img src="/IMGS/header-circle-small.png"></a>
-      <ul>
-        <li><a href="placeholder">sign up</a></li>
-        <li><a href="placeholder">login</a></li>
-      </ul>
-    </nav>
-    <!-- explore -->
-    <div id="explore">
-      <div class="brand-display">
-        <img src="/IMGS/title-display.png">
-      </div>
-      <% if (locations) { %>
-        <%= for (location of locations) {%>
-      <!-- FORM GET -->
-      <form onsubmit="event.preventDefault();" role="search">
-        <label for="search">explore</label>
-        <input id="search" type="search" placeholder="explore" autofocus required />
-        <button type="submit" id="btn-explore"><i class="fas fa-search" style="color: #243918;"></i></button>
-      </form>
-      <% } %>
-    <% } %>
-
-      <!-- PROFILE -->
-      <!-- https://datatables.net/examples/api/row_details.html -->
-      <div class="box-body">
-        <div class="profile">
-          <img src="/IMGS/profile-placeholder.png">
-        </div>
-        <div class="table">
-          <div class="content-large">
-            <h3>create map</h3>
-            <span>something</span>
-            <i class="fas fa-plus" style="color: white;"></i>
-          </div>
-          <div class="content-large">
-            <h3>your maps</h3>
-            <span>something</span>
-            <i class="fas fa-plus" style="color: white;"></i>
-          </div>
-          <div class="content-large">
-            <h3>edit maps</h3>
-            <span>something</span>
-            <i class="fas fa-plus" style="color: white;"></i>
-          </div>
-          <div class="content-large">
-            <h3>delete maps</h3>
-            <span>something</span>
-            <i class="fas fa-plus" style="color: white;"></i>
-          </div>
-        </div>
-        <!-- COLLAPSING TABLE -->
-        <!-- MAPS -->
-      </div>
-      <div class="box-body">
-      <div class="db-buttons">
-        <a href="something" class="button1">most popular 🔥</a>
-        <a href="something" class="button1">restaurants</a>
-        <a href="something" class="button1">gyms</a>
-        <a href="something" class="button1">locations</a>
-        <a href="something" class="button1">beaches</a>
-      </div>
-      </div>
-      <div id="map" class="map">
-        <h1>map</h1>
-      </div>
-      <!-- MAIN CONTAINER -->
+  <div class='sidebar'>
+    <div class='heading'>
+      <h1>Our locations</h1>
     </div>
-</body>
-<!-- FOOTER -->
-<footer>
-  <div>
-    <p><a href="placeholder">about</a></p>
-    <p><i class="fas fa-arrow-up"></i></p>
+    <div id='listings' class='listings'></div>
   </div>
-</footer>
-</html>
+  <div id="map" class="map"></div>
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiY29wbzEyMyIsImEiOiJja3V2dTdvdHMxcjdrMm9xanBtaGdkaHc4In0.cBeBLEBv8OE9UnZgr7EEzQ';
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/light-v10',
+      center: [-77.034084, 38.909671],
+      zoom: 13,
+      scrollZoom: false
+  });
+  </script>
+</body>
 </html>
