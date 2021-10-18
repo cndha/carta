@@ -14,7 +14,7 @@ module.exports = (db) => {
 
     //pass the templateVars to render so ejs can call on the user object when needed
 
-    db.getUserById(4)
+    db.getUserById(userId)
       .then((profile) => {
         const templateVars = profile;
         res.render("profile", templateVars);
@@ -23,8 +23,6 @@ module.exports = (db) => {
         console.error(e);
         res.send(e)
       });
-
-    // res.send("GET to /profile");
   });
 
   //when you click the delete button, deletes map from db with that id, goes back to profile after
