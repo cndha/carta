@@ -1,0 +1,36 @@
+1. user gets to / end point
+2. user has 3 options: sign up, login, search query (index)
+
+a. signup
+- user gets redirected to /signup end point
+- user enters in name, username, password
+- user submits signup --> on submit, this gets saved to database
+- user gets redirected to /:id end point
+
+b. login
+- user gets redirected to /login end point
+- user enters in username & password
+- user submits login inputs --> this is pulled from database
+- user gets redirected to /:id end point
+
+c. search query (index)
+- user enters input search query --> pulls keywords from database descriptions/categories
+- page reloads (but not refresh) and redirects to /explore end point with search query results
+
+3. user /:id end point (SPA)
+- pulls all CURRENT maps (descending by time) creations & contributions by user
+
+a. each map "container" has edit/delete button & public/private check,
+
+
+- buttons: create new map, favourited maps (any map liked by user), maps in progress (maps not published), public maps, private maps, deleted maps --> pulls all maps from db depending on value, order by DESC (latest first)
+
+b. create new map
+- inputs: title, description, category, city, province, country
+- buttons: edit, delete, publish
+- automatic timestamps for saved (while editing)
+
+- deleted button --> map goes to delete page
+- public button --> redirects & shows map on explore page
+- private button --> map stays on profile
+- share button --> pop up to enter usernames
