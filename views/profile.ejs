@@ -2,11 +2,18 @@
 <html lang="en">
 
 <head>
+  <!-- JQUERY -->
+  <!-- API -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"
+    integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- STYLE SHEETS -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/map.css" type="text/css" />
 
   <!-- GOOGLE FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,10 +26,11 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
     integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   <!-- EXTERNAL JS -->
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="../scripts/app.js"></script>
   <script type="text/javascript" src="/routes/index.js"></script>
-  <script type="text/javascript" src="/server.js"></script>
+  <script type="text/javascript" src="../server.js"></script>
+  <!-- SERVER IN PROJECT ROOT -->
+
   <!-- MAPBOX -->
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
@@ -37,21 +45,17 @@
     <nav>
       <!-- Replace links with proper routes or single page refresh -->
       <!-- Replace links with proper routes  -->
-      <a href="/placeholder/index"><img src="/IMGS/header-circle-small.png"></a>
+      <a href="/placeholder/index"><img src="/IMGS/title-top-light.png"></a>
       <ul>
-        <li><a href="placeholder">sign up</a></li>
-        <li><a href="placeholder">login</a></li>
+        <li><a href="placeholder">logout</a></li>
       </ul>
     </nav>
     <!-- explore -->
     <div id="explore">
-      <div class="brand-display">
-        <img src="/IMGS/title-display.png">
-      </div>
       <!-- PROFILE -->
       <div class="box-body">
         <div class="profile">
-          <img src="/IMGS/profile-placeholder.png">
+          <!-- <img src="/IMGS/profile-placeholder.png"> -->
         </div>
         <div class="table">
           <div class="content-large">
@@ -59,11 +63,25 @@
             <span>something</span>
             <i class="fas fa-plus" style="color: white;"></i>
           </div>
+          <div class="content-expanded">
+              <!-- FORM GET -->
+              <form onsubmit="event.preventDefault();" role="search" id="new-map">
+                <label for="search">explore</label>
+                <input id="search" type="search" placeholder="explore" name="map-location" autofocus required />
+                <button type="submit" id="btn-explore"><i class="fas fa-search" style="color: #243918;"></i></button>
+              </form>
+            </div>
           <div class="content-large">
             <h3>your maps</h3>
             <span>something</span>
             <i class="fas fa-plus" style="color: white;"></i>
           </div>
+          <div class="content-expanded">
+            <div class="content-expanded-row"><p>map 1</p><div class="db-buttons"><a href="something" class="button1">delete</a></div><i class="fas fa-plus" style="color: #243918;"></i></div>
+            <div class="content-expanded-row"><p>map 2</p><div class="db-buttons"><a href="something" class="button1">delete</a></div><i class="fas fa-plus" style="color: #243918;"></i></div>
+            <div class="content-expanded-row"><p>map 3</p><div class="db-buttons"><a href="something" class="button1">delete</a></div><i class="fas fa-plus" style="color: #243918;"></i></div>
+          
+            </div>
           <div class="content-large">
             <h3>edit maps</h3>
             <span>something</span>
@@ -75,86 +93,80 @@
             <i class="fas fa-plus" style="color: white;"></i>
           </div>
         </div>
+        
+  
+        <!-- what keys/ what shape for the data use html name  -->
 
-      <!-- FORM GET -->
-      <form onsubmit="event.preventDefault();" role="search">
-        <label for="search">explore</label>
-        <input id="search" type="search" placeholder="explore" autofocus required />
-        <button type="submit" id="btn-explore"><i class="fas fa-search" style="color: #243918;"></i></button>
-      </form>
-
-
-      <!-- PROFILE -->
-      <!-- https://datatables.net/examples/api/row_details.html -->
-      <div class="box-body"></div>
-      <!-- MAPS -->
-      <div id="map"></div>
+        <!-- PROFILE -->
+        <!-- https://datatables.net/examples/api/row_details.html -->
+        <div class="box-body"></div>
+        <!-- MAPS -->
+        <div id="map"></div>
+        <script>
+          mapboxgl.accessToken = 'pk.eyJ1IjoiY29wbzEyMyIsImEiOiJja3V2dTdvdHMxcjdrMm9xanBtaGdkaHc4In0.cBeBLEBv8OE9UnZgr7EEzQ';
+          var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/satellite-streets-v11',
+            center: [-123.116226, 49.246292],
+            zoom: 11.15
+          });
+          const geojson = {
+            type: 'FeatureCollection',
+            features: [
+              {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [-123.1340, 49.2712]
+                },
+                properties: {
+                  title: 'myshopping',
+                  description: 'Granville Island'
+                }
+              },
+              {
+                type: 'Feature',
+                geometry: {
+                  type: 'Point',
+                  coordinates: [-123.1683, 49.2684]
+                },
+                properties: {
+                  title: 'Kits',
+                  description: 'Kitsilano'
+                }
+              }
+            ]
+          };
+          // add markers to map
+          for (const feature of geojson.features) {
+            // create a HTML element for each feature
+            const el = document.createElement('div');
+            el.className = 'marker';
+            // make a marker for each feature and add to the map
+            new mapboxgl.Marker(el).setLngLat(feature.geometry.coordinates).addTo(map)
+              .setPopup(
+                new mapboxgl.Popup({ offset: 25 }) // add popups
+                  .setHTML(
+                    `<h3 class="pop-title">${feature.properties.title}</h3><p>${feature.properties.description}</p>`
+                  )
+              );
+          }
+        </script>
+        <!-- MAIN CONTAINER -->
+      </div>
       <script>
-        mapboxgl.accessToken = 'pk.eyJ1IjoiY29wbzEyMyIsImEiOiJja3V2dTdvdHMxcjdrMm9xanBtaGdkaHc4In0.cBeBLEBv8OE9UnZgr7EEzQ';
-        var map = new mapboxgl.Map({
-          container: 'map',
-          style: 'mapbox://styles/mapbox/satellite-streets-v11',
-          center: [-123.116226, 49.246292],
-          zoom: 11.15
-        });
-        const geojson = {
-          type: 'FeatureCollection',
-          features: [
-            {
-              type: 'Feature',
-              geometry: {
-                type: 'Point',
-                coordinates: [-123.1340, 49.2712]
-              },
-              properties: {
-                title: 'Mapbox',
-                description: 'Granville Island'
-              }
-            },
-            {
-              type: 'Feature',
-              geometry: {
-                type: 'Point',
-                coordinates: [-123.1683, 49.2684]
-              },
-              properties: {
-                title: 'Mapbox',
-                description: 'Kitsilano'
-              }
-            }
-          ]
-        };
-        // add markers to map
-        for (const feature of geojson.features) {
-          // create a HTML element for each feature
-          const el = document.createElement('div');
-          el.className = 'marker';
-          // make a marker for each feature and add to the map
-          new mapboxgl.Marker(el).setLngLat(feature.geometry.coordinates).addTo(map)
-            .setPopup(
-              new mapboxgl.Popup({ offset: 25 }) // add popups
-                .setHTML(
-                  `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
-                )
-            );
-        }
-      </script>
-      <!-- MAIN CONTAINER -->
-    </div>
-    <script>
 
-    </script>
-</div>
+      </script>
+    </div>
 </body>
 <!-- FOOTER -->
 <footer>
   <div>
     <p><a href="placeholder">about</a></p>
-    <p><i class="fas fa-arrow-up"></i></p>
+    <div id="to-top" title="back to top"><i class="fas fa-arrow-up"></i></div>
   </div>
 </footer>
 
 </html>
 
 </html>
-
