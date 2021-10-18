@@ -17,6 +17,8 @@ c. search query (index)
 - user enters input search query --> pulls keywords from database descriptions/categories
 - page reloads (but not refresh) and redirects to /explore end point with search query results
 
+
+
 3. user /:id end point (SPA)
 - pulls all CURRENT maps (descending by time) creations & contributions by user
 
@@ -24,6 +26,7 @@ a. each map "container" has edit/delete button & public/private check,
 
 
 - buttons: create new map, favourited maps (any map liked by user), maps in progress (maps not published), public maps, private maps, deleted maps --> pulls all maps from db depending on value, order by DESC (latest first)
+
 
 b. create new map
 - inputs: title, description, category, city, province, country
