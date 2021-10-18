@@ -2,29 +2,85 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = (db) => {
-  router.get("/create", (req, res) => {
-    // //reminder to give error if not logged in
+  router.get("/", (req, res) => {
+
+    if (!req.cookies["user_id"]) {
+      res.send("ERROR 401: You are unauthorized!");
+      return;
+    }
+
     // res.render("ejs_template_for_create", templateVars);
+    res.send("GET to /create");
   });
 
-  router.post("/create", (req, res) => {
+  router.post("/", (req, res) => {
 
-    // //grab user_id from cookies
+    if (!req.cookies["user_id"]) {
+      res.send("ERROR 401: You are unauthorized!");
+      return;
+    }
+
+    // grab user_id from cookies
     // const user_id = req.cookies["user_id"];
 
-    // //taking form fields (or put directly into database INSERT function)
-    // const title = req.body.title;
-    // const description = req.body.description;
-    // const location = req.body.location;
-    // const category = req.body.category;
+    // taking form fields (or put directly into database INSERT function)
+    // validating for which fields are required will either be front end or server
 
-    // //a function that takes in the form's fields and inserts those values into database
-    // //INSERT INTO maps (the fields here) VALUES (the values)
-    // //insert values grabbed from the html form
-    // db.insertIntoDatabase(user_id, title, description, location, category);
+    //validation
 
-    // //go back to profile page
-    // res.redirect('/profile');
+    // let objectToPass = {
+    //   title: req.body.title,
+    //   description: req.body.description,
+    //   location: req.body.location,
+    //   category: req.body.category
+    // };
+
+    if (!req.body.title) {
+      res.status(400);
+      res.send("ERROR 400: Title attribute is required!");
+      return;
+    }
+
+    if (req.body.title = "") {
+      res.status(400);
+      res.send("ERROR 400: Title cannot be empty!");
+      return;
+    }
+
+    if (!req.body.description) {
+      res.status(400);
+      res.send("ERROR 400: description attribute is required!");
+      return;
+    }
+
+    if (req.body.description = "") {
+      res.status(400);
+      res.send("ERROR 400: Description cannot be empty!");
+      return;
+    }
+
+    if (!req.body.category) {
+
+      return;
+    }
+
+
+
+
+    // a function that takes in the form's fields and inserts those values into database
+    // INSERT INTO maps (the fields here) VALUES (the values)
+    // insert objects with the values grabbed from the html form into the function createMap()
+
+    // db.createMap(objectToPass)
+    //   .then(() => {
+    //     res.redirect('/profile');
+    //   })
+    //   .catch(e => {
+    //     console.error(e);
+    //     res.send(e)
+    //   });
+
+    res.send("POST to /create");
   });
   return router;
 };
