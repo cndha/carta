@@ -8,10 +8,12 @@ const pool = new Pool({
 });
 
 
-const getUserById = function (id) {
+const getUserById = function(userId) {
+
+  const sqlString = `SELECT * FROM users WHERE id = $1`;
 
   return pool
-    .query(`SELECT * FROM users WHERE id = $1;`, [id])
+    .query(sqlString, [userId])
     .then(res => {
       if (res.rows.length === 0) {
         console.log(res.rows)
@@ -20,7 +22,20 @@ const getUserById = function (id) {
       console.log(res.rows)
       return res.rows[0];
     })
-    .catch(err => console.log(err.message));
+    .catch(e => { console.error(e) });
 
 }
 exports.getUserById = getUserById;
+
+const getMapsByKeyword = function(keyword) {
+
+  const sqlString = `SELECT * FROM maps WHERE description LIKE '%$1%'`;
+
+  return pool
+  .query(sqlString, [keyword])
+  .then(res => {
+    return res.rows;
+  })
+  .catch(e => { console.error(e) });
+}
+exports.getMapsByKeyword = getMapsByKeyword;

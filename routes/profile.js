@@ -14,7 +14,7 @@ module.exports = (db) => {
 
     //pass the templateVars to render so ejs can call on the user object when needed
 
-    db.getUserById(4)
+    db.getUserById(userId)
       .then((profile) => {
         const templateVars = profile;
         res.render("profile", templateVars);
