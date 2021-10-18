@@ -7,19 +7,45 @@
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/nav.scss" type="text/css" />
+  <link rel="stylesheet" href="/styles/nav.ccss" type="text/css" />
+  <link rel="stylesheet" href="../styles/nav.scss" type="text/css" />
   <link rel="stylesheet" href="/styles/main.scss" type="text/css" />
-  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
-  <!-- LEAFLET -->
-  <!-- CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-  crossorigin=""/>
 
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-  crossorigin=""></script>
+  <!-- GOOGLE MAPS API -->
+  <!-- API KEY -->
+  <!-- AIzaSyBdW5sNMekf0HSYHTsMUuBy-NlIb1hERSs -->
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdW5sNMekf0HSYHTsMUuBy-NlIb1hERSs&callback=initMap"></script>
 
+  <!-- MAPBOX -->
+  <!-- pk.eyJ1IjoiY29wbzEyMyIsImEiOiJja3V2dTdvdHMxcjdrMm9xanBtaGdkaHc4In0.cBeBLEBv8OE9UnZgr7EEzQ -->
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+  <script type="text/javascript">
+    mapboxgl.accessToken = 'pk.eyJ1IjoiY29wbzEyMyIsImEiOiJja3V2dWhpcHQxc212MnVvNmNobW5qbGxqIn0.K8m4xAmOmIPQ0-BFKN4mCw';
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [-123.116226, 49.246292],
+      zoom: 13,
+    });
+  </script>
+
+
+<!-- ajax -->
+  <script>
+$(function() {
+  const $button = $('#load-more-posts');
+  $button.on('click', function () {
+    console.log('Button clicked, performing ajax call...');
+    $.ajax('more-posts.html', { method: 'GET' })
+    .then(function (morePostsHtml) {
+      console.log('Success: ', morePostsHtml);
+      $button.replaceWith(morePostsHtml);
+    });
+  });
+});
+</script>
 
   <!-- GOOGLE FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,6 +72,8 @@
   <div class="main-container">
 
     <nav>
+      <!-- Replace links with proper routes or single page refresh -->
+      <img src="/IMGS/header-circle-small.png">
       <!-- Replace links with proper routes  -->
       <a href="/placeholder/index"><img src="/IMGS/header-circle-small.png"></a>
       <ul>
@@ -107,8 +135,8 @@
           <a href="something" class="button1">beaches</a>
         </div>
       </div>
-       <div id="mapid"></div>
-      <h1>MAP</h1>
+      <div id="map" class="map">
+        <h1>map</h1>
       </div>
       <!-- MAIN CONTAINER -->
     </div>

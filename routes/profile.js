@@ -24,7 +24,8 @@ module.exports = (db) => {
     //     res.send(e)
     //   });
 
-    res.send("GET to /profile");
+    res.render("profile");
+    // res.send("GET to /profile");
   });
 
   //assuming /profile/ loads all maps
