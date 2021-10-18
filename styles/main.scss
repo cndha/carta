@@ -69,9 +69,15 @@ nav a:hover{
 }
 
 .btn-outline{
-  background-color: transparent;
-  box-sizing: 3px var(--color-light);
-  border-radius: 50% 50% 50% 50%;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 #explore {
   margin-top: 120px;
@@ -111,7 +117,7 @@ nav a:hover{
   --color-light: #fff;
   --color-brand: #243918;
   --font-fam: 'Lato', 'helvetica', sans-serif;
-    --font-title: 1.4em;
+  --font-title: 1.4em;
   --font-display: 1.4em;
   --font-bold: 700;
   --font-medium: 500;
@@ -128,10 +134,10 @@ form {
 input, button {
   height: var(--height);
   font-family: var(--font-fam);
-  font-weight: var(--font-bold);
+  font-weight: var(--font-medium);
   border: 0;
   color: var(--color-dark);
-  font-size: 1.8rem;
+  font-size: 1.4rem;
 }
 input[type="search"] {
   outline: 0; 
@@ -211,7 +217,13 @@ label {
   margin-top: 80px;
   margin-bottom: 80px;
   border: 3px solid var(--color-light);
+  font-size: var(--font-display);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
 }
+
 
 
 //FOOTER
