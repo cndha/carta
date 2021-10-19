@@ -12,13 +12,13 @@ $(document).ready(function () {
   const geocoder = new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
     marker: {
-    color: 'orange'
+    color: '#243918'
     },
     mapboxgl: mapboxgl
     });
      
     map.addControl(geocoder);
-    
+    map.scrollZoom.disable();
   //GET LOCATION DATA ON CLICK
   map.on("click", (event) => {
     console.log(event);
