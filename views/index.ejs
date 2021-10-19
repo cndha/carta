@@ -2,22 +2,20 @@
 <html lang="en">
 
 <head>
+  <meta name="viewport" content="initial-scale=1.0">
+  <meta charset="utf-8">
+  <!-- API -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"
+    integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- AXIOS -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <!-- STYLE SHEETS -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/map.css" type="text/css" />
-  <!-- LEAFLET -->
-  <!-- CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-  crossorigin=""/>
-
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-  crossorigin=""></script>
-
 
   <!-- GOOGLE FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,51 +27,103 @@
   <!--  FONT AWESOME -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
     integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <!-- MAP api -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFeJAa1wqx86-5Mrko7gjbV_BxQHx8Kt4">
+  </script>
+
+
+
   <!-- EXTERNAL JS -->
   <script type="text/javascript" src="../scripts/app.js"></script>
   <script type="text/javascript" src="/routes/index.js"></script>
   <script type="text/javascript" src="../server.js"></script>
-  <!-- HEAD -->
+  <!-- SERVER IN PROJECT ROOT -->
 
   <title>carta: explore</title>
-
+  <!-- HEAD -->
 </head>
 
 <body>
+  <nav>
+    <!-- Replace links with proper routes or single page refresh -->
+    <!-- Replace links with proper routes  -->
+    <a href="/placeholder/index"><img src="/IMGS/header-circle-small.png"></a>
+    <ul>
+      <li><a href="placeholder">logout</a></li>
+    </ul>
+  </nav>
   <div class="main-container">
 
-    <nav>
-
-      <!-- Replace links with proper routes  -->
-      <a href="/placeholder/index"><img src="/IMGS/header-circle-small.png"></a>
-      <ul>
-        <li><a href="placeholder">sign up</a></li>
-        <li><a href="placeholder">login</a></li>
-      </ul>
-    </nav>
     <!-- explore -->
     <div id="explore">
-      <div class="brand-display">
-        <img src="/IMGS/title-display.png">
-      </div>
-
-      <!-- FORM GET -->
-      <form onsubmit="event.preventDefault();" role="search">
-        <label for="search">explore</label>
-        <input id="search" type="search" placeholder="explore" autofocus required />
-        <button type="submit" id="btn-explore"><i class="fas fa-search" style="color: #243918;"></i></button>
-      </form>
-
-
       <!-- PROFILE -->
-      <!-- https://datatables.net/examples/api/row_details.html -->
-      
-       <div id="mapid"></div>
-      <h1>MAP</h1>
+      <div class="box-body">
+        <div class="profile">
+          <img src="/IMGS/title-display-crm.png">
+        </div>
+        <!-- MAPS -->
+        <div id="map"></div>
+        <script>
+          function initMap() {
+            const map = new google.maps.Map(document.getElementById("map"), {
+              zoom: 12,
+              center: { lat: 49.246292, lng: -123.116226 },
+            });
+            // Set LatLng and title text for the markers. The first marker (Boynton Pass)
+            // receives the initial focus when tab is pressed. Use arrow keys to
+            // move between markers; press tab again to cycle through the map controls.
+            const tourStops = [
+              [{ lat: 49.2712, lng: -123.1340 }, "Granville Island"],
+              [{ lat: 49.2684, lng: -123.1683 }, "Kitsilano"]
+            ];
+            // Create an info window to share between markers.
+            const infoWindow = new google.maps.InfoWindow();
+
+            // Create the markers.
+            tourStops.forEach(([position, title], i) => {
+              const marker = new google.maps.Marker({
+                position,
+                map,
+                title: `${i + 1}. ${title}`,
+                label: `${i + 1}`,
+                optimized: false,
+              });
+
+              // Add a click listener for each marker, and set up the info window.
+              marker.addListener("click", () => {
+                infoWindow.close();
+                infoWindow.setContent(marker.getTitle());
+                infoWindow.open(marker.getMap(), marker);
+              });
+            });
+
+            marker = new google.maps.Marker({
+              map,
+              draggable: true,
+              animation: google.maps.Animation.DROP,
+              position: { lat: 59.327, lng: 18.067 },
+            });
+            marker.addListener("click", toggleBounce);
+          }
+
+          function toggleBounce() {
+            if (marker.getAnimation() !== null) {
+              marker.setAnimation(null);
+            } else {
+              marker.setAnimation(google.maps.Animation.BOUNCE);
+            }
+          }
+
+        </script>
+        <script
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFeJAa1wqx86-5Mrko7gjbV_BxQHx8Kt4&callback=initMap"
+          async defer></script>
       </div>
-      <!-- MAIN CONTAINER -->
     </div>
+    <!-- MAIN CONTAINER -->
+  </div>
 </body>
+
 <!-- FOOTER -->
 <footer>
   <div>
@@ -81,7 +131,5 @@
     <button id="to-top"> <i class="fas fa-arrow-up" style="color:#faf7ef; "></i> </button>
   </div>
 </footer>
-
-</html>
 
 </html>
