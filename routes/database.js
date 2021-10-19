@@ -72,6 +72,24 @@ const addNewMap = function(title, description) {
 
 }
 
+// const request = require('request');
+// const fetchMarker = function(url, userId, callback) {
+
+//   require(url, (error, status, body) => {
+//     if (error) {
+//       callback(error, null);
+//       return;
+//     } else if (!response) {
+//       callback(error, null);
+//       return;
+//     } else {
+//       const data = JSON.parse(body).users;
+//       callback(null, data[username]);
+//     }
+//   })
+
+// };
+
 
 
 const addNewMarker = function(location) {
