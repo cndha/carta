@@ -317,18 +317,15 @@ footer a {
   text-decoration: none;
   color: var(--color-brand);
 }
-#scrollUp-btn {
-  display: none;
-  position: fixed;
-  right: 10px;
-  bottom: 25px;
-  z-index: 99;
-  border-width: 0;
-  padding: 5px;
-  font-size: 40px;
-  color: #4056A1;
-  background: transparent;
-} 
+#to-top{
+  display: none; 
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--btn-width);
+  background: var(--color-brand);
+  border-radius: none;
+}
 // //buttons
 // .bouncy {
 //    animation: bouncy 5s infinite linear;
@@ -344,7 +341,3 @@ footer a {
 //    50% {top:0em};
 //    100% {top:0em;};
 //   }
-#geocoder-container > div {
-  min-width: 50%;
-  margin-left: 25%;
-  }
