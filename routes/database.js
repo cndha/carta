@@ -1,5 +1,5 @@
 const { Pool } = require('pg');
-const request = require('request');
+// const request = require('request');
 
 const pool = new Pool({
   user: 'labber',
