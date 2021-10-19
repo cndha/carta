@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = (db) => {
+module.exports = (db, axios) => {
 
   //when you click on your profile, renders localhost:8080/profile
   router.get("/", (req, res) => {

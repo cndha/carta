@@ -57,11 +57,11 @@ const createRoutes = require("./routes/create");
 const indexRoutes = require("./routes/index");
 
 // Mount all resource routes
-app.use("/explore", exploreRoutes(db));
-app.use("/profile", profileRoutes(db));
-app.use("/edit", editRoutes(db));
-app.use("/create", createRoutes(db));
-app.use("/index", indexRoutes(db));
+app.use("/explore", exploreRoutes(db, axios));
+app.use("/profile", profileRoutes(db, axios));
+app.use("/edit", editRoutes(db, axios));
+app.use("/create", createRoutes(db, axios));
+app.use("/index", indexRoutes(db, axios));
 
 // Home page
 // Warning: avoid creating more routes in this file!

@@ -1,6 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
+const axioscall = function (api) {
+
+  api.request()
+
+}
+
 module.exports = (db) => {
 
   // when confirm button is pressed, inserts a map into db
@@ -10,6 +16,11 @@ module.exports = (db) => {
       res.send("ERROR 401: You are unauthorized!");
       return;
     }
+
+    axios.get('https://api.github.com/users/mapbox')
+      .then((response) => {
+        console.log("THIS IS THE RESPONSE", response.data);
+      });
 
     // grab user_id from cookies
     // const user_id = req.cookies["user_id"];

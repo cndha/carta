@@ -12,18 +12,19 @@ $(document).ready(function () {
   const geocoder = new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
     marker: {
-      color: '#243918'
+    color: '#243918'
     },
     mapboxgl: mapboxgl
-  });
+    });
 
-  map.addControl(geocoder);
-
-  map.scrollZoom.disable();
+    map.addControl(geocoder);
+    map.scrollZoom.disable();
   //GET LOCATION DATA ON CLICK
-  // map.on("click", (event) => {
-  //   console.log(event);
-  // })
+  map.on("click", (event) => {
+    console.log(event);
+  })
+
+
   const geojson = {
     type: 'FeatureCollection',
     features: [
@@ -81,7 +82,4 @@ $(document).ready(function () {
       scrollTop: 0
     }, 200);
   });
-
-
-
 });

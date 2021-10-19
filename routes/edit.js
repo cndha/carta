@@ -8,6 +8,7 @@ module.exports = (db) => {
 
     if (!req.cookies["user_id"]) {
       res.send("ERROR 401: You are unauthorized!");
+
       return;
     }
 
