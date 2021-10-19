@@ -28,14 +28,11 @@
   <!--  FONT AWESOME -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
     integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  <!-- MAP api -->
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%=env.API_KEY%>">
-  </script>
-
-
+  <!-- MAP api change key-->
 
   <!-- EXTERNAL JS -->
   <script type="text/javascript" src="../scripts/app.js"></script>
+  <script type="text/javascript" src="../scripts/map.js"></script>
   <script type="text/javascript" src="/routes/index.js"></script>
   <script type="text/javascript" src="../server.js"></script>
   <!-- SERVER IN PROJECT ROOT -->
@@ -58,6 +55,7 @@
     <!-- explore -->
     <div id="explore">
       <!-- PROFILE -->
+<<<<<<< HEAD
     </div>
     <div>
     </div>
@@ -115,6 +113,30 @@
         }
       </script>
       <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%=env.API_KEY%>&callback=initMap"></script>
+=======
+      <div class="box-body">
+        <div class="profile">
+          <img src="/IMGS/title-display-crm.png">
+        </div>
+
+        <!-- MAPS -->
+        <div id="map"></div>
+
+        <!-- everthing below if you want location encoding -->
+        <!-- <body onload="initialize()">
+          <div id="map" style="width: 320px; height: 480px;"></div>
+           <div>
+             <input id="address" type="textbox" value="Sydney, NSW">
+             <input type="button" value="Encode" onclick="codeAddress()">
+           </div>
+         </body> -->
+
+        <!-- MAP api change key-->
+        <script
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFeJAa1wqx86-5Mrko7gjbV_BxQHx8Kt4&callback=initMap"
+          async defer></script>
+      </div>
+>>>>>>> 5358abf6c9b07c5482f455c94a4abe2a54bfdab0
     </div>
 
   </div>
