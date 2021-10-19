@@ -9,7 +9,7 @@ module.exports = (db) => {
     const keyword = "ancouver";
     db.getMapsByKeyword(keyword)
       .then(results => {
-        res.send(results);
+        res.json(results);
       })
       .catch(e => {
         console.error(e);

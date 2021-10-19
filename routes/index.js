@@ -13,6 +13,7 @@ module.exports = (db) => {
   // when you enter the search page, renders localhost:8080/index
   router.get("/", (req, res) => {
 
+
     //if no user is logged in, render page as is
     if (!req.cookies["user_id"]) {
       res.render("index");
@@ -20,6 +21,9 @@ module.exports = (db) => {
     }
 
     //otherwise, load page with that user_id's information
+
+    const userId = req.cookies["user_id"];
+
     db.getUserById(userId)
       .then((profile) => {
         const templateVars = profile;

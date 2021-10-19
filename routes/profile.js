@@ -19,7 +19,7 @@ module.exports = (db) => {
       });
   });
 
-  //when you click the delete button, deletes map from db with that id, goes back to profile after
+  //when you click the delete button, deletes map from db with that id
   router.delete("/delete/:id", (req, res) => {
 
     if (!req.cookies["user_id"]) {
@@ -34,7 +34,7 @@ module.exports = (db) => {
 
     // db.functionToDeleteMap(mapIdToSearch)
     //   .then(() => {
-    //     res.redirect('/profile');
+    //     res.json({Success: true});
     //   })
     //   .catch(e => {
     //     console.error(e);
@@ -42,32 +42,6 @@ module.exports = (db) => {
     //   });
 
     res.send("POST to profile/delete/:id")
-  });
-
-  //when you click your favorites, renders localhost:8080/profile/favorites
-  router.get("/favorites", (req, res) => {
-
-    if (!req.cookies["user_id"]) {
-      res.send("ERROR 401: You are unauthorized!");
-      return;
-    }
-
-    // const userId = req.cookies["user_id"];
-
-    //have a query to select favorited maps by user id
-    //pass the query results needed to templateVars
-
-    // db.favouriteMaps(userId)
-    //   .then((favoriteMaps) => {
-    //     const templateVars = favoriteMaps;
-    // res.render("name_chosen_for_favorites_template.ejs", templateVars);
-    //   })
-    //   .catch(e => {
-    //     console.error(e);
-    //     res.send(e)
-    //   });
-
-    res.send("GET to /profile/favorites");
   });
 
   //when you click your contributions, renders localhost:8080/profile/contributions
@@ -81,12 +55,10 @@ module.exports = (db) => {
     // const userId = req.cookies["user_id"];
 
     //have a query to select contributed maps by user id
-    //pass the query results needed to templateVars
 
     // db.contributedMaps(userId)
-    //   .then((mapsThisUserIdCVontributedTo) => {
-    //     const templateVars = mapsThisUserIdCVontributedTo;
-    // res.render("ejs_template_for_contributions", templateVars);
+    //   .then((result) => {
+    //     res.json(result);
     //   })
     //   .catch(e => {
     //     console.error(e);

@@ -3,7 +3,7 @@ const router = express.Router();
 
 module.exports = (db) => {
 
-  //when edit button is pressed for a map, renders localhost8080/edit/:id
+  //when edit button is pressed for a map, populates the edit fields and provides the map obj
   router.get("/:id", (req, res) => {
 
     if (!req.cookies["user_id"]) {
@@ -18,18 +18,15 @@ module.exports = (db) => {
 
     db.getMapById(mapIdToSearch)
       .then((result) => {
-        const templateVars = result;
-        res.send(templateVars);
-        // res.render("name_chosen_for_explore/:id_template.ejs", templateVars);
+        res.json(result);
       })
       .catch(e => {
         console.error(e);
         res.send(e)
       });
-
   });
 
-  //when confirm is pressed, updates that map with that id on db, redirects to /profile
+  //when confirm is pressed, updates that map with that id on db
   router.patch("/:id", (req, res) => {
 
     if (!req.cookies["user_id"]) {
@@ -46,16 +43,9 @@ module.exports = (db) => {
     //   description : res.body.description
     // }
 
-    // if statements to see what changes occur in functionToUpdateMap(objectToPass)
-    // if (objectToPass.title) {
-    // }
-    // //UPDATE maps
-    // //SET title = 'coolest area'
-    // //WHERE map_id = mapIdToSearch;
-
     // db.functionToUpdateMap(objectToPass)
     //   .then(() => {
-    //     res.redirect('/profile');
+    //     res.json({Success: true});
     //   })
     //   .catch(e => {
     //     console.error(e);

@@ -3,7 +3,7 @@ const router = express.Router();
 
 module.exports = (db) => {
 
-   // when confirm button is pressed, inserts a map into db, redirects to /profile
+  // when confirm button is pressed, inserts a map into db
   router.post("/", (req, res) => {
 
     if (!req.cookies["user_id"]) {
@@ -60,7 +60,7 @@ module.exports = (db) => {
 
     // db.createMap(objectToPass)
     //   .then(() => {
-    //     res.redirect('/profile');
+    //    res.json({Success: true});
     //   })
     //   .catch(e => {
     //     console.error(e);
