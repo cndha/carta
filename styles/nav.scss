@@ -17,12 +17,15 @@
 //NAV
 nav {
   height: 80px;
-  width: 90%;
-  background-color: #243918;
+  width: 100%;
+  background-color:var(--color-cream);
   z-index: 10;
   position: fixed;
   top: 0;
   padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 1.4em;
+  padding-right: 1.4em;
   margin-bottom: 2em;
   font-size: 1.4em;
   font-weight: 700;
@@ -42,7 +45,7 @@ nav li {
 }
 nav a {
   text-decoration: none;
-  color: var(--color-cream);
+  color: var(--color-brand);
 }
 nav a:hover{
   border-bottom: 3px solid var(--color-cream);
