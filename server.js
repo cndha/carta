@@ -11,53 +11,19 @@ const morgan = require("morgan");
 // PG database client/connection setup
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
-// const db = new Pool(dbParams); //comment this out when testing with below
-// db.connect(); //comment this out when testing with below
+// const db = new Pool(dbParams);
+// db.connect();
 
-//THIS IS PURELY FOR TESTING THAT DB CALLS WORK WITH ROUTES-------------------------
-const { getUserById } = require("./routes/database");
+const { getUserById, getMapsByKeyword, getMapById } = require("./routes/database");
 const pool = new Pool(dbParams);
 pool.connect();
 const db = {
 
-  getUserById: getUserById
+  getUserById: getUserById,
+  getMapsByKeyword: getMapsByKeyword,
+  getMapById: getMapById
 
-  //   functionToQuerySomeMapsToDisplayFromDatabase: function () {
-  //     return new Promise((resolve, reject) => {
-  //       console.log("results from functionToQuerySomeMapsToDisplayFromDatabase");
-  //       resolve();
-  //     });
-  //   },
-
-  //   functionToQueryForAMapWithThisId: function (stuff) {
-  //     return new Promise((resolve, reject) => {
-  //       console.log("results from functionToQueryForAMapWithThisId and the passed in variable is: ", stuff);
-  //       resolve();
-  //     });
-  //   },
-
-  //   createMap: function (objToPass) {
-  //     return new Promise((resolve, reject) => {
-  //       console.log("results from createMap and the passed in obj is: ", objToPass);
-  //       resolve();
-  //     });
-  //   },
-
-  //   popularMaps: function () {
-  //     return new Promise((resolve, reject) => {
-  //       console.log("results for popular maps!");
-  //       resolve();
-  //     });
-  //   },
-
-  //   querySelectProfile: function () {
-  //     return new Promise((resolve, reject) => {
-  //       console.log("I'm a profile!!!");
-  //       resolve();
-  //     });
-  //   }
 };
-//----------------------------------------------------------------------------------
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.

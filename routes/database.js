@@ -8,7 +8,7 @@ const pool = new Pool({
 });
 
 
-const getUserById = function(userId) {
+const getUserById = function (userId) {
 
   const sqlString = `SELECT * FROM users WHERE id = $1`;
 
@@ -25,28 +25,33 @@ const getUserById = function(userId) {
 }
 exports.getUserById = getUserById;
 
-const getMapsByKeyword = function(keyword) {
+const getMapsByKeyword = function (keyword) {
 
+<<<<<<< HEAD
+  let newkeyword = "%" + keyword + "%";
+  const sqlString = `SELECT * FROM maps WHERE description LIKE $1`;
+=======
   const sqlString = `SELECT * FROM maps WHERE description LIKE '%${$1}%'`;
+>>>>>>> 0d4fbb5bd4dab1303c56480b2f2dba14084d49dd
 
   return pool
-  .query(sqlString, [keyword])
-  .then(res => {
-    return res.rows;
-  })
-  .catch(e => { console.error(e) });
+    .query(sqlString, [newkeyword])
+    .then(res => {
+      return res.rows;
+    })
+    .catch(e => { console.error(e) });
 }
 exports.getMapsByKeyword = getMapsByKeyword;
 
-const getMapById = function(mapId) {
+const getMapById = function (mapId) {
   const sqlString = `SELECT * FROM maps WHERE id = $1`;
 
   return pool
-  .query(sqlString, [mapId])
-  .then(res => {
-    return res.rows[0];
-  })
-  .catch(e => { console.error(e) });
+    .query(sqlString, [mapId])
+    .then(res => {
+      return res.rows[0];
+    })
+    .catch(e => { console.error(e) });
 }
 exports.getMapById = getMapById;
 

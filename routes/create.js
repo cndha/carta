@@ -3,19 +3,7 @@ const router = express.Router();
 
 module.exports = (db) => {
 
-  // when create button is pressed, renders localhost:8080/create
-  router.get("/", (req, res) => {
-
-    if (!req.cookies["user_id"]) {
-      res.send("ERROR 401: You are unauthorized!");
-      return;
-    }
-
-    // res.render("ejs_template_for_create", templateVars);
-    res.send("GET to /create");
-  });
-
-  // when confirm button is pressed, inserts a map into db, redirects to /profile
+   // when confirm button is pressed, inserts a map into db, redirects to /profile
   router.post("/", (req, res) => {
 
     if (!req.cookies["user_id"]) {
