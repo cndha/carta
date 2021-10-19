@@ -16,13 +16,24 @@ $(document).ready(function () {
     },
     mapboxgl: mapboxgl
     });
-     
+
     map.addControl(geocoder);
     map.scrollZoom.disable();
   //GET LOCATION DATA ON CLICK
   map.on("click", (event) => {
     console.log(event);
   })
+          var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/satellite-streets-v11',
+            center: [-123.116226, 49.246292],
+            zoom: 11.15
+          });
+          map.on("click", (event) => {
+            console.log(event);
+          })
+          // map.scrollZoom.disable();
+          // map.addControl(new mapboxgl.NavigationControl());
 
 
   const geojson = {
@@ -67,7 +78,7 @@ $(document).ready(function () {
       );
   }
 
-  // scroll to top        
+  // scroll to top
   $(function () {
     $(window).scroll(function () {
       if ($(this).scrollTop() - 200 > 0) {
