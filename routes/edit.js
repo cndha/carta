@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = (db) => {
+module.exports = (db, axios, environment) => {
 
   //when edit button is pressed for a map, populates the edit fields and provides the map obj
   router.get("/:id", (req, res) => {

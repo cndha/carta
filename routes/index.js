@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = (db) => {
+module.exports = (db, axios, environment) => {
 
   //when you enter the search page with an id, localhost:8080/index/1, redirects to localhost:8080/index/
   router.get("/:id", (req, res) => {
@@ -22,9 +22,6 @@ module.exports = (db) => {
 
     //otherwise, load page with that user_id's information
     const userId = req.cookies["user_id"];
-
-    //passing env variables
-    const environment = require("dotenv").config();
 
     db.getUserById(userId)
       .then((profile) => {

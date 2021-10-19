@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = (db, axios) => {
+module.exports = (db, axios, environment) => {
 
   //when you click on your profile, renders localhost:8080/profile
   router.get("/", (req, res) => {
@@ -22,10 +22,10 @@ module.exports = (db, axios) => {
   //when you click the delete button, deletes map from db with that id
   router.delete("/delete/:id", (req, res) => {
 
-    if (!req.cookies["user_id"]) {
-      res.send("ERROR 401: You are unauthorized!");
-      return;
-    }
+    // if (!req.cookies["user_id"]) {
+    //   res.send("ERROR 401: You are unauthorized!");
+    //   return;
+    // }
 
     // button or hyperlink will need to supply the map id they clicked on
     // const mapIdToSearch = res.body.mapId;
@@ -41,7 +41,7 @@ module.exports = (db, axios) => {
     //     res.send(e)
     //   });
 
-    res.send("POST to profile/delete/:id")
+    // res.send("POST to profile/delete/:id")
   });
 
   //when you click your contributions, renders localhost:8080/profile/contributions

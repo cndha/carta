@@ -1,13 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const axioscall = function (api) {
-
-  api.request()
-
-}
-
-module.exports = (db) => {
+module.exports = (db, axios, environment) => {
 
   // when confirm button is pressed, inserts a map into db
   router.post("/", (req, res) => {

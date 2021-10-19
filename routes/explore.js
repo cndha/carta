@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = (db) => {
+module.exports = (db, axios, environment) => {
 
   //when you enter the explore page, sends map data to client
   router.get("/", (req, res) => {
