@@ -8,8 +8,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"
     integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- AXIOS -->
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <!-- AXIOS -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <!-- STYLE SHEETS -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -63,6 +63,7 @@
         <div class="table">
           <div class="content-large">
             <h3>create map</h3>
+            <button id="ajaxButton" class="ajaxButton" type="submit">PRESS ME FOR AJAX</button>
             <span>something</span>
             <i class="fas fa-plus" style="color: white;"></i>
           </div>
@@ -105,7 +106,6 @@
               <div class="db-buttons"><a href="something" class="button1">delete</a></div><i class="fas fa-plus"
                 style="color: #243918;"></i>
             </div>
-
           </div>
           <div class="content-large">
             <h3>edit maps</h3>
@@ -126,23 +126,21 @@
           href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css"
           type="text/css">
 
-
-
-          <script>
-            geocode();
-         function geocode(location){
-          axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?access_token=pk.eyJ1IjoiY29wbzEyMyIsImEiOiJja3V2dTdvdHMxcjdrMm9xanBtaGdkaHc4In0.cBeBLEBv8OE9UnZgr7EEzQ`, {
-            params:{
-              accessToken: 'pk.eyJ1IjoiY29wbzEyMyIsImEiOiJja3V2dTdvdHMxcjdrMm9xanBtaGdkaHc4In0.cBeBLEBv8OE9UnZgr7EEzQ'
-            }
-          })
-          .then(function(response){
-            console.log(response);
-          })
-          .catch((err) => {
-            console.log("error", err);
-          })
-        }
+        <script>
+          geocode('false creek');
+          function geocode(location) {
+            axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?access_token=pk.eyJ1IjoiY29wbzEyMyIsImEiOiJja3V2dTdvdHMxcjdrMm9xanBtaGdkaHc4In0.cBeBLEBv8OE9UnZgr7EEzQ`, {
+              params: {
+                accessToken: 'pk.eyJ1IjoiY29wbzEyMyIsImEiOiJja3V2dTdvdHMxcjdrMm9xanBtaGdkaHc4In0.cBeBLEBv8OE9UnZgr7EEzQ'
+              }
+            })
+              .then(function (response) {
+                console.log(response);
+              })
+              .catch((err) => {
+                console.log("error", err);
+              })
+          }
         </script>
 
         <div id="map">

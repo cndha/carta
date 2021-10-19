@@ -9,15 +9,29 @@ $(document).ready(function () {
       zoom: 13,
       center: { lat: 49.246292, lng: -123.116226 },
     });
-  
+    map.addListener("click", (event) => {
+    console.log("LAT--->", event.latLng.lat());
+    console.log("LNG--->", event.latLng.lng());
+  })
     marker = new google.maps.Marker({
       map,
       draggable: true,
       animation: google.maps.Animation.DROP,
-      position: { lat: 49.246292, lng: -123.116226 },
+      position: { lat:   49.251754722903854, lng: -122.97958354394531 },
+      
+      //marker location
     });
+    marker = new google.maps.Marker({
+    map,
+      draggable: true,
+      animation: google.maps.Animation.DROP,
+      position: { lat:  49.273321738192486, lng: -123.24619670100792 },
+    })
+
     marker.addListener("click", toggleBounce);
   }
+    //ajAx request -> db
+
   function toggleBounce() {
     if (marker.getAnimation() !== null) {
       marker.setAnimation(null);
@@ -32,7 +46,7 @@ $(document).ready(function () {
   function initialize() {
     geocoder = new google.maps.Geocoder();
     var latlng = new google.maps.LatLng(-34.397, 150.644);
-    var mapOptions = {
+    var mapOptions = { 
       zoom: 8,
       center: latlng
     }
@@ -53,4 +67,6 @@ $(document).ready(function () {
       }
     });
   }
+
+  
 });

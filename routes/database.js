@@ -56,7 +56,7 @@ exports.getMapById = getMapById;
 
 
 //shows in profile - all the maps the user has created & collaborated
-const getAllMapsByUser = function(userId) {
+const getAllMapsByUser = function (userId) {
   const sqlString = `SELECT * FROM maps JOIN contributors ON map_id = maps.id WHERE maps.owner_id = $1 AND contributors.user_id = $1`;
 
   return pool
@@ -69,31 +69,31 @@ const getAllMapsByUser = function(userId) {
 exports.getAllMapsByUser = getAllMapsByUser;
 
 //shows all the maps favourited by user
-const getFavMapsByUser = function(userId) {
+const getFavMapsByUser = function (userId) {
 
   const sqlString = `SELECT * FROM maps JOIN favourites ON map_id = maps.id JOIN users ON user_id = users.id WHERE favourites.user_id = $1 ORDER BY favourited_at DESC`;
 
   return pool
-  .query(sqlString, [userId])
-  .then(res => {
-    return res.rows;
-  })
-  .catch(e => { console.error(e) });
+    .query(sqlString, [userId])
+    .then(res => {
+      return res.rows;
+    })
+    .catch(e => { console.error(e) });
 }
 exports.getFavMapsByUser = getFavMapsByUser;
 
 
 //creating a new map
-const createNewMap = function(map) {
+const createNewMap = function (map) {
 
   const sqlString = `INSERT INTO maps (owner_id, title, description, likes, created_at, completed_at) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`;
 
   return pool
-  .query(sqlString, [])
-  .then(res => {
-    return res.rows[0];
-  })
-  .catch(e => { console.error(e) });
+    .query(sqlString, [])
+    .then(res => {
+      return res.rows[0];
+    })
+    .catch(e => { console.error(e) });
 
 }
 exports.createNewMap = createNewMap;
@@ -118,41 +118,41 @@ exports.createNewMap = createNewMap;
 // exports.fetchMarker = fetchMarker;
 // fetchMarker("Empire state building", () => {});
 
-  //data.text = name of location
-  //data.place_name = name, street address, state, postal code, country
-  //data.center = coordinates in an array
-  // but if you search by address, name of place doesn't show
+//data.text = name of location
+//data.place_name = name, street address, state, postal code, country
+//data.center = coordinates in an array
+// but if you search by address, name of place doesn't show
 
 
 //runs when ADD button is submitted on a marker
-const addNewMarker = function(location) {
+const addNewMarker = function (location) {
 
   // how to add user_id / map_id to marker?
 
   const sqlString = `INSERT INTO markers (user_id, map_id, name, street, city, province, postalcode, country, longitude, latitude, created) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *`;
 
   return pool
-  .query(sqlString, [location.user_id, location.map_id, location.name, location.street, location.city, location.province, location.postalcode, location.country, location.longitude, location.latitude, created])
-  .then(res => {
-    return res.rows[0];
-  })
-  .catch(e => { console.error(e) });
+    .query(sqlString, [location.user_id, location.map_id, location.name, location.street, location.city, location.province, location.postalcode, location.country, location.longitude, location.latitude, created])
+    .then(res => {
+      return res.rows[0];
+    })
+    .catch(e => { console.error(e) });
 
 }
 exports.addNewMarker = addNewMarker;
 
 
 //sharing map with other users to collab
-const addContributor = function(contributor) {
+const addContributor = function (contributor) {
 
   const sqlString = `INSERT INTO contributors (user_id, map_id, contribution_date) VALUES ($1, $2, $3) RETURNING *`;
 
   return pool
-  .query(sqlString, [contributor.user_id, contributor.map_id, contributor.contribution_date])
-  .then(res => {
-    return res.rows;
-  })
-  .catch(e => { console.error(e) })
+    .query(sqlString, [contributor.user_id, contributor.map_id, contributor.contribution_date])
+    .then(res => {
+      return res.rows;
+    })
+    .catch(e => { console.error(e) })
 
 };
 exports.addContributor = addContributor;

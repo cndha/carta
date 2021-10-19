@@ -1,5 +1,5 @@
 // load .env data into process.env
-require("dotenv").config();
+const environment = require("dotenv").config();
 
 // Web server config
 const PORT = process.env.PORT || 8080;
@@ -7,6 +7,8 @@ const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
+
+const axios = require('axios');
 
 // PG database client/connection setup
 const { Pool } = require("pg");
@@ -19,9 +21,9 @@ const pool = new Pool(dbParams);
 pool.connect();
 const db = {
 
-  getUserById: getUserById,
-  getMapsByKeyword: getMapsByKeyword,
-  getMapById: getMapById
+  getUserById,
+  getMapsByKeyword,
+  getMapById
 
 };
 
@@ -57,11 +59,11 @@ const createRoutes = require("./routes/create");
 const indexRoutes = require("./routes/index");
 
 // Mount all resource routes
-app.use("/explore", exploreRoutes(db));
-app.use("/profile", profileRoutes(db));
-app.use("/edit", editRoutes(db));
-app.use("/create", createRoutes(db));
-app.use("/index", indexRoutes(db));
+app.use("/explore", exploreRoutes(db, axios, environment));
+app.use("/profile", profileRoutes(db, axios, environment));
+app.use("/edit", editRoutes(db, axios, environment));
+app.use("/create", createRoutes(db, axios, environment));
+app.use("/index", indexRoutes(db, axios, environment));
 
 // Home page
 // Warning: avoid creating more routes in this file!

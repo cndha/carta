@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <meta name="viewport" content="initial-scale=1.0">
   <meta charset="utf-8">
   <!-- API -->
@@ -9,21 +10,19 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"
     integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <!-- AXIOS -->
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <!-- STYLE SHEETS -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/map.css" type="text/css" />
 
-  <!-- GOOGLE FONTS -->
+  <!-- GOOGLE FONTS LATO weight 100-700-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- LATO weight 100-700-->
   <link
     href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
     rel="stylesheet">
+
   <!--  FONT AWESOME -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
     integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
@@ -44,7 +43,7 @@
   <nav>
     <!-- Replace links with proper routes or single page refresh -->
     <!-- Replace links with proper routes  -->
-    <a href="/placeholder/index"><img src="/IMGS/header-circle-small.png"></a>
+    <img src="/IMGS/header-circle-small.png">
     <ul>
       <li><a href="placeholder">logout</a></li>
     </ul>
@@ -62,29 +61,20 @@
         <!-- MAPS -->
         <div id="map"></div>
 
-        <!-- everthing below if you want location encoding -->
-        <!-- <body onload="initialize()">
-          <div id="map" style="width: 320px; height: 480px;"></div>
-           <div>
-             <input id="address" type="textbox" value="Sydney, NSW">
-             <input type="button" value="Encode" onclick="codeAddress()">
-           </div>
-         </body> -->
-
         <!-- MAP api change key-->
-        <script
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFeJAa1wqx86-5Mrko7gjbV_BxQHx8Kt4&callback=initMap"
-          async defer></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn7dBW6G6TF62UyX3krF5enoY6WF3A7Tg&callback=initMap" async
+          defer></script>
       </div>
     </div>
-    <!-- MAIN CONTAINER -->
+
+  </div>
+  <!-- MAIN CONTAINER -->
   </div>
 </body>
 
 <!-- FOOTER -->
 <footer>
   <div>
-    <p><a href="placeholder">about</a></p>
     <button id="to-top"> <i class="fas fa-arrow-up" style="color:#faf7ef; "></i> </button>
   </div>
 </footer>
