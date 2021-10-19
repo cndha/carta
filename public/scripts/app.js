@@ -16,7 +16,7 @@ $(document).ready(function () {
     },
     mapboxgl: mapboxgl
     });
-     
+
     map.addControl(geocoder);
 
     map.scrollZoom.disable();
@@ -66,7 +66,7 @@ $(document).ready(function () {
       );
   }
 
-  // scroll to top        
+  // scroll to top
   $(function () {
     $(window).scroll(function () {
       if ($(this).scrollTop() - 200 > 0) {
@@ -81,7 +81,7 @@ $(document).ready(function () {
       scrollTop: 0
     }, 200);
   });
-  
+
 
 
 });
