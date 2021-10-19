@@ -31,6 +31,8 @@ $(document).ready(function () {
       'source-layer': 'contour'
     });
 
+
+
     function buildLocationList(stores) {
       for (const store of stores.features) {
         /* Add a new listing section to the sidebar. */
