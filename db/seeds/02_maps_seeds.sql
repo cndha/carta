@@ -1,4 +1,4 @@
-INSERT INTO maps (owned_by, title, description)
+INSERT INTO maps (owner_id, title, description)
 VALUES (1, 'Unicorn forests', 'These are the forests where you can find unicorns.'),
 (1, 'Dog Parks', 'Best dog parks in town for a ruff time.'),
 (1, 'Best Bakeries', 'These are the top 5 bakeries in Vancouver.'),
