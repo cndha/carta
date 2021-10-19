@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-  <!-- JQUERY -->
+  <meta name="viewport" content="initial-scale=1.0">
+  <meta charset="utf-8">
   <!-- API -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"
@@ -26,9 +27,12 @@
   <!--  FONT AWESOME -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
     integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  <!-- MAPBOX -->
-  <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
-  <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+  <!-- MAP api -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFeJAa1wqx86-5Mrko7gjbV_BxQHx8Kt4">
+  </script>
+
+
+
   <!-- EXTERNAL JS -->
   <script type="text/javascript" src="../scripts/app.js"></script>
   <script type="text/javascript" src="/routes/index.js"></script>
@@ -58,17 +62,66 @@
           <img src="/IMGS/title-display-crm.png">
         </div>
         <!-- MAPS -->
+        <div id="map"></div>
+        <script>
+          function initMap() {
+            const map = new google.maps.Map(document.getElementById("map"), {
+              zoom: 12,
+              center: { lat: 49.246292, lng: -123.116226 },
+            });
+            // Set LatLng and title text for the markers. The first marker (Boynton Pass)
+            // receives the initial focus when tab is pressed. Use arrow keys to
+            // move between markers; press tab again to cycle through the map controls.
+            const tourStops = [
+              [{ lat: 49.2712, lng: -123.1340 }, "Granville Island"],
+              [{ lat: 49.2684, lng: -123.1683 }, "Kitsilano"]
+            ];
+            // Create an info window to share between markers.
+            const infoWindow = new google.maps.InfoWindow();
+
+            // Create the markers.
+            tourStops.forEach(([position, title], i) => {
+              const marker = new google.maps.Marker({
+                position,
+                map,
+                title: `${i + 1}. ${title}`,
+                label: `${i + 1}`,
+                optimized: false,
+              });
+
+              // Add a click listener for each marker, and set up the info window.
+              marker.addListener("click", () => {
+                infoWindow.close();
+                infoWindow.setContent(marker.getTitle());
+                infoWindow.open(marker.getMap(), marker);
+              });
+            });
+
+            marker = new google.maps.Marker({
+              map,
+              draggable: true,
+              animation: google.maps.Animation.DROP,
+              position: { lat: 59.327, lng: 18.067 },
+            });
+            marker.addListener("click", toggleBounce);
+          }
+
+          function toggleBounce() {
+            if (marker.getAnimation() !== null) {
+              marker.setAnimation(null);
+            } else {
+              marker.setAnimation(google.maps.Animation.BOUNCE);
+            }
+          }
+
+        </script>
         <script
-          src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
-        <link rel="stylesheet"
-          href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css"
-          type="text/css">
-        <div id="map">
-        </div>
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFeJAa1wqx86-5Mrko7gjbV_BxQHx8Kt4&callback=initMap"
+          async defer></script>
       </div>
     </div>
     <!-- MAIN CONTAINER -->
-    </div>
+  </div>
 </body>
 
 <!-- FOOTER -->
@@ -78,4 +131,5 @@
     <button id="to-top"> <i class="fas fa-arrow-up" style="color:#faf7ef; "></i> </button>
   </div>
 </footer>
+
 </html>
