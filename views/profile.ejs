@@ -127,9 +127,9 @@
           type="text/css">
 
 
-          
+
           <script>
-            geocode('false creek');
+            geocode();
          function geocode(location){
           axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?access_token=pk.eyJ1IjoiY29wbzEyMyIsImEiOiJja3V2dTdvdHMxcjdrMm9xanBtaGdkaHc4In0.cBeBLEBv8OE9UnZgr7EEzQ`, {
             params:{
@@ -144,11 +144,11 @@
           })
         }
         </script>
-        
+
         <div id="map">
           <div class="db-buttons" id="add"><a href="something" class="button1">delete</a></div>
         </div>
-        
+
         <!-- MAIN CONTAINER -->
       </div>
     </div>
