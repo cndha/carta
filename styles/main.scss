@@ -93,58 +93,58 @@ body {
   --btn-width: 6rem;
   --bez: cubic-bezier(0, 0, 0.43, 1.49);
 }
-form {
-  margin-top: 20px;
-  position: relative;
-  width: 100%;
-  background: var(--color-brand);
-  border-radius: var(--rad);
-}
-input, button {
-  height: var(--height);
-  font-family: var(--font-fam);
-  font-weight: var(--font-medium);
-  border: 0;
-  color: var(--color-cream);
-  font-size: 1.4rem;
-}
-input[type="search"] {
-  outline: 0; 
-  width: 100%;
-  background: var(--color-brand);
-  padding: 0 1.6rem;
-  border-radius: var(--rad);
-  appearance: none; 
-  transition: width var(--dur) var(--bez);
-  transition-property: width, border-radius;
-  z-index: 1;
-  position: relative;
-}
-button {
-  display: none; 
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: var(--btn-width);
-  background: var(--color-light);
-  border-radius: 0 var(--rad) var(--rad) 0;
-}
-input:not(:placeholder-shown) {
-  border-radius: var(--rad) 0 0 var(--rad);
-  width: calc(100% - var(--btn-width));
-  + button {
-    display: block;
-  }
-}
-label {
-  position: absolute;
-  clip: rect(1px, 1px, 1px, 1px);
-  padding: 0;
-  border: 0;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-}
+// form {
+//   margin-top: 20px;
+//   position: relative;
+//   width: 100%;
+//   background: var(--color-brand);
+//   border-radius: var(--rad);
+// }
+// input, button {
+//   height: var(--height);
+//   font-family: var(--font-fam);
+//   font-weight: var(--font-medium);
+//   border: 0;
+//   color: var(--color-cream);
+//   font-size: 1.4rem;
+// }
+// input[type="search"] {
+//   outline: 0; 
+//   width: 100%;
+//   background: var(--color-brand);
+//   padding: 0 1.6rem;
+//   border-radius: var(--rad);
+//   appearance: none; 
+//   transition: width var(--dur) var(--bez);
+//   transition-property: width, border-radius;
+//   z-index: 1;
+//   position: relative;
+// }
+// button {
+//   display: none; 
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+//   width: var(--btn-width);
+//   background: var(--color-light);
+//   border-radius: 0 var(--rad) var(--rad) 0;
+// }
+// input:not(:placeholder-shown) {
+//   border-radius: var(--rad) 0 0 var(--rad);
+//   width: calc(100% - var(--btn-width));
+//   + button {
+//     display: block;
+//   }
+// }
+// label {
+//   position: absolute;
+//   clip: rect(1px, 1px, 1px, 1px);
+//   padding: 0;
+//   border: 0;
+//   height: 1px;
+//   width: 1px;
+//   overflow: hidden;
+// }
 .box-body{
   display: flex;
   flex-direction: column;
@@ -207,8 +207,8 @@ color: var(--color-brand);
 
 // MAPS
 #map {
-  height: 900px;
-  width: 66vw;
+  height: 1000px;
+  width: 75vw;
   margin-top: 80px;
   margin-bottom: 80px;
   border: 3px solid var(--color-light);
@@ -251,6 +251,12 @@ a {
 a:hover {
   border: 3px solid var(--color-brand);
 }
+
+#geocoder-container > div {
+  min-width: 50%;
+  margin-left: 25%;
+  }
+
 
 /* The page is split between map and sidebar - the sidebar gets 1/3, map
 gets 2/3 of the page. You can adjust this to your personal liking. */
@@ -317,18 +323,15 @@ footer a {
   text-decoration: none;
   color: var(--color-brand);
 }
-#scrollUp-btn {
-  display: none;
-  position: fixed;
-  right: 10px;
-  bottom: 25px;
-  z-index: 99;
-  border-width: 0;
-  padding: 5px;
-  font-size: 40px;
-  color: #4056A1;
-  background: transparent;
-} 
+#to-top{
+  display: none; 
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--btn-width);
+  background: var(--color-brand);
+  border-radius: none;
+}
 // //buttons
 // .bouncy {
 //    animation: bouncy 5s infinite linear;
@@ -344,7 +347,3 @@ footer a {
 //    50% {top:0em};
 //    100% {top:0em;};
 //   }
-#geocoder-container > div {
-  min-width: 50%;
-  margin-left: 25%;
-  }

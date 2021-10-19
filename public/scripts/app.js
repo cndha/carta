@@ -9,19 +9,21 @@ $(document).ready(function () {
     center: [-123.116226, 49.246292],
     zoom: 11.15
   });
-  map.on("click", (event) => {
-    console.log(event);
-  })
   const geocoder = new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
     marker: {
-      color: 'orange'
+    color: '#243918'
     },
     mapboxgl: mapboxgl
-  });
+    });
+     
+    map.addControl(geocoder);
+    map.scrollZoom.disable();
+  //GET LOCATION DATA ON CLICK
+  map.on("click", (event) => {
+    console.log(event);
+  })
 
-  map.addControl(geocoder);
-  map.addControl(new mapboxgl.NavigationControl());
 
   const geojson = {
     type: 'FeatureCollection',
