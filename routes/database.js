@@ -27,12 +27,8 @@ exports.getUserById = getUserById;
 
 const getMapsByKeyword = function (keyword) {
 
-<<<<<<< HEAD
   let newkeyword = "%" + keyword + "%";
   const sqlString = `SELECT * FROM maps WHERE description LIKE $1`;
-=======
-  const sqlString = `SELECT * FROM maps WHERE description LIKE '%${$1}%'`;
->>>>>>> 0d4fbb5bd4dab1303c56480b2f2dba14084d49dd
 
   return pool
     .query(sqlString, [newkeyword])
