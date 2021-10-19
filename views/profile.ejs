@@ -25,7 +25,7 @@
   <!--  FONT AWESOME -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
     integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  <!-- MAPBOX -->
+      <!-- MAPBOX -->
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
   <!-- EXTERNAL JS -->
@@ -65,46 +65,34 @@
             <i class="fas fa-plus" style="color: white;"></i>
           </div>
           <div class="content-expanded">
-            <!-- FORM GET -->
-            <form onsubmit="event.preventDefault();" role="search" id="new-map">
-              <label for="search">title</label>
-              <input id="search" type="search" placeholder="title" name="map-location" autofocus required />
-              <button type="submit" id="btn-explore"><i class="fas fa-search" style="color: #243918;"></i></button>
-            </form>
-            <form onsubmit="event.preventDefault();" role="search" id="new-map">
-              <label for="search">short description</label>
-              <input id="search" type="search" placeholder="short description" name="map-location" autofocus required />
-              <button type="submit" id="btn-explore"><i class="fas fa-search" style="color: #243918;"></i></button>
-            </form>
-            <form onsubmit="event.preventDefault();" role="search" id="new-map">
-              <label for="search">location</label>
-              <input id="search" type="search" placeholder="location" name="map-location" autofocus required />
-              <button type="submit" id="btn-explore"><i class="fas fa-search" style="color: #243918;"></i></button>
-            </form>
-          </div>
+              <!-- FORM GET -->
+              <form onsubmit="event.preventDefault();" role="search" id="new-map">
+                <label for="search">title</label>
+                <input id="search" type="search" placeholder="title" name="map-location" autofocus required />
+                <button type="submit" id="btn-explore"><i class="fas fa-search" style="color: #243918;"></i></button>
+              </form>
+              <form onsubmit="event.preventDefault();" role="search" id="new-map">
+                <label for="search">short description</label>
+                <input id="search" type="search" placeholder="short description" name="map-location" autofocus required />
+                <button type="submit" id="btn-explore"><i class="fas fa-search" style="color: #243918;"></i></button>
+              </form>
+              <form onsubmit="event.preventDefault();" role="search" id="new-map">
+                <label for="search">location</label>
+                <input id="search" type="search" placeholder="location" name="map-location" autofocus required />
+                <button type="submit" id="btn-explore"><i class="fas fa-search" style="color: #243918;"></i></button>
+              </form>
+            </div>
           <div class="content-large">
             <h3>your maps</h3>
             <span>something</span>
             <i class="fas fa-plus" style="color: white;"></i>
           </div>
           <div class="content-expanded">
-            <div class="content-expanded-row">
-              <p>map 1</p>
-              <div class="db-buttons"><a href="something" class="button1">delete</a></div><i class="fas fa-plus"
-                style="color: #243918;"></i>
+            <div class="content-expanded-row"><p>map 1</p><div class="db-buttons"><a href="something" class="button1">delete</a></div><i class="fas fa-plus" style="color: #243918;"></i></div>
+            <div class="content-expanded-row"><p>map 2</p><div class="db-buttons"><a href="something" class="button1">delete</a></div><i class="fas fa-plus" style="color: #243918;"></i></div>
+            <div class="content-expanded-row"><p>map 3</p><div class="db-buttons"><a href="something" class="button1">delete</a></div><i class="fas fa-plus" style="color: #243918;"></i></div>
+          
             </div>
-            <div class="content-expanded-row">
-              <p>map 2</p>
-              <div class="db-buttons"><a href="something" class="button1">delete</a></div><i class="fas fa-plus"
-                style="color: #243918;"></i>
-            </div>
-            <div class="content-expanded-row">
-              <p>map 3</p>
-              <div class="db-buttons"><a href="something" class="button1">delete</a></div><i class="fas fa-plus"
-                style="color: #243918;"></i>
-            </div>
-
-          </div>
           <div class="content-large">
             <h3>edit maps</h3>
             <span>something</span>
@@ -118,12 +106,9 @@
         </div>
         <!-- what keys/ what shape for the data use html name  -->
         <!-- MAPS -->
-        <script
-          src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
-        <link rel="stylesheet"
-          href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css"
-          type="text/css">
-
+        <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css" type="text/css">
+ 
         <div id="map"></div>
         <!-- MAIN CONTAINER -->
       </div>

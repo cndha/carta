@@ -16,7 +16,7 @@ $(document).ready(function () {
     },
     mapboxgl: mapboxgl
     });
-
+     
     map.addControl(geocoder);
 
  
@@ -30,7 +30,6 @@ $(document).ready(function () {
   // map.on("click", (event) => {
   //   console.log(event);
   // })
-
 
 
   const geojson = {
@@ -75,7 +74,7 @@ $(document).ready(function () {
       );
   }
 
-  // scroll to top
+  // scroll to top        
   $(function () {
     $(window).scroll(function () {
       if ($(this).scrollTop() - 200 > 0) {
