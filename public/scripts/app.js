@@ -16,23 +16,14 @@ $(document).ready(function () {
     },
     mapboxgl: mapboxgl
     });
-
+     
     map.addControl(geocoder);
 
- 
-    console.log("geocoder", geocoder.types); 
-    console.log("mapboxgl", mapboxgl); 
-
-
-    console.log(map);
     map.scrollZoom.disable();
   //GET LOCATION DATA ON CLICK
   // map.on("click", (event) => {
   //   console.log(event);
   // })
-
-
-
   const geojson = {
     type: 'FeatureCollection',
     features: [
@@ -75,7 +66,7 @@ $(document).ready(function () {
       );
   }
 
-  // scroll to top
+  // scroll to top        
   $(function () {
     $(window).scroll(function () {
       if ($(this).scrollTop() - 200 > 0) {
