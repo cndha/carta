@@ -67,17 +67,17 @@
               <!-- FORM GET -->
               <form onsubmit="event.preventDefault();" role="search" id="new-map">
                 <label for="search">title</label>
-                <input id="search" type="search" placeholder="explore" name="map-location" autofocus required />
+                <input id="search" type="search" placeholder="title" name="map-location" autofocus required />
                 <button type="submit" id="btn-explore"><i class="fas fa-search" style="color: #243918;"></i></button>
               </form>
               <form onsubmit="event.preventDefault();" role="search" id="new-map">
                 <label for="search">short description</label>
-                <input id="search" type="search" placeholder="explore" name="map-location" autofocus required />
+                <input id="search" type="search" placeholder="short description" name="map-location" autofocus required />
                 <button type="submit" id="btn-explore"><i class="fas fa-search" style="color: #243918;"></i></button>
               </form>
               <form onsubmit="event.preventDefault();" role="search" id="new-map">
                 <label for="search">location</label>
-                <input id="search" type="search" placeholder="explore" name="map-location" autofocus required />
+                <input id="search" type="search" placeholder="location" name="map-location" autofocus required />
                 <button type="submit" id="btn-explore"><i class="fas fa-search" style="color: #243918;"></i></button>
               </form>
             </div>
@@ -103,80 +103,18 @@
             <i class="fas fa-plus" style="color: white;"></i>
           </div>
         </div>
-        
-  
         <!-- what keys/ what shape for the data use html name  -->
-
-        <!-- PROFILE -->
-        <!-- https://datatables.net/examples/api/row_details.html -->
-        <div class="box-body"></div>
         <!-- MAPS -->
         <div id="map"></div>
-        <script>
-          mapboxgl.accessToken = 'pk.eyJ1IjoiY29wbzEyMyIsImEiOiJja3V2dTdvdHMxcjdrMm9xanBtaGdkaHc4In0.cBeBLEBv8OE9UnZgr7EEzQ';
-          var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/satellite-streets-v11',
-            center: [-123.116226, 49.246292],
-            zoom: 11.15
-          });
-          map.scrollZoom.disable();
-          map.addControl(new mapboxgl.NavigationControl());
-
-          const geojson = {
-            type: 'FeatureCollection',
-            features: [
-              {
-                type: 'Feature',
-                geometry: {
-                  type: 'Point',
-                  coordinates: [-123.1340, 49.2712]
-                },
-                properties: {
-                  title: 'yummmmmmy',
-                  description: 'Granville Island'
-                }
-              },
-              {
-                type: 'Feature',
-                geometry: {
-                  type: 'Point',
-                  coordinates: [-123.1683, 49.2684]
-                },
-                properties: {
-                  title: 'Kits',
-                  description: 'Kitsilano'
-                }
-              }
-            ]
-          };
-          // add markers to map
-          for (const feature of geojson.features) {
-            // create a HTML element for each feature
-            const el = document.createElement('div');
-            el.className = 'marker';
-            // make a marker for each feature and add to the map
-            new mapboxgl.Marker(el).setLngLat(feature.geometry.coordinates).addTo(map)
-              .setPopup(
-                new mapboxgl.Popup({ offset: 25 }) // add popups
-                  .setHTML(
-                    `<h3 class="pop-title">${feature.properties.title}</h3><p>${feature.properties.description}</p>`
-                  )
-              );
-          }
-        </script>
         <!-- MAIN CONTAINER -->
       </div>
-      <script>
-
-      </script>
     </div>
 </body>
 <!-- FOOTER -->
 <footer>
   <div>
     <p><a href="placeholder">about</a></p>
-    <button id="scrollUp-btn"> <i class="fas fa-plus"></i> </button>
+    <button id="to-top"> <i class="fas fa-plus" style="color: orange;"></i> </button>
   </div>
 </footer>
 
