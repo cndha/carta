@@ -27,7 +27,7 @@ exports.getUserById = getUserById;
 
 const getMapsByKeyword = function(keyword) {
 
-  const sqlString = `SELECT * FROM maps WHERE description LIKE '%$1%'`;
+  const sqlString = `SELECT * FROM maps WHERE description LIKE '%${$1}%'`;
 
   return pool
   .query(sqlString, [keyword])
@@ -49,3 +49,18 @@ const getMapById = function(mapId) {
   .catch(e => { console.error(e) });
 }
 exports.getMapById = getMapById;
+
+
+// const addNewPin = function(pin) {
+
+//   const sqlString = ``;
+
+//   return pool
+//   .query(sqlString, [pin])
+//   .then(res => {
+//     return res.rows;
+//   })
+//   .catch(e => { console.error(e) });
+
+// }
+// exports.addNewPin = addNewPin;
