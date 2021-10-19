@@ -18,11 +18,18 @@ $(document).ready(function () {
     });
      
     map.addControl(geocoder);
+
+ 
+    console.log("geocoder", geocoder.types); 
+    console.log("mapboxgl", mapboxgl); 
+
+
+    console.log(map);
     map.scrollZoom.disable();
   //GET LOCATION DATA ON CLICK
-  map.on("click", (event) => {
-    console.log(event);
-  })
+  // map.on("click", (event) => {
+  //   console.log(event);
+  // })
 
 
   const geojson = {
@@ -82,4 +89,7 @@ $(document).ready(function () {
       scrollTop: 0
     }, 200);
   });
+  
+
+
 });
