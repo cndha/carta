@@ -1,4 +1,4 @@
-INSERT INTO maps (owner_id, title, description, likes, create_at, completed_at)
+INSERT INTO maps (owner_id, title, description, likes, created_at, completed_at)
 VALUES (1, 'Unicorn forests', 'These are the forests where you can find unicorns.', 500, '2018-02-12T08:00:00.000Z', '2018-02-12T08:13:20.000Z'),
 (1, 'Dog Parks', 'Best dog parks in town for a ruff time.', 500, '2018-02-12T08:00:00.000Z', '2018-02-12T08:22:40.000Z'),
 (1, 'Best Bakeries', 'These are the top 5 bakeries in Vancouver.', 500, '2018-02-16T08:00:00.000Z', '2018-02-16T08:22:40.000Z'),
