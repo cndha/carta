@@ -9,6 +9,16 @@ $(document).ready(function () {
     center: [-123.116226, 49.246292],
     zoom: 11.15
   });
+  const geocoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    marker: {
+    color: 'orange'
+    },
+    mapboxgl: mapboxgl
+    });
+     
+    map.addControl(geocoder);
+    
   //GET LOCATION DATA ON CLICK
   map.on("click", (event) => {
     console.log(event);
