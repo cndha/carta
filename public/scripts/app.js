@@ -52,20 +52,22 @@ $(document).ready(function () {
   })
 
   //to-top
-  $(function () {
-    $(window).scroll(function () {
-      if ($(this).scrollTop() - 200 > 0) {
-        $('#to-top').stop().slideDown('fast');
-      } else {
-        $('#to-top').stop().slideUp('fast');
-      }
-    });
-  });
-  $("#to-top").on("click", function () {
-    $("html, body").animate({
-      scrollTop: 0
-    }, 200);
-  });
+  scrollButton = document.getElementById('scrollUp-btn');
+  window.onscroll = () => {
+    scrollFunction();
+  };
+
+  const scrollFunction = () => {
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+      scrollButton.style.display = "block";
+    } else {
+      scrollButton.style.display = "none";
+    }
+  };
+
+  $("#scrollUp-btn").click(function() {
+    document.documentElement.scrollTop = 0;
+  }); 
 
 });
 

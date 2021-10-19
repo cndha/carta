@@ -66,7 +66,17 @@
           <div class="content-expanded">
               <!-- FORM GET -->
               <form onsubmit="event.preventDefault();" role="search" id="new-map">
-                <label for="search">explore</label>
+                <label for="search">title</label>
+                <input id="search" type="search" placeholder="explore" name="map-location" autofocus required />
+                <button type="submit" id="btn-explore"><i class="fas fa-search" style="color: #243918;"></i></button>
+              </form>
+              <form onsubmit="event.preventDefault();" role="search" id="new-map">
+                <label for="search">short description</label>
+                <input id="search" type="search" placeholder="explore" name="map-location" autofocus required />
+                <button type="submit" id="btn-explore"><i class="fas fa-search" style="color: #243918;"></i></button>
+              </form>
+              <form onsubmit="event.preventDefault();" role="search" id="new-map">
+                <label for="search">location</label>
                 <input id="search" type="search" placeholder="explore" name="map-location" autofocus required />
                 <button type="submit" id="btn-explore"><i class="fas fa-search" style="color: #243918;"></i></button>
               </form>
@@ -110,6 +120,9 @@
             center: [-123.116226, 49.246292],
             zoom: 11.15
           });
+          map.scrollZoom.disable();
+          map.addControl(new mapboxgl.NavigationControl());
+
           const geojson = {
             type: 'FeatureCollection',
             features: [
@@ -120,7 +133,7 @@
                   coordinates: [-123.1340, 49.2712]
                 },
                 properties: {
-                  title: 'myshopping',
+                  title: 'yummmmmmy',
                   description: 'Granville Island'
                 }
               },
@@ -163,7 +176,7 @@
 <footer>
   <div>
     <p><a href="placeholder">about</a></p>
-    <div id="to-top" title="back to top"><i class="fas fa-arrow-up"></i></div>
+    <button id="scrollUp-btn"> <i class="fas fa-plus"></i> </button>
   </div>
 </footer>
 

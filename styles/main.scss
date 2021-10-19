@@ -96,7 +96,7 @@ body {
 form {
   margin-top: 20px;
   position: relative;
-  width: 300px;
+  width: 100%;
   background: var(--color-brand);
   border-radius: var(--rad);
 }
@@ -207,7 +207,7 @@ color: var(--color-brand);
 
 // MAPS
 #map {
-  height: 600px;
+  height: 900px;
   width: 66vw;
   margin-top: 80px;
   margin-bottom: 80px;
@@ -317,7 +317,18 @@ footer a {
   text-decoration: none;
   color: var(--color-brand);
 }
-
+#scrollUp-btn {
+  display: none;
+  position: fixed;
+  right: 10px;
+  bottom: 25px;
+  z-index: 99;
+  border-width: 0;
+  padding: 5px;
+  font-size: 40px;
+  color: #4056A1;
+  background: transparent;
+} 
 // //buttons
 // .bouncy {
 //    animation: bouncy 5s infinite linear;
