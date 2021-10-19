@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <meta name="viewport" content="initial-scale=1.0">
   <meta charset="utf-8">
   <!-- API -->
@@ -72,12 +73,13 @@
          </body> -->
 
         <!-- MAP api change key-->
-        <script
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFeJAa1wqx86-5Mrko7gjbV_BxQHx8Kt4&callback=initMap"
-          async defer></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=<%=env.API_KEY%>&callback=initMap" async
+          defer></script>
       </div>
     </div>
-    <!-- MAIN CONTAINER -->
+
+  </div>
+  <!-- MAIN CONTAINER -->
   </div>
 </body>
 

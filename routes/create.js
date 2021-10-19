@@ -1,15 +1,20 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = (db) => {
+module.exports = (db, axios, environment) => {
 
-   // when confirm button is pressed, inserts a map into db, redirects to /profile
+  // when confirm button is pressed, inserts a map into db
   router.post("/", (req, res) => {
 
     if (!req.cookies["user_id"]) {
       res.send("ERROR 401: You are unauthorized!");
       return;
     }
+
+    axios.get('https://api.github.com/users/mapbox')
+      .then((response) => {
+        console.log("THIS IS THE RESPONSE", response.data);
+      });
 
     // grab user_id from cookies
     // const user_id = req.cookies["user_id"];
@@ -60,7 +65,7 @@ module.exports = (db) => {
 
     // db.createMap(objectToPass)
     //   .then(() => {
-    //     res.redirect('/profile');
+    //    res.json({Success: true});
     //   })
     //   .catch(e => {
     //     console.error(e);

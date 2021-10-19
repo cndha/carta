@@ -12,18 +12,20 @@ $(document).ready(function () {
   const geocoder = new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
     marker: {
-    color: '#243918'
+      color: '#243918'
     },
     mapboxgl: mapboxgl
-    });
+  });
 
-    map.addControl(geocoder);
+  map.addControl(geocoder);
 
-    map.scrollZoom.disable();
+  map.addControl(geocoder);
+  map.scrollZoom.disable();
   //GET LOCATION DATA ON CLICK
-  // map.on("click", (event) => {
-  //   console.log(event);
-  // })
+  map.on("click", (event) => {
+    console.log(event);
+  })
+
   const geojson = {
     type: 'FeatureCollection',
     features: [
@@ -83,42 +85,42 @@ $(document).ready(function () {
   });
 
   geocode('false creek');
-  function geocode(location){
-   axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?access_token=pk.eyJ1IjoiY29wbzEyMyIsImEiOiJja3V2dTdvdHMxcjdrMm9xanBtaGdkaHc4In0.cBeBLEBv8OE9UnZgr7EEzQ`, {
-     params:{
-       accessToken: 'pk.eyJ1IjoiY29wbzEyMyIsImEiOiJja3V2dTdvdHMxcjdrMm9xanBtaGdkaHc4In0.cBeBLEBv8OE9UnZgr7EEzQ'
-     }
-   })
-   .then(function(response){
-     console.log(response);
-   })
-   .catch((err) => {
-     console.log("error", err);
-   })
- }
+  function geocode(location) {
+    axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?access_token=pk.eyJ1IjoiY29wbzEyMyIsImEiOiJja3V2dTdvdHMxcjdrMm9xanBtaGdkaHc4In0.cBeBLEBv8OE9UnZgr7EEzQ`, {
+      params: {
+        accessToken: 'pk.eyJ1IjoiY29wbzEyMyIsImEiOiJja3V2dTdvdHMxcjdrMm9xanBtaGdkaHc4In0.cBeBLEBv8OE9UnZgr7EEzQ'
+      }
+    })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log("error", err);
+      })
+  }
 
-//google
-function initMap() {
-  const center = new google.maps.LatLng(-33.712451, 150.311823);
-  const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 9,
-    center: center,
-  });
-  const svgMarker = {
-    path: "M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
-    fillColor: "blue",
-    fillOpacity: 0.6,
-    strokeWeight: 0,
-    rotation: 0,
-    scale: 2,
-    anchor: new google.maps.Point(15, 30),
-  };
+  //google
+  function initMap() {
+    const center = new google.maps.LatLng(-33.712451, 150.311823);
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 9,
+      center: center,
+    });
+    const svgMarker = {
+      path: "M10.453 14.016l6.563-6.609-1.406-1.406-5.156 5.203-2.063-2.109-1.406 1.406zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z",
+      fillColor: "blue",
+      fillOpacity: 0.6,
+      strokeWeight: 0,
+      rotation: 0,
+      scale: 2,
+      anchor: new google.maps.Point(15, 30),
+    };
 
-  new google.maps.Marker({
-    position: map.getCenter(),
-    icon: svgMarker,
-    map: map,
-  });
-}
+    new google.maps.Marker({
+      position: map.getCenter(),
+      icon: svgMarker,
+      map: map,
+    });
+  }
 
 });

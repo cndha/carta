@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = (db) => {
+module.exports = (db, axios, environment) => {
 
   //when you enter the explore page, sends map data to client
   router.get("/", (req, res) => {
@@ -9,7 +9,7 @@ module.exports = (db) => {
     const keyword = "ancouver";
     db.getMapsByKeyword(keyword)
       .then(results => {
-        res.send(results);
+        res.json(results);
       })
       .catch(e => {
         console.error(e);
