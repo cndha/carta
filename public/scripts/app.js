@@ -15,13 +15,9 @@ $(document).ready(function () {
       color: '#243918'
     },
     mapboxgl: mapboxgl
-<<<<<<< HEAD
   });
-=======
-    });
 
-    map.addControl(geocoder);
->>>>>>> 5358abf6c9b07c5482f455c94a4abe2a54bfdab0
+  map.addControl(geocoder);
 
   map.addControl(geocoder);
   map.scrollZoom.disable();

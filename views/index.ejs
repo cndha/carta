@@ -55,65 +55,6 @@
     <!-- explore -->
     <div id="explore">
       <!-- PROFILE -->
-<<<<<<< HEAD
-    </div>
-    <div>
-    </div>
-    <div class="box-body">
-      <div class="profile">
-        <img src="/IMGS/title-display-crm.png">
-      </div>
-      <!-- MAPS -->
-      <div id="map"></div>
-      <script>
-        function initMap() {
-          const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 12,
-            center: { lat: 49.246292, lng: -123.116226 },
-          });
-          // Set LatLng and title text for the markers. The first marker (Boynton Pass)
-          // receives the initial focus when tab is pressed. Use arrow keys to
-          // move between markers; press tab again to cycle through the map controls.
-          const tourStops = [
-            [{ lat: 49.2712, lng: -123.1340 }, "Granville Island"],
-            [{ lat: 49.2684, lng: -123.1683 }, "Kitsilano"]
-          ];
-          // Create an info window to share between markers.
-          const infoWindow = new google.maps.InfoWindow();
-          // Create the markers.
-          tourStops.forEach(([position, title], i) => {
-            const marker = new google.maps.Marker({
-              position,
-              map,
-              title: `${i + 1}. ${title} `,
-              label: `${i + 1}`,
-              optimized: false,
-            });
-            // Add a click listener for each marker, and set up the info window.
-            marker.addListener("click", () => {
-              infoWindow.close();
-              infoWindow.setContent(marker.getTitle());
-              infoWindow.open(marker.getMap(), marker);
-            });
-          });
-          marker = new google.maps.Marker({
-            map,
-            draggable: true,
-            animation: google.maps.Animation.DROP,
-            position: { lat: 59.327, lng: 18.067 },
-          });
-          marker.addListener("click", toggleBounce);
-        }
-        function toggleBounce() {
-          if (marker.getAnimation() !== null) {
-            marker.setAnimation(null);
-          } else {
-            marker.setAnimation(google.maps.Animation.BOUNCE);
-          }
-        }
-      </script>
-      <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%=env.API_KEY%>&callback=initMap"></script>
-=======
       <div class="box-body">
         <div class="profile">
           <img src="/IMGS/title-display-crm.png">
@@ -132,11 +73,9 @@
          </body> -->
 
         <!-- MAP api change key-->
-        <script
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFeJAa1wqx86-5Mrko7gjbV_BxQHx8Kt4&callback=initMap"
-          async defer></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=<%=env.API_KEY%>&callback=initMap" async
+          defer></script>
       </div>
->>>>>>> 5358abf6c9b07c5482f455c94a4abe2a54bfdab0
     </div>
 
   </div>
