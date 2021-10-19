@@ -10,8 +10,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"
     integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <!-- AXIOS -->
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <!-- STYLE SHEETS -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
@@ -63,17 +61,8 @@
         <!-- MAPS -->
         <div id="map"></div>
 
-        <!-- everthing below if you want location encoding -->
-        <!-- <body onload="initialize()">
-          <div id="map" style="width: 320px; height: 480px;"></div>
-           <div>
-             <input id="address" type="textbox" value="Sydney, NSW">
-             <input type="button" value="Encode" onclick="codeAddress()">
-           </div>
-         </body> -->
-
         <!-- MAP api change key-->
-        <script src="https://maps.googleapis.com/maps/api/js?key=<%=env.API_KEY%>&callback=initMap" async
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn7dBW6G6TF62UyX3krF5enoY6WF3A7Tg&callback=initMap" async
           defer></script>
       </div>
     </div>

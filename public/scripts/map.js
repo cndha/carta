@@ -10,8 +10,8 @@ $(document).ready(function () {
       center: { lat: 49.246292, lng: -123.116226 },
     });
     map.addListener("click", (event) => {
-    console.log(event.latLng.lat());
-    console.log(event.latLng.lng());
+    console.log("LAT--->", event.latLng.lat());
+    console.log("LNG--->", event.latLng.lng());
   })
     marker = new google.maps.Marker({
       map,
