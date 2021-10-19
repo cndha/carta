@@ -81,7 +81,21 @@ $(document).ready(function () {
       scrollTop: 0
     }, 200);
   });
-  
+
+  geocode('false creek');
+  function geocode(location){
+   axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?access_token=pk.eyJ1IjoiY29wbzEyMyIsImEiOiJja3V2dTdvdHMxcjdrMm9xanBtaGdkaHc4In0.cBeBLEBv8OE9UnZgr7EEzQ`, {
+     params:{
+       accessToken: 'pk.eyJ1IjoiY29wbzEyMyIsImEiOiJja3V2dTdvdHMxcjdrMm9xanBtaGdkaHc4In0.cBeBLEBv8OE9UnZgr7EEzQ'
+     }
+   })
+   .then(function(response){
+     console.log(response);
+   })
+   .catch((err) => {
+     console.log("error", err);
+   })
+ }
 
 
 });
