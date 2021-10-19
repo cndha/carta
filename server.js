@@ -19,9 +19,9 @@ const pool = new Pool(dbParams);
 pool.connect();
 const db = {
 
-  getUserById: getUserById,
-  getMapsByKeyword: getMapsByKeyword,
-  getMapById: getMapById
+  getUserById,
+  getMapsByKeyword,
+  getMapById
 
 };
 
