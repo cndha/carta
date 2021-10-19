@@ -291,7 +291,11 @@ a.button1{
   }
 }
 
-
+#add{
+  position: fixed;
+  z-index: 99;
+  
+}
 //FOOTER
 footer{
   height: 50px;
