@@ -112,7 +112,7 @@ module.exports = (db) => {
     //     console.error(e);
     //     res.send(e)
     //   });
-
+    // res.json({ success });***
     res.send("GET to /profile/contributions");
   });
   return router;
