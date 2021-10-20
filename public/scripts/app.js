@@ -31,6 +31,7 @@ function addMarker(location, map) {
     label: labels[labelIndex++ % labels.length],
     map: map,
   });
+  
 }
   // scroll to top
   $(function () {
