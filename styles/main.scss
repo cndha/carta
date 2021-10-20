@@ -131,14 +131,7 @@ nav a:hover {
   align-items: center;
   justify-content: center;
 }
-.map-container {
-  background-color: white;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 .table {
   margin-top: 80px;
   display: flex;
@@ -147,12 +140,13 @@ nav a:hover {
 
 }
 .content-large{
-  height: 1000px;
-  width: 600px;
+  z-index: 99;
+  margin-bottom: 0px;
+  height: 400px;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
 
 }
 .content-large h3 {
@@ -163,6 +157,13 @@ nav a:hover {
 .content-large span {
   color: var(--color-light);
   justify-items:left;
+}
+
+// temporary
+#ajaxTestForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
 }
 
 .content-expanded {
@@ -188,13 +189,18 @@ nav a:hover {
 .content-expanded p {
 color: var(--color-brand);
 }
-
+.map-container {
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 // MAPS
 #map {
-  height: 1000px;
-  width: 90vw;
-  margin-top: 80px;
-  margin-bottom: 80px;
+  width: 85vw;
+  height: 85vh;
   border: 3px solid var(--color-light);
 }
 // background-image: url('/IMGS/marker-light.png');
