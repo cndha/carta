@@ -23,12 +23,6 @@ module.exports = (db, axios, environment) => {
         res.send(e)
       });
 
-
-    // axios.get('https://api.github.com/users/mapbox')
-    //   .then((response) => {
-    //     console.log("THIS IS THE RESPONSE", response.data);
-    //   });
-
     // grab user_id from cookies
     // const user_id = req.cookies["user_id"];
 
@@ -87,6 +81,39 @@ module.exports = (db, axios, environment) => {
 
 
   });
+
+  // http://www.mapquestapi.com/geocoding/v1/reverse?key=KEY&location=30.333472,-81.470448&includeRoadMetadata=true&includeNearestIntersection=true
+
+  router.get("/information", (req, res) => {
+
+
+    // console.log("THIS IS THE REQUEST", req.query);
+
+    // res.send("done");
+
+    axios.get(`http://www.mapquestapi.com/geocoding/v1/reverse?key=${environment.API_KEY_MAP_QUEST}&location=${req.query.latitude},${req.query.longitude}&includeRoadMetadata=true&includeNearestIntersection=true`)
+      .then((response) => {
+        console.log("CALLING MAP QUEST DB");
+
+        res.send(JSON.stringify(response.data));
+      }).catch(function (error) {
+        if (error.response) {
+          // Request made and server responded
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+        }
+
+      });
+  });
+
+
   return router;
 };
 
