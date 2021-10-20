@@ -88,6 +88,12 @@ module.exports = (db, axios, environment) => {
 
   // http://www.mapquestapi.com/geocoding/v1/reverse?key=KEY&location=30.333472,-81.470448&includeRoadMetadata=true&includeNearestIntersection=true
 
+  router.get("/", (req, res) => {
+
+
+    res.render("create");
+  });
+
   router.get("/information", (req, res) => {
     res.render("geocode");
   });
