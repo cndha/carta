@@ -6,7 +6,8 @@ CREATE TABLE markers (
   map_id INTEGER REFERENCES maps(id) ON DELETE CASCADE,
 
   name VARCHAR(223),
-  street VARCHAR(223) NOT NULL,
+  streetNum INTEGER,
+  street VARCHAR(223),
   city VARCHAR(223) NOT NULL,
   province VARCHAR(223) NOT NULL,
   postalcode VARCHAR(223) NOT NULL,

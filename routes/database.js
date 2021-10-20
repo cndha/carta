@@ -55,7 +55,7 @@ const getMapById = function (mapId) {
 exports.getMapById = getMapById;
 
 
-//shows in profile - all the maps the user has created & collaborated
+//shows in user profile - all the maps the user has created & collaborated
 const getAllMapsByUser = function(userId) {
   const sqlString = `SELECT * FROM maps JOIN contributors ON map_id = maps.id WHERE maps.owner_id = $1 AND contributors.user_id = $1`;
 
@@ -104,43 +104,28 @@ const createNewMap = function(map) {
 }
 exports.createNewMap = createNewMap;
 
-// const fetchMarker = function(location, callback) {
-//   request(`https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?access_token=pk.eyJ1IjoiY29wbzEyMyIsImEiOiJja3V2dTdvdHMxcjdrMm9xanBtaGdkaHc4In0.cBeBLEBv8OE9UnZgr7EEzQ`, (error, response, body) => {
-//     if (error) {
-//       return callback(error, null);
-//     }
-
-//     if (response.statusCode > 200 || response.statusCode < 200) {
-//       return callback(error, null);
-//     }
-
-//     const data = JSON.parse(body).features[0];
-//     console.log('FROM FETCH MARKER:', data);
-//     return callback(null, data);
-//   });
-
-// };
-// exports.fetchMarker = fetchMarker;
-// fetchMarker("Empire state building", () => {});
-
-  //data.text = name of location
-  //data.place_name = name, street address, state, postal code, country
-  //data.center = coordinates in an array
-  // but if you search by address, name of place doesn't show
-
 
 //runs when ADD button is submitted on a marker
-const addNewMarker = function(location) {
+const addNewMarker = function(coords) {
 
-// var marker = new google.maps.Marker({
-//   position: {lat: ,lng: };
-//   map: map_id;
-//   content: location.name, etc.
-// })
+  const queryParams = [];
+  // takes in coordinates
+  // runs through geocoder function to look up address info
+  // saves info to database
+  // creates new marker at lat/long
+  // geocoder(addNewMarker) ??
 
-// var infoWindow = new.google.maps.InfoWindow({
-//   //   content: '';
-//   // });
+  // this just saving information per marker, **need another function to pull up markers for a given map_id
+
+  // var marker = new google.maps.Marker({
+  //   position: {lat: ,lng: };
+  //   map: map_id;
+  //   content: location.name, etc.
+  // })
+
+  // var infoWindow = new.google.maps.InfoWindow({
+  //   content: '';
+  // });
 
   // how to add user_id / map_id to marker?
 
@@ -155,6 +140,7 @@ const addNewMarker = function(location) {
 
 }
 exports.addNewMarker = addNewMarker;
+
 
 
 //sharing map with other users to collab
