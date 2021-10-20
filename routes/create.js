@@ -1,4 +1,5 @@
 const express = require('express');
+const { idle_in_transaction_session_timeout } = require('pg/lib/defaults');
 const router = express.Router();
 
 module.exports = (db, axios, environment) => {
@@ -22,6 +23,7 @@ module.exports = (db, axios, environment) => {
         console.error(e);
         res.send(e)
       });
+
 
     // grab user_id from cookies
     // const user_id = req.cookies["user_id"];
