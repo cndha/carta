@@ -24,6 +24,7 @@ body {
 }
 .main-container {
   min-height: 100vh;
+  margin-top: 120px;
   margin-left: 5%;
   margin-right: 5%;
   line-height:150%;
@@ -210,19 +211,23 @@ nav a:hover {
 color: var(--color-brand);
 }
 #map-container {
-  display: none;
+  padding-top: 120px;
+  padding-top: 120px;
   background-color: white;
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  // display: none;
 }
 // MAPS
 #map {
-  width: 85vw;
-  height: 85vh;
-  border: 3px solid var(--color-light);
+  // display:none;
+  width: 75vw;
+  height: 75vh;
+  border: 3px solid var(--color-brand);
+
 }
 
 #hide {

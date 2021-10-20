@@ -5,47 +5,45 @@ $(document).ready(function () {
 
   let marker;
   // In the following example, markers appear when the user clicks on the map.
-// Each marker is labeled with a single alphabetical character.
-const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-let labelIndex = 0;
+  // Each marker is labeled with a single alphabetical character.
+  const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let labelIndex = 0;
 
-function initMap() {
-  const vancouver = { lat: 49.246292, lng: -123.116226 };
-  const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 12,
-    center: vancouver,
-  });
+  function initMap() {
+    const vancouver = { lat: 49.246292, lng: -123.116226 };
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 12,
+      center: vancouver,
+    });
 
-  // This event listener calls addMarker() when the map is clicked.
-  google.maps.event.addListener(map, "click", (event) => {
-    addMarker(event.latLng, map);
-  });
-  // Add a marker at the center of the map.
-  addMarker(vancouver, map);
-}
- 
+    // This event listener calls addMarker() when the map is clicked.
+    google.maps.event.addListener(map, "click", (event) => {
+      addMarker(event.latLng, map);
+    });
+    // Add a marker at the center of the map.
+    addMarker(vancouver, map);
+  }
+  // Adds a marker to the map.
+  function addMarker(location, map) {
+    // Add the marker at the clicked location, and add the next-available label
+    // from the array of alphabetical characters.
+    new google.maps.Marker({
+      position: location,
+      label: labels[labelIndex++ % labels.length],
+      map: map,
+    });
 
-// Adds a marker to the map.
-function addMarker(location, map) {
-  // Add the marker at the clicked location, and add the next-available label
-  // from the array of alphabetical characters.
-  new google.maps.Marker({
-    position: location,
-    label: labels[labelIndex++ % labels.length],
-    map: map,
-  });
+    map.addListener("click", (event) => {
+      // console.log("LAT--->", event.latLng.lat());
+      $('.latitudeBox').val(event.latLng.lat());
 
-  map.addListener("click", (event) => {
-    // console.log("LAT--->", event.latLng.lat());
-    $('.latitudeBox').val(event.latLng.lat());
+      // console.log("LNG--->", event.latLng.lng());
+      $('.longitudeBox').val(event.latLng.lng());
+    })
+  }
 
-    // console.log("LNG--->", event.latLng.lng());
-    $('.longitudeBox').val(event.latLng.lng());
-  })
-}
-
-/// ------------> BELOW DOESNT PLACE A MARKER. 
-///  -----------> lng and lat from event listener "onclick"
+  /// ------------> BELOW DOESNT PLACE A MARKER. 
+  ///  -----------> lng and lat from event listener "onclick"
 
   // function initMap() {
   //   const map = new google.maps.Map(document.getElementById("map"), {
@@ -77,7 +75,7 @@ function addMarker(location, map) {
 
   //   marker.addListener("click", toggleBounce);
   // }
-  
+
   // //ajAx request -> db
 
   function toggleBounce() {
@@ -120,7 +118,7 @@ function addMarker(location, map) {
   //   alert("Handler for .submit() called.");
   //   event.preventDefault();
   // });
-  
+
 
 
   $("#ajaxButton").on("click", function (event) {

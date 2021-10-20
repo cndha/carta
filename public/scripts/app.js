@@ -22,9 +22,14 @@ $(document).ready(function () {
   });
 
 
+  // $("#btn-down").on("click", function () {
+  //   $("#map-container").slideDown().focus()
+  //   $("#map").slideDown().focus()
+  // });
+
   $("#btn-down").on("click", function () {
-    $("#map-container").slideDown()
-    $("#map").slideDown()
+    $("#map-container").get(0).scrollIntoView('swing');
+
   });
 
 
