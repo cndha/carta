@@ -29,13 +29,13 @@
   <!-- MAP api change key-->
 
   <!-- EXTERNAL JS -->
-  <script type="text/javascript" src="../scripts/map.js"></script>
-  <script type="text/javascript" src="/routes/index.js"></script>
+  <script type="text/javascript" src="/routes/create.js"></script>
   <script type="text/javascript" src="./server.js"></script>
+  <script type="text/javascript" src="../scripts/map.js"></script>
   <script type="text/javascript" src="../scripts/app.js"></script>
   <!-- SERVER IN PROJECT ROOT -->
 
-  <title>carta: explore</title>
+  <title>carta: create</title>
 
   <!-- HEAD -->
 </head>
@@ -50,17 +50,17 @@
     <li><a href="/index">logout</a></li>
   </ul>
 </nav>
-
-
   <div class="content-large">
-    <button>save</button>
-    <input type="text" placeholder="search">
     <div class="table">
+      <h3>create</h3>
+      <input type="text" placeholder="search">
       <input type="text" placeholder="title">
-      <input type="text" placeholder="address">
+      <input id="formatted_address" type="text" placeholder="address">
       <input type="text" placeholder="latitude">
       <input type="text" placeholder="longitude">
-      <form method="post"></form><button type="submit">add spot</button></form>
+      <form method="post"><button type="submit">
+        add
+      </button></form>
     </div>
   </div>
 
