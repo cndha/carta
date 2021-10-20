@@ -83,17 +83,17 @@ const getFavMapsByUser = function (userId) {
 exports.getFavMapsByUser = getFavMapsByUser;
 
 //createMAP function - takes in req.body from client submit
-const createMap = function(map) {
+const createMap = function (map) {
 
-  create map - req.body is object,
-  divide data into maps
+  // create map - req.body is object,
+  // divide data into maps
 
 
 }
 exports.createMap = createMap;
 
 //saves a new map
-const saveNewMap = function(map) {
+const saveNewMap = function (map) {
 
   const sqlString = `INSERT INTO maps (owner_id, title, description, likes, created_at, completed_at) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`;
 
@@ -107,19 +107,19 @@ const saveNewMap = function(map) {
 }
 exports.saveNewMap = saveNewMap;
 
-  // var options = {
-  //   zoom: 8;
-  //   center: {lat: , lng: }
-  // }
-  // var map = new google.maps.Map(document.getElementById('map'), options);
+// var options = {
+//   zoom: 8;
+//   center: {lat: , lng: }
+// }
+// var map = new google.maps.Map(document.getElementById('map'), options);
 
 
- // function for looping through marker objects, everytime you pass thorugh it, it calls addNewMarker
+// function for looping through marker objects, everytime you pass thorugh it, it calls addNewMarker
 
 
 
 //saves markers on new map
-const saveNewMarker = function(location) {
+const saveNewMarker = function (location) {
 
   // this just saving information per marker, **need another function to pull up markers for a given map_id
 
@@ -138,15 +138,15 @@ const saveNewMarker = function(location) {
 exports.saveNewMarker = saveNewMarker;
 
 
-  // var marker = new google.maps.Marker({
-  //   position: {lat: ,lng: };
-  //   map: map_id;
-  //   content: location.name, etc.
-  // })
+// var marker = new google.maps.Marker({
+//   position: {lat: ,lng: };
+//   map: map_id;
+//   content: location.name, etc.
+// })
 
-  // var infoWindow = new.google.maps.InfoWindow({
-  //   content: '';
-  // });
+// var infoWindow = new.google.maps.InfoWindow({
+//   content: '';
+// });
 
 
 //sharing map with other users to collab

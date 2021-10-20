@@ -44,27 +44,39 @@ module.exports = (db, axios, environment) => {
     // res.send("POST to profile/delete/:id")
   });
 
-  //when you click your contributions, renders localhost:8080/profile/contributions
+  //request to get all maps loaded into profile page
+  router.get("/userMaps", (req, res) => {
+
+    let mapIdToSearch = "req.body.mapId";
+
+    db.getAllMapsOwnedByUser(mapIdToSearch)
+      .then((result) => {
+        res.json(result);
+      })
+      .catch(e => {
+        console.error(e);
+        res.send(e)
+      });
+  });
+
+  //request to get all maps favorited by that user loaded into profile page
+  router.get("/favorites", (req, res) => {
+
+    let mapIdToSearch = "req.body.mapId";
+
+    db.getFavMapsByUser(mapIdToSearch)
+      .then((result) => {
+        res.json(result);
+      })
+      .catch(e => {
+        console.error(e);
+        res.send(e)
+      });
+  });
+
   router.get("/contributions", (req, res) => {
 
-    if (!req.cookies["user_id"]) {
-      res.send("ERROR 401: You are unauthorized!");
-      return;
-    }
 
-    // const userId = req.cookies["user_id"];
-
-    //have a query to select contributed maps by user id
-
-    // db.contributedMaps(userId)
-    //   .then((result) => {
-    //     res.json(result);
-    //   })
-    //   .catch(e => {
-    //     console.error(e);
-    //     res.send(e)
-    //   });
-    // res.json({ success });***
     res.send("GET to /profile/contributions");
   });
   return router;
