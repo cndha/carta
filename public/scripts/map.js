@@ -17,6 +17,8 @@ $(document).ready(function () {
       zoom: 12,
       center: vancouver,
     });
+    //set marker at center
+    // marker.setMap(map);
 
     // new google.maps.Marker({
     //   position: myLatlng,
@@ -24,11 +26,33 @@ $(document).ready(function () {
     //   title: "Hello World!",
     // });
 
-    const marker = new google.maps.Marker({
-      position: { lat: 49.25772100646572, lng: -123.237075609375 },
-      title: "Hello World!"
+    // const marker = new google.maps.Marker({
+    //   position: { lat: 49.25772100646572, lng: -123.237075609375 },
+    //   title: "Hello World!",
+    //   icon: '/IMGS/marker-small.png'
+    // });
+
+    const contentString = "Food n' Stuff";
+    const infowindow = new google.maps.InfoWindow({
+      content: contentString,
     });
-    marker.setMap(map);
+    const marker = new google.maps.Marker({
+      position: {lat: 49.2727014,  lng:-123.1352146},
+      map,
+      title: "Public Market",
+      icon: '/IMGS/marker-small.png'
+    });
+    
+    marker.addListener("click", () => {
+      infowindow.open({
+        anchor: marker,
+        map,
+        shouldFocus: false,
+      });
+    });
+
+
+
 
     // addMarker() when the map is clicked.
     google.maps.event.addListener(map, "click", (event) => {
@@ -43,7 +67,7 @@ $(document).ready(function () {
     // from the array of alphabetical characters.
     new google.maps.Marker({
       position: location,
-      label: labels[labelIndex++ % labels.length],
+      // label: labels[labelIndex++ % labels.length],
       map: map,
     });
 

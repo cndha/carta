@@ -3,8 +3,6 @@ console.log("hello");
 $(document).ready(function () {
   console.log("HELLO");
 
-
-
   // scroll to top
   $(function () {
     $(window).scroll(function () {
@@ -20,12 +18,6 @@ $(document).ready(function () {
       scrollTop: 0
     }, 200);
   });
-
-
-  // $("#btn-down").on("click", function () {
-  //   $("#map-container").slideDown().focus()
-  //   $("#map").slideDown().focus()
-  // });
 
   $("#btn-down").on("click", function () {
     $("#map-container").get(0).scrollIntoView('swing');
