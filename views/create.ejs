@@ -2,16 +2,87 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta name="viewport" content="initial-scale=1.0">
+  <meta charset="utf-8">
+  <!-- API -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"
+    integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- STYLE SHEETS -->
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/map.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
 
+  <!-- GOOGLE FONTS LATO weight 100-700-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
+
+  <!--  FONT AWESOME -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <!-- MAP api change key-->
+
+  <!-- EXTERNAL JS -->
+  <script type="text/javascript" src="../scripts/map.js"></script>
+  <script type="text/javascript" src="/routes/index.js"></script>
+  <script type="text/javascript" src="./server.js"></script>
+  <script type="text/javascript" src="../scripts/app.js"></script>
+  <!-- SERVER IN PROJECT ROOT -->
+
+  <title>carta: explore</title>
+
+  <!-- HEAD -->
 </head>
+<nav>
+  <!-- Replace links with proper routes or single page refresh -->
+  <!-- Replace links with proper routes  -->
+  <!-- <p>share locations from the places you love</p> -->
+  <img src="/IMGS/header-circle-small.png">
+  <ul>
+    <li><a href="/register">sign up</a></li>
+    <li><a href="/profile">login</a></li>
+  </ul>
+</nav>
 
 <body>
-  <div>THIS IS THE CREATE PAGE</div>
+  <div class="main-container">
+  <!-- explore -->
+  <div id="explore">
+    <div class="header">
+      <img src="/IMGS/title-display-crm.png">
+      <p>explore</p>
+      <span id="btn-down"><img src="/IMGS/arrow-down.png" ></span>
+      <!-- <img src="/IMGS/arrow-down-shadow.png"> -->
+    </div>
+  </div>
+    <div class="main-container">
 
+      <!-- DIV HERE IF WE HAVE A CATEGORY BUTTON SECTION -->
+
+      <div id="map-container">
+        <!-- MAPS -->
+        <div id="map"></div>
+        <!-- MAP api change key-->
+        <script
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn7dBW6G6TF62UyX3krF5enoY6WF3A7Tg&callback=initMap"
+          async defer></script>
+      </div>
+      <!-- <div class="box-body">
+      </div> -->
+    </div>
+  <!-- MAIN CONTAINER -->
+  </div>
 </body>
+
+<!-- FOOTER -->
+
+<button id="to-top"><img src="/IMGS/to-top.png"></i></button>
+
 
 </html>
