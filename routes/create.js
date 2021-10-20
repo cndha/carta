@@ -85,34 +85,27 @@ module.exports = (db, axios, environment) => {
   // http://www.mapquestapi.com/geocoding/v1/reverse?key=KEY&location=30.333472,-81.470448&includeRoadMetadata=true&includeNearestIntersection=true
 
   router.get("/information", (req, res) => {
-
-
-    // console.log("THIS IS THE REQUEST", req.query);
-
-    // res.send("done");
-
-    axios.get(`http://www.mapquestapi.com/geocoding/v1/reverse?key=${environment.API_KEY_MAP_QUEST}&location=${req.query.latitude},${req.query.longitude}&includeRoadMetadata=true&includeNearestIntersection=true`)
-      .then((response) => {
-        console.log("CALLING MAP QUEST DB");
-
-        res.send(JSON.stringify(response.data));
-      }).catch(function (error) {
-        if (error.response) {
-          // Request made and server responded
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request) {
-          // The request was made but no response was received
-          console.log(error.request);
-        } else {
-          // Something happened in setting up the request that triggered an Error
-          console.log('Error', error.message);
-        }
-
-      });
+    res.render("geocode");
   });
 
+
+  router.get("/information/ask", (req, res) => {
+
+    axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+      params: {
+        address: req.query,
+        key: 'AIzaSyCloL_uI_F9x3edJ_zViI7qC5zoq9u2HZg'
+      }
+    }).then((result) => {
+
+      res.send(result.data);
+    }).catch((error) => {
+
+      console.log(error)
+    })
+
+
+  });
 
   return router;
 };

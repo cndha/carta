@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
   <meta name="viewport" content="initial-scale=1.0">
   <meta charset="utf-8">
   <!-- API -->
@@ -51,24 +50,28 @@
 </nav>
 
 <body>
+  <form id='search-query'>
+    <input id='search-input'>
+    <button type='submit'>Search</button>
+  </form>
   <div class="main-container">
     <!-- explore -->
     <div id="explore">
-        <div class="header">
-          <img src="/IMGS/title-display-crm.png">
-        </div>
+      <div class="header">
+        <img src="/IMGS/title-display-crm.png">
+      </div>
 
-        <!-- DIV HERE IF WE HAVE A CATEGORY BUTTON SECTION -->
+      <!-- DIV HERE IF WE HAVE A CATEGORY BUTTON SECTION -->
 
-        <div id="map-container">
-          <!-- MAPS -->
-          <div id="map"></div>
-          <!-- MAP api change key-->
-          <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn7dBW6G6TF62UyX3krF5enoY6WF3A7Tg&callback=initMap"
-            async defer></script>
-        </div>
-        <!-- <div class="box-body">
+      <div id="map-container">
+        <!-- MAPS -->
+        <div id="map"></div>
+        <!-- MAP api change key-->
+        <script
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn7dBW6G6TF62UyX3krF5enoY6WF3A7Tg&callback=initMap"
+          async defer></script>
+      </div>
+      <!-- <div class="box-body">
       </div> -->
     </div>
   </div>
@@ -78,7 +81,7 @@
 
 <!-- FOOTER -->
 <footer>
-    <button id="to-top"><img src="/IMGS/to-top.png"></i></button>
+  <button id="to-top"><img src="/IMGS/to-top.png"></i></button>
 </footer>
 
 </html>
