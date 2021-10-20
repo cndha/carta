@@ -1,3 +1,5 @@
+const { addNewMarker } = require("../../routes/database");
+
 console.log("😈");
 $(document).ready(function () {
   console.log("👻");
@@ -9,6 +11,7 @@ $(document).ready(function () {
       zoom: 12.5,
       center: { lat: 49.246292, lng: -123.116226 },
     });
+
     map.addListener("click", (event) => {
       // console.log("LAT--->", event.latLng.lat());
       $('.latitudeBox').val(event.latLng.lat());
@@ -52,6 +55,10 @@ $(document).ready(function () {
     })
 
     marker.addListener("click", toggleBounce);
+
+    // marker.addListener("click", () => {
+    //   infoWindow.open(map_id, marker_id)
+    // });
   }
   //ajAx request -> db
 
