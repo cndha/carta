@@ -22,7 +22,7 @@ function initMap() {
   // Add a marker at the center of the map.
   addMarker(vancouver, map);
 }
- 
+
 
 // Adds a marker to the map.
 function addMarker(location, map) {
@@ -43,7 +43,7 @@ function addMarker(location, map) {
   })
 }
 
-/// ------------> BELOW DOESNT PLACE A MARKER. 
+/// ------------> BELOW DOESNT PLACE A MARKER.
 ///  -----------> lng and lat from event listener "onclick"
 
   // function initMap() {
@@ -76,7 +76,7 @@ function addMarker(location, map) {
 
   //   marker.addListener("click", toggleBounce);
   // }
-  
+
   // //ajAx request -> db
 
   function toggleBounce() {
@@ -138,6 +138,5 @@ function addMarker(location, map) {
     })
 
   });
+};
 
-
-});
