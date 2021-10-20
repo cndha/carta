@@ -21,14 +21,14 @@ $(document).ready(function () {
     })
 
 
-        //  CREATES A NEW CUSTOM TITLED MARKER
+    //  CREATES A NEW CUSTOM TITLED MARKER
     // function initMap() {
     //   const myLatLng = { lat: -123.13922862451172, lng: 49.29137637642092 };
     //   const map = new google.maps.Map(document.getElementById("map"), {
     //     zoom: 13,
     //     center: myLatLng,
     //   });
-    
+
     //   new google.maps.Marker({
     //     position: myLatLng,
     //     map,
@@ -37,16 +37,14 @@ $(document).ready(function () {
     // }
 
 
-
-
     marker = new google.maps.Marker({
       map,
       draggable: true,
       animation: google.maps.Animation.DROP,
       position: { lat: 49.251754722903854, lng: -122.97958354394531 },
-
       //marker location
-    });
+    })
+
     marker = new google.maps.Marker({
       map,
       draggable: true,
@@ -69,6 +67,7 @@ $(document).ready(function () {
       marker.setAnimation(google.maps.Animation.BOUNCE);
     }
   }
+
   initMap();
 
   var geocoder;
