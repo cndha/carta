@@ -28,16 +28,13 @@ $(document).ready(function () {
     //     zoom: 13,
     //     center: myLatLng,
     //   });
-    
+
     //   new google.maps.Marker({
     //     position: myLatLng,
     //     map,
     //     title: "Hello World!",
     //   });
     // }
-
-
-
 
     marker = new google.maps.Marker({
       map,
@@ -120,6 +117,5 @@ $(document).ready(function () {
     })
 
   });
+};
 
-
-});
