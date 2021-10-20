@@ -195,7 +195,7 @@ const editMarker = function(markerId) {
   })
   .catch(e => { console.error(e) });
 }
-exports editMarker = editMarker;
+exports.editMarker = editMarker;
 
 
 //deletes marker from db
