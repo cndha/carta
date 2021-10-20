@@ -82,15 +82,18 @@ const getFavMapsByUser = function(userId) {
 }
 exports.getFavMapsByUser = getFavMapsByUser;
 
+//createMAP function - takes in req.body from client submit
+const createMap = function(map) {
 
-//creating a new map
-const createNewMap = function(map) {
+  create map - req.body is object,
+  divide data into maps
 
-  // var options = {
-  //   zoom: 8;
-  //   center: {lat: , lng: }
-  // }
-  // var map = new google.maps.Map(document.getElementById('map'), options);
+
+}
+exports.createMap = createMap;
+
+//saves a new map
+const saveNewMap = function(map) {
 
   const sqlString = `INSERT INTO maps (owner_id, title, description, likes, created_at, completed_at) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`;
 
@@ -102,32 +105,25 @@ const createNewMap = function(map) {
   .catch(e => { console.error(e) });
 
 }
-exports.createNewMap = createNewMap;
+exports.saveNewMap = saveNewMap;
+
+  // var options = {
+  //   zoom: 8;
+  //   center: {lat: , lng: }
+  // }
+  // var map = new google.maps.Map(document.getElementById('map'), options);
 
 
-//runs when ADD button is submitted on a marker
-const addNewMarker = function(coords) {
+ // function for looping through marker objects, everytime you pass thorugh it, it calls addNewMarker
 
-  const queryParams = [];
-  // takes in coordinates
-  // runs through geocoder function to look up address info
-  // saves info to database
-  // creates new marker at lat/long
-  // geocoder(addNewMarker) ??
+
+
+//saves markers on new map
+const saveNewMarker = function(location) {
 
   // this just saving information per marker, **need another function to pull up markers for a given map_id
 
-  // var marker = new google.maps.Marker({
-  //   position: {lat: ,lng: };
-  //   map: map_id;
-  //   content: location.name, etc.
-  // })
-
-  // var infoWindow = new.google.maps.InfoWindow({
-  //   content: '';
-  // });
-
-  // how to add user_id / map_id to marker?
+  // how to add user_id / map_id to marker? --> server side
 
   const sqlString = `INSERT INTO markers (user_id, map_id, name, street, city, province, postalcode, country, longitude, latitude, created) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *`;
 
@@ -139,8 +135,18 @@ const addNewMarker = function(coords) {
   .catch(e => { console.error(e) });
 
 }
-exports.addNewMarker = addNewMarker;
+exports.saveNewMarker = saveNewMarker;
 
+
+  // var marker = new google.maps.Marker({
+  //   position: {lat: ,lng: };
+  //   map: map_id;
+  //   content: location.name, etc.
+  // })
+
+  // var infoWindow = new.google.maps.InfoWindow({
+  //   content: '';
+  // });
 
 
 //sharing map with other users to collab
