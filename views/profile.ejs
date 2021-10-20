@@ -51,7 +51,7 @@
     <a href="/placeholder/index"><img src="/IMGS/title-top-dark.png"></a>
 
     <ul>
-      <li><a href="placeholder">logout</a></li>
+      <li><a href="/index">logout</a></li>
     </ul>
   </nav>
   <div class="main-container">
@@ -78,21 +78,93 @@
             <button id="ajaxButton" class="ajaxButton" type="submit">PRESS ME FOR AJAX</button>
             <button id="ajaxButtonInfo" class="ajaxButtonInfo" type="submit">PRESS ME FOR INFO</button>
           </form>
+
+          <div class="search-add">
+          <!-- GEOCODER -->
+          <form id='search-query'>
+            <input id='search-input'>
+              <button type='submit'>Search</button>
+          </form>
+        
+          <div id='formatted_address'> </div>
+          <div id='components'> </div>
+          <div id='geometry'></div>
+        
+          <script>
+        
+          const geocoder = function (e) {
+            e.preventDefault();
+            const location = document.getElementById('search-input').value;
+            axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+              params: {
+                address: location,
+                key: 'AIzaSyCloL_uI_F9x3edJ_zViI7qC5zoq9u2HZg'
+                }
+              })
+              .then(res => {
+                console.log(res);
+                //formatted address:
+                const formattedAddress = res.data.results[0].formatted_address;
+                const outputAddress = `
+                <class="list">
+                  <li>${formattedAddress}</li>
+                </class>`;
+                //loop through address components
+                const addressComponents = res.data.results[0].address_components;
+                // let componentsOutput = `
+                // <class="list">
+                //   <li>${addressComponents[0].types[0]}: ${addressComponents[0].long_name}</li>
+                //   <li>${addressComponents[1].types[0]}: ${addressComponents[1].long_name}</li>
+                //   <li>${addressComponents[3].types[0]}: ${addressComponents[3].long_name}</li>
+                //   <li>${addressComponents[5].types[0]}: ${addressComponents[5].long_name}</li>
+                //   <li>${addressComponents[6].types[0]}: ${addressComponents[6].long_name}</li>
+                //   <li>${addressComponents[7].types[0]}: ${addressComponents[7].long_name}</li>
+                // </class>`;
+                let componentsOutput = '<class="list">';
+                for (var i = 0; i < addressComponents.length; i++) {
+                    componentsOutput += `<li>${addressComponents[i].types[0]}: ${addressComponents[i].long_name}</li>`
+                }
+                componentsOutput += '</class>';
+        
+                //lat-long
+                const lat = res.data.results[0].geometry.location.lat;
+                const lng = res.data.results[0].geometry.location.lng;
+                const geometryOutput = `<li>Latitude: ${lat}</li><li>Longitude: ${lng}</li>`;
+        
+                //outputs to browser
+                document.getElementById('formatted_address').innerHTML = outputAddress;
+                document.getElementById('components').innerHTML = componentsOutput;
+                document.getElementById('geometry').innerHTML = geometryOutput;
+              })
+              .catch(error => {
+                console.log(error)
+              });
+          };
+          const searchQuery = document.getElementById('search-query');
+          searchQuery.addEventListener('submit', geocoder);
+          </script>
+          <!-- GEOCODER -->
+          
+          <!-- POST to SERVER to SEND to DB -->
+          <form method="POST" action="/create">
+            <button class="btn-create">create</button>
+          </form>
         </div>
 
+        </div>
+
+        <!-- MAPS -->
         <div id="map-container">
-          <!-- MAPS -->
           <div id="map"></div>
-          <!-- MAP api change key-->
           <script
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn7dBW6G6TF62UyX3krF5enoY6WF3A7Tg&callback=initMap"
             async defer>
           </script>
         </div>
-        <!-- MAIN CONTAINER -->
-        </div>
       </div>
     </div>
+  </div>
+  <!-- MAIN CONTAINER -->
   </div>
 </body>
 <!-- FOOTER -->

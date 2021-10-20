@@ -161,15 +161,15 @@ nav a:hover {
 
 }
 .content-large{
-  z-index: 99;
   margin-bottom: 0px;
-  height: 400px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: left;
   justify-content: left;
 
 }
+
 .content-large h3 {
   margin-top: 0.5em;
   color: var(--color-cream);
@@ -270,4 +270,19 @@ a.button1{
   }
 }
 
-
+//TEMPORARY
+.search-add { 
+  height: 100%;
+  margin-bottom: 80px;
+  font-size: var(--font-display);
+}
+.search-add li {
+  margin-top: 5px;
+  color: var(--color-cream);
+}
+.search-query {
+  margin-bottom: 25px;
+}
+#formatted_address {
+  margin-top: 10px;
+}
