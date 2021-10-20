@@ -1,3 +1,5 @@
+const { addNewMarker } = require("../../routes/database");
+
 console.log("😈");
 $(document).ready(function () {
   console.log("👻");
@@ -9,16 +11,22 @@ $(document).ready(function () {
       zoom: 13,
       center: { lat: 49.246292, lng: -123.116226 },
     });
+
     map.addListener("click", (event) => {
     console.log("LAT--->", event.latLng.lat());
     console.log("LNG--->", event.latLng.lng());
-  })
+    })
+
+    // google.maps.event.addListener(map, "click", (event) => {
+    //   addMarker({coords: event.latLng});
+    // })
+
     marker = new google.maps.Marker({
       map,
       draggable: true,
       animation: google.maps.Animation.DROP,
       position: { lat:   49.251754722903854, lng: -122.97958354394531 },
-      
+
       //marker location
     });
     marker = new google.maps.Marker({
@@ -29,6 +37,10 @@ $(document).ready(function () {
     })
 
     marker.addListener("click", toggleBounce);
+
+    // marker.addListener("click", () => {
+    //   infoWindow.open(map_id, marker_id)
+    // });
   }
     //ajAx request -> db
 
@@ -46,7 +58,7 @@ $(document).ready(function () {
   function initialize() {
     geocoder = new google.maps.Geocoder();
     var latlng = new google.maps.LatLng(-34.397, 150.644);
-    var mapOptions = { 
+    var mapOptions = {
       zoom: 8,
       center: latlng
     }
@@ -68,5 +80,5 @@ $(document).ready(function () {
     });
   }
 
-  
+
 });
