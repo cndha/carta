@@ -1,10 +1,12 @@
 console.log("😈");
 
+//CHECK FOR GOOGLE PLACES API
+//https://developers.google.com/maps/documentation/javascript/places-autocomplete
+
 $(document).ready(function () {
   console.log("👻");
 
   let marker;
-  // In the following example, markers appear when the user clicks on the map.
   // Each marker is labeled with a single alphabetical character.
   const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   let labelIndex = 0;
@@ -15,15 +17,27 @@ $(document).ready(function () {
       zoom: 12,
       center: vancouver,
     });
-    // This event listener calls addMarker() when the map is clicked.
+
+    // new google.maps.Marker({
+    //   position: myLatlng,
+    //   map,
+    //   title: "Hello World!",
+    // });
+
+    const marker = new google.maps.Marker({
+      position: { lat: 49.25772100646572, lng: -123.237075609375 },
+      title: "Hello World!"
+    });
+    marker.setMap(map);
+
+    // addMarker() when the map is clicked.
     google.maps.event.addListener(map, "click", (event) => {
       addMarker(event.latLng, map);
     });
-    // Add a marker at the center of the map.
     addMarker(vancouver, map);
+
   }
 
-  initMap();
   // Adds a marker to the map.
   function addMarker(location, map) {
     // Add the marker at the clicked location, and add the next-available label
@@ -43,41 +57,24 @@ $(document).ready(function () {
     })
   }
 
-  /// ------------> BELOW DOESNT PLACE A MARKER.
-  ///  -----------> lng and lat from event listener "onclick"
-
-  // function initMap() {
-  //   const map = new google.maps.Map(document.getElementById("map"), {
-  //     zoom: 12.5,
-  //     center: { lat: 49.246292, lng: -123.116226 },
+  // $(function() {
+  //   const $button = $('#map');
+  //   $button.on('click', function () {
+  //     console.log('Button clicked, performing ajax call...');
+  //     $.ajax('** database **', { method: 'GET' })
+  //     .then(function (mapMarker) {
+  //       console.log('Success: ', mapMarker);
+  //       $button.replaceWith(mapMarker);
+  //     });
   //   });
-  //   map.addListener("click", (event) => {
-  //     // console.log("LAT--->", event.latLng.lat());
-  //     $('.latitudeBox').val(event.latLng.lat());
+  // });
 
-  //     // console.log("LNG--->", event.latLng.lng());
-  //     $('.longitudeBox').val(event.latLng.lng());
-  //   })
 
-  //   marker = new google.maps.Marker({
-  //     map,
-  //     draggable: true,
-  //     animation: google.maps.Animation.DROP,
-  //     position: { lat: 49.251754722903854, lng: -122.97958354394531 },
 
-  //     //marker location
-  //   });
-  //   marker = new google.maps.Marker({
-  //     map,
-  //     draggable: true,
-  //     animation: google.maps.Animation.DROP,
-  //     position: { lat: 49.273321738192486, lng: -123.24619670100792 },
-  //   })
 
-  //   marker.addListener("click", toggleBounce);
-  // }
 
-  // //ajAx request -> db
+
+
 
   function toggleBounce() {
     if (marker.getAnimation() !== null) {
@@ -86,41 +83,6 @@ $(document).ready(function () {
       marker.setAnimation(google.maps.Animation.BOUNCE);
     }
   }
-
-
-  // var geocoder;
-  // var map;
-  // function initialize() {
-  //   geocoder = new google.maps.Geocoder();
-  //   var latlng = new google.maps.LatLng(-34.397, 150.644);
-  //   var mapOptions = {
-  //     zoom: 8,
-  //     center: latlng
-  //   }
-  //   map = new google.maps.Map(document.getElementById('map'), mapOptions);
-  // }
-
-  // function codeAddress() {
-  //   var address = document.getElementById('address').value;
-  //   geocoder.geocode({ 'address': address }, function (results, status) {
-  //     if (status == 'OK') {
-  //       map.setCenter(results[0].geometry.location);
-  //       var marker = new google.maps.Marker({
-  //         map: map,
-  //         position: results[0].geometry.location
-  //       });
-  //     } else {
-  //       alert('Geocode was not successful for the following reason: ' + status);
-  //     }
-  //   });
-  // }
-
-  // $("#ajaxTextForm").submit(function (event) {
-  //   alert("Handler for .submit() called.");
-  //   event.preventDefault();
-  // });
-
-
 
   $("#ajaxButton").on("click", function (event) {
     event.preventDefault();
@@ -176,4 +138,110 @@ $(document).ready(function () {
   })
 
 
+  initMap();
 });
+
+
+
+
+
+// custom icons and labels
+// to the base of the flagpole.
+
+$(document).ready(function () {
+
+  // function initMap() {
+  //   const map = new google.maps.Map(document.getElementById("map"), {
+  //     zoom: 10,
+  //     center: { lat: -33.9, lng: 151.2 },
+  //   });
+
+  //   setMarkers(map);
+  // }
+
+  // // Data for the markers consisting of a name, a LatLng and a zIndex for the
+  // // order in which these markers should display on top of each other.
+  // const beaches = [
+  //   ["Bondi Beach", -33.890542, 151.274856, 4],
+  //   ["Coogee Beach", -33.923036, 151.259052, 5],
+  //   ["Cronulla Beach", -34.028249, 151.157507, 3],
+  //   ["Manly Beach", -33.80010128657071, 151.28747820854187, 2],
+  //   ["Maroubra Beach", -33.950198, 151.259302, 1],
+  // ];
+
+  // function setMarkers(map) {
+  //   // Adds markers to the map.
+  //   // Marker sizes are expressed as a Size of X,Y where the origin of the image
+  //   // (0,0) is located in the top left of the image.
+  //   // Origins, anchor positions and coordinates of the marker increase in the X
+  //   // direction to the right and in the Y direction down.
+  //   const image = {
+  //     url: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
+  //     // This marker is 20 pixels wide by 32 pixels high.
+  //     size: new google.maps.Size(20, 32),
+  //     // The origin for this image is (0, 0).
+  //     origin: new google.maps.Point(0, 0),
+  //     // The anchor for this image is the base of the flagpole at (0, 32).
+  //     anchor: new google.maps.Point(0, 32),
+  //   };
+  //   // Shapes define the clickable region of the icon. The type defines an HTML
+  //   // <area> element 'poly' which traces out a polygon as a series of X,Y points.
+  //   // The final coordinate closes the poly by connecting to the first coordinate.
+  //   const shape = {
+  //     coords: [1, 1, 1, 20, 18, 20, 18, 1],
+  //     type: "poly",
+  //   };
+
+  //   for (let i = 0; i < beaches.length; i++) {
+  //     const beach = beaches[i];
+
+  //     new google.maps.Marker({
+  //       position: { lat: beach[1], lng: beach[2] },
+  //       map,
+  //       icon: image,
+  //       shape: shape,
+  //       title: beach[0],
+  //       zIndex: beach[3],
+  //     });
+  //   }
+  // }
+
+});
+
+
+
+
+
+/// ------------> BELOW DOESNT PLACE A MARKER.
+///  -----------> lng and lat from event listener "onclick"
+
+// function initMap() {
+//   const map = new google.maps.Map(document.getElementById("map"), {
+//     zoom: 12.5,
+//     center: { lat: 49.246292, lng: -123.116226 },
+//   });
+//   map.addListener("click", (event) => {
+//     // console.log("LAT--->", event.latLng.lat());
+//     $('.latitudeBox').val(event.latLng.lat());
+
+//     // console.log("LNG--->", event.latLng.lng());
+//     $('.longitudeBox').val(event.latLng.lng());
+//   })
+
+//   marker = new google.maps.Marker({
+//     map,
+//     draggable: true,
+//     animation: google.maps.Animation.DROP,
+//     position: { lat: 49.251754722903854, lng: -122.97958354394531 },
+
+//     //marker location
+//   });
+//   marker = new google.maps.Marker({
+//     map,
+//     draggable: true,
+//     animation: google.maps.Animation.DROP,
+//     position: { lat: 49.273321738192486, lng: -123.24619670100792 },
+//   })
+
+//   marker.addListener("click", toggleBounce);
+// }
