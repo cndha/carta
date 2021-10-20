@@ -6,16 +6,10 @@ module.exports = (db, axios, environment) => {
   //when edit button is pressed for a map, populates the edit fields and provides the map obj
   router.get("/:id", (req, res) => {
 
-    if (!req.cookies["user_id"]) {
-      res.send("ERROR 401: You are unauthorized!");
-
-      return;
-    }
-
-    //edit fields should be populated by its original data
-    // //button or hyperlink will need to supply the map id they clicked on
+    // edit fields should be populated by its original data
+    // button or hyperlink will need to supply the map id they clicked on
     // const mapIdToSearch = res.body.mapId;
-    let mapIdToSearch = 2;
+    let mapIdToSearch = "req.body.mapId";
 
     db.getMapById(mapIdToSearch)
       .then((result) => {

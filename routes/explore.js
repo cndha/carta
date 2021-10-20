@@ -6,7 +6,8 @@ module.exports = (db, axios, environment) => {
   //when you enter the explore page, sends map data to client
   router.get("/", (req, res) => {
 
-    const keyword = "ancouver";
+    let keyword = "req.body.keyWord";
+
     db.getMapsByKeyword(keyword)
       .then(results => {
         res.json(results);

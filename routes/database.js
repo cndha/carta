@@ -56,7 +56,7 @@ exports.getMapById = getMapById;
 
 
 //shows maps OWNED/created by user
-const getMapsOwnedByUser = function(userId) {
+const getMapsOwnedByUser = function (userId) {
   const sqlString = `SELECT * FROM maps WHERE owner_id = $1`;
 
   return pool
@@ -70,7 +70,7 @@ exports.getMapsOwnedByUser = getMapsOwnedByUser;
 
 
 //shows maps user has contributed to
-const getMapsUserContributedTo = function(userId) {
+const getMapsUserContributedTo = function (userId) {
   const sqlString = `SELECT * FROM maps JOIN contributors ON map_id = maps.id WHERE contributors.user_id = $1`;
 
   return pool
@@ -84,16 +84,16 @@ exports.getMapsUserContributedTo = getMapsUserContributedTo;
 
 
 //shows all the maps favourited by user
-const getFavMapsByUser = function(userId) {
+const getFavMapsByUser = function (userId) {
 
   const sqlString = `SELECT * FROM maps JOIN favourites ON map_id = maps.id JOIN users ON user_id = users.id WHERE favourites.user_id = $1 ORDER BY favourited_at DESC`;
 
   return pool
-  .query(sqlString, [userId])
-  .then(res => {
-    return res.rows;
-  })
-  .catch(e => { console.error(e) });
+    .query(sqlString, [userId])
+    .then(res => {
+      return res.rows;
+    })
+    .catch(e => { console.error(e) });
 }
 exports.getFavMapsByUser = getFavMapsByUser;
 
@@ -112,7 +112,7 @@ exports.displayMap = displayMap;
 
 
 //saves a new map
-const saveNewMap = function(map) {
+const saveNewMap = function (map) {
 
   const sqlString = `INSERT INTO maps (owner_id, title, description, created_at) VALUES ($1, $2, $3, $4) RETURNING *`;
 
@@ -146,7 +146,7 @@ const editMap = function(map) {
   // var map = new google.maps.Map(document.getElementById('map'), options);
 
 
- // function for looping through marker objects, everytime you pass thorugh it, it calls addNewMarker
+// function for looping through marker objects, everytime you pass thorugh it, it calls addNewMarker
 
  //delete map
 const deleteMap = function(mapId) {
@@ -220,22 +220,22 @@ exports.deleteMarker = deleteMarker;
   //   content: marker.name, etc.
   // })
 
-  // var infoWindow = new.google.maps.InfoWindow({
-  //   content: '';
-  // });
+// var infoWindow = new.google.maps.InfoWindow({
+//   content: '';
+// });
 
 
 //sharing map with other users to collab
-const addContributor = function(contributor) {
+const addContributor = function (contributor) {
 
   const sqlString = `INSERT INTO contributors (user_id, map_id, contribution_date) VALUES ($1, $2, $3) RETURNING *`;
 
   return pool
-  .query(sqlString, [contributor.user_id, contributor.map_id, contributor.contribution_date])
-  .then(res => {
-    return res.rows;
-  })
-  .catch(e => { console.error(e) })
+    .query(sqlString, [contributor.user_id, contributor.map_id, contributor.contribution_date])
+    .then(res => {
+      return res.rows;
+    })
+    .catch(e => { console.error(e) })
 
 };
 exports.addContributor = addContributor;
