@@ -49,6 +49,7 @@
     <!-- Replace links with proper routes or single page refresh -->
     <!-- Replace links with proper routes  -->
     <a href="/placeholder/index"><img src="/IMGS/title-top-dark.png"></a>
+
     <ul>
       <li><a href="placeholder">logout</a></li>
     </ul>
@@ -63,24 +64,29 @@
           <!-- <img src="/IMGS/profile-placeholder.png"> -->
         </div>
 
-          <div class="content-large">
-            <h3>create map</h3>
-                <!-- FORM GET -->
-            <!-- add here -->
+        <div class="content-large">
+          <h3>create map</h3>
+          <!-- FORM GET -->
+          <!-- add here -->
+          <form id="ajaxTestForm">
+            <div style=color:white>LATITUDE</div>
+            <textarea class="latitudeBox" placeholder="LATITUDE HERE"></textarea>
+            <div style=color:white>LONGITUDE</div>
+            <textarea class="longitudeBox" placeholder="LONGITUDE HERE"></textarea>
             <button id="ajaxButton" class="ajaxButton" type="submit">PRESS ME FOR AJAX</button>
-            <span>something</span>
-            <i class="fas fa-plus" style="color: white;"></i>
-          </div>
+          </form>
+          <i class="fas fa-plus" style="color: white;"></i>
+        </div>
 
-          <div class="map-container">
-            <!-- MAPS -->
-            <div id="map"></div>
-            <!-- MAP api change key-->
-            <script
-              src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn7dBW6G6TF62UyX3krF5enoY6WF3A7Tg&callback=initMap"
-              async defer></script>
-          </div>
-          <!-- MAIN CONTAINER -->
+        <div class="map-container">
+          <!-- MAPS -->
+          <div id="map"></div>
+          <!-- MAP api change key-->
+          <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn7dBW6G6TF62UyX3krF5enoY6WF3A7Tg&callback=initMap"
+            async defer></script>
+        </div>
+        <!-- MAIN CONTAINER -->
 
       </div>
     </div>
