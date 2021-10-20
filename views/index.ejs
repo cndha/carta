@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/map.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
 
   <!-- GOOGLE FONTS LATO weight 100-700-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,43 +41,36 @@
   <!-- HEAD -->
 </head>
 
-<body>
-  <nav>
-    <!-- Replace links with proper routes or single page refresh -->
-    <!-- Replace links with proper routes  -->
-    <img src="/IMGS/header-circle-small.png">
-    <ul>
-      <li><a href="placeholder">logout</a></li>
-    </ul>
-  </nav>
-  <div class="main-container">
+<nav>
+  <!-- Replace links with proper routes or single page refresh -->
+  <!-- Replace links with proper routes  -->
+  <img src="/IMGS/header-circle-small.png">
+  <ul>
+    <li><a href="placeholder">sign up</a></li>
+    <li><a href="placeholder">login</a></li>
+  </ul>
+</nav>
 
+<body>
+  <div class="main-container">
     <!-- explore -->
     <div id="explore">
-      <!-- PROFILE -->
-      <div class="box-body">
-        <div class="profile">
+    
+        <div class="header">
           <img src="/IMGS/title-display-crm.png">
         </div>
 
-        <form id="ajaxTestForm">
-          <div style=color:white>LATITUDE</div>
-          <textarea class="latitudeBox" placeholder="LATITUDE HERE"></textarea>
-          <div style=color:white>LONGITUDE</div>
-          <textarea class="longitudeBox" placeholder="LONGITUDE HERE"></textarea>
-          <button id="ajaxButton" class="ajaxButton" type="submit">PRESS ME FOR AJAX</button>
-        </form>
-
-        <!-- MAPS -->
-        <div id="map"></div>
-
-        <!-- MAP api change key-->
-        <script
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn7dBW6G6TF62UyX3krF5enoY6WF3A7Tg&callback=initMap"
-          async defer></script>
-      </div>
+        <div class="map-container">
+          <!-- MAPS -->
+          <div id="map"></div>
+          <!-- MAP api change key-->
+          <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn7dBW6G6TF62UyX3krF5enoY6WF3A7Tg&callback=initMap"
+            async defer></script>
+        </div>
+        <!-- <div class="box-body">
+      </div> -->
     </div>
-
   </div>
   <!-- MAIN CONTAINER -->
   </div>
@@ -84,9 +78,8 @@
 
 <!-- FOOTER -->
 <footer>
-  <div>
-    <button id="to-top"> <i class="fas fa-arrow-up" style="color:#faf7ef; "></i> </button>
-  </div>
+
+    <button id="to-top"><img src="/IMGS/to-top.png"></i></button>
 </footer>
 
 </html>
