@@ -161,14 +161,18 @@ nav a:hover {
 
 }
 .content-large{
-  z-index: 99;
   margin-bottom: 0px;
-  height: 400px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: left;
   justify-content: left;
 
+}
+.components { 
+  color: var(--color-cream);
+  font-size: var(--font-display);
+  
 }
 .content-large h3 {
   margin-top: 0.5em;
