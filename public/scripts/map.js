@@ -15,7 +15,6 @@ $(document).ready(function () {
       zoom: 12,
       center: vancouver,
     });
-
     // This event listener calls addMarker() when the map is clicked.
     google.maps.event.addListener(map, "click", (event) => {
       addMarker(event.latLng, map);
@@ -23,6 +22,8 @@ $(document).ready(function () {
     // Add a marker at the center of the map.
     addMarker(vancouver, map);
   }
+
+  initMap();
   // Adds a marker to the map.
   function addMarker(location, map) {
     // Add the marker at the clicked location, and add the next-available label
@@ -85,7 +86,7 @@ $(document).ready(function () {
       marker.setAnimation(google.maps.Animation.BOUNCE);
     }
   }
-  initMap();
+
 
   // var geocoder;
   // var map;
@@ -137,6 +138,42 @@ $(document).ready(function () {
       }
     })
   });
+
+  $("#search-query").on("submit", (event) => {
+    event.preventDefault();
+
+    $.ajax({
+      url: "/create/information/ask",
+      method: "GET",
+      data: $('#search-input').val(),
+      success: (data) => {
+        console.log(data)
+        //formatted address:
+        const formattedAddress = data.results[0].formatted_address;
+        const outputAddress = `<class="list"><li>${formattedAddress}</li></class>`;
+        //loop through address components
+        const addressComponents = data.results[0].address_components;
+        let componentsOutput = `<class="list">`
+
+        for (var i = 0; i < addressComponents.length; i++) {
+          componentsOutput += `<li>${addressComponents[i].types[0]}: ${addressComponents[i].long_name}</li>`
+        }
+        componentsOutput += '</class>';
+
+        const lat = data.results[0].geometry.location.lat;
+        const lng = data.results[0].geometry.location.lng;
+        const geometryOutput = `<li>Latitude: ${lat}</li><li>Longitude: ${lng}</li>`;
+
+        //outputs to browser
+        document.getElementById('formatted_address').innerHTML = outputAddress;
+        document.getElementById('components').innerHTML = componentsOutput;
+        document.getElementById('geometry').innerHTML = geometryOutput;
+      },
+      error: (error) => {
+        console.log(error)
+      }
+    })
+  })
 
 
 });

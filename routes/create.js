@@ -103,8 +103,6 @@ module.exports = (db, axios, environment) => {
 
       console.log(error)
     })
-
-
   });
 
   return router;
