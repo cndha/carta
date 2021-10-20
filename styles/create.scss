@@ -85,23 +85,15 @@ body {
   color: #2f2f2f;
 }
 .table button {
-  width: 65px;
-  height: 65px;
-background-color: var(--color-cream);
-border-width: 3px;
-border-radius: 50%;
-border-color: var(--color-cream);
-color: var(--color-cream);
+  border: none;
+  border-style: none;
+  background-color: transparent;
+  margin-top: 10px;
+  background: url("/IMG/add.png");
 }
-.table button:hover {
-  width: 70px;
-  height: 65px;
-  border-style: solid;
-border-width: 3px;
-border-radius: 50%;
-border-color: var(--color-cream);
-}
-
+// .table button:hover {
+//   background: url("/IMG/add-hover.png");
+// }
 
 #map-container {
   margin-top: 80px;
