@@ -13,8 +13,11 @@ $(document).ready(function () {
     });
 
     map.addListener("click", (event) => {
-    console.log("LAT--->", event.latLng.lat());
-    console.log("LNG--->", event.latLng.lng());
+      // console.log("LAT--->", event.latLng.lat());
+      $('.latitudeBox').val(event.latLng.lat());
+
+      // console.log("LNG--->", event.latLng.lng());
+      $('.longitudeBox').val(event.latLng.lng());
     })
 
     // google.maps.event.addListener(map, "click", (event) => {
@@ -25,15 +28,15 @@ $(document).ready(function () {
       map,
       draggable: true,
       animation: google.maps.Animation.DROP,
-      position: { lat:   49.251754722903854, lng: -122.97958354394531 },
+      position: { lat: 49.251754722903854, lng: -122.97958354394531 },
 
       //marker location
     });
     marker = new google.maps.Marker({
-    map,
+      map,
       draggable: true,
       animation: google.maps.Animation.DROP,
-      position: { lat:  49.273321738192486, lng: -123.24619670100792 },
+      position: { lat: 49.273321738192486, lng: -123.24619670100792 },
     })
 
     marker.addListener("click", toggleBounce);
@@ -42,7 +45,7 @@ $(document).ready(function () {
     //   infoWindow.open(map_id, marker_id)
     // });
   }
-    //ajAx request -> db
+  //ajAx request -> db
 
   function toggleBounce() {
     if (marker.getAnimation() !== null) {
@@ -67,18 +70,41 @@ $(document).ready(function () {
 
   function codeAddress() {
     var address = document.getElementById('address').value;
-    geocoder.geocode( { 'address': address}, function(results, status) {
+    geocoder.geocode({ 'address': address }, function (results, status) {
       if (status == 'OK') {
         map.setCenter(results[0].geometry.location);
         var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location
+          map: map,
+          position: results[0].geometry.location
         });
       } else {
         alert('Geocode was not successful for the following reason: ' + status);
       }
     });
   }
+
+  // $("#ajaxTextForm").submit(function (event) {
+  //   alert("Handler for .submit() called.");
+  //   event.preventDefault();
+  // });
+
+  $("#ajaxButton").on("click", function (event) {
+    event.preventDefault();
+
+    $.ajax({
+      url: "/create",
+      method: "POST",
+      data: { latitude: $('.latitudeBox').val(), longitude: $('.longitudeBox').val() },
+
+      success: function (data) {
+        console.log("SUCCESS WE DID THE AJAX CALL ON CLIENT'S END")
+      },
+      error: function (error) {
+        console.log(error)
+      }
+    })
+
+  });
 
 
 });
