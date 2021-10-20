@@ -100,8 +100,8 @@ exports.getFavMapsByUser = getFavMapsByUser;
 //createMAP function - takes in req.body from client submit
 const createMap = function(map) {
 
-  create map - req.body is object,
-  divide data into maps
+  // create map - req.body is object,
+  // divide data into maps
 
 
 
