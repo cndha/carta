@@ -23,12 +23,6 @@ module.exports = (db, axios, environment) => {
         res.send(e)
       });
 
-
-    // axios.get('https://api.github.com/users/mapbox')
-    //   .then((response) => {
-    //     console.log("THIS IS THE RESPONSE", response.data);
-    //   });
-
     // grab user_id from cookies
     // const user_id = req.cookies["user_id"];
 
@@ -87,6 +81,32 @@ module.exports = (db, axios, environment) => {
 
 
   });
+
+  // http://www.mapquestapi.com/geocoding/v1/reverse?key=KEY&location=30.333472,-81.470448&includeRoadMetadata=true&includeNearestIntersection=true
+
+  router.get("/information", (req, res) => {
+    res.render("geocode");
+  });
+
+
+  router.get("/information/ask", (req, res) => {
+
+    axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+      params: {
+        address: req.query,
+        key: 'AIzaSyCloL_uI_F9x3edJ_zViI7qC5zoq9u2HZg'
+      }
+    }).then((result) => {
+
+      res.send(result.data);
+    }).catch((error) => {
+
+      console.log(error)
+    })
+
+
+  });
+
   return router;
 };
 
