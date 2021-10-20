@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/map.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
 
   <!-- GOOGLE FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,6 +33,7 @@
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
   <!-- EXTERNAL JS -->
   <script type="text/javascript" src="../scripts/app.js"></script>
+  <script type="text/javascript" src="../scripts/map.js"></script>
   <script type="text/javascript" src="/routes/index.js"></script>
   <script type="text/javascript" src="../server.js"></script>
   <!-- SERVER IN PROJECT ROOT -->
@@ -60,7 +62,7 @@
         <div class="profile">
           <!-- <img src="/IMGS/profile-placeholder.png"> -->
         </div>
-        <div class="table">
+
           <div class="content-large">
             <h3>create map</h3>
             <button id="ajaxButton" class="ajaxButton" type="submit">PRESS ME FOR AJAX</button>
@@ -69,94 +71,25 @@
           </div>
           <div class="content-expanded">
             <!-- FORM GET -->
-            <form onsubmit="event.preventDefault();" role="search" id="new-map">
-              <label for="search">title</label>
-              <input id="search" type="search" placeholder="title" name="map-location" autofocus required />
-              <button type="submit" id="btn-explore"><i class="fas fa-search" style="color: #243918;"></i></button>
-            </form>
-            <form onsubmit="event.preventDefault();" role="search" id="new-map">
-              <label for="search">short description</label>
-              <input id="search" type="search" placeholder="short description" name="map-location" autofocus required />
-              <button type="submit" id="btn-explore"><i class="fas fa-search" style="color: #243918;"></i></button>
-            </form>
-            <form onsubmit="event.preventDefault();" role="search" id="new-map">
-              <label for="search">location</label>
-              <input id="search" type="search" placeholder="location" name="map-location" autofocus required />
-              <button type="submit" id="btn-explore"><i class="fas fa-search" style="color: #243918;"></i></button>
-            </form>
+            <!-- add here -->
           </div>
-          <div class="content-large">
-            <h3>your maps</h3>
-            <span>something</span>
-            <i class="fas fa-plus" style="color: white;"></i>
-          </div>
-          <div class="content-expanded">
-            <div class="content-expanded-row">
-              <p>map 1</p>
-              <div class="db-buttons"><a href="something" class="button1">delete</a></div><i class="fas fa-plus"
-                style="color: #243918;"></i>
-            </div>
-            <div class="content-expanded-row">
-              <p>map 2</p>
-              <div class="db-buttons"><a href="something" class="button1">delete</a></div><i class="fas fa-plus"
-                style="color: #243918;"></i>
-            </div>
-            <div class="content-expanded-row">
-              <p>map 3</p>
-              <div class="db-buttons"><a href="something" class="button1">delete</a></div><i class="fas fa-plus"
-                style="color: #243918;"></i>
-            </div>
-          </div>
-          <div class="content-large">
-            <h3>edit maps</h3>
-            <span>something</span>
-            <i class="fas fa-plus" style="color: white;"></i>
-          </div>
-          <div class="content-large">
-            <h3>delete maps</h3>
-            <span>something</span>
-            <i class="fas fa-plus" style="color: white;"></i>
-          </div>
-        </div>
-        <!-- what keys/ what shape for the data use html name  -->
-        <!-- MAPS -->
-        <script
-          src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
-        <link rel="stylesheet"
-          href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css"
-          type="text/css">
 
-        <script>
-          geocode('false creek');
-          function geocode(location) {
-            axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${location}.json?access_token=pk.eyJ1IjoiY29wbzEyMyIsImEiOiJja3V2dTdvdHMxcjdrMm9xanBtaGdkaHc4In0.cBeBLEBv8OE9UnZgr7EEzQ`, {
-              params: {
-                accessToken: 'pk.eyJ1IjoiY29wbzEyMyIsImEiOiJja3V2dTdvdHMxcjdrMm9xanBtaGdkaHc4In0.cBeBLEBv8OE9UnZgr7EEzQ'
-              }
-            })
-              .then(function (response) {
-                console.log(response);
-              })
-              .catch((err) => {
-                console.log("error", err);
-              })
-          }
-        </script>
+          <div class="map-container">
+            <!-- MAPS -->
+            <div id="map"></div>
+            <!-- MAP api change key-->
+            <script
+              src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn7dBW6G6TF62UyX3krF5enoY6WF3A7Tg&callback=initMap"
+              async defer></script>
+          </div>
+          <!-- MAIN CONTAINER -->
 
-        <div id="map">
-          <div class="db-buttons" id="add"><a href="something" class="button1">delete</a></div>
-        </div>
-
-        <!-- MAIN CONTAINER -->
       </div>
     </div>
 </body>
 <!-- FOOTER -->
 <footer>
-  <div>
-    <p><a href="placeholder">about</a></p>
-    <button id="to-top"> <i class="fas fa-arrow-up" style="color:#faf7ef; "></i> </button>
-  </div>
+  <button id="to-top"><img src="/IMGS/to-top.png"></i></button>
 </footer>
 
 </html>
