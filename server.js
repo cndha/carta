@@ -16,7 +16,7 @@ const dbParams = require("./lib/db.js");
 // const db = new Pool(dbParams);
 // db.connect();
 
-const { getUserById, getMapsByKeyword, getMapById } = require("./routes/database");
+const { getUserById, getMapsByKeyword, getMapById, getMapsOwnedByUser, getMapsUserContributedTo, getFavMapsByUser } = require("./routes/database");
 const pool = new Pool(dbParams);
 pool.connect();
 const db = {
@@ -24,7 +24,9 @@ const db = {
   getUserById,
   getMapsByKeyword,
   getMapById,
-
+  getMapsOwnedByUser,
+  getMapsUserContributedTo,
+  getFavMapsByUser,
   createMap: function (obj) {
     return new Promise((res, rej) => {
       console.log("CREATE MAP CALLED!")
@@ -78,17 +80,17 @@ app.use("/index", indexRoutes(db, axios, environment));
 app.get("/", (req, res) => {
   res.redirect('/index');
 });
-app.get("/", (req, res) => {
-  res.render("/profile.ejs");
-});
+// app.get("/", (req, res) => {
+//   res.render("/profile.ejs");
+// });
 
-app.get("/", (req, res) => {
-  res.render("profile");
-});
+// app.get("/", (req, res) => {
+//   res.render("profile");
+// });
 
-app.get("/", (req, res) => {
-  res.render("index");
-});
+// app.get("/", (req, res) => {
+//   res.render("index");
+// });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

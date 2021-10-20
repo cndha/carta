@@ -143,7 +143,7 @@ $(document).ready(function () {
           console.log(error)
         });
     })
-  //init
+    //init
   }
 
   //RETRIEVES LNG/LAT ON cLICK
