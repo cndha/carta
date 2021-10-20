@@ -23,8 +23,14 @@ const db = {
 
   getUserById,
   getMapsByKeyword,
-  getMapById
+  getMapById,
 
+  createMap: function (obj) {
+    return new Promise((res, rej) => {
+      console.log("CREATE MAP CALLED!")
+      res();
+    })
+  }
 };
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT

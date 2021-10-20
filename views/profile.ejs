@@ -49,6 +49,7 @@
     <!-- Replace links with proper routes or single page refresh -->
     <!-- Replace links with proper routes  -->
     <a href="/placeholder/index"><img src="/IMGS/title-top-dark.png"></a>
+
     <ul>
       <li><a href="placeholder">logout</a></li>
     </ul>
@@ -67,8 +68,13 @@
           <h3>create map</h3>
           <!-- FORM GET -->
           <!-- add here -->
-          <button id="ajaxButton" class="ajaxButton" type="submit">PRESS ME FOR AJAX</button>
-          <span>something</span>
+          <form id="ajaxTestForm">
+            <div style=color:white>LATITUDE</div>
+            <textarea class="latitudeBox" placeholder="LATITUDE HERE"></textarea>
+            <div style=color:white>LONGITUDE</div>
+            <textarea class="longitudeBox" placeholder="LONGITUDE HERE"></textarea>
+            <button id="ajaxButton" class="ajaxButton" type="submit">PRESS ME FOR AJAX</button>
+          </form>
           <i class="fas fa-plus" style="color: white;"></i>
         </div>
 
