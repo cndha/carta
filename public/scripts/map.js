@@ -35,7 +35,6 @@ $(document).ready(function () {
       addMarker(event.latLng, map);
     });
     addMarker(vancouver, map);
-
   }
 
   // Adds a marker to the map.
@@ -72,10 +71,6 @@ $(document).ready(function () {
 
 
 
-
-
-
-
   function toggleBounce() {
     if (marker.getAnimation() !== null) {
       marker.setAnimation(null);
@@ -84,6 +79,9 @@ $(document).ready(function () {
     }
   }
 
+
+
+  //RETRIEVES LNG/LAT ON cLICK
   $("#ajaxButton").on("click", function (event) {
     event.preventDefault();
 

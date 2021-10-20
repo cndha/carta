@@ -169,11 +169,7 @@ nav a:hover {
   justify-content: left;
 
 }
-.components { 
-  color: var(--color-cream);
-  font-size: var(--font-display);
-  
-}
+
 .content-large h3 {
   margin-top: 0.5em;
   color: var(--color-cream);
@@ -274,4 +270,19 @@ a.button1{
   }
 }
 
-
+//TEMPORARY
+.search-add { 
+  height: 100%;
+  margin-bottom: 80px;
+  font-size: var(--font-display);
+}
+.search-add li {
+  margin-top: 5px;
+  color: var(--color-cream);
+}
+.search-query {
+  margin-bottom: 25px;
+}
+#formatted_address {
+  margin-top: 10px;
+}

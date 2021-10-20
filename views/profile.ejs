@@ -51,7 +51,7 @@
     <a href="/placeholder/index"><img src="/IMGS/title-top-dark.png"></a>
 
     <ul>
-      <li><a href="placeholder">logout</a></li>
+      <li><a href="/index">logout</a></li>
     </ul>
   </nav>
   <div class="main-container">
@@ -79,7 +79,7 @@
             <button id="ajaxButtonInfo" class="ajaxButtonInfo" type="submit">PRESS ME FOR INFO</button>
           </form>
 
-
+          <div class="search-add">
           <!-- GEOCODER -->
           <form id='search-query'>
             <input id='search-input'>
@@ -140,27 +140,28 @@
                 console.log(error)
               });
           };
-        
           const searchQuery = document.getElementById('search-query');
           searchQuery.addEventListener('submit', geocoder);
           </script>
-        <!-- GEOCODER -->
-
+          </div>
+          <!-- GEOCODER -->
+          <!-- POST to SERVER to SEND to DB -->
+          <form action="POST" class="btn-create"> <button>create</button></form>
 
         </div>
+
+        <!-- MAPS -->
         <div id="map-container">
-          <!-- MAPS -->
           <div id="map"></div>
-          <!-- MAP api change key-->
           <script
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn7dBW6G6TF62UyX3krF5enoY6WF3A7Tg&callback=initMap"
             async defer>
           </script>
         </div>
-        <!-- MAIN CONTAINER -->
-        </div>
       </div>
     </div>
+  </div>
+  <!-- MAIN CONTAINER -->
   </div>
 </body>
 <!-- FOOTER -->
