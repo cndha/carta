@@ -2,8 +2,6 @@ console.log("hello");
 
 $(document).ready(function () {
   console.log("HELLO");
-
-  
   // scroll to top
   $(function () {
     $(window).scroll(function () {
