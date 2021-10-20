@@ -6,15 +6,28 @@ module.exports = (db, axios, environment) => {
   // when confirm button is pressed, inserts a map into db
   router.post("/", (req, res) => {
 
-    if (!req.cookies["user_id"]) {
-      res.send("ERROR 401: You are unauthorized!");
-      return;
-    }
+    // if (!req.cookies["user_id"]) {
+    //   res.send("ERROR 401: You are unauthorized!");
+    //   return;
+    // }
 
-    axios.get('https://api.github.com/users/mapbox')
-      .then((response) => {
-        console.log("THIS IS THE RESPONSE", response.data);
+    console.log("THIS IS THE STUFF SENT BY CLIENT AJAX :", req.body);
+
+    db.createMap(req.body)
+      .then(() => {
+        console.log("SERVER SENDING BACK RESULT: SUCCESS!");
+        res.json({ Success: true });
+      })
+      .catch(e => {
+        console.error(e);
+        res.send(e)
       });
+
+
+    // axios.get('https://api.github.com/users/mapbox')
+    //   .then((response) => {
+    //     console.log("THIS IS THE RESPONSE", response.data);
+    //   });
 
     // grab user_id from cookies
     // const user_id = req.cookies["user_id"];
@@ -72,7 +85,7 @@ module.exports = (db, axios, environment) => {
     //     res.send(e)
     //   });
 
-    res.send("POST to /create");
+
   });
   return router;
 };
