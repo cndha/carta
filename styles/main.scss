@@ -1,3 +1,19 @@
+:root {
+  --rad: .7rem;
+  --dur: .3s;
+  --color-dark: #2f2f2f;
+  --color-light: #fff;
+  --color-cream: #faf7ef;
+  --color-brand: #243918;
+  --font-fam: 'Lato', 'helvetica', sans-serif;
+  --font-title: 1.4em;
+  --font-display: 1.4em;
+  --font-bold: 700;
+  --font-medium: 500;
+  --height: 3rem;
+  --btn-width: 6rem;
+  --bez: cubic-bezier(0, 0, 0.43, 1.49);
+}
 
 body {
   width: 100%;
@@ -96,30 +112,6 @@ nav a:hover {
   justify-content: center;
   align-items: center;
 }
-
-//SEARCH BAR
-:root {
-  --rad: .7rem;
-  --dur: .3s;
-  --color-dark: #2f2f2f;
-  --color-light: #fff;
-  --color-cream: #faf7ef;
-  --color-brand: #243918;
-  --font-fam: 'Lato', 'helvetica', sans-serif;
-  --font-title: 1.4em;
-  --font-display: 1.4em;
-  --font-bold: 700;
-  --font-medium: 500;
-  --height: 3rem;
-  --btn-width: 6rem;
-  --bez: cubic-bezier(0, 0, 0.43, 1.49);
-}
-
-.box-body{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 .profile {
   margin-top: 80px;
   width: 300px;
@@ -129,8 +121,35 @@ nav a:hover {
   margin-top: 80px;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.header p {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-family: var(--font-fam);
+  font-size: 1.8em;
+  font-weight: var(--font-medium);
+  color: var(--color-cream);
+}
+
+//id for jquery page down
+#btn-down {
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0%,  
+  100% {-webkit-transform: translateY(0);} 
+  50% {-webkit-transform: translateY(-10px);}
+}
+
+
+.box-body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .table {
@@ -191,6 +210,7 @@ nav a:hover {
 color: var(--color-brand);
 }
 #map-container {
+  display: none;
   background-color: white;
   width: 100vw;
   height: 100vh;
@@ -204,7 +224,12 @@ color: var(--color-brand);
   height: 85vh;
   border: 3px solid var(--color-light);
 }
-// background-image: url('/IMGS/marker-light.png');
+
+#hide {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+}
 
 
 /* The page is split between map and sidebar - the sidebar gets 1/3, map
