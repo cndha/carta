@@ -22,15 +22,7 @@ module.exports = (db, axios, environment) => {
   //when you click the delete button, deletes map from db with that id
   router.delete("/delete/:id", (req, res) => {
 
-    // if (!req.cookies["user_id"]) {
-    //   res.send("ERROR 401: You are unauthorized!");
-    //   return;
-    // }
-
-    // button or hyperlink will need to supply the map id they clicked on
     // const mapIdToSearch = res.body.mapId;
-
-    // database function to DELETE map entry where id equals mapIdToSearch
 
     // db.functionToDeleteMap(mapIdToSearch)
     //   .then(() => {
@@ -74,10 +66,19 @@ module.exports = (db, axios, environment) => {
       });
   });
 
+  //request to get contributed maps by that user loaded into profile page
   router.get("/contributions", (req, res) => {
 
+    let mapIdToSearch = "req.body.mapId";
 
-    res.send("GET to /profile/contributions");
+    db.getMapsUserContributedTo(mapIdToSearch)
+      .then((result) => {
+        res.json(result);
+      })
+      .catch(e => {
+        console.error(e);
+        res.send(e)
+      });
   });
   return router;
 };
