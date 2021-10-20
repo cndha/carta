@@ -55,9 +55,9 @@ const getMapById = function (mapId) {
 exports.getMapById = getMapById;
 
 
-//shows in user profile - all the maps the user has created & collaborated
-const getAllMapsByUser = function (userId) {
-  const sqlString = `SELECT * FROM maps JOIN contributors ON map_id = maps.id WHERE maps.owner_id = $1 AND contributors.user_id = $1`;
+//shows maps OWNED/created by user
+const getMapsOwnedByUser = function (userId) {
+  const sqlString = `SELECT * FROM maps WHERE owner_id = $1`;
 
   return pool
     .query(sqlString, [userId])
@@ -66,7 +66,22 @@ const getAllMapsByUser = function (userId) {
     })
     .catch(e => { console.error(e) });
 }
-exports.getAllMapsByUser = getAllMapsByUser;
+exports.getMapsOwnedByUser = getMapsOwnedByUser;
+
+
+//shows maps user has contributed to
+const getMapsUserContributedTo = function (userId) {
+  const sqlString = `SELECT * FROM maps JOIN contributors ON map_id = maps.id WHERE contributors.user_id = $1`;
+
+  return pool
+    .query(sqlString, [userId])
+    .then(res => {
+      return res.rows;
+    })
+    .catch(e => { console.error(e) });
+}
+exports.getMapsUserContributedTo = getMapsUserContributedTo;
+
 
 //shows all the maps favourited by user
 const getFavMapsByUser = function (userId) {
@@ -87,6 +102,8 @@ const createMap = function (map) {
 
   // create map - req.body is object,
   // divide data into maps
+
+
 
 
 }
