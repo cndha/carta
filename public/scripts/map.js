@@ -17,6 +17,25 @@ $(document).ready(function () {
       $('.longitudeBox').val(event.latLng.lng());
     })
 
+
+        //  CREATES A NEW CUSTOM TITLED MARKER
+    // function initMap() {
+    //   const myLatLng = { lat: -123.13922862451172, lng: 49.29137637642092 };
+    //   const map = new google.maps.Map(document.getElementById("map"), {
+    //     zoom: 13,
+    //     center: myLatLng,
+    //   });
+    
+    //   new google.maps.Marker({
+    //     position: myLatLng,
+    //     map,
+    //     title: "Hello World!",
+    //   });
+    // }
+
+
+
+
     marker = new google.maps.Marker({
       map,
       draggable: true,
