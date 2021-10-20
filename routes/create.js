@@ -24,9 +24,6 @@ module.exports = (db, axios, environment) => {
         res.send(e)
       });
 
-
-
-
     // grab user_id from cookies
     // const user_id = req.cookies["user_id"];
 
@@ -85,6 +82,8 @@ module.exports = (db, axios, environment) => {
 
 
   });
+
+
 
   // http://www.mapquestapi.com/geocoding/v1/reverse?key=KEY&location=30.333472,-81.470448&includeRoadMetadata=true&includeNearestIntersection=true
 
