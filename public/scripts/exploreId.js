@@ -19,17 +19,13 @@ function retrieveMarkers(db, map) {
   }
 };
 
-
 $(document).ready(function () {
-
   $("#buttonPressForStuff").on("click", (event) => {
-
     $.ajax({
       url: "/explore/afterLoad/1",
       method: "GET",
       data: { id: 1 },
       success: function (data) {
-
         function initMap() {
           const vancouver = { lat: 49.246292, lng: -123.116226 };
           const map = new google.maps.Map(document.getElementById("map"), {
@@ -44,7 +40,6 @@ $(document).ready(function () {
         console.log(error)
       }
     })
-
   })
 
   initMap();
