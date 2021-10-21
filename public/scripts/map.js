@@ -233,9 +233,6 @@ $(document).ready(function() {
     });
   });
 
-
-
-
   initMap();
-
+  
 });
