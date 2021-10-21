@@ -99,6 +99,7 @@ $(document).ready(function () {
     map.addListener("click", (event) => {
       // console.log("LAT--->", event.latLng.lat());
       const lat = event.latLng.lat();
+      console.log($('#formatted-address'))
       // console.log("LNG--->", event.latLng.lng());
       const lng = event.latLng.lng();
       const latLng = `${lat}, ${lng}`;

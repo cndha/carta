@@ -37,7 +37,6 @@ body {
   align-items: center;
  }
 
-
  nav {
   height: 80px;
   width: 100%;
@@ -74,10 +73,6 @@ nav a {
   color: var(--color-cream);
 }
 
-nav a:hover {
-  border-bottom: 3px solid var(--color-cream);
-  padding-bottom: 3px;
-}
 #landing{
   width: 100%;
   min-height: 100vh;
@@ -174,6 +169,20 @@ nav a:hover {
   color: var(--color-cream);
   font-size: 3.4em;
 }
+.content-large a {
+  text-decoration: none;
+  color: var(--color-cream);
+}
+.content-large h3:hover {
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0%,  
+  100% {-webkit-transform: translateY(0);} 
+  50% {-webkit-transform: translateY(-10px);}
+}
+
 .content-large span {
   color: var(--color-light);
   justify-items:left;

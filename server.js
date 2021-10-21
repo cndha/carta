@@ -32,7 +32,38 @@ const db = {
       console.log("CREATE MAP CALLED!")
       res();
     })
+  },
+  saveNewMarker: function (obj) {
+    return new Promise((res, rej) => {
+      console.log("SAVE NEW MARKER CALLED!")
+      res();
+    })
+  },
+  functionToUpdateMap: function (obj) {
+    return new Promise((res, rej) => {
+      console.log("UPDATING MAP CALLED!")
+      res();
+    })
+  },
+  functionToDeleteMap: function (obj) {
+    return new Promise((res, rej) => {
+      console.log("DELETING MAP CALLED!")
+      res();
+    })
+  },
+  functionToUpdatePin: function (obj) {
+    return new Promise((res, rej) => {
+      console.log("UPDATING PIN CALLED!")
+      res();
+    })
+  },
+  functionToDeletePin: function (obj) {
+    return new Promise((res, rej) => {
+      console.log("DELETING PIN CALLED!")
+      res();
+    })
   }
+
 };
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
