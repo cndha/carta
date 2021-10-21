@@ -1,4 +1,4 @@
-console.log("😈");
+console.log("😈 BEFORE DOCUMENT>READY");
 
 let marker;
 // Each marker is labeled with a single alphabetical character.
@@ -68,27 +68,21 @@ function initMap() {
 }
 
 $(document).ready(function () {
-  console.log("👻");
-
-  
-  // Adds a marker to the map FOREACH click
+  console.log("👻 AFTER DOCUMENT>READY");
   function addMarker(location, map) {
-    // Add the marker at the clicked location, and add the next-available label
-    // from the array of alphabetical characters.
     new google.maps.Marker({
       position: location,
-      label: labels[labelIndex++ % labels.length],
       map: map,
     });
-
     map.addListener("click", (event) => {
-      // console.log("LAT--->", event.latLng.lat());
-      const lat = event.latLng.lat();
+    // google.maps.event.addListener(map, 'click', (event) => {
+    //   $('#map').on('click', (event) => {
       console.log($('#formatted-address'))
-      // console.log("LNG--->", event.latLng.lng());
+      console.log("LAT--->", event.latLng.lat());
+      const lat = event.latLng.lat();
+      console.log("LNG--->", event.latLng.lng());
       const lng = event.latLng.lng();
       const latLng = `${lat}, ${lng}`;
-
       axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
         params: {
           address: latLng,
@@ -120,6 +114,9 @@ $(document).ready(function () {
           const lng = res.data.results[0].geometry.location.lng;
           const geometryOutput = `<li id="latitude">Latitude: ${lat}</li><li id="Longitude">Longitude: ${lng}</li>`;
 
+          $('#formatted_address').val(formattedAddress);
+          $('#latitude').val(lat);
+          $('#longitude').val(lng);
           //outputs to browser
           document.getElementById('formatted_address').innerHTML = outputAddress;
           document.getElementById('components').innerHTML = componentsOutput;
@@ -129,9 +126,8 @@ $(document).ready(function () {
           console.log(error)
         });
     })
-
   }
-
+//for EXPLORE/:id
   $("#goForm").on("submit", function (event) {
     event.preventDefault();
     $.ajax({
@@ -203,12 +199,13 @@ $(document).ready(function () {
       method: "POST",
       data: { title: title, latitude: latitude, longitude: longitude },
       success: function (data) {
-        console.log("SUCCESS WE DID THE AJAX CALL ON CLIENT'S END")
+        console.log("SUCCESS WE DID THE AJAX CALL ON CLIENT'S END", data)
       },
       error: function (error) {
         console.log(error)
       }
     })
+    console.log(event);
   });
 
 
