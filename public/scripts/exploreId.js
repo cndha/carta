@@ -27,10 +27,10 @@ $(document).ready(function () {
       data: { id: 1 },
       success: function (data) {
         function initMap() {
-          const vancouver = { lat: 49.246292, lng: -123.116226 };
+          const location = { lat: Number(data.markers[0].latitude), lng: Number(data.markers[0].longitude) };
           const map = new google.maps.Map(document.getElementById("map"), {
             zoom: 10,
-            center: vancouver,
+            center: location,
           });
           retrieveMarkers(data.markers, map);
         }
