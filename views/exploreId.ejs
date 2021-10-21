@@ -6,26 +6,53 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- JQUERY -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- STYLE SHEETS -->
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
+
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- EXTERNAL JS -->
   <script type="text/javascript" src="../scripts/exploreId.js"></script>
-  <title>Carta: </title>
+  <title>Carta: Map by</title>
 </head>
 
-<header>THIS IS THE CREATE PAGE</header>
+<header>
+  <nav>
+    <a href="/index"><img src="/IMGS/header-circle-dark-small.png"></a>
+    <ul>
+      <li><a href="/logout">logout</a></li>
+    </ul>
+  </nav>
+</header>
 
 <body id="#body">
 
-
-
+  <div class="main-container">
     <button id="buttonPressForStuff">PRESS ME FOR STUFF</button>
+    <div id="map" style="width: 500px; height: 500px;"></div>
 
   </div>
-  <div id="map" style="width: 500px; height: 500px;"></div>
+
 
   <!-- MAP api change key-->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn7dBW6G6TF62UyX3krF5enoY6WF3A7Tg&callback=initMap"
     async defer></script>
 
 </body>
+
+<!-- FOOTER -->
+<footer>
+  <button id="to-top"><img src="/IMGS/to-top.png"></i></button>
+</footer>
 
 </html>
