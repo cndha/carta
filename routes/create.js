@@ -17,7 +17,7 @@ module.exports = (db, axios, environment) => {
     db.createMap(req.body)
       .then(() => {
         console.log("SERVER SENDING BACK RESULT: SUCCESS!");
-        res.json({ Success: true });
+        res.json({ Success: "POST TO CREATE CALLED" });
       })
       .catch(e => {
         console.error(e);
@@ -69,7 +69,6 @@ module.exports = (db, axios, environment) => {
 
   // when submit button for pin is pressed, add that pin to the database corresponding to that map (localhost:8080/create/pin)
   router.post("/pin", (req, res) => {
-
     // let data = req.body;
     let data = "1";
     db.saveNewMarker(data)
@@ -88,9 +87,11 @@ module.exports = (db, axios, environment) => {
 
   router.get("/information/ask", (req, res) => {
 
+    console.log("THIS IS REQ QUERY:", req.query);
+
     axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
       params: {
-        address: req.query,
+        address: req.query.latLng,
         key: 'AIzaSyCloL_uI_F9x3edJ_zViI7qC5zoq9u2HZg'
       }
     }).then((result) => {

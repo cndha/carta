@@ -29,6 +29,8 @@ $(document).ready(function () {
         document.getElementById('formatted_address').innerHTML = outputAddress;
         document.getElementById('components').innerHTML = componentsOutput;
         document.getElementById('geometry').innerHTML = geometryOutput;
+
+        
       },
       error: (error) => {
         console.log(error)
