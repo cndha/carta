@@ -36,11 +36,6 @@ module.exports = (db, axios, environment) => {
 
   });
 
-  router.get("/logout", (req, res) => {
-    res.clearCookie('user_id');
-    res.redirect('/index');
-  });
-
   return router;
 };
 
