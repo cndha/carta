@@ -96,43 +96,6 @@ const getFavMapsByUser = function (userId) {
 }
 exports.getFavMapsByUser = getFavMapsByUser;
 
-//displayMAP function - shows map & markers
-const displayMap = function(mapId) {
-
-  let map;
-
-  function initMap() {
-    map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 2,
-      center: new google.maps.LatLng(2.8, -187.3),
-      mapTypeId: "terrain",
-    });
-
-  // const sqlString = `SELECT maps.title, maps.description, markers.id, markers.latitude, markers.longitude FROM markers JOIN maps ON map_id = maps.id WHERE map_id = $1`;
-
-  const sqlString = `SELECT markers.id, markers.latitude, markers.longitude FROM markers WHERE map_id = $1`;
-
-  return pool
-  .query(sqlString, [mapId])
-  .then(res => { //get an array of objects with select fields from table
-    console.log(res.rows);
-
-    res.rows.forEach((element) => {
-      let latLng = [ res.rows.latitude, res.rows.longitude ];
-
-    })
-
-  })
-  .catch(e => { console.error(e) });
-
-  // req.body is object
-  // pull data from object & call saveNewMap()
-  // loop through marker values & call saveNewMarker()
-  }
-}
-exports.displayMap = displayMap;
-displayMap(3);
-
 
 //saves a new map
 const saveNewMap = function (map) {
@@ -185,6 +148,22 @@ const deleteMap = function (mapId) {
     .catch(e => { console.error(e) });
 }
 exports.deleteMap = deleteMap;
+
+
+//get all markers for specific mapId
+const getMarkersForMap = function(mapId) {
+
+  const sqlString = `SELECT markers.latitude, markers.longitude FROM markers WHERE map_id = $1`;
+
+  return pool
+  .query(sqlString, [mapId])
+  .then(res => { ;
+    return res.rows;
+  })
+  .catch(e => { console.error(e) });
+
+}
+exports.getMarkersForMap = getMarkersForMap;
 
 
 //saves markers on new map
