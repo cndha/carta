@@ -51,20 +51,29 @@
       <li><a href="/index">logout</a></li>
     </ul>
   </nav>
+
   <div class="content-large">
     <div class="table">
-      <h3>create</h3>
-      <form id="goForm">
-        <input type="text" placeholder="Search.." name="search">
-        <button type="submit"><i class="fa fa-search"></i></button>
-      </form>
+      <h1>create</h1>
+      <div class="wrap">
+        <div class="search">
+          <!-- SEARCHTERM TARGET ID FOR SEARCH QUERY -->
+          <!-- ON SUBMIT EVENT?  -->
+          <!-- LINE 131 MAP.JS -->
+           <input type="text" id="searchTerm" placeholder="search">
+           <button type="submit" class="searchButton">
+             <i class="fa fa-search"></i>
+          </button>
+        </div>
+     </div>
       <input id="title" type="text" placeholder="title">
-      <label for="address">address</label>
+     <!-- ON CLICK FILL ID: /FORMATTED_ID/LATITUDE/LONGITUDE -->
+     <!-- LINE 77 or 171 ? MAP.JS -->
       <input id="formatted_address" type="text" placeholder="address">
-      <label for="latitude">latitude</label>
       <input id="latitude" type="text" placeholder="latitude" name="latitude">
-      <label for="longitude">longitude</label>
       <input id="longitude" type="text" placeholder="longitude" name="longitude">
+      <!-- ADD = CREATEPIN ???? -->
+      <!-- LINE 192 MAP.JS -->
       <form id="createForm" method="post"><button type="submit">
           <img src="/IMGS/add-hover.png">
         </button></form>

@@ -6,7 +6,7 @@
   --color-cream: #faf7ef;
   --color-brand: #243918;
   --font-fam: 'Lato', 'helvetica', sans-serif;
-  --font-title: 1em;
+  --font-title: 0.5em;
   --font-display: 3.4em;
   --font-bold: 700;
   --font-medium: 500;
@@ -35,69 +35,65 @@ body {
  }
  
  .box-body{
+  padding-top: 80px;
   display: flex;
-  flex-direction: column;
   align-items: center;
 }
 .content-large{
   position:fixed;
-  top: 80;
+  top: 0;
   left: 0;
   z-index: 9;
   padding-top: 80px;
+  padding-left: 5%;
+  padding-right: 5%;
   background-color: var(--color-brand);
-  width: 30%;
+  width: 25%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   display: none;
 }
-.content-large h3 {
-  color: var(--color-cream);
-  font-size: 5em;
-}
 .content-large input {
-  height: var(--height);
-  margin-bottom: 80px;
-  margin-top: 10px;
   font-family: var(--font-fam);
-  font-size: var(--font-title);
-  color:var(--color-brand);
 }
 .table {
   width: 100%;
   margin-bottom: 33%;
   display: flex;
   flex-direction: column;
-
-  align-items: center;
+}
+.table h1 {
+  margin-top: 30%;
+  margin-bottom: 30%;
+  color: var(--color-cream);
 }
 .table input {
-  width: 66%;
-  height: var(--height);
   margin-bottom: 10px;
-  font-family: var(--font-fam);
-  font-size: 12pt;
-  color: #2f2f2f;
+  width: 100%;
+  border: none;
+  padding: 5px;
+  height: var(--height);
+  border-radius: 5px;
+  outline: none;
+  color: var(--color-brand);
+  font-weight: var(--font-bold);
+  font-size: 14px;
 }
 .table label {
   font-family: var(--font-fam);
-  font-size: var(--font-title);
+  font-size: 10pt;
   color:var(--color-cream);
+  text-align: left;
 }
 
-.table button {
-  border: none;
-  border-style: none;
-  background-color: transparent;
-  margin-top: 10px;
-}
+
 // .table button:hover {
 //   background: url("/IMG/add-hover.png");
 // }
-
+#goForm{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+}
 #map-container {
   margin-top: 80px;
   background-color: white;
@@ -113,4 +109,45 @@ body {
   // display:none;
   width: 100vw;
   height: 100%;
+}
+
+.search {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+}
+
+#searchTerm {
+  width: 100%;
+  border: none;
+  border-right: none;
+  padding: 5px;
+  height: var(--height);
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #2f2f2f;
+}
+
+.searchButton {
+  width: 40px;
+  height: var(--height);
+  margin-bottom: 10px;
+  border: 1px solid var(--color-cream);
+  background: var(--color-cream);
+  text-align: center;
+  color:var(--color-brand);
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+.searchButton:hover {
+  background: var(--color-brand);
+  color:var(--color-cream);
+}
+
+.wrap{
+  width: 100%;
+  display: flex;
+  align-items: center;
 }

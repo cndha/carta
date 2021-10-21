@@ -6,10 +6,11 @@ const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 let labelIndex = 0;
 
 function initMap() {
-  const vancouver = { lat: 49.246292, lng: -123.116226 };
+  const startCenter = { lat: 49.246292, lng: -123.116226 };
+  // startCenter = the [0] of map markers?
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 12,
-    center: vancouver,
+    center: startCenter,
   });
   // const $title = document.getElementById("title")
   // console.log($title);
@@ -74,6 +75,8 @@ $(document).ready(function () {
       position: location,
       map: map,
     });
+    // EVENT ON MAP CLICK ?? SHOULDN'T INPUT FIELD FILL BE IN HERE?
+
     map.addListener("click", (event) => {
     // google.maps.event.addListener(map, 'click', (event) => {
     //   $('#map').on('click', (event) => {
@@ -108,7 +111,6 @@ $(document).ready(function () {
             componentsOutput += `<li>${addressComponents[i].types[0]}: ${addressComponents[i].long_name}</li>`
           }
           componentsOutput += '</class>';
-
           //lat-long
           const lat = res.data.results[0].geometry.location.lat;
           const lng = res.data.results[0].geometry.location.lng;
@@ -128,6 +130,7 @@ $(document).ready(function () {
     })
   }
 //for EXPLORE/:id
+// ID?? MAKING HTML ELEMENTS ON SUBMIT???
   $("#goForm").on("submit", function (event) {
     event.preventDefault();
     $.ajax({
@@ -168,12 +171,13 @@ $(document).ready(function () {
   });
 
   //RETRIEVES LNG/LAT ON cLICK
+  // WHATS ID CREATE? FOR THE EVENT?----------------------->
   $("#create").on("click", function (event) {
     event.preventDefault();
     // const address = $('#formatted-address').val();
     const address = $('#formatted-address').text();
-    const longitude = $('longitude').text();
-    const latitude = $('latitude').text();
+    const longitude = $('#longitude').text();
+    const latitude = $('#latitude').text();
     $.ajax({
       url: "/create",
       method: "POST",
@@ -189,6 +193,7 @@ $(document).ready(function () {
   });
 
   //saves a pin into the map when creatpin button is pressed
+  // CAN'T FIND ID CREATEPIN-------------------------------------->
   $("#createPin").on("click", function (event) {
     event.preventDefault();
     const title = $('#pin-title').text();
@@ -209,6 +214,31 @@ $(document).ready(function () {
   });
 
 
+  //THIS USE SO THAT TITLE HAS TO BE SENT------------------------> NOT SURE WHICH FUNCTION IS CURRENTLY SENDING DATA IDs ???
+  $("#createForm").submit(function (event) {
+    event.preventDefault();
+    const $title = $('#title');
+    const $blank = $title.val().length;
+    const $error = $('#error');
+
+    if ($blank === 0 || $count === $blank) {
+      console.log("title cannot be left empty");
+      // return $error.slideDown('swing');
+      // return alert("You're not saying anything");
+    }
+    const DATA = $("#<------ some form").serialize();
+    $.ajax({
+      type: "POST",
+      url: "/create/",
+      data: "<------------something also known as DATA to send",
+    })
+      .then(function (data) {
+      })
+      .then(function (data) {
+        $error.slideUp('swing');
+      })
+    })
+//DOCUMENT READY
 });
 
 
