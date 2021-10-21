@@ -83,16 +83,16 @@ $(document).ready(function () {
     });
     addMarker(vancouver, map);
 
-    function toggleBounce() {
-      if (marker.getAnimation() !== null) {
-        marker.setAnimation(null);
-      } else {
-        marker.setAnimation(google.maps.Animation.BOUNCE);
-      }
-    }
+    // function toggleBounce() {
+    //   if (marker.getAnimation() !== null) {
+    //     marker.setAnimation(null);
+    //   } else {
+    //     marker.setAnimation(google.maps.Animation.BOUNCE);
+    //   }
+    // }
+    // marker.addListener("click", toggleBounce);
 
     retrieveMarkers(db);
-    marker.addListener("click", toggleBounce);
   }
 
   function retrieveMarkers(db) {
