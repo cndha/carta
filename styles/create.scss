@@ -48,7 +48,7 @@ body {
   padding-left: 5%;
   padding-right: 5%;
   background-color: var(--color-brand);
-  width: 30%;
+  width: 25%;
   height: 100%;
   display: none;
 }
@@ -74,7 +74,9 @@ body {
   height: var(--height);
   border-radius: 5px;
   outline: none;
-  color: #2f2f2f;
+  color: var(--color-brand);
+  font-weight: var(--font-bold);
+  font-size: 14px;
 }
 .table label {
   font-family: var(--font-fam);
