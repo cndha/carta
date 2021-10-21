@@ -1,7 +1,5 @@
 
-
 $(document).ready(function () {
-
   function initMap(obj) {
     const vancouver = { lat: 49.246292, lng: -123.116226 };
     const map = new google.maps.Map(document.getElementById("map"), {
@@ -20,7 +18,5 @@ $(document).ready(function () {
       })
     }
   };
-
   initMap();
-
 });
