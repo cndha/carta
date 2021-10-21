@@ -222,7 +222,5 @@ $(document).ready(function () {
 
   });
 
-
-
   initMap();
 });

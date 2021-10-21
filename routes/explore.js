@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
+
+
 module.exports = (db, axios, environment) => {
+
 
   //when you enter the explore page, sends map data to client
   router.get("/", (req, res) => {
@@ -21,17 +24,24 @@ module.exports = (db, axios, environment) => {
   // when you click on a map to look at, renders localhost:8080/explore/:id
   router.get("/:id", (req, res) => {
 
-    let mapIdToSearch = 2;
+    let mapIdToSearch = 1;
 
     db.getMapById(mapIdToSearch)
-      .then((result) => {
-        const templateVars = result;
-        res.render("edit", templateVars);
+      .then((resultForMap) => {
+        db.getMarkersForMap(mapIdToSearch)
+          .then(resultsForMarkers => {
+
+            let templateVars = { markers: resultsForMarkers, map: resultForMap };
+            global = templateVars;
+
+            console.log(templateVars)
+            res.render("exploreId", templateVars);
+
+          }).catch(e => {
+            console.error(e);
+            res.send(e)
+          });
       })
-      .catch(e => {
-        console.error(e);
-        res.send(e)
-      });
   });
   return router;
 };
