@@ -1,0 +1,113 @@
+:root {
+  --rad: .7rem;
+  --dur: .3s;
+  --color-dark: #2f2f2f;
+  --color-light: #fff;
+  --color-cream: #faf7ef;
+  --color-brand: #243918;
+  --font-fam: 'Lato', 'helvetica', sans-serif;
+  --font-title: 1em;
+  --font-display: 3.4em;
+  --font-bold: 700;
+  --font-medium: 500;
+  --height: 3rem;
+  --btn-width: 6rem;
+  --bez: cubic-bezier(0, 0, 0.43, 1.49);
+}
+body {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+
+}
+
+.main-container {
+  min-height: 100vh;
+  margin-left: 5%;
+  margin-right: 5%;
+  line-height:150%;
+  font-family: var(--font-fam);
+  font-size: 1em;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ }
+ 
+ .box-body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.content-large{
+
+  position:fixed;
+  top: 80;
+  left: 0;
+  z-index: 9;
+  margin-top: 80px;
+  padding-top: 20px;
+  background-color: var(--color-brand);
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+.content-large h3 {
+  color: var(--color-cream);
+  font-size: 5em;
+}
+.content-large input {
+  height: var(--height);
+  margin-bottom: 80px;
+  margin-top: 10px;
+  font-family: var(--font-fam);
+  font-size: var(--font-title);
+  color:var(--color-brand);
+}
+.table {
+  width: 100%;
+  margin-bottom: 33%;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+.table input {
+  height: var(--height);
+  margin-bottom: 10px;
+  font-family: var(--font-fam);
+  font-size: var(--font-title);
+  color: #2f2f2f;
+}
+.table button {
+  border: none;
+  border-style: none;
+  background-color: transparent;
+  margin-top: 10px;
+  background: url("/IMG/add.png");
+}
+// .table button:hover {
+//   background: url("/IMG/add-hover.png");
+// }
+
+#map-container {
+  margin-top: 80px;
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // display: none;
+}
+// MAPS
+#map {
+  // display:none;
+  width: 100vw;
+  height: 100%;
+}

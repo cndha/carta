@@ -5,7 +5,9 @@ CREATE TABLE markers (
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   map_id INTEGER REFERENCES maps(id) ON DELETE CASCADE,
 
-  name VARCHAR(223),
+  title VARCHAR(223),
+  description TEXT,
+  image VARCHAR(223),
   street VARCHAR(223),
   city VARCHAR(223) NOT NULL,
   province VARCHAR(223) NOT NULL,
@@ -13,6 +15,6 @@ CREATE TABLE markers (
   country VARCHAR(223) NOT NULL,
   longitude DECIMAL NOT NULL,
   latitude DECIMAL NOT NULL,
-  created TIMESTAMP
+  created_at TIMESTAMP
 );
 -- Jam Cafe, 556 Beatty St., Vancouver, British Columbia V6B 2L3, Canada

@@ -17,6 +17,7 @@ $(document).ready(function () {
       zoom: 12,
       center: vancouver,
     });
+    
     //set marker at center
     // marker.setMap(map);
 
@@ -32,7 +33,28 @@ $(document).ready(function () {
     //   icon: '/IMGS/marker-small.png'
     // });
 
-    const contentString = "Food n' Stuff";
+    const $title = document.getElementById("title")
+    console.log($title);
+    const contentString =  '<div id="content">' +
+    '<div id="siteNotice">' +
+    "</div>" +
+    `<h1 id="firstHeading" class="firstHeading">${$title}</h1>` +
+    '<div id="bodyContent">' +
+    "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
+    "sandstone rock formation in the southern part of the " +
+    "Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) " +
+    "south west of the nearest large town, Alice Springs; 450&#160;km " +
+    "(280&#160;mi) by road. Kata Tjuta and Uluru are the two major " +
+    "features of the Uluru - Kata Tjuta National Park. Uluru is " +
+    "sacred to the Pitjantjatjara and Yankunytjatjara, the " +
+    "Aboriginal people of the area. It has many springs, waterholes, " +
+    "rock caves and ancient paintings. Uluru is listed as a World " +
+    "Heritage Site.</p>" +
+    '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
+    "https://en.wikipedia.org/w/index.php?title=Uluru</a> " +
+    "(last visited June 22, 2009).</p>" +
+    "</div>" +
+    "</div>";
 
     const infowindow = new google.maps.InfoWindow({
       content: contentString,
@@ -42,7 +64,8 @@ $(document).ready(function () {
       position: { lat: 49.2727014, lng: -123.1352146 },
       map,
       title: "Public Market",
-      icon: '/IMGS/marker-small.png'
+      icon: '/IMGS/marker-small.png',
+
     });
 
     marker.addListener("click", () => {
@@ -76,10 +99,11 @@ $(document).ready(function () {
     map.addListener("click", (event) => {
       // console.log("LAT--->", event.latLng.lat());
       const lat = event.latLng.lat();
+      console.log($('#formatted-address'))
       // console.log("LNG--->", event.latLng.lng());
       const lng = event.latLng.lng();
-
       const latLng = `${lat}, ${lng}`;
+
       axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
         params: {
           address: latLng,
@@ -99,11 +123,6 @@ $(document).ready(function () {
           // let componentsOutput = `
           // <class="list">
           //   <li>${addressComponents[0].types[0]}: ${addressComponents[0].long_name}</li>
-          //   <li>${addressComponents[1].types[0]}: ${addressComponents[1].long_name}</li>
-          //   <li>${addressComponents[3].types[0]}: ${addressComponents[3].long_name}</li>
-          //   <li>${addressComponents[5].types[0]}: ${addressComponents[5].long_name}</li>
-          //   <li>${addressComponents[6].types[0]}: ${addressComponents[6].long_name}</li>
-          //   <li>${addressComponents[7].types[0]}: ${addressComponents[7].long_name}</li>
           // </class>`;
           let componentsOutput = '<class="list">';
           for (var i = 0; i < addressComponents.length; i++) {
@@ -114,7 +133,7 @@ $(document).ready(function () {
           //lat-long
           const lat = res.data.results[0].geometry.location.lat;
           const lng = res.data.results[0].geometry.location.lng;
-          const geometryOutput = `<li>Latitude: ${lat}</li><li>Longitude: ${lng}</li>`;
+          const geometryOutput = `<li id="latitude">Latitude: ${lat}</li><li id="Longitude">Longitude: ${lng}</li>`;
 
           //outputs to browser
           document.getElementById('formatted_address').innerHTML = outputAddress;
@@ -128,29 +147,20 @@ $(document).ready(function () {
     //init
   }
 
-  // $(function() {
-  //   const $button = $('#map');
-  //   $button.on('click', function () {
-  //     console.log('Button clicked, performing ajax call...');
-  //     $.ajax('** database **', { method: 'GET' })
-  //     .then(function (mapMarker) {
-  //       console.log('Success: ', mapMarker);
-  //       $button.replaceWith(mapMarker);
-  //     });
-  //   });
-  // });
-
   //RETRIEVES LNG/LAT ON cLICK
-  $("#ajaxButton").on("click", function (event) {
+  $("#create").on("click", function (event) {
     event.preventDefault();
-
+    
+    // const address = $('#formatted-address').val();
     const address = $('#formatted-address').text();
+    const longitude = $('Longitude').text();
+    const latitude = $('latitude').text();
 
     $.ajax({
       url: "/create",
       method: "POST",
-      data: { address: address, latitude: $('.latitudeBox').val(), longitude: $('.longitudeBox').val() },
-
+      // data: { address: address, latitude: $('.latitudeBox').val(), longitude: $('.longitudeBox').val() },
+      data: { address: address, latitude: latitude, longitude: longitude },
       success: function (data) {
         console.log("SUCCESS WE DID THE AJAX CALL ON CLIENT'S END")
       },
