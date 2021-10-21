@@ -1,4 +1,4 @@
-console.log("😈");
+console.log("😈 BEFORE DOCUMENT>READY");
 
 let marker;
 // Each marker is labeled with a single alphabetical character.
@@ -11,25 +11,21 @@ function initMap() {
     zoom: 12,
     center: vancouver,
   });
-  const $title = document.getElementById("title")
-  console.log($title);
+  // const $title = document.getElementById("title")
+  // console.log($title);
   const contentString = '<div id="content">' +
     '<div id="siteNotice">' +
     "</div>" +
-    `<h1 id="firstHeading" class="firstHeading">${$title}</h1>` +
+    `<h1 id="firstHeading" class="firstHeading">TITLE</h1>` +
     '<div id="bodyContent">' +
-    "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
-    "sandstone rock formation in the southern part of the " +
-    "Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) " +
-    "south west of the nearest large town, Alice Springs; 450&#160;km " +
-    "(280&#160;mi) by road. Kata Tjuta and Uluru are the two major " +
-    "features of the Uluru - Kata Tjuta National Park. Uluru is " +
-    "sacred to the Pitjantjatjara and Yankunytjatjara, the " +
-    "Aboriginal people of the area. It has many springs, waterholes, " +
-    "rock caves and ancient paintings. Uluru is listed as a World " +
-    "Heritage Site.</p>" +
-    '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
-    "https://en.wikipedia.org/w/index.php?title=Uluru</a> " +
+    "<p><b>LOCATION</b> " +
+    "description " +
+    "..... " +
+    ".... " +
+    "... " +
+    " ..</p>" +
+    '<p><a href="http://google.com">' +
+    "external link</a> " +
     "(last visited June 22, 2009).</p>" +
     "</div>" +
     "</div>";
@@ -37,7 +33,7 @@ function initMap() {
   const infowindow = new google.maps.InfoWindow({
     content: contentString,
   });
-
+// FIRST CREATED MARKER
   const marker = new google.maps.Marker({
     draggable: true,
     animation: google.maps.Animation.DROP,
@@ -51,55 +47,42 @@ function initMap() {
     infowindow.open({
       anchor: marker,
       map,
-      shouldFocus: true,
+      shouldFocus: false,
     });
   });
+  google.maps.event.addListener(map, 'click', function (event) {
+    placeMarker(event.latLng);
+  });
+  function placeMarker(location) {
+    if (marker == undefined) {
+      marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        animation: google.maps.Animation.DROP,
+      });
+    }
+    else {
+      marker.setPosition(location);
+    }
+  }
 }
 
 $(document).ready(function () {
-  console.log("👻");
-  
-    // addMarker() when the map is clicked.
-    // google.maps.event.addListener(map, "click", (event) => {
-    //   addMarker(event.latLng, map);
-    // });
-    // addMarker(vancouver, map);
-
-    // function toggleBounce() {
-    //   if (marker.getAnimation() !== null) {
-    //     marker.setAnimation(null);
-    //   } else {
-    //     marker.setAnimation(google.maps.Animation.BOUNCE);
-    //   }
-    // }
-    // marker.addListener("click", toggleBounce);
-
-  // Adds a marker to the map FOREACH click
+  console.log("👻 AFTER DOCUMENT>READY");
   function addMarker(location, map) {
-    // Add the marker at the clicked location, and add the next-available label
-    // from the array of alphabetical characters.
     new google.maps.Marker({
       position: location,
-      label: labels[labelIndex++ % labels.length],
       map: map,
     });
-
-
-
-
-
-
     map.addListener("click", (event) => {
-      // console.log("LAT--->", event.latLng.lat());
-      const lat = event.latLng.lat();
+    // google.maps.event.addListener(map, 'click', (event) => {
+    //   $('#map').on('click', (event) => {
       console.log($('#formatted-address'))
-      // console.log("LNG--->", event.latLng.lng());
+      console.log("LAT--->", event.latLng.lat());
+      const lat = event.latLng.lat();
+      console.log("LNG--->", event.latLng.lng());
       const lng = event.latLng.lng();
       const latLng = `${lat}, ${lng}`;
-
-
-
-
       axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
         params: {
           address: latLng,
@@ -131,6 +114,9 @@ $(document).ready(function () {
           const lng = res.data.results[0].geometry.location.lng;
           const geometryOutput = `<li id="latitude">Latitude: ${lat}</li><li id="Longitude">Longitude: ${lng}</li>`;
 
+          $('#formatted_address').val(formattedAddress);
+          $('#latitude').val(lat);
+          $('#longitude').val(lng);
           //outputs to browser
           document.getElementById('formatted_address').innerHTML = outputAddress;
           document.getElementById('components').innerHTML = componentsOutput;
@@ -140,12 +126,10 @@ $(document).ready(function () {
           console.log(error)
         });
     })
-    //init
   }
-
+//for EXPLORE/:id
   $("#goForm").on("submit", function (event) {
     event.preventDefault();
-
     $.ajax({
       url: "/create/information/ask",
       method: "GET",
@@ -181,18 +165,15 @@ $(document).ready(function () {
         console.log(error)
       }
     })
-
   });
 
   //RETRIEVES LNG/LAT ON cLICK
   $("#create").on("click", function (event) {
     event.preventDefault();
-
     // const address = $('#formatted-address').val();
     const address = $('#formatted-address').text();
     const longitude = $('longitude').text();
     const latitude = $('latitude').text();
-
     $.ajax({
       url: "/create",
       method: "POST",
@@ -205,28 +186,26 @@ $(document).ready(function () {
         console.log(error)
       }
     })
-
   });
 
   //saves a pin into the map when creatpin button is pressed
   $("#createPin").on("click", function (event) {
     event.preventDefault();
-
     const title = $('#pin-title').text();
     const longitude = $('longitude').text();
     const latitude = $('latitude').text();
-
     $.ajax({
       url: `/create/pin/`,
       method: "POST",
       data: { title: title, latitude: latitude, longitude: longitude },
       success: function (data) {
-        console.log("SUCCESS WE DID THE AJAX CALL ON CLIENT'S END")
+        console.log("SUCCESS WE DID THE AJAX CALL ON CLIENT'S END", data)
       },
       error: function (error) {
         console.log(error)
       }
     })
+    console.log(event);
   });
 
 

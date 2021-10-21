@@ -22,7 +22,7 @@ $(document).ready(function () {
   $("#btn-down").on("click", function () {
     $("#map-container").get(0).scrollIntoView('swing');
   });
-  $("#map").on("click", function () {
+  $("#map").on("mousedown", function () {
     $(".content-large").slideDown('swing');
   });
 
