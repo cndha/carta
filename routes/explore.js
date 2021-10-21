@@ -44,7 +44,7 @@ module.exports = (db, axios, environment) => {
   router.get("/afterLoad/:id", (req, res) => {
 
     let mapIdToSearch = req.params.id;
-
+    
     db.getMapById(mapIdToSearch)
       .then((resultForMap) => {
         db.getMarkersForMap(mapIdToSearch)
