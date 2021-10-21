@@ -3,7 +3,7 @@ console.log("😈");
 //CHECK FOR GOOGLE PLACES API
 //https://developers.google.com/maps/documentation/javascript/places-autocomplete
 
-$(document).ready(function () {
+$(document).ready(function() {
   console.log("👻");
 
   let marker;
@@ -33,7 +33,7 @@ $(document).ready(function () {
     //   icon: '/IMGS/marker-small.png'
     // });
 
-    const $title = document.getElementById("title")
+    const $title = document.getElementById("title");
     console.log($title);
     const contentString = '<div id="content">' +
       '<div id="siteNotice">' +
@@ -97,7 +97,7 @@ $(document).ready(function () {
     map.addListener("click", (event) => {
       // console.log("LAT--->", event.latLng.lat());
       const lat = event.latLng.lat();
-      console.log($('#formatted-address'))
+      console.log($('#formatted-address'));
       // console.log("LNG--->", event.latLng.lng());
       const lng = event.latLng.lng();
       const latLng = `${lat}, ${lng}`;
@@ -123,8 +123,8 @@ $(document).ready(function () {
           //   <li>${addressComponents[0].types[0]}: ${addressComponents[0].long_name}</li>
           // </class>`;
           let componentsOutput = '<class="list">';
-          for (var i = 0; i < addressComponents.length; i++) {
-            componentsOutput += `<li>${addressComponents[i].types[0]}: ${addressComponents[i].long_name}</li>`
+          for (let i = 0; i < addressComponents.length; i++) {
+            componentsOutput += `<li>${addressComponents[i].types[0]}: ${addressComponents[i].long_name}</li>`;
           }
           componentsOutput += '</class>';
 
@@ -139,13 +139,13 @@ $(document).ready(function () {
           document.getElementById('geometry').innerHTML = geometryOutput;
         })
         .catch(error => {
-          console.log(error)
+          console.log(error);
         });
-    })
+    });
     // MAP INIT
   }
   //RETRIEVES LNG/LAT ON cLICK
-  $("#create").on("click", function (event) {
+  $("#create").on("click", function(event) {
     event.preventDefault();
 
     // const address = $('#formatted-address').val();
@@ -158,13 +158,13 @@ $(document).ready(function () {
       method: "POST",
       // data: { address: address, latitude: $('.latitudeBox').val(), longitude: $('.longitudeBox').val() },
       data: { address: address, latitude: latitude, longitude: longitude },
-      success: function (data) {
-        console.log("SUCCESS WE DID THE AJAX CALL ON CLIENT'S END")
+      success: function(data) {
+        console.log("SUCCESS WE DID THE AJAX CALL ON CLIENT'S END");
       },
-      error: function (error) {
-        console.log(error)
+      error: function(error) {
+        console.log(error);
       }
-    })
+    });
   });
 
   initMap();
