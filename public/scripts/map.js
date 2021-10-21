@@ -62,6 +62,8 @@ $(document).ready(function () {
 
 
     const marker = new google.maps.Marker({
+      draggable: true,
+      animation: google.maps.Animation.DROP,
       position: { lat: 49.2727014, lng: -123.1352146 },
       map: map,
       title: "Public Market",
@@ -75,14 +77,22 @@ $(document).ready(function () {
         shouldFocus: false,
       });
     });
-
     // addMarker() when the map is clicked.
     google.maps.event.addListener(map, "click", (event) => {
       addMarker(event.latLng, map);
     });
     addMarker(vancouver, map);
 
+    function toggleBounce() {
+      if (marker.getAnimation() !== null) {
+        marker.setAnimation(null);
+      } else {
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+      }
+    }
+
     retrieveMarkers(db);
+    marker.addListener("click", toggleBounce);
   }
 
   function retrieveMarkers(db) {
