@@ -40,7 +40,6 @@ const getMapsByKeyword = function (keyword) {
 }
 exports.getMapsByKeyword = getMapsByKeyword;
 
-
 //display a single map by looking up /:id
 const getMapById = function (mapId) {
   const sqlString = `SELECT title, description FROM maps WHERE id = $1`;

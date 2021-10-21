@@ -1,5 +1,4 @@
 console.log("😈");
-
 //CHECK FOR GOOGLE PLACES API
 //https://developers.google.com/maps/documentation/javascript/places-autocomplete
 
@@ -102,64 +101,132 @@ $(document).ready(function() {
       const lng = event.latLng.lng();
       const latLng = `${lat}, ${lng}`;
 
-      axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
-        params: {
-          address: latLng,
-          key: 'AIzaSyCloL_uI_F9x3edJ_zViI7qC5zoq9u2HZg'
-        }
-      })
-        .then(res => {
-          console.log(res);
+      $.ajax({
+        url: "/create/information/ask",
+        method: "GET",
+        data: { latLng: latLng },
+        success: (data) => {
           //formatted address:
-          const formattedAddress = res.data.results[0].formatted_address;
-          const outputAddress = `
-                <class="list">
-                  <li id="formatted-address">${formattedAddress}</li>
-                </class>`;
+          const formattedAddress = data.results[0].formatted_address;
+
+          $('#formatted_address').val(formattedAddress);
+
+          const outputAddress = `<class="list"><li>${formattedAddress}</li></class>`;
           //loop through address components
-          const addressComponents = res.data.results[0].address_components;
-          // let componentsOutput = `
-          // <class="list">
-          //   <li>${addressComponents[0].types[0]}: ${addressComponents[0].long_name}</li>
-          // </class>`;
-          let componentsOutput = '<class="list">';
-          for (let i = 0; i < addressComponents.length; i++) {
-            componentsOutput += `<li>${addressComponents[i].types[0]}: ${addressComponents[i].long_name}</li>`;
+          const addressComponents = data.results[0].address_components;
+          let componentsOutput = `<class="list">`
+
+          for (var i = 0; i < addressComponents.length; i++) {
+            componentsOutput += `<li>${addressComponents[i].types[0]}: ${addressComponents[i].long_name}</li>`
           }
           componentsOutput += '</class>';
 
-          //lat-long
-          const lat = res.data.results[0].geometry.location.lat;
-          const lng = res.data.results[0].geometry.location.lng;
-          const geometryOutput = `<li id="latitude">Latitude: ${lat}</li><li id="Longitude">Longitude: ${lng}</li>`;
+          const lat = data.results[0].geometry.location.lat;
+          const lng = data.results[0].geometry.location.lng;
+          const geometryOutput = `<li>Latitude: ${lat}</li><li>Longitude: ${lng}</li>`;
 
+          $('#latitude').val(lat);
+          $('#longitude').val(lng);
           //outputs to browser
           document.getElementById('formatted_address').innerHTML = outputAddress;
           document.getElementById('components').innerHTML = componentsOutput;
           document.getElementById('geometry').innerHTML = geometryOutput;
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    });
-    // MAP INIT
+        },
+        error: (error) => {
+          console.log(error)
+        }
+      })
+    })
+    //init
   }
-  //RETRIEVES LNG/LAT ON cLICK
-  $("#create").on("click", function(event) {
+
+  $("#goForm").on("submit", function (event) {
     event.preventDefault();
 
-    // const address = $('#formatted-address').val();
-    const address = $('#formatted-address').text();
-    const longitude = $('longitude').text();
-    const latitude = $('latitude').text();
+    $.ajax({
+      url: "/create/information/ask",
+      method: "GET",
+      data: { latLng: $('#search').val() },
+      success: (data) => {
+        //formatted address:
+        const formattedAddress = data.results[0].formatted_address;
+
+        $('#formatted_address').val(formattedAddress);
+
+        const outputAddress = `<class="list"><li>${formattedAddress}</li></class>`;
+        //loop through address components
+        const addressComponents = data.results[0].address_components;
+        let componentsOutput = `<class="list">`
+
+        for (var i = 0; i < addressComponents.length; i++) {
+          componentsOutput += `<li>${addressComponents[i].types[0]}: ${addressComponents[i].long_name}</li>`
+        }
+        componentsOutput += '</class>';
+
+        const lat = data.results[0].geometry.location.lat;
+        const lng = data.results[0].geometry.location.lng;
+        const geometryOutput = `<li>Latitude: ${lat}</li><li>Longitude: ${lng}</li>`;
+
+        $('#latitude').val(lat);
+        $('#longitude').val(lng);
+        //outputs to browser
+        document.getElementById('formatted_address').innerHTML = outputAddress;
+        document.getElementById('components').innerHTML = componentsOutput;
+        document.getElementById('geometry').innerHTML = geometryOutput;
+      },
+      error: (error) => {
+        console.log(error)
+      }
+    })
+
+  });
+
+
+
+
+  //RETRIEVES LNG/LAT ON cLICK
+  $("#create").on("click", function (event) {
+
+    event.preventDefault();
+
+    const address = $('#formatted-address').val();
+    const title = $('#longitude').val();
+    const longitude = $('#longitude').val();
+    const latitude = $('#latitude').val();
+
+    console.log("THIS IS THE LATITUDE", latitude);
+
+    $.ajax({
+      url: "/create",
+      method: "GET",
+      // data: { address: address, latitude: $('.latitudeBox').val(), longitude: $('.longitudeBox').val() },
+      data: { address: address, latitude: latitude, longitude: longitude, title: title },
+      success: function (data) {
+        console.log("SUCCESS WE DID THE AJAX CALL ON CLIENT'S END")
+      },
+      error: function (error) {
+        console.log(error)
+      }
+    })
+  });
+
+  $("#createForm").on("submit", function (event) {
+    event.preventDefault();
+
+    const address = $('#formatted-address').val();
+    const title = $('#longitude').val();
+    const longitude = $('#longitude').val();
+    const latitude = $('#latitude').val();
+
+    console.log("THIS IS THE LATITUDE", address);
 
     $.ajax({
       url: "/create",
       method: "POST",
       // data: { address: address, latitude: $('.latitudeBox').val(), longitude: $('.longitudeBox').val() },
-      data: { address: address, latitude: latitude, longitude: longitude },
-      success: function(data) {
-        console.log("SUCCESS WE DID THE AJAX CALL ON CLIENT'S END");
+      data: { address: address, latitude: latitude, longitude: longitude, title: title },
+      success: function (data) {
+        console.log("SUCCESS WE DID THE AJAX CALL ON CLIENT'S END")
       },
       error: function(error) {
         console.log(error);
@@ -167,5 +234,9 @@ $(document).ready(function() {
     });
   });
 
+
+
+
   initMap();
+
 });

@@ -51,23 +51,27 @@
       <li><a href="/index">logout</a></li>
     </ul>
   </nav>
-  <form id="create">
-    <div class="content-large">
-      <div class="table">
-        <h3>create</h3>
-        <input type="text" placeholder="search">
-        <input type="text" placeholder="title">
-        <input id="formatted_address" type="text" placeholder="address">
-        <input class="latitude" type="text" placeholder="latitude">
-        <input class="longitude" type="text" placeholder="longitude">
-  </form>
-  <form method="post">
-    <button type="submit">
-      <img src="/IMGS/add-hover.png">
-    </button>
-  </form>
-  <a href="/profile"><i class="fas fa-arrow-right" style="color:#faf7ef;"></i></a>
-  </div>
+  <div class="content-large">
+    <div class="table">
+      <h3>create</h3>
+      <form id="goForm">
+        <input id="search" type="text" placeholder="search"><br>
+        <button id="go">GO away!</button>
+      </form>
+      <input id="title" type="text" placeholder="title">
+      <input id="formatted_address" type="text" placeholder="address">
+      <input id="latitude" type="text" placeholder="latitude">
+      <input id="longitude" type="text" placeholder="longitude">
+      <form id="createForm" method="post"><button type="submit">
+
+          <div id='formatted_address'> </div>
+          <div id='components'> </div>
+          <div id='geometry'></div>
+
+          <img src="/IMGS/add-hover.png">
+        </button></form>
+      <a href="/profile"><i class="fas fa-arrow-right" style="color:#faf7ef;"></i></a>
+    </div>
   </div>
   <div class="main-container">
     <div id="map-container">

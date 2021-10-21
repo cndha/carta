@@ -8,7 +8,6 @@ module.exports = (db, axios, environment) => {
 
     let keyword = "ancouver";
 
-    // ReferenceError: $1 is not defined
     db.getMapsByKeyword(keyword)
       .then(results => {
         res.json(results);
@@ -27,8 +26,7 @@ module.exports = (db, axios, environment) => {
     db.getMapById(mapIdToSearch)
       .then((result) => {
         const templateVars = result;
-        res.send(templateVars);
-        // res.render("name_chosen_for_explore/:id_template.ejs", templateVars);
+        res.render("edit", templateVars);
       })
       .catch(e => {
         console.error(e);
