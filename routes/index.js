@@ -26,6 +26,7 @@ module.exports = (db, axios, environment) => {
     db.getUserById(userId)
       .then((profile) => {
         const templateVars = { profileData: profile, env: environment };
+        console.log(profile)
         res.render("index", templateVars);
       })
       .catch(e => {

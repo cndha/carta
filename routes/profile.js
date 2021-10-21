@@ -19,23 +19,6 @@ module.exports = (db, axios, environment) => {
       });
   });
 
-  //when you click the delete button, deletes map from db with that id
-  router.delete("/delete/:id", (req, res) => {
-
-    // const mapIdToSearch = res.body.mapId;
-
-    // db.functionToDeleteMap(mapIdToSearch)
-    //   .then(() => {
-    //     res.json({Success: true});
-    //   })
-    //   .catch(e => {
-    //     console.error(e);
-    //     res.send(e)
-    //   });
-
-    // res.send("POST to profile/delete/:id")
-  });
-
   //request to get all maps loaded into profile page
   router.get("/userMaps", (req, res) => {
 

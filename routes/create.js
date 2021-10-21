@@ -24,9 +24,6 @@ module.exports = (db, axios, environment) => {
         res.send(e)
       });
 
-
-
-
     // grab user_id from cookies
     // const user_id = req.cookies["user_id"];
 
@@ -64,35 +61,34 @@ module.exports = (db, axios, environment) => {
     //   return;
     // }
 
-    // a function that takes in the form's fields and inserts those values into database
-    // INSERT INTO maps (the fields here) VALUES (the values)
-    // insert objects with the values grabbed from the html form into the function createMap()
-
-    // const objectToPass = {
-    //   user_id: 1,
-    //   description: "hello world",
-    //   title: "some map"
-    // }
-
-    // db.createMap(objectToPass)
-    //   .then(() => {
-    //    res.json({Success: true});
-    //   })
-    //   .catch(e => {
-    //     console.error(e);
-    //     res.send(e)
-    //   });
-
-
   });
 
-  // http://www.mapquestapi.com/geocoding/v1/reverse?key=KEY&location=30.333472,-81.470448&includeRoadMetadata=true&includeNearestIntersection=true
 
+  // renders create page when create button is pressed (localhost:8080/create)
   router.get("/", (req, res) => {
-
 
     res.render("create");
   });
+
+  // when submit button for pin is pressed, add that pin to the database corresponding to that map (localhost:8080/create/pin)
+  router.post("/pin", (req, res) => {
+
+    // let data = req.body;
+
+    let data = "1";
+
+    db.saveNewMarker(data)
+      .then(() => {
+        res.json({ Success: true });
+      })
+      .catch(e => {
+        console.error(e);
+        res.send(e)
+      });
+
+    // res.send("done");
+  });
+
 
   router.get("/information", (req, res) => {
     res.render("geocode");

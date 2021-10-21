@@ -6,8 +6,9 @@ module.exports = (db, axios, environment) => {
   //when you enter the explore page, sends map data to client
   router.get("/", (req, res) => {
 
-    let keyword = "req.body.keyWord";
+    let keyword = "ancouver";
 
+    // ReferenceError: $1 is not defined
     db.getMapsByKeyword(keyword)
       .then(results => {
         res.json(results);
