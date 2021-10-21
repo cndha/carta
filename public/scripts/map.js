@@ -58,21 +58,21 @@ function initMap() {
 
 $(document).ready(function () {
   console.log("👻");
-  
-    // addMarker() when the map is clicked.
-    // google.maps.event.addListener(map, "click", (event) => {
-    //   addMarker(event.latLng, map);
-    // });
-    // addMarker(vancouver, map);
 
-    // function toggleBounce() {
-    //   if (marker.getAnimation() !== null) {
-    //     marker.setAnimation(null);
-    //   } else {
-    //     marker.setAnimation(google.maps.Animation.BOUNCE);
-    //   }
-    // }
-    // marker.addListener("click", toggleBounce);
+  // addMarker() when the map is clicked.
+  // google.maps.event.addListener(map, "click", (event) => {
+  //   addMarker(event.latLng, map);
+  // });
+  // addMarker(vancouver, map);
+
+  // function toggleBounce() {
+  //   if (marker.getAnimation() !== null) {
+  //     marker.setAnimation(null);
+  //   } else {
+  //     marker.setAnimation(google.maps.Animation.BOUNCE);
+  //   }
+  // }
+  // marker.addListener("click", toggleBounce);
 
   // Adds a marker to the map FOREACH click
   function addMarker(location, map) {
@@ -84,11 +84,6 @@ $(document).ready(function () {
       map: map,
     });
 
-
-
-
-
-
     map.addListener("click", (event) => {
       // console.log("LAT--->", event.latLng.lat());
       const lat = event.latLng.lat();
@@ -96,9 +91,6 @@ $(document).ready(function () {
       // console.log("LNG--->", event.latLng.lng());
       const lng = event.latLng.lng();
       const latLng = `${lat}, ${lng}`;
-
-
-
 
       axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
         params: {

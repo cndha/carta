@@ -14,10 +14,7 @@ module.exports = (db, axios, environment) => {
           .then(resultsForUserMaps => {
 
             let templateVars = { maps: resultsForUserMaps, user: resultForUser };
-
-            console.log("USER INFO", templateVars);
-
-            res.render(profile, templateVars);
+            res.render("profile", templateVars);
 
           }).catch(e => {
             console.error(e);

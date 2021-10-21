@@ -14,15 +14,29 @@ module.exports = (db, axios, environment) => {
 
     console.log("THIS IS THE STUFF SENT BY CLIENT AJAX :", req.body);
 
+    // db.createMap(req.body)
+    //   .then(() => {
+    //     console.log("SERVER SENDING BACK RESULT: SUCCESS!");
+    //     res.json({ Success: "POST TO CREATE CALLED" });
+    //   })
+    //   .catch(e => {
+    //     console.error(e);
+    //     res.send(e)
+    //   });
+
+    const userId = req.cookies["user_id"];
+
     db.createMap(req.body)
       .then(() => {
-        console.log("SERVER SENDING BACK RESULT: SUCCESS!");
-        res.json({ Success: "POST TO CREATE CALLED" });
+        db.mostRecentMapByUser(userId)
+          .then(mostRecentMap => {
+            res.send(mostRecentMap);
+          }).catch(e => {
+            console.error(e);
+            res.send(e)
+          });
       })
-      .catch(e => {
-        console.error(e);
-        res.send(e)
-      });
+
 
     // grab user_id from cookies
     // const user_id = req.cookies["user_id"];

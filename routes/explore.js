@@ -30,7 +30,7 @@ module.exports = (db, axios, environment) => {
         db.getMarkersForMap(mapIdToSearch)
           .then(resultsForMarkers => {
 
-            let templateVars = { markers: resultsForMarkers, map: resultForMap };
+            let templateVars = { mapId: mapIdToSearch, markers: resultsForMarkers, map: resultForMap };
             global = templateVars;
             res.render("exploreId", templateVars);
 
@@ -44,7 +44,7 @@ module.exports = (db, axios, environment) => {
   router.get("/afterLoad/:id", (req, res) => {
 
     let mapIdToSearch = req.params.id;
-    
+
     db.getMapById(mapIdToSearch)
       .then((resultForMap) => {
         db.getMarkersForMap(mapIdToSearch)
