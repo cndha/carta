@@ -41,13 +41,11 @@ body {
   align-items: center;
 }
 .content-large{
-
   position:fixed;
   top: 80;
   left: 0;
   z-index: 9;
-  margin-top: 80px;
-  padding-top: 20px;
+  padding-top: 80px;
   background-color: var(--color-brand);
   width: 30%;
   height: 100%;
@@ -78,12 +76,19 @@ body {
   align-items: center;
 }
 .table input {
+  width: 66%;
   height: var(--height);
   margin-bottom: 10px;
   font-family: var(--font-fam);
-  font-size: var(--font-title);
+  font-size: 12pt;
   color: #2f2f2f;
 }
+.table label {
+  font-family: var(--font-fam);
+  font-size: var(--font-title);
+  color:var(--color-cream);
+}
+
 .table button {
   border: none;
   border-style: none;
