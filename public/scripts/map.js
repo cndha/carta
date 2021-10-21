@@ -1,8 +1,9 @@
 console.log("😈");
+
 //CHECK FOR GOOGLE PLACES API
 //https://developers.google.com/maps/documentation/javascript/places-autocomplete
 
-$(document).ready(function() {
+$(document).ready(function () {
   console.log("👻");
 
   let marker;
@@ -32,8 +33,8 @@ $(document).ready(function() {
     //   icon: '/IMGS/marker-small.png'
     // });
 
-    const $title = document.getElementById("title");
-
+    const $title = document.getElementById("title")
+    console.log($title);
     const contentString = '<div id="content">' +
       '<div id="siteNotice">' +
       "</div>" +
@@ -61,7 +62,7 @@ $(document).ready(function() {
 
     const marker = new google.maps.Marker({
       position: { lat: 49.2727014, lng: -123.1352146 },
-      map,
+      map: map,
       title: "Public Market",
       icon: '/IMGS/marker-small.png',
 
@@ -80,7 +81,20 @@ $(document).ready(function() {
       addMarker(event.latLng, map);
     });
     addMarker(vancouver, map);
+
+    retrieveMarkers(db);
   }
+
+  function retrieveMarkers(db) {
+    for (let x = 0; x < db.length; x++) {
+      new google.maps.Marker({
+        position: { lat: db[i].latitude, lng: db[i].longitude },
+        map: map,
+        title: db[i].title,
+      })
+    }
+  };
+
 
   // Adds a marker to the map.
   function addMarker(location, map) {
@@ -95,46 +109,50 @@ $(document).ready(function() {
     map.addListener("click", (event) => {
       // console.log("LAT--->", event.latLng.lat());
       const lat = event.latLng.lat();
-      console.log($('#formatted-address'));
+      console.log($('#formatted-address'))
       // console.log("LNG--->", event.latLng.lng());
       const lng = event.latLng.lng();
       const latLng = `${lat}, ${lng}`;
 
-      $.ajax({
-        url: "/create/information/ask",
-        method: "GET",
-        data: { latLng: latLng },
-        success: (data) => {
+      axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+        params: {
+          address: latLng,
+          key: 'AIzaSyCloL_uI_F9x3edJ_zViI7qC5zoq9u2HZg'
+        }
+      })
+        .then(res => {
+          console.log(res);
           //formatted address:
-          const formattedAddress = data.results[0].formatted_address;
-
-          $('#formatted_address').val(formattedAddress);
-
-          const outputAddress = `<class="list"><li>${formattedAddress}</li></class>`;
+          const formattedAddress = res.data.results[0].formatted_address;
+          const outputAddress = `
+                <class="list">
+                  <li id="formatted-address">${formattedAddress}</li>
+                </class>`;
           //loop through address components
-          const addressComponents = data.results[0].address_components;
-          let componentsOutput = `<class="list">`
-
+          const addressComponents = res.data.results[0].address_components;
+          // let componentsOutput = `
+          // <class="list">
+          //   <li>${addressComponents[0].types[0]}: ${addressComponents[0].long_name}</li>
+          // </class>`;
+          let componentsOutput = '<class="list">';
           for (var i = 0; i < addressComponents.length; i++) {
             componentsOutput += `<li>${addressComponents[i].types[0]}: ${addressComponents[i].long_name}</li>`
           }
           componentsOutput += '</class>';
 
-          const lat = data.results[0].geometry.location.lat;
-          const lng = data.results[0].geometry.location.lng;
-          const geometryOutput = `<li>Latitude: ${lat}</li><li>Longitude: ${lng}</li>`;
+          //lat-long
+          const lat = res.data.results[0].geometry.location.lat;
+          const lng = res.data.results[0].geometry.location.lng;
+          const geometryOutput = `<li id="latitude">Latitude: ${lat}</li><li id="Longitude">Longitude: ${lng}</li>`;
 
-          $('#latitude').val(lat);
-          $('#longitude').val(lng);
           //outputs to browser
           document.getElementById('formatted_address').innerHTML = outputAddress;
           document.getElementById('components').innerHTML = componentsOutput;
           document.getElementById('geometry').innerHTML = geometryOutput;
-        },
-        error: (error) => {
+        })
+        .catch(error => {
           console.log(error)
-        }
-      })
+        });
     })
     //init
   }
@@ -180,26 +198,20 @@ $(document).ready(function() {
 
   });
 
-
-
-
   //RETRIEVES LNG/LAT ON cLICK
   $("#create").on("click", function (event) {
-
     event.preventDefault();
 
-    const address = $('#formatted-address').val();
-    const title = $('#longitude').val();
-    const longitude = $('#longitude').val();
-    const latitude = $('#latitude').val();
-
-    console.log("THIS IS THE LATITUDE", latitude);
+    // const address = $('#formatted-address').val();
+    const address = $('#formatted-address').text();
+    const longitude = $('longitude').text();
+    const latitude = $('latitude').text();
 
     $.ajax({
       url: "/create",
-      method: "GET",
+      method: "POST",
       // data: { address: address, latitude: $('.latitudeBox').val(), longitude: $('.longitudeBox').val() },
-      data: { address: address, latitude: latitude, longitude: longitude, title: title },
+      data: { address: address, latitude: latitude, longitude: longitude },
       success: function (data) {
         console.log("SUCCESS WE DID THE AJAX CALL ON CLIENT'S END")
       },
@@ -207,32 +219,10 @@ $(document).ready(function() {
         console.log(error)
       }
     })
+
   });
 
-  $("#createForm").on("submit", function (event) {
-    event.preventDefault();
 
-    const address = $('#formatted-address').val();
-    const title = $('#longitude').val();
-    const longitude = $('#longitude').val();
-    const latitude = $('#latitude').val();
-
-    console.log("THIS IS THE LATITUDE", address);
-
-    $.ajax({
-      url: "/create",
-      method: "POST",
-      // data: { address: address, latitude: $('.latitudeBox').val(), longitude: $('.longitudeBox').val() },
-      data: { address: address, latitude: latitude, longitude: longitude, title: title },
-      success: function (data) {
-        console.log("SUCCESS WE DID THE AJAX CALL ON CLIENT'S END")
-      },
-      error: function(error) {
-        console.log(error);
-      }
-    });
-  });
 
   initMap();
-  
 });

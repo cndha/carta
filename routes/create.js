@@ -86,9 +86,7 @@ module.exports = (db, axios, environment) => {
   });
 
   router.get("/information/ask", (req, res) => {
-
     console.log("THIS IS REQ QUERY:", req.query);
-
     axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
       params: {
         address: req.query.latLng,
