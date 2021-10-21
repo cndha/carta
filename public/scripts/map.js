@@ -222,5 +222,29 @@ $(document).ready(function () {
 
   });
 
+  //saves a pin into the map when creatpin button is pressed
+  $("#createPin").on("click", function (event) {
+    event.preventDefault();
+
+    const title = $('#pin-title').text();
+    const longitude = $('longitude').text();
+    const latitude = $('latitude').text();
+
+
+
+    $.ajax({
+      url: `/create/pin/`,
+      method: "POST",
+      data: { title: title, latitude: latitude, longitude: longitude },
+      success: function (data) {
+        console.log("SUCCESS WE DID THE AJAX CALL ON CLIENT'S END")
+      },
+      error: function (error) {
+        console.log(error)
+      }
+    })
+
+  });
+
   initMap();
 });

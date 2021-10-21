@@ -68,7 +68,7 @@ module.exports = (db, axios, environment) => {
   });
 
   // when submit button for pin is pressed, add that pin to the database corresponding to that map (localhost:8080/create/pin)
-  router.post("/pin", (req, res) => {
+  router.post("/pin/:id", (req, res) => {
     // let data = req.body;
     let data = "1";
     db.saveNewMarker(data)
