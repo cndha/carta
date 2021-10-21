@@ -24,7 +24,7 @@ module.exports = (db, axios, environment) => {
   // when you click on a map to look at, renders localhost:8080/explore/:id
   router.get("/:id", (req, res) => {
 
-    let mapIdToSearch = 1;
+    let mapIdToSearch = req.params.id;
 
     db.getMapById(mapIdToSearch)
       .then((resultForMap) => {
@@ -44,7 +44,7 @@ module.exports = (db, axios, environment) => {
 
   router.get("/afterLoad/:id", (req, res) => {
 
-    let mapIdToSearch = 1;
+    let mapIdToSearch = req.params.id;
 
     db.getMapById(mapIdToSearch)
       .then((resultForMap) => {

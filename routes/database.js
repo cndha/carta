@@ -98,33 +98,33 @@ const getFavMapsByUser = function (userId) {
 }
 exports.getFavMapsByUser = getFavMapsByUser;
 
-//displayMAP function - shows map & markers
-const displayMap = function (mapId) {
+// //displayMAP function - shows map & markers
+// const displayMap = function (mapId) {
 
-  // const sqlString = `SELECT maps.title, maps.description, markers.id, markers.latitude, markers.longitude FROM markers JOIN maps ON map_id = maps.id WHERE map_id = $1`;
+//   // const sqlString = `SELECT maps.title, maps.description, markers.id, markers.latitude, markers.longitude FROM markers JOIN maps ON map_id = maps.id WHERE map_id = $1`;
 
-  const sqlString = `SELECT markers.id, markers.latitude, markers.longitude FROM markers WHERE map_id = $1`;
+//   const sqlString = `SELECT markers.id, markers.latitude, markers.longitude FROM markers WHERE map_id = $1`;
 
-  return pool
-    .query(sqlString, [mapId])
-    .then(res => { //get an array of objects with select fields from table
-      console.log(res.rows);
+//   return pool
+//     .query(sqlString, [mapId])
+//     .then(res => { //get an array of objects with select fields from table
+//       console.log(res.rows);
 
-      res.rows.forEach((element) => {
-        let latLng = [res.rows.latitude, res.rows.longitude];
+//       res.rows.forEach((element) => {
+//         let latLng = [res.rows.latitude, res.rows.longitude];
 
-      })
+//       })
 
-    })
-    .catch(e => { console.error(e) });
+//     })
+//     .catch(e => { console.error(e) });
 
-  // req.body is object
-  // pull data from object & call saveNewMap()
-  // loop through marker values & call saveNewMarker()
+//   // req.body is object
+//   // pull data from object & call saveNewMap()
+//   // loop through marker values & call saveNewMarker()
 
-}
-exports.displayMap = displayMap;
-displayMap(3);
+// }
+// exports.displayMap = displayMap;
+// displayMap(3);
 
 
 //saves a new map
