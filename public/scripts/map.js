@@ -234,6 +234,7 @@ $(document).ready(function () {
 });
 
 
+// ********
 
 // // REMOVE MAKER -----> ADD ON.CLICK EVENT
 // function SetMarker(position) {
