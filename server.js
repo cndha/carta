@@ -39,6 +39,12 @@ const db = {
       res();
     })
   },
+  // getMapsOwnedByUser: function (obj) {
+  //   return new Promise((res, rej) => {
+  //     console.log("GET MAPS OWNED BY USER CALLED!")
+  //     res();
+  //   })
+  // },
   functionToUpdateMap: function (obj) {
     return new Promise((res, rej) => {
       console.log("UPDATING MAP CALLED!")

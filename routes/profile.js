@@ -8,16 +8,6 @@ module.exports = (db, axios, environment) => {
 
     const userId = req.cookies["user_id"];
 
-    // db.getUserById(userId)
-    //   .then((profile) => {
-    //     const templateVars = profile;
-    //     res.render("profile", templateVars);
-    //   })
-    //   .catch(e => {
-    //     console.error(e);
-    //     res.send(e)
-    //   });
-
     db.getUserById(userId)
       .then((resultForUser) => {
         db.getMapsOwnedByUser(userId)
