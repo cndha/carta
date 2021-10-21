@@ -59,13 +59,8 @@ $(document).ready(function () {
     const infowindow = new google.maps.InfoWindow({
       content: contentString,
     });
-    
-    // function SetMarker(position) {
-    //   //Remove previous Marker.
-    //   if (marker != null) {
-    //       marker.setMap(null);
-    //   }
-    // }
+
+
     const marker = new google.maps.Marker({
       position: { lat: 49.2727014, lng: -123.1352146 },
       map: map,
@@ -101,7 +96,7 @@ $(document).ready(function () {
   };
 
 
-  // Adds a marker to the map.
+  // Adds a marker to the map FOREACH click
   function addMarker(location, map) {
     // Add the marker at the clicked location, and add the next-available label
     // from the array of alphabetical characters.
@@ -111,6 +106,11 @@ $(document).ready(function () {
       map: map,
     });
 
+
+
+
+
+
     map.addListener("click", (event) => {
       // console.log("LAT--->", event.latLng.lat());
       const lat = event.latLng.lat();
@@ -118,6 +118,9 @@ $(document).ready(function () {
       // console.log("LNG--->", event.latLng.lng());
       const lng = event.latLng.lng();
       const latLng = `${lat}, ${lng}`;
+
+
+
 
       axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
         params: {
@@ -230,6 +233,45 @@ $(document).ready(function () {
   initMap();
 });
 
-// remove a marker 
-// on.click
-// marker.setMap(null);
+
+
+// // REMOVE MAKER -----> ADD ON.CLICK EVENT
+// function SetMarker(position) {
+//   //Remove previous Marker.
+//   if (marker != null) {
+//     marker.setMap(null);
+//   }
+
+// //SET MARKER
+//   marker = new google.maps.Marker(
+//     {
+//       map: map,
+//       draggable: true,
+//       animation: google.maps.Animation.DROP,
+//       position: results[0].geometry.location
+//     });
+//     //DRAG TO REPOSITION MARKER
+//   google.maps.event.addListener(marker, 'dragend', function () {
+//     geocodePosition(marker.getPosition());
+//   });
+//   //RETRIEVE GEOCODE LOCATION
+//   function geocodePosition(pos) {
+//     geocoder = new google.maps.Geocoder();
+//     geocoder.geocode
+//       ({
+//         latLng: pos
+//       },
+//       //LATLNG POSITION
+//       // RETRIEVE FORMATTED ADDRESS
+//         function (results, status) {
+//           if (status == google.maps.GeocoderStatus.OK) {
+//             $("#mapSearchInput").val(results[0].formatted_address);
+//             $("#mapErrorMsg").hide(100);
+//           }
+//           else {
+//             $("#mapErrorMsg").html('Cannot determine address at this location.' + status).show(100);
+//           }
+//         }
+//       );
+//   }
+// }
