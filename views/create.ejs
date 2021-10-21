@@ -39,32 +39,36 @@
 
   <!-- HEAD -->
 </head>
-<body>
-<nav>
-  <!-- Replace links with proper routes or single page refresh -->
-  <!-- Replace links with proper routes  -->
-  <!-- <p>share locations from the places you love</p> -->
-  <a href="/index"><img src="/IMGS/header-circle-dark-small.png"></a>
-  <ul>
-    <li><a href="/profile">cancel</a></li>
-    <li><a href="/index">logout</a></li>
-  </ul>
-</nav>
-  <div class="content-large">
-    <div class="table">
-      <h3>create</h3>
-      <input type="text" placeholder="search">
-      <input type="text" placeholder="title">
-      <input id="formatted_address" type="text" placeholder="address">
-      <input type="text" placeholder="latitude">
-      <input type="text" placeholder="longitude">
-      <form method="post"><button type="submit">
-        <img src="/IMGS/add-hover.png">
-      </button></form>
-      <a href="/profile"><i class="fas fa-arrow-right" style="color:#faf7ef;"></i></a>
-    </div>
-  </div>
 
+<body>
+  <nav>
+    <!-- Replace links with proper routes or single page refresh -->
+    <!-- Replace links with proper routes  -->
+    <!-- <p>share locations from the places you love</p> -->
+    <a href="/index"><img src="/IMGS/header-circle-dark-small.png"></a>
+    <ul>
+      <li><a href="/profile">cancel</a></li>
+      <li><a href="/index">logout</a></li>
+    </ul>
+  </nav>
+  <form id="create">
+    <div class="content-large">
+      <div class="table">
+        <h3>create</h3>
+        <input type="text" placeholder="search">
+        <input type="text" placeholder="title">
+        <input id="formatted_address" type="text" placeholder="address">
+        <input class="latitude" type="text" placeholder="latitude">
+        <input class="longitude" type="text" placeholder="longitude">
+  </form>
+  <form method="post">
+    <button type="submit">
+      <img src="/IMGS/add-hover.png">
+    </button>
+  </form>
+  <a href="/profile"><i class="fas fa-arrow-right" style="color:#faf7ef;"></i></a>
+  </div>
+  </div>
   <div class="main-container">
     <div id="map-container">
       <!-- MAPS -->
@@ -78,4 +82,5 @@
 </body>
 <!-- to top-->
 <button id="to-top"><img src="/IMGS/to-top.png"></i></button>
+
 </html>
