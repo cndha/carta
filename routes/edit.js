@@ -47,8 +47,6 @@ module.exports = (db, axios, environment) => {
         console.error(e);
         res.send(e)
       });
-
-    res.send("POST to /edit/:id");
   });
 
   router.patch("/pin/:id", (req, res) => {
@@ -64,7 +62,6 @@ module.exports = (db, axios, environment) => {
         res.send(e)
       });
 
-    res.send("POST to /edit/:id");
   });
 
   //when you click the delete button, deletes map from db with that id

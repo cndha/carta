@@ -60,13 +60,10 @@ module.exports = (db, axios, environment) => {
     //   res.send("ERROR 400: Description cannot be empty!");
     //   return;
     // }
-
   });
-
 
   // renders create page when create button is pressed (localhost:8080/create)
   router.get("/", (req, res) => {
-
     res.render("create");
   });
 
@@ -74,9 +71,7 @@ module.exports = (db, axios, environment) => {
   router.post("/pin", (req, res) => {
 
     // let data = req.body;
-
     let data = "1";
-
     db.saveNewMarker(data)
       .then(() => {
         res.json({ Success: true });
@@ -85,15 +80,11 @@ module.exports = (db, axios, environment) => {
         console.error(e);
         res.send(e)
       });
-
-    // res.send("done");
   });
-
 
   router.get("/information", (req, res) => {
     res.render("geocode");
   });
-
 
   router.get("/information/ask", (req, res) => {
 
@@ -103,10 +94,8 @@ module.exports = (db, axios, environment) => {
         key: 'AIzaSyCloL_uI_F9x3edJ_zViI7qC5zoq9u2HZg'
       }
     }).then((result) => {
-
       res.send(result.data);
     }).catch((error) => {
-
       console.log(error)
     })
   });
