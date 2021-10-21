@@ -81,11 +81,19 @@ $(document).ready(function () {
       addMarker(event.latLng, map);
     });
     addMarker(vancouver, map);
+
+    retrieveMarkers(db);
   }
 
   function retrieveMarkers(db) {
-
-  }
+    for (let x = 0; x < db.length; x++) {
+      new google.maps.Marker({
+        position: { lat: db[i].latitude, lng: db[i].longitude },
+        map: map,
+        title: db[i].title,
+    })
+    }
+  };
 
 
   // Adds a marker to the map.
@@ -170,7 +178,10 @@ $(document).ready(function () {
         console.log(error)
       }
     })
+
   });
+
+
 
   initMap();
 });

@@ -153,7 +153,7 @@ exports.deleteMap = deleteMap;
 //get all markers for specific mapId
 const getMarkersForMap = function(mapId) {
 
-  const sqlString = `SELECT markers.latitude, markers.longitude FROM markers WHERE map_id = $1`;
+  const sqlString = `SELECT latitude, longitude, title FROM markers WHERE map_id = $1`;
 
   return pool
   .query(sqlString, [mapId])
@@ -173,10 +173,10 @@ const saveNewMarker = function (marker) {
 
   // how to add user_id / map_id to marker? --> server side
 
-  const sqlString = `INSERT INTO markers (user_id, map_id, title, description, image, street, city, province, postalcode, country, longitude, latitude, created) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *`;
+  const sqlString = `INSERT INTO markers (user_id, map_id, title, description, image, longitude, latitude, created_at) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`;
 
   return pool
-    .query(sqlString, [marker.user_id, marker.map_id, marker.title, marker.description, marker.image, marker.street, marker.city, marker.province, marker.postalcode, marker.country, marker.longitude, marker.latitude, marker.created_at])
+    .query(sqlString, [marker.user_id, marker.map_id, marker.title, marker.description, marker.image, marker.longitude, marker.latitude, marker.created_at])
     .then(res => {
       return res.rows[0];
     })
@@ -189,10 +189,10 @@ exports.saveNewMarker = saveNewMarker;
 //saves edited marker
 const editMarker = function (markerId) {
 
-  const sqlString = `UPDATE markers SET title = $1, description = $2, image = $3, street = $4, city = $5, province = $6, postalcode = $7, country = $8, latitude = $9, longitude = $10`;
+  const sqlString = `UPDATE markers SET title = $1, description = $2, image = $3, latitude = $4, longitude = $5`;
 
   return pool
-    .query(sqlString, [markerId.title, markerId.description, markerId.image, markerId.street, markerId.city, markerId.province, markerId.postalcode, markerId.country, markerId.latitude, markerId.longitude])
+    .query(sqlString, [markerId.title, markerId.description, markerId.image, markerId.latitude, markerId.longitude])
     .then(res => {
       return res.rows[0];
     })
