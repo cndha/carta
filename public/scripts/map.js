@@ -33,7 +33,7 @@ $(document).ready(function() {
     // });
 
     const $title = document.getElementById("title");
-    console.log($title);
+
     const contentString = '<div id="content">' +
       '<div id="siteNotice">' +
       "</div>" +
@@ -79,7 +79,6 @@ $(document).ready(function() {
     google.maps.event.addListener(map, "click", (event) => {
       addMarker(event.latLng, map);
     });
-    
     addMarker(vancouver, map);
   }
 
