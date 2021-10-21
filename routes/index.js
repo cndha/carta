@@ -7,7 +7,7 @@ module.exports = (db, axios, environment) => {
   router.get("/:id", (req, res) => {
 
     res.cookie('user_id', req.params.id);
-    res.redirect('/index');
+    res.redirect('/profile');
   });
 
   // when you enter the search page, renders localhost:8080/index
@@ -35,6 +35,12 @@ module.exports = (db, axios, environment) => {
       });
 
   });
+
+  router.get("/logout", (req, res) => {
+    res.clearCookie('user_id');
+    res.redirect('/index');
+  });
+
   return router;
 };
 
