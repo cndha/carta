@@ -6,10 +6,11 @@ const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 let labelIndex = 0;
 
 function initMap() {
-  const vancouver = { lat: 49.246292, lng: -123.116226 };
+  const startCenter = { lat: 49.246292, lng: -123.116226 };
+  // startCenter = the [0] of map markers?
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 12,
-    center: vancouver,
+    center: startCenter,
   });
   // const $title = document.getElementById("title")
   // console.log($title);
@@ -172,8 +173,8 @@ $(document).ready(function () {
     event.preventDefault();
     // const address = $('#formatted-address').val();
     const address = $('#formatted-address').text();
-    const longitude = $('longitude').text();
-    const latitude = $('latitude').text();
+    const longitude = $('#longitude').text();
+    const latitude = $('#latitude').text();
     $.ajax({
       url: "/create",
       method: "POST",
