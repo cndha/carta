@@ -58,7 +58,7 @@ exports.getMapById = getMapById;
 
 //shows maps OWNED/created by user
 const getMapsOwnedByUser = function (userId) {
-  const sqlString = `SELECT * FROM maps JOIN users ON owner_id = users.id WHERE maps.owner_id = $1`;
+  const sqlString = `SELECT * FROM maps WHERE user_id = $1`;
 
   return pool
     .query(sqlString, [userId])
