@@ -58,7 +58,7 @@ exports.getMapById = getMapById;
 
 //shows maps OWNED/created by user
 const getMapsOwnedByUser = function (userId) {
-  const sqlString = `SELECT * FROM maps WHERE owner_id = $1`;
+  const sqlString = `SELECT * FROM maps WHERE user_id = $1`;
 
   return pool
     .query(sqlString, [userId])
@@ -156,14 +156,6 @@ const editMap = function (map) {
 }
 exports.editMap = editMap;
 
-// var options = {
-//   zoom: 8;
-//   center: {lat: , lng: }
-// }
-// var map = new google.maps.Map(document.getElementById('map'), options);
-
-
-// function for looping through marker objects, everytime you pass thorugh it, it calls addNewMarker
 
 //delete map
 const deleteMap = function (mapId) {
@@ -245,18 +237,6 @@ const deleteMarker = function (markerId) {
     .catch(e => { console.error(e) });
 }
 exports.deleteMarker = deleteMarker;
-
-
-
-// var marker = new google.maps.Marker({
-//   position: {lat: ,lng: };
-//   map: map_id;
-//   content: marker.name, etc.
-// })
-
-// var infoWindow = new.google.maps.InfoWindow({
-//   content: '';
-// });
 
 
 //sharing map with other users to collab

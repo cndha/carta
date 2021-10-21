@@ -19,20 +19,18 @@ function retrieveMarkers(db, map) {
   }
 };
 
-
-
 $(document).ready(function () {
   $("#buttonPressForStuff").on("click", (event) => {
     $.ajax({
-      url: "/explore/afterLoad/3",
+      url: "/explore/afterLoad/1",
       method: "GET",
-      data: { id: 3 },
+      data: { id: 1 },
       success: function (data) {
         function initMap() {
-          const location = { lat: Number(data.markers[0].latitude), lng: Number(data.markers[0].longitude) };
+          const vancouver = { lat: 49.246292, lng: -123.116226 };
           const map = new google.maps.Map(document.getElementById("map"), {
             zoom: 10,
-            center: location,
+            center: vancouver,
           });
           retrieveMarkers(data.markers, map);
         }
@@ -45,4 +43,5 @@ $(document).ready(function () {
   })
 
   initMap();
+
 });
