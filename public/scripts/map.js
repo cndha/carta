@@ -17,7 +17,7 @@ $(document).ready(function () {
       zoom: 12,
       center: vancouver,
     });
-    
+
     //set marker at center
     // marker.setMap(map);
 
@@ -146,13 +146,13 @@ $(document).ready(function () {
     //init
   }
 
-  //RETRIEVES LNG/LAT ON cLICK
+  //RETRIEVES LNG/LAT ON Click on Map
   $("#create").on("click", function (event) {
     event.preventDefault();
-    
+
     // const address = $('#formatted-address').val();
     const address = $('#formatted-address').text();
-    const longitude = $('Longitude').text();
+    const longitude = $('longitude').text();
     const latitude = $('latitude').text();
 
     $.ajax({
