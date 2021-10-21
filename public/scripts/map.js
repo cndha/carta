@@ -183,9 +183,6 @@ $(document).ready(function () {
 
   });
 
-
-
-
   //RETRIEVES LNG/LAT ON cLICK
   $("#create").on("click", function (event) {
 
@@ -235,9 +232,6 @@ $(document).ready(function () {
       }
     })
   });
-
-
-
 
   initMap();
 
