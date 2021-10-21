@@ -30,13 +30,7 @@ exports.getUserById = getUserById;
 //search for all maps using keyword
 const getMapsByKeyword = function (keyword) {
   // let newkeyword = "%" + keyword + "%";
-<<<<<<< HEAD
   const sqlString = `SELECT title, description FROM maps WHERE description LIKE '%${$1}%''`;
-=======
-  let values = [`%${keyword}%`];
-
-  const sqlString = `SELECT * FROM maps WHERE description LIKE $1`;
->>>>>>> 6e8b3a224415f2aedb01913e60bd7754e8593217
   return pool
     .query(sqlString, values)
     .then(res => {
@@ -92,7 +86,7 @@ exports.getMapsUserContributedTo = getMapsUserContributedTo;
 //shows all the maps favourited by user
 const getFavMapsByUser = function (userId) {
 
-  const sqlString = `SELECT maps.title, maps.descriptuon FROM maps JOIN favourites ON map_id = maps.id JOIN users ON user_id = users.id WHERE favourites.user_id = $1 ORDER BY favourited_at DESC`;
+  const sqlString = `SELECT maps.title, maps.description FROM maps JOIN favourites ON map_id = maps.id JOIN users ON user_id = users.id WHERE favourites.user_id = $1 ORDER BY favourited_at DESC`;
 
   return pool
     .query(sqlString, [userId])
@@ -105,6 +99,15 @@ exports.getFavMapsByUser = getFavMapsByUser;
 
 //displayMAP function - shows map & markers
 const displayMap = function(mapId) {
+
+  let map;
+
+  function initMap() {
+    map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 2,
+      center: new google.maps.LatLng(2.8, -187.3),
+      mapTypeId: "terrain",
+    });
 
   // const sqlString = `SELECT maps.title, maps.description, markers.id, markers.latitude, markers.longitude FROM markers JOIN maps ON map_id = maps.id WHERE map_id = $1`;
 
@@ -126,7 +129,7 @@ const displayMap = function(mapId) {
   // req.body is object
   // pull data from object & call saveNewMap()
   // loop through marker values & call saveNewMarker()
-
+  }
 }
 exports.displayMap = displayMap;
 displayMap(3);
