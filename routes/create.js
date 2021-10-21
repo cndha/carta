@@ -60,43 +60,31 @@ module.exports = (db, axios, environment) => {
     //   res.send("ERROR 400: Description cannot be empty!");
     //   return;
     // }
-
-    // a function that takes in the form's fields and inserts those values into database
-    // INSERT INTO maps (the fields here) VALUES (the values)
-    // insert objects with the values grabbed from the html form into the function createMap()
-
-    // const objectToPass = {
-    //   user_id: 1,
-    //   description: "hello world",
-    //   title: "some map"
-    // }
-
-    // db.createMap(objectToPass)
-    //   .then(() => {
-    //    res.json({Success: true});
-    //   })
-    //   .catch(e => {
-    //     console.error(e);
-    //     res.send(e)
-    //   });
-
-
   });
 
-
-
-  // http://www.mapquestapi.com/geocoding/v1/reverse?key=KEY&location=30.333472,-81.470448&includeRoadMetadata=true&includeNearestIntersection=true
-
+  // renders create page when create button is pressed (localhost:8080/create)
   router.get("/", (req, res) => {
-
-
     res.render("create");
+  });
+
+  // when submit button for pin is pressed, add that pin to the database corresponding to that map (localhost:8080/create/pin)
+  router.post("/pin", (req, res) => {
+
+    // let data = req.body;
+    let data = "1";
+    db.saveNewMarker(data)
+      .then(() => {
+        res.json({ Success: true });
+      })
+      .catch(e => {
+        console.error(e);
+        res.send(e)
+      });
   });
 
   router.get("/information", (req, res) => {
     res.render("geocode");
   });
-
 
   router.get("/information/ask", (req, res) => {
 
@@ -106,10 +94,8 @@ module.exports = (db, axios, environment) => {
         key: 'AIzaSyCloL_uI_F9x3edJ_zViI7qC5zoq9u2HZg'
       }
     }).then((result) => {
-
       res.send(result.data);
     }).catch((error) => {
-
       console.log(error)
     })
   });

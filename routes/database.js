@@ -30,9 +30,11 @@ exports.getUserById = getUserById;
 //search for all maps using keyword
 const getMapsByKeyword = function (keyword) {
   // let newkeyword = "%" + keyword + "%";
-  const sqlString = `SELECT * FROM maps WHERE description LIKE '%${$1}%''`;
+  let values = [`%${keyword}%`];
+
+  const sqlString = `SELECT * FROM maps WHERE description LIKE $1`;
   return pool
-    .query(sqlString, [newkeyword])
+    .query(sqlString, values)
     .then(res => {
       return res.rows;
     })
@@ -98,7 +100,7 @@ const getFavMapsByUser = function (userId) {
 exports.getFavMapsByUser = getFavMapsByUser;
 
 //displayMAP function - shows map & markers
-const displayMap = function(map) {
+const displayMap = function (map) {
 
 
 
@@ -117,54 +119,54 @@ const saveNewMap = function (map) {
   const sqlString = `INSERT INTO maps (owner_id, title, description, created_at) VALUES ($1, $2, $3, $4) RETURNING *`;
 
   return pool
-  .query(sqlString, [map.owner_id, map.title, map.description, map.created_at])
-  .then(res => {
-    return res.rows[0];
-  })
-  .catch(e => { console.error(e) });
+    .query(sqlString, [map.owner_id, map.title, map.description, map.created_at])
+    .then(res => {
+      return res.rows[0];
+    })
+    .catch(e => { console.error(e) });
 
 }
 exports.saveNewMap = saveNewMap;
 
 //edit map
-const editMap = function(map) {
+const editMap = function (map) {
 
   const sqlString = `UPDATE maps SET title = $1, description = $2`;
 
   return pool
-  .query(sqlString, [map.title, map.description])
-  .then(res => {
-    return res.rows[0];
-  })
-  .catch(e => { console.error(e) });
+    .query(sqlString, [map.title, map.description])
+    .then(res => {
+      return res.rows[0];
+    })
+    .catch(e => { console.error(e) });
 }
 
-  // var options = {
-  //   zoom: 8;
-  //   center: {lat: , lng: }
-  // }
-  // var map = new google.maps.Map(document.getElementById('map'), options);
+// var options = {
+//   zoom: 8;
+//   center: {lat: , lng: }
+// }
+// var map = new google.maps.Map(document.getElementById('map'), options);
 
 
 // function for looping through marker objects, everytime you pass thorugh it, it calls addNewMarker
 
- //delete map
-const deleteMap = function(mapId) {
+//delete map
+const deleteMap = function (mapId) {
 
   const sqlString = `DELETE FROM maps WHERE id = $1`;
 
   return pool
-  .query(sqlString, [mapId])
-  .then(res => {
-    return res.rows;
-  })
-  .catch(e => { console.error(e) });
+    .query(sqlString, [mapId])
+    .then(res => {
+      return res.rows;
+    })
+    .catch(e => { console.error(e) });
 }
 exports.deleteMap = deleteMap;
 
 
 //saves markers on new map
-const saveNewMarker = function(marker) {
+const saveNewMarker = function (marker) {
 
   // this just saving information per marker, **need another function to pull up markers for a given map_id
 
@@ -173,52 +175,52 @@ const saveNewMarker = function(marker) {
   const sqlString = `INSERT INTO markers (user_id, map_id, title, description, image, street, city, province, postalcode, country, longitude, latitude, created) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *`;
 
   return pool
-  .query(sqlString, [marker.user_id, marker.map_id, marker.title, marker.description, marker.image, marker.street, marker.city, marker.province, marker.postalcode, marker.country, marker.longitude, marker.latitude, marker.created_at])
-  .then(res => {
-    return res.rows[0];
-  })
-  .catch(e => { console.error(e) });
+    .query(sqlString, [marker.user_id, marker.map_id, marker.title, marker.description, marker.image, marker.street, marker.city, marker.province, marker.postalcode, marker.country, marker.longitude, marker.latitude, marker.created_at])
+    .then(res => {
+      return res.rows[0];
+    })
+    .catch(e => { console.error(e) });
 
 }
 exports.saveNewMarker = saveNewMarker;
 
 
 //saves edited marker
-const editMarker = function(markerId) {
+const editMarker = function (markerId) {
 
   const sqlString = `UPDATE markers SET title = $1, description = $2, image = $3, street = $4, city = $5, province = $6, postalcode = $7, country = $8, latitude = $9, longitude = $10`;
 
   return pool
-  .query(sqlString, [markerId.title, markerId.description, markerId.image, markerId.street, markerId.city, markerId.province, markerId.postalcode, markerId.country, markerId.latitude, markerId.longitude])
-  .then(res => {
-    return res.rows[0];
-  })
-  .catch(e => { console.error(e) });
+    .query(sqlString, [markerId.title, markerId.description, markerId.image, markerId.street, markerId.city, markerId.province, markerId.postalcode, markerId.country, markerId.latitude, markerId.longitude])
+    .then(res => {
+      return res.rows[0];
+    })
+    .catch(e => { console.error(e) });
 }
 exports.editMarker = editMarker;
 
 
 //deletes marker from db
-const deleteMarker = function(markerId){
+const deleteMarker = function (markerId) {
 
   const sqlString = `DELETE FROM markers WHERE id = $1`;
 
   return pool
-  .query(sqlString, [markerId])
-  .then(res => {
-    return res.rows;
-  })
-  .catch(e => { console.error(e) });
+    .query(sqlString, [markerId])
+    .then(res => {
+      return res.rows;
+    })
+    .catch(e => { console.error(e) });
 }
 exports.deleteMarker = deleteMarker;
 
 
 
-  // var marker = new google.maps.Marker({
-  //   position: {lat: ,lng: };
-  //   map: map_id;
-  //   content: marker.name, etc.
-  // })
+// var marker = new google.maps.Marker({
+//   position: {lat: ,lng: };
+//   map: map_id;
+//   content: marker.name, etc.
+// })
 
 // var infoWindow = new.google.maps.InfoWindow({
 //   content: '';
