@@ -7,56 +7,30 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <!-- <script type="text/javascript" src="../scripts/exploreId.js"></script> -->
-<title>THIS IS THE CREATE PAGE</title>
+  <script type="text/javascript" src="../scripts/exploreId.js"></script>
+  <title>THIS IS THE CREATE PAGE</title>
 </head>
 
 <header>THIS IS THE CREATE PAGE</header>
 
-<%= let obj={map:map, markers:markers }%>
-  <script type="text/javascript" async="true">
-    function initMap(obj) {
-      const vancouver = { lat: 49.246292, lng: -123.116226 };
-      const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 12,
-        center: vancouver,
-      });
+<body id="#body">
 
-      console.log(obj.markers);
-      let db = obj.markers;
-      retrieveMarkers(db);
-    }
+  <div>
+    <%=map.title%>
+  </div>
+  <!-- <%=markers[0].latitude%> -->
+  <div>
 
-    function retrieveMarkers(db) {
-      for (let x = 0; x < db.length; x++) {
-        new google.maps.Marker({
-          position: { lat: db[i].latitude, lng: db[i].longitude },
-          map: map,
-          title: db[i].title,
-        })
-      }
-    };
+    <button id="buttonPressForStuff">PRESS ME FOR STUFF</button>
 
-    initMap(obj)
-  </script>
-
-  <body>
-
-    <div>
-      <%=map.title%>
-
-    </div>
-    <!-- <%=markers[0].latitude%> -->
-    <div>
-
-    </div>
-    <div id="map" style="width: 500px; height: 500px;"></div>
-    <div id="map"></div>
-    <!-- MAP api change key-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn7dBW6G6TF62UyX3krF5enoY6WF3A7Tg&callback=initMap"
-      async defer></script>
+  </div>
+  <div id="map" style="width: 500px; height: 500px;"></div>
+  <div id="map"></div>
+  <!-- MAP api change key-->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn7dBW6G6TF62UyX3krF5enoY6WF3A7Tg&callback=initMap"
+    async defer></script>
 
 
-  </body>
+</body>
 
 </html>

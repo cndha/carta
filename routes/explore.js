@@ -33,9 +33,29 @@ module.exports = (db, axios, environment) => {
 
             let templateVars = { markers: resultsForMarkers, map: resultForMap };
             global = templateVars;
-
-            console.log(templateVars)
             res.render("exploreId", templateVars);
+
+          }).catch(e => {
+            console.error(e);
+            res.send(e)
+          });
+      })
+  });
+
+  router.get("/afterLoad/:id", (req, res) => {
+
+    let mapIdToSearch = 1;
+
+    db.getMapById(mapIdToSearch)
+      .then((resultForMap) => {
+        db.getMarkersForMap(mapIdToSearch)
+          .then(resultsForMarkers => {
+
+            let templateVars = { markers: resultsForMarkers, map: resultForMap };
+            global = templateVars;
+
+            console.log("GIVING INFO TO CLIENT----------------------------")
+            res.send(templateVars);
 
           }).catch(e => {
             console.error(e);
