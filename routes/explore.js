@@ -5,7 +5,6 @@ const router = express.Router();
 
 module.exports = (db, axios, environment) => {
 
-
   //when you enter the explore page, sends map data to client
   router.get("/", (req, res) => {
 
@@ -45,7 +44,7 @@ module.exports = (db, axios, environment) => {
   router.get("/afterLoad/:id", (req, res) => {
 
     let mapIdToSearch = req.params.id;
-
+    
     db.getMapById(mapIdToSearch)
       .then((resultForMap) => {
         db.getMarkersForMap(mapIdToSearch)

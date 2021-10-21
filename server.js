@@ -96,6 +96,7 @@ const profileRoutes = require("./routes/profile");
 const editRoutes = require("./routes/edit");
 const createRoutes = require("./routes/create");
 const indexRoutes = require("./routes/index");
+const logoutRoutes = require("./routes/logout");
 
 // Mount all resource routes
 app.use("/explore", exploreRoutes(db, axios, environment));
@@ -103,6 +104,7 @@ app.use("/profile", profileRoutes(db, axios, environment));
 app.use("/edit", editRoutes(db, axios, environment));
 app.use("/create", createRoutes(db, axios, environment));
 app.use("/index", indexRoutes(db, axios, environment));
+app.use("/logout", logoutRoutes(db));
 
 // Home page
 // Warning: avoid creating more routes in this file!
