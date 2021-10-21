@@ -30,8 +30,8 @@ module.exports = (db, axios, environment) => {
         db.getMarkersForMap(mapIdToSearch)
           .then(resultsForMarkers => {
 
-            let templateVars = { mapId: mapIdToSearch, markers: resultsForMarkers, map: resultForMap };
-            global = templateVars;
+            let templateVars = { markers: resultsForMarkers, map: resultForMap, mapId: mapIdToSearch };
+            console.log(templateVars);
             res.render("exploreId", templateVars);
 
           }).catch(e => {
