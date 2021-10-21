@@ -64,62 +64,18 @@
           <!-- <img src="/IMGS/profile-placeholder.png"> -->
         </div>
 
-        <div class="content-large">
-          <h3><a href="/create">create map </a></h3>
-          <h3>your maps</h3>
-          <h3>delete map</h3>
-          <!-- FORM GET -->
-          <!-- add here -->
-          <form id="ajaxTestForm">
-            <div style=color:white>INFORMATION</div>
-            <textarea class="informationBox" placeholder="INFORMATION HERE"></textarea>
-            <div style=color:white>LATITUDE</div>
-            <textarea class="latitudeBox" placeholder="LATITUDE HERE"></textarea>
-            <div style=color:white>LONGITUDE</div>
-            <textarea class="longitudeBox" placeholder="LONGITUDE HERE"></textarea>
-            <button id="ajaxButton" class="ajaxButton" type="submit">PRESS ME FOR AJAX</button>
-            <button id="ajaxButtonInfo" class="ajaxButtonInfo" type="submit">PRESS ME FOR INFO</button>
-          </form>
-
-          <div class="search-add">
-            <!-- GEOCODER -->
-            <form id='search-query'>
-              <input id='search-input'>
-              <button type='submit'>Search</button>
-            </form>
-            <input id="title" placeholder="title"></input>
-            <div id='formatted_address'> </div>
-            <div id='components'> </div>
-            <div id='geometry'></div>
-
-            <script>
-          // const geocoder = function (e) {
-          //   e.preventDefault();
-          //   const location = document.getElementById('search-input').value;
-
-          // };
-          // const searchQuery = document.getElementById('search-query');
-          // searchQuery.addEventListener('submit', geocoder);
-            </script>
-            <!-- GEOCODER -->
-
-            <!-- POST to SERVER to SEND to DB -->
-            <form method="POST" type="submit" id="create">
-              <button class="btn-create">create</button>
-            </form>
-          </div>
-        </div>
-
-        <!-- MAPS -->
-        <div id="map-container">
-          <div id="map"></div>
-          <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn7dBW6G6TF62UyX3krF5enoY6WF3A7Tg&callback=initMap"
-            async defer>
-            </script>
-        </div>
       </div>
     </div>
+
+    <!-- MAPS -->
+    <div id="map-container">
+      <div id="map"></div>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn7dBW6G6TF62UyX3krF5enoY6WF3A7Tg&callback=initMap"
+        async defer>
+        </script>
+    </div>
+  </div>
+  </div>
   </div>
   <!-- MAIN CONTAINER -->
   </div>
