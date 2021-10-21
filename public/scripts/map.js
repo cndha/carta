@@ -59,13 +59,18 @@ $(document).ready(function () {
     const infowindow = new google.maps.InfoWindow({
       content: contentString,
     });
-
+    
+    // function SetMarker(position) {
+    //   //Remove previous Marker.
+    //   if (marker != null) {
+    //       marker.setMap(null);
+    //   }
+    // }
     const marker = new google.maps.Marker({
       position: { lat: 49.2727014, lng: -123.1352146 },
       map: map,
       title: "Public Market",
       icon: '/IMGS/marker-small.png',
-
     });
 
     marker.addListener("click", () => {
@@ -224,3 +229,7 @@ $(document).ready(function () {
 
   initMap();
 });
+
+// remove a marker 
+// on.click
+// marker.setMap(null);

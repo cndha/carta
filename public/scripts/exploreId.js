@@ -1,5 +1,4 @@
 
-
 $(document).ready(function () {
 
   function initMap() {
@@ -49,5 +48,4 @@ $(document).ready(function () {
   })
 
   initMap();
-
 });
