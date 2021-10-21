@@ -8,8 +8,8 @@ CREATE TABLE maps (
 
   title VARCHAR(255) NOT NULL,
   description TEXT,
-  -- likes INTEGER,
-  created_at TIMESTAMP,
+  likes INTEGER,
+  created_at TIMESTAMP
   -- completed_at TIMESTAMP
   -- last_edit TIMESTAMP,
   -- saved BOOLEAN DEFAULT false,

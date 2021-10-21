@@ -30,9 +30,13 @@ exports.getUserById = getUserById;
 //search for all maps using keyword
 const getMapsByKeyword = function (keyword) {
   // let newkeyword = "%" + keyword + "%";
+<<<<<<< HEAD
+  const sqlString = `SELECT title, description FROM maps WHERE description LIKE '%${$1}%''`;
+=======
   let values = [`%${keyword}%`];
 
   const sqlString = `SELECT * FROM maps WHERE description LIKE $1`;
+>>>>>>> 6e8b3a224415f2aedb01913e60bd7754e8593217
   return pool
     .query(sqlString, values)
     .then(res => {
@@ -45,7 +49,7 @@ exports.getMapsByKeyword = getMapsByKeyword;
 
 //display a single map by looking up /:id
 const getMapById = function (mapId) {
-  const sqlString = `SELECT * FROM maps WHERE id = $1`;
+  const sqlString = `SELECT title, description FROM maps WHERE id = $1`;
 
   return pool
     .query(sqlString, [mapId])
@@ -73,7 +77,7 @@ exports.getMapsOwnedByUser = getMapsOwnedByUser;
 
 //shows maps user has contributed to
 const getMapsUserContributedTo = function (userId) {
-  const sqlString = `SELECT * FROM maps JOIN contributors ON map_id = maps.id WHERE contributors.user_id = $1`;
+  const sqlString = `SELECT title, description FROM maps JOIN contributors ON map_id = maps.id WHERE contributors.user_id = $1`;
 
   return pool
     .query(sqlString, [userId])
@@ -88,7 +92,7 @@ exports.getMapsUserContributedTo = getMapsUserContributedTo;
 //shows all the maps favourited by user
 const getFavMapsByUser = function (userId) {
 
-  const sqlString = `SELECT * FROM maps JOIN favourites ON map_id = maps.id JOIN users ON user_id = users.id WHERE favourites.user_id = $1 ORDER BY favourited_at DESC`;
+  const sqlString = `SELECT maps.title, maps.descriptuon FROM maps JOIN favourites ON map_id = maps.id JOIN users ON user_id = users.id WHERE favourites.user_id = $1 ORDER BY favourited_at DESC`;
 
   return pool
     .query(sqlString, [userId])
@@ -100,9 +104,24 @@ const getFavMapsByUser = function (userId) {
 exports.getFavMapsByUser = getFavMapsByUser;
 
 //displayMAP function - shows map & markers
-const displayMap = function (map) {
+const displayMap = function(mapId) {
 
+  // const sqlString = `SELECT maps.title, maps.description, markers.id, markers.latitude, markers.longitude FROM markers JOIN maps ON map_id = maps.id WHERE map_id = $1`;
 
+  const sqlString = `SELECT markers.id, markers.latitude, markers.longitude FROM markers WHERE map_id = $1`;
+
+  return pool
+  .query(sqlString, [mapId])
+  .then(res => { //get an array of objects with select fields from table
+    console.log(res.rows);
+
+    res.rows.forEach((element) => {
+      let latLng = [ res.rows.latitude, res.rows.longitude ];
+
+    })
+
+  })
+  .catch(e => { console.error(e) });
 
   // req.body is object
   // pull data from object & call saveNewMap()
@@ -110,7 +129,7 @@ const displayMap = function (map) {
 
 }
 exports.displayMap = displayMap;
-
+displayMap(3);
 
 
 //saves a new map
@@ -140,6 +159,7 @@ const editMap = function (map) {
     })
     .catch(e => { console.error(e) });
 }
+exports.editMap = editMap;
 
 // var options = {
 //   zoom: 8;

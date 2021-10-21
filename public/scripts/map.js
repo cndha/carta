@@ -80,6 +80,7 @@ $(document).ready(function () {
     google.maps.event.addListener(map, "click", (event) => {
       addMarker(event.latLng, map);
     });
+    
     addMarker(vancouver, map);
   }
 
@@ -149,7 +150,7 @@ $(document).ready(function () {
 
     // const address = $('#formatted-address').val();
     const address = $('#formatted-address').text();
-    const longitude = $('Longitude').text();
+    const longitude = $('longitude').text();
     const latitude = $('latitude').text();
 
     $.ajax({
