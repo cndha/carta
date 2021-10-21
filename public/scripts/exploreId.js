@@ -20,11 +20,13 @@ function retrieveMarkers(db, map) {
 };
 
 $(document).ready(function () {
-  $("#buttonPressForStuff").on("click", (event) => {
+
+  console.log("this is the window search", window.location.href);
+
     $.ajax({
-      url: "/explore/afterLoad/1",
+      url: `/explore/afterLoad/3`,
       method: "GET",
-      data: { id: 1 },
+      data: { id: 3 },
       success: function (data) {
         function initMap() {
           const location = { lat: Number(data.markers[0].latitude), lng: Number(data.markers[0].longitude) };
@@ -40,8 +42,5 @@ $(document).ready(function () {
         console.log(error)
       }
     })
-  })
-
-  initMap();
-
 });
+

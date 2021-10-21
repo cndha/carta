@@ -69,6 +69,18 @@ const getMapsOwnedByUser = function (userId) {
 }
 exports.getMapsOwnedByUser = getMapsOwnedByUser;
 
+const mostRecentMapByUser = function (userId) {
+  const sqlString = `SELECT * FROM maps where user_id = $1 ORDER BY created_at DESC`;
+
+  return pool
+    .query(sqlString, [userId])
+    .then(res => {
+      return res.rows[0];
+    })
+    .catch(e => { console.error(e) });
+}
+exports.mostRecentMapByUser = mostRecentMapByUser;
+
 
 //shows maps user has contributed to
 const getMapsUserContributedTo = function (userId) {
@@ -130,11 +142,12 @@ exports.getFavMapsByUser = getFavMapsByUser;
 //saves a new map
 const saveNewMap = function (map) {
 
-  const sqlString = `INSERT INTO maps (owner_id, title, description, created_at) VALUES ($1, $2, $3, $4) RETURNING *`;
+  const sqlString = `INSERT INTO maps (user_id, title, description, created_at) VALUES ($1, $2, $3, $4) RETURNING *`;
 
   return pool
-    .query(sqlString, [map.owner_id, map.title, map.description, map.created_at])
+    .query(sqlString, [map.user_id, map.title, map.description, map.created_at])
     .then(res => {
+      console.log(res.rows[0]);
       return res.rows[0];
     })
     .catch(e => { console.error(e) });
@@ -145,10 +158,10 @@ exports.saveNewMap = saveNewMap;
 //edit map
 const editMap = function (map) {
 
-  const sqlString = `UPDATE maps SET title = $1, description = $2`;
+  const sqlString = `UPDATE maps SET title = $1, description = $2 WHERE id = $3`;
 
   return pool
-    .query(sqlString, [map.title, map.description])
+    .query(sqlString, [map.title, map.description, map.id])
     .then(res => {
       return res.rows[0];
     })
