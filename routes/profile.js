@@ -24,7 +24,7 @@ module.exports = (db, axios, environment) => {
 
     let mapIdToSearch = "req.body.mapId";
 
-    db.getAllMapsOwnedByUser(mapIdToSearch)
+    db.getMapsOwnedByUser(mapIdToSearch)
       .then((result) => {
         res.json(result);
       })
