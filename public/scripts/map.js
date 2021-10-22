@@ -34,7 +34,7 @@ function initMap() {
   const infowindow = new google.maps.InfoWindow({
     content: contentString,
   });
-// FIRST CREATED MARKER
+  // FIRST CREATED MARKER
   const marker = new google.maps.Marker({
     draggable: true,
     animation: google.maps.Animation.DROP,
@@ -67,6 +67,39 @@ function initMap() {
       console.log(location);
     }
   }
+
+  google.maps.event.addListener(map, 'click', (event) => {
+
+    console.log("LAT--->", event.latLng.lat());
+    const lat = event.latLng.lat();
+    console.log("LNG--->", event.latLng.lng());
+    const lng = event.latLng.lng();
+
+    let latlng = lat + "," + lng;
+
+    $.ajax({
+      url: "/create/information/ask",
+      method: "GET",
+      data: { latLng: latlng },
+      success: (data) => {
+        //formatted address:
+        const formattedAddress = data.results[0].formatted_address;
+
+        $('#formatted_address').val(formattedAddress);
+
+        const lat = data.results[0].geometry.location.lat;
+        const lng = data.results[0].geometry.location.lng;
+
+        $('#latitude').val(lat);
+        $('#longitude').val(lng);
+      },
+      error: (error) => {
+        console.log(error)
+      }
+    })
+
+  })
+
 }
 
 $(document).ready(function () {
@@ -78,7 +111,6 @@ $(document).ready(function () {
     });
     // EVENT ON MAP CLICK ?? SHOULDN'T INPUT FIELD FILL BE IN HERE?
 
-    map.addListener("click", (event) => {
     // google.maps.event.addListener(map, 'click', (event) => {
     //   $('#map').on('click', (event) => {
       console.log($('#formatted-address'))
@@ -87,6 +119,7 @@ $(document).ready(function () {
       console.log("LNG--->", event.latLng.lng());
       const lng = event.latLng.lng();
       const latLng = `${lat}, ${lng}`;
+
       axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
         params: {
           address: latLng,
@@ -94,76 +127,66 @@ $(document).ready(function () {
         }
       })
         .then(res => {
-          console.log(res);
+          console.log("!!RES ON CLICK >>> ", res);
           //formatted address:
           const formattedAddress = res.data.results[0].formatted_address;
-          const outputAddress = `
-                <class="list">
-                  <li id="formatted-address">${formattedAddress}</li>
-                </class>`;
+          // const outputAddress = `
+          //       <class="list">
+          //         <li id="formatted-address">${formattedAddress}</li>
+          //       </class>`;
+
           //loop through address components
-          const addressComponents = res.data.results[0].address_components;
+          // const addressComponents = res.data.results[0].address_components;
           // let componentsOutput = `
           // <class="list">
           //   <li>${addressComponents[0].types[0]}: ${addressComponents[0].long_name}</li>
           // </class>`;
-          let componentsOutput = '<class="list">';
-          for (var i = 0; i < addressComponents.length; i++) {
-            componentsOutput += `<li>${addressComponents[i].types[0]}: ${addressComponents[i].long_name}</li>`
-          }
-          componentsOutput += '</class>';
+
+          // let componentsOutput = '<class="list">';
+          // for (var i = 0; i < addressComponents.length; i++) {
+          //   componentsOutput += `<li>${addressComponents[i].types[0]}: ${addressComponents[i].long_name}</li>`
+          // }
+          // componentsOutput += '</class>';
           //lat-long
           const lat = res.data.results[0].geometry.location.lat;
           const lng = res.data.results[0].geometry.location.lng;
-          const geometryOutput = `<li id="latitude">Latitude: ${lat}</li><li id="Longitude">Longitude: ${lng}</li>`;
+          // const geometryOutput = `<li id="latitude">Latitude: ${lat}</li><li id="Longitude">Longitude: ${lng}</li>`;
 
           $('#formatted_address').val(formattedAddress);
           $('#latitude').val(lat);
           $('#longitude').val(lng);
-          //outputs to browser
-          document.getElementById('formatted_address').innerHTML = outputAddress;
-          document.getElementById('components').innerHTML = componentsOutput;
-          document.getElementById('geometry').innerHTML = geometryOutput;
+          // //outputs to browser
+          // document.getElementById('formatted_address').innerHTML = outputAddress;
+          // document.getElementById('components').innerHTML = componentsOutput;
+          // document.getElementById('geometry').innerHTML = geometryOutput;
         })
         .catch(error => {
           console.log(error)
         });
     })
   }
-//for EXPLORE/:id
-// ID?? MAKING HTML ELEMENTS ON SUBMIT???
-  $("#goForm").on("submit", function (event) {
+
+  //WORKING
+  $("#formSearchTerm").on("submit", function (event) {
     event.preventDefault();
     $.ajax({
       url: "/create/information/ask",
       method: "GET",
-      data: { latLng: $('#search').val() },
+      data: { latLng: $('#searchTerm').val() },
       success: (data) => {
         //formatted address:
         const formattedAddress = data.results[0].formatted_address;
 
         $('#formatted_address').val(formattedAddress);
 
-        const outputAddress = `<class="list"><li>${formattedAddress}</li></class>`;
-        //loop through address components
-        const addressComponents = data.results[0].address_components;
-        let componentsOutput = `<class="list">`
-
-        for (var i = 0; i < addressComponents.length; i++) {
-          componentsOutput += `<li>${addressComponents[i].types[0]}: ${addressComponents[i].long_name}</li>`
-        }
-        componentsOutput += '</class>';
-
         const lat = data.results[0].geometry.location.lat;
         const lng = data.results[0].geometry.location.lng;
-        const geometryOutput = `<li>Latitude: ${lat}</li><li>Longitude: ${lng}</li>`;
 
         $('#latitude').val(lat);
         $('#longitude').val(lng);
-        //outputs to browser
-        document.getElementById('formatted_address').innerHTML = outputAddress;
-        document.getElementById('components').innerHTML = componentsOutput;
-        document.getElementById('geometry').innerHTML = geometryOutput;
+
+        // $('#map').val().placeMarker(lat + ',' + lng)
+
       },
       error: (error) => {
         console.log(error)
@@ -171,8 +194,7 @@ $(document).ready(function () {
     })
   });
 
-  //RETRIEVES LNG/LAT ON cLICK
-  // WHATS ID CREATE? FOR THE EVENT?----------------------->
+  //CREATING THE MAP (profile)
   $("#create").on("click", function (event) {
     event.preventDefault();
     // const address = $('#formatted-address').val();
@@ -238,8 +260,8 @@ $(document).ready(function () {
       .then(function (data) {
         $error.slideUp('swing');
       })
-    })
-//DOCUMENT READY
+  })
+  //DOCUMENT READY
 });
 
 

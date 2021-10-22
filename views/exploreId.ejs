@@ -23,22 +23,22 @@
 
   <!-- EXTERNAL JS -->
   <script type="text/javascript" src="../scripts/exploreId.js"></script>
-  <title>Carta: Map by Id</title>
+  <title>Carta: <%= map.title %> </title>
 </head>
 
 <body>
 
-<header>
-  <nav>
-    <a href="/index"><img src="/IMGS/header-circle-dark-small.png"></a>
-    <ul>
-      <li><a href="/logout">logout</a></li>
-    </ul>
-  </nav>
-</header>
+  <header>
+    <nav>
+      <a href="/index"><img src="/IMGS/header-circle-dark-small.png"></a>
+      <ul>
+        <li><a href="/logout">logout</a></li>
+      </ul>
+    </nav>
+  </header>
 
   <div class="explore-container">
-    <textarea id='identifier'> <%= mapId %> </textarea>
+
     <div id="map" style="width: 500px; height: 500px;"></div>
 
   </div>

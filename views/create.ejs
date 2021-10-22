@@ -54,12 +54,17 @@
       <h1>create</h1>
       <div class="wrap">
         <div class="search">
-           <input type="text" id="searchTerm" placeholder="search">
-           <button type="submit" class="searchButton">
-             <i class="fa fa-search"></i>
-          </button>
+          <!-- SEARCHTERM TARGET ID FOR SEARCH QUERY -->
+          <!-- ON SUBMIT EVENT?  -->
+          <!-- LINE 131 MAP.JS -->
+          <form id="formSearchTerm">
+            <input type="text" id="searchTerm" placeholder="search">
+            <button type="submit" class="searchButton">
+              <i class="fa fa-search"></i>
+            </button>
+          </form>
         </div>
-     </div>
+      </div>
       <input id="title" type="text" placeholder="title">
       <input id="formatted_address" type="text" placeholder="address">
       <input id="latitude" type="text" placeholder="latitude" name="latitude">
@@ -68,7 +73,7 @@
       <form id="createForm" method="post"><button type="submit">
           <img src="/IMGS/add-hover.png">
         </button></form>
-        <!-- CLICK TO VIEW THE MAP? -->
+      <!-- CLICK TO VIEW THE MAP? -->
       <a href="/explore/3"><i class="fas fa-arrow-right" style="color:#faf7ef;"></i></a>
     </div>
   </div>

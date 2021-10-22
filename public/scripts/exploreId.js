@@ -21,12 +21,13 @@ function retrieveMarkers(db, map) {
 
 $(document).ready(function () {
 
-  console.log("this is the window search", window.location.href);
+  let urlMapId = window.location.href;
+  let val = urlMapId[urlMapId.length-1];
 
     $.ajax({
-      url: `/explore/afterLoad/3`,
+      url: `/explore/afterLoad/${val}`,
       method: "GET",
-      data: { id: 3 },
+      data: { id: val },
       success: function (data) {
         function initMap() {
           const location = { lat: Number(data.markers[0].latitude), lng: Number(data.markers[0].longitude) };
