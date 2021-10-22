@@ -45,18 +45,11 @@
   </nav>
   <div class="main-container">
     <div class="box-body">
-      <h1>hello, kenny</h1>
+      <h1>hello,&nbsp; <%= user.name %></h1>
       <h3><a href="/create">create map</a></h3>
       <h3>favorites</h3>
       <h3 id="mine">my maps</h3>
-      <!-- <h1>Hi, <%= user.name %>
-      </h1>
-
-      <h3><a href="/create">create map</a></h3>
-      <h3>collaborations</h3>
-      <h3>my maps</h3>
-
-    </div> -->
+     </div>
 
     <!-- explore -->
     <div id="explore">
@@ -79,11 +72,12 @@
             <%= maps[i].likes %>
           </span>
           <div class="edit">
+            <form method="GET" action="profile/edit/id">
+              <i class="fas fa-edit"></i>
+            </form>
             <form method="GET" action="profile/delete/id">
               <i class="fas fa-trash-alt"></i>
             </form>
-            <form method="GET" action="profile/edit/id">
-              <i class="fas fa-edit"></i>
           </div>
         </div>
         </div>
@@ -98,9 +92,5 @@
 </body>
 <!-- to top-->
 <button id="to-top"><img src="/IMGS/to-top.png"></i></button>
-<<<<<<< HEAD
-=======
-
->>>>>>> cbcefcc01af6576abe2605d6e32941e7e668108a
 
 </html>
