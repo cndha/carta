@@ -6,6 +6,12 @@ module.exports = (db, axios, environment) => {
   //when you click on your profile, renders localhost:8080/profile
   router.get("/", (req, res) => {
 
+    if (!req.cookies["user_id"]) {
+      res.status(401);
+      res.send("ERROR 401: YOU MUST BE LOGGED IN!");
+      return;
+    }
+
     const userId = req.cookies["user_id"];
 
     db.getUserById(userId)

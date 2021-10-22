@@ -1,59 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta name="viewport" content="initial-scale=1.0">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <!-- JQUERY -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
   <!-- STYLE SHEETS -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/exploreID.css" type="text/css" />
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
-
+  <!-- GOOGLE FONTS LATO weight 100-700-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet">
   <!-- GOOGLE FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <!-- EXTERNAL JS -->
   <script type="text/javascript" src="../scripts/exploreId.js"></script>
   <title>Carta: <%= map.title %> </title>
 </head>
-
 <body>
-
   <nav>
     <a href="/index"><img src="/IMGS/header-circle-dark-small.png"></a>
     <ul>
       <li><a href="/logout">logout</a></li>
     </ul>
   </nav>
-
-  <header >
-
+  <header>
+    <h1><%= map.title %></h1>
   </header>
-
-
   <div class="explore-container">
-    <div id="map" style="width: 500px; height: 500px;"></div>
+    <div id="map" style="width: 800px; height: 400px;"></div>
   </div>
-
-
   <!-- MAP api change key-->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn7dBW6G6TF62UyX3krF5enoY6WF3A7Tg&callback=initMap"
     async defer></script>
-
 </body>
-
 <!-- FOOTER -->
 <footer>
   <button id="to-top"><img src="/IMGS/to-top.png"></i></button>
 </footer>
-
 </html>
