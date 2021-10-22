@@ -21,7 +21,7 @@ module.exports = (db, axios, environment) => {
         .then(resultsForMarkers => {
 
           let templateVars = { markers: resultsForMarkers, map: resultForMap, mapId: mapIdToSearch };
-          console.log(templateVars);
+          console.log("FROM EDIT HERE !!!! ", templateVars);
           res.render("edit", templateVars);
 
         }).catch(e => {

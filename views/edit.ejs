@@ -31,15 +31,22 @@
   <script type="text/javascript" src="../scripts/map.js"></script>
   <script type="text/javascript" src="../scripts/app.js"></script>
   <script type="text/javascript" src="../scripts/edit.js"></script>
+  <script type="text/javascript" src="../scripts/exploreId.js"></script>
+
   <!-- SERVER IN PROJECT ROOT -->
 
-  <title>carta: create</title>
+  <title>carta - edit: <%= map.title %></title>
   <!-- HEAD -->
 </head>
 
 <body>
   <nav>
     <a href="/index"><img src="/IMGS/header-circle-dark-small.png"></a>
+    <span>
+      <p>
+        <%= map.title %>
+      </p>
+    </span>
     <ul>
       <li><a href="/profile">cancel</a></li>
       <li><a href="/index">logout</a></li>
