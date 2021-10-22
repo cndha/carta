@@ -74,11 +74,13 @@
             <div class="right">
               <span class="likes">
                 <i class="fas fa-heart" style="margin-right: 25px;"></i>
-                <p><%= maps[i].likes %></p>
+                <p>
+                  <%= maps[i].likes %>
+                </p>
               </span>
               <div class="edit">
                 <form method="GET" action="profile/edit/id">
-                  <i class="fas fa-edit"></i>
+                  <i class="fas fa-edit" id="<%=maps[i].id%>"></i>
                 </form>
                 <form method="GET" action="profile/delete/id">
                   <i class="fas fa-trash-alt" style="margin-left: 20px;"></i>
