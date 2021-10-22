@@ -168,19 +168,63 @@ body {
   border-radius: 5px;
   resize: none;
 }
-#createFrom button {
-  width: 50%;
+#createForm button {
+  width: 100%;
   height: var(--height);
   margin-bottom: 10px;
   border: 1px solid var(--color-cream);
-  background: var(--color-cream);
-  text-align: center;
-  color:var(--color-brand);
+  background: var(--color-brand);
+  text-align: left;
+  color:var(--color-cream);
   border-radius:5px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.table-edit {
-  height: 100vh;
-  background-color: sandybrown;
+#createForm button:hover {
+  background: var(--color-cream);
+  color: var(--color-brand);
+}
+#createMapButton {
+  width: 100%;
+  height: var(--height);
+  margin-bottom: 10px;
+  border: 1px solid var(--color-cream);
+  background: var(--color-brand);
+  text-align: left;
+  color:var(--color-cream);
+  border-radius:5px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#createMapButton:hover {
+  background: var(--color-cream);
+  color: var(--color-brand);
+}
+.save {
+  width: 100%;
+  height: var(--height);
+  margin-bottom: 10px;
+  border: 1px solid var(--color-cream);
+  background: var(--color-brand);
+  text-align: left;
+  color:var(--color-cream);
+  border-radius:5px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.save a {
+  text-decoration: none;
+}
+.save:hover {
+  background: var(--color-cream);
+  color: var(--color-brand);
 }
