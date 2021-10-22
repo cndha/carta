@@ -35,7 +35,8 @@
 
   <!-- SERVER IN PROJECT ROOT -->
 
-  <title>carta - edit: <%= map.title %></title>
+  <title>carta - edit: <%= map.title %>
+  </title>
   <!-- HEAD -->
 </head>
 
@@ -51,42 +52,30 @@
       <li><a href="/profile"><i class="fas fa-arrow-circle-right" style="font-size: 30px;"></i></a></li>
     </ul>
   </nav>
-    <div class="content-large">
-      <div class="table">
-        <h1>edit</h1>
-        <input id="title" type="text" placeholder="title">
-        <textarea id="description" type="text" placeholder="description" name="description"></textarea>
-        <div class="wrap">
-          <div class="search">
-            <form id="formSearchTerm">
-              <input type="text" id="searchTerm" placeholder="search">
-              <button type="submit" class="searchButton">
-                <i class="fa fa-search"></i>
-              </button>
-            </form>
-          </div>
+  <div class="content-large">
+    <div class="table">
+      <h1>edit</h1>
+      <input id="title" type="text" placeholder="title">
+      <textarea id="description" type="text" placeholder="description" name="description"></textarea>
+      <div class="wrap">
+        <div class="search">
+          <form id="formSearchTerm">
+            <input type="text" id="searchTerm" placeholder="search">
+            <button type="submit" class="searchButton">
+              <i class="fa fa-search"></i>
+            </button>
+          </form>
         </div>
-
-        <button id="updateMapButton" type="submit">update map<i class="fas fa-caret-right"></i></button>
-        <input id="formatted_address" type="text" placeholder="address">
-        <input id="latitude" type="text" placeholder="latitude" name="latitude">
-        <input id="longitude" type="text" placeholder="longitude" name="longitude">
-        <form id="createForm" method="post"><button type="submit">add<i class="fas fa-caret-right"></i></button></form>
-        <a href="/explore/3"><button class="save">save</button></a>
       </div>
-    </div>
-    <div class="main-container">
-      <div id="map-container">
-        <div id="map"></div>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn7dBW6G6TF62UyX3krF5enoY6WF3A7Tg&callback=initMap"
-          async defer></script>
-      </div>
-    </div>
-  </body>
-  <!-- to top-->
-  <button id="to-top"><img src="/IMGS/to-top.png"></i></button>
 
-  </html>
+      <button id="updateMapButton" type="submit">update map<i class="fas fa-caret-right"></i></button>
+      <input id="formatted_address" type="text" placeholder="address">
+      <input id="latitude" type="text" placeholder="latitude" name="latitude">
+      <input id="longitude" type="text" placeholder="longitude" name="longitude">
+      <form id="createForm" method="post"><button type="submit">add<i class="fas fa-caret-right"></i></button></form>
+      <a href="/profile"><button class="save">save</button></a>
+    </div>
+  </div>
   <div class="main-container">
     <div id="map-container">
       <div id="map"></div>
@@ -94,6 +83,18 @@
         async defer></script>
     </div>
   </div>
+</body>
+<!-- to top-->
+<button id="to-top"><img src="/IMGS/to-top.png"></i></button>
+
+</html>
+<div class="main-container">
+  <div id="map-container">
+    <div id="map"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn7dBW6G6TF62UyX3krF5enoY6WF3A7Tg&callback=initMap"
+      async defer></script>
+  </div>
+</div>
 </body>
 <!-- to top-->
 <button id="to-top"><img src="/IMGS/to-top.png"></i></button>

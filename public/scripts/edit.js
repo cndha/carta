@@ -18,7 +18,7 @@ $(document).ready(function () {
   //   $("#newMarkerWrap").slideDown('swing');
   // });
 
-  $("#updateMapButton").on("click", function(e) {
+  $("#updateMapButton").on("click", function (e) {
     e.preventDefault();
 
     let urlMapId = window.location.href;
@@ -30,7 +30,7 @@ $(document).ready(function () {
 
     $.ajax({
       type: "POST",
-      url: `edit/map/${val}`,
+      url: `/edit/map/${val}`,
       data: { title: $('#title').val(), description: $('#description').val() },
       sucess: function (data) {
         console.log("SUCCESS WE DID THE AJAX CALL ON CLIENT'S END")
