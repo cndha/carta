@@ -14,7 +14,7 @@ $(document).ready(function () {
     }, 200);
   });
 
-  $("#addNewMarker").on("click", function () {
-    $("#newMarkerWrap").slideDown('swing');
-  });
+  // $("#addNewMarker").on("click", function () {
+  //   $("#newMarkerWrap").slideDown('swing');
+  // });
 });

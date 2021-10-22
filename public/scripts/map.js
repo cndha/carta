@@ -245,8 +245,7 @@ $(document).ready(function () {
       }
     })
   });
-
-
+  
   $("#contributions").on("click", function (event) {
     event.preventDefault();
     $.ajax({
