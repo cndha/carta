@@ -99,7 +99,7 @@ exports.getMapsUserContributedTo = getMapsUserContributedTo;
 //shows all the maps favourited by user
 const getFavMapsByUser = function (userId) {
 
-  const sqlString = `SELECT maps.title, maps.description FROM maps JOIN favourites ON map_id = maps.id JOIN users ON user_id = users.id WHERE favourites.user_id = $1 ORDER BY favourited_at DESC`;
+  const sqlString = `SELECT maps.title, maps.description FROM maps JOIN favourites ON map_id = maps.id WHERE favourites.user_id = $1 ORDER BY favourited_at DESC`;
 
   return pool
     .query(sqlString, [userId])
@@ -164,7 +164,6 @@ const getMarkersForMap = function (mapId) {
   return pool
     .query(sqlString, [mapId])
     .then(res => {
-      ;
       return res.rows;
     })
     .catch(e => { console.error(e) });

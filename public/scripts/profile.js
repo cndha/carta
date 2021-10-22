@@ -18,18 +18,9 @@ $(document).ready(function () {
       scrollTop: 0
     }, 200);
   });
-
-  $("#exploreButton").on("click", function () {
-    $("#map-container").get(0).scrollIntoView('swing');
-  });
-  $("#map").on("mousedown", function () {
-    $(".content-large").slideDown('swing');
-  });
   
   $("#mine").on("mousedown", function () {
     $("#explore").slideDown('swing');
   });
-
-
 //DOCUMENT.READY
 });
