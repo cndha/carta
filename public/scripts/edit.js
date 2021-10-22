@@ -1,7 +1,4 @@
-console.log("hello");
-
 $(document).ready(function () {
-  console.log("HELLO");
   $(function () {
     $(window).scroll(function () {
       if ($(this).scrollTop() - 200 > 0) {
@@ -17,14 +14,7 @@ $(document).ready(function () {
     }, 200);
   });
 
-  $("#favorites").on("click", function () {
-    $("#slider").slideDown('swing');
+  $("#addNewMarker").on("click", function () {
+    $("#newMarkerWrap").slideDown('swing');
   });
-  $("#mine").on("click", function () {
-    $("#slider").slideToggle('swing');
-  });
-  $("#contributions").on("click", function () {
-    $("#slider").slideDown('swing');
-  });
-  //DOCUMENT.READY
 });
