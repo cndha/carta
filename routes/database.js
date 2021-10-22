@@ -113,7 +113,7 @@ exports.getFavMapsByUser = getFavMapsByUser;
 //saves a new map
 const saveNewMap = function (map) {
 
-  const sqlString = `INSERT INTO maps (user_id, title, description, created_at) VALUES ($1, $2, $3) RETURNING *`;
+  const sqlString = `INSERT INTO maps (user_id, title, description) VALUES ($1, $2, $3) RETURNING *`;
 
   return pool
     .query(sqlString, [map.user_id, map.title, map.description])

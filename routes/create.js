@@ -14,7 +14,7 @@ module.exports = (db, axios, environment) => {
     let objectToPass = {
       user_id: userId,
       title: req.body.title,
-      description: description
+      description: req.body.description
     };
 
     console.log(objectToPass);
@@ -43,7 +43,7 @@ module.exports = (db, axios, environment) => {
     //   return;
     // }
 
-    db.createMap(objectToPass)
+    db.saveNewMap(objectToPass)
       .then(() => {
         db.mostRecentMapByUser(userId)
           .then(mostRecentMap => {
