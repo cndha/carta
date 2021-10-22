@@ -7,7 +7,7 @@ module.exports = (db, axios, environment) => {
   // when confirm button is pressed, inserts a map into db
   router.post("/", (req, res) => {
 
-    console.log("THIS IS THE STUFF SENT BY CLIENT AJAX :", req.body);
+    console.log("THIS IS THE STUFF SENT BY CLIENT AJAX FOR CREATING A MAP:", req.body);
 
     const userId = req.cookies["user_id"];
 
@@ -76,21 +76,15 @@ module.exports = (db, axios, environment) => {
   // when submit button for pin is pressed, add that pin to the database corresponding to that map (localhost:8080/create/pin)
   router.post("/pin/:id", (req, res) => {
 
-    let objectToPass = {
-      user_id: userId,
-      map_id: req.params.id,
-      title: req.body.title,
-      description: req.body.description,
-      latitude: req.body.latitude,
-      longitude: req.body.longitude,
-    };
+    const userId = req.cookies["user_id"];
 
-    console.log(objectToPass);
+    console.log("PIN CREATE HAS BEEN CALLED")
 
+    req.body.user_id = userId;
 
-    // let data = req.body;
-    let data = "1";
-    db.saveNewMarker(data)
+    console.log(req.body);
+
+    db.saveNewMarker(req.body)
       .then(() => {
         res.json({ Success: true });
       })

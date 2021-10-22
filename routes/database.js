@@ -180,6 +180,7 @@ const saveNewMarker = function (marker) {
   return pool
     .query(sqlString, [marker.user_id, marker.map_id, marker.title, marker.description, marker.image, marker.formatted_Address, marker.longitude, marker.latitude])
     .then(res => {
+      console.log("THIS IS THE PIN YOU JUST MADE!! ", res.rows[0]);
       return res.rows[0];
     })
     .catch(e => { console.error(e) });
