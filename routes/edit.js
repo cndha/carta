@@ -6,6 +6,12 @@ module.exports = (db, axios, environment) => {
   //when edit button is pressed for a map, populates the edit fields and renders the page for editing
   router.get("/:id", (req, res) => {
 
+    if (!req.cookies["user_id"]) {
+      res.status(401);
+      res.send("ERROR 401: YOU MUST BE LOGGED IN!");
+      return;
+    }
+
     // edit fields should be populated by its original data
     // let mapIdToSearch = "req.body.mapId";
     let mapIdToSearch = 1;

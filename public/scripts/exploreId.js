@@ -49,7 +49,44 @@ $(document).ready(function () {
           zoom: 10,
           center: location,
         });
-        retrieveMarkers(data.markers, map);
+        // retrieveMarkers(data.markers, map);
+        //----------------------------
+        console.log("IM INSIDE RERTIEVE FUNCTION")
+        for (let i = 0; i < data.markers.length; i++) {
+          console.log("THIS IS MY INDEX VALUE", data.markers[i])
+          let markerToDisplay = new google.maps.Marker({
+            position: { lat: Number(data.markers[i].latitude), lng: Number(data.markers[i].longitude) },
+            map,
+            title: data.markers[i].title,
+            icon: '/IMGS/marker-small.png',
+          })
+
+          //ADDING INFO WINDOW AND EVENT LISTNEER--------------
+          const infowindow = new google.maps.InfoWindow({
+            content: `
+            <div id="content">
+              <div id="siteNotice"> </div>
+              <h1 id="firstHeading" class="firstHeading">${data.markers[i].title}</h1>
+              <div id="bodyContent">
+              <p><b>${data.markers[i].formatted_address}</b><br>
+              ${data.markers[i].description}
+              </p>
+              <p><img src="${data.markers[i].image}" width= "200" height="100"></p>
+              </div>
+            </div>`
+          });
+          // FIRST CREATED MARKER
+
+          markerToDisplay.addListener("click", () => {
+            infowindow.open({
+              anchor: markerToDisplay,
+              map,
+              shouldFocus: false,
+            });
+          });
+
+        }
+        //-------------------------------
       }
       initMap();
     },
