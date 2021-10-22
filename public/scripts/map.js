@@ -374,7 +374,9 @@ $(document).ready(function () {
   // press to redirect to edit
   $(document).on('click', '.fa-edit', function (event) {
 
-    location.href = `http://localhost:8080/edit/${event.target.id}`
+    window.location.assign(`http://localhost:8080/edit/${event.target.id}`);
+
+    // location.href = `http://localhost:8080/edit/${event.target.id}`
 
   })
   //DOCUMENT READY
