@@ -31,6 +31,7 @@ function initMap() {
   const infowindow = new google.maps.InfoWindow({
     content: contentString,
   });
+
   // FIRST CREATED MARKER
   const marker = new google.maps.Marker({
     draggable: true,

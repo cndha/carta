@@ -6,17 +6,31 @@ function initMap() {
   });
 }
 
+
 function retrieveMarkers(db, map) {
   console.log("IM INSIDE RERTIEVE FUNCTION")
   for (let i = 0; i < db.length; i++) {
     console.log("THIS IS MY INDEX VALUE", db[i])
-    new google.maps.Marker({
+    const marker = new google.maps.Marker({
       position: { lat: Number(db[i].latitude), lng: Number(db[i].longitude) },
       map,
       title: db[i].title,
       icon: '/IMGS/marker-small.png',
     })
-  }
+    const infowindow = new google.maps.InfoWindow({
+      content: `
+      <div id="content">
+        <div id="siteNotice"> </div>
+        <h1 id="firstHeading" class="firstHeading">${db[i].title}</h1>
+        <div id="bodyContent">
+        <p><b>${db[i].formatted_Address}</b>
+        ${db[i].description}
+        </p>
+        <p><img src="${db[i].image}"></p>
+        </div>
+      </div>`
+    });
+  };
 };
 
 $(document).ready(function () {
@@ -82,3 +96,18 @@ $(document).ready(function () {
   })
 });
 
+// google.maps.event.addListener(map, 'click', function (event) {
+//   infowindow.open({
+//         anchor: marker,
+//         map,
+//         shouldFocus: false,
+//   });
+// })
+
+// marker.addListener("click", () => {
+//   infowindow.open({
+//     anchor: marker,
+//     map,
+//     shouldFocus: false,
+//   });
+// });
