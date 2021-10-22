@@ -233,40 +233,43 @@ $(document).ready(function () {
   $("#favoritesToPush").submit(function (event) {
     event.preventDefault();
 
-    // $.ajax({
-    //   type: "GET",
-    //   url: "/profile/favorites",
-    //   success: function (data) {
+    $.ajax({
+      type: "GET",
+      url: "/profile/favorites",
+      success: function (data) {
 
-    //     favoritesAppend(data);
-    //   },
-    //   error: function (error) {
-    //     console.log(error)
-    //   }
-    // })
-    
-    favoritesAppend();
+        favoritesAppend(data);
+      },
+      error: function (error) {
+        console.log(error)
+      }
+    })
+
   });
 
-  let favoritesAppend = function () {
+  let favoritesAppend = function (data) {
 
-    let $stringToAppend = $(`<% for(let i=0; i < maps.length; i++) { %>
+    let finalStringToPut = "";
+
+    for (let i = 0; i < data.length; i++)
+
+      let $stringToAppend = $(`
       <div class="frame">
         <div class="preview">
           <img src="/IMGS/thumbnail.jpg">
         </div>
         <div class="description">
           <h1>
-           hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+            ${data[i].title}
           </h1>
           <p>
-           ffffffffffffffffffffffffff
+            ${data[i].description}
           </p>
         </div>
         <div class="right">
           <span class="likes">
             <i class="fas fa-heart"></i>
-            <%= maps[i].likes %>
+            ${data[i].likes}
           </span>
           <div class="edit">
             <form method="GET" action="profile/delete/id">
