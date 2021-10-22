@@ -64,6 +64,7 @@ function initMap() {
     }
     else {
       marker.setPosition(location);
+      console.log(location);
     }
   }
 }
