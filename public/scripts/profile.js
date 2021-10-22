@@ -2,8 +2,6 @@ console.log("hello");
 
 $(document).ready(function () {
   console.log("HELLO");
-
-  // scroll to top
   $(function () {
     $(window).scroll(function () {
       if ($(this).scrollTop() - 200 > 0) {
@@ -19,8 +17,8 @@ $(document).ready(function () {
     }, 200);
   });
   
-  $("#mine").on("mousedown", function () {
-    $("#explore").slideDown('swing');
+  $("#mine").on("click", function () {
+    $("#slider").slideToggle('swing');
   });
 //DOCUMENT.READY
 });
