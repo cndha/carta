@@ -118,15 +118,15 @@ nav a {
   justify-content: center;
 }
 .header p {
-  margin-top: 50px;
-  margin-bottom: 30px;
+  margin-top: 35px;
+  margin-bottom: 80px;
   font-family: var(--font-fam);
-  font-size: 1.8em;
+  font-size: 1.3em;
   font-weight: var(--font-medium);
   color: var(--color-cream);
 }
 
-//id for jquery page down
+
 #btn-down {
   animation: bounce 1.5s infinite;
 }
@@ -134,7 +134,7 @@ nav a {
 @keyframes bounce {
   0%,  
   100% {-webkit-transform: translateY(0);} 
-  50% {-webkit-transform: translateY(-10px);}
+  50% {-webkit-transform: translateY(-25px);}
 }
 
 
@@ -272,7 +272,15 @@ color: var(--color-brand);
   align-items: center;
 }
 
-
+.foot {
+  position: fixed;
+  bottom: 0;
+  height:85px;
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  align-items: baseline;
+}
 
 
 
