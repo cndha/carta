@@ -55,7 +55,7 @@
       <div class="table">
         <h1>edit</h1>
         <input id="title" type="text" placeholder="title">
-        <textarea id="description" type="text" placeholder="description" name="description"></textarea>
+        <textarea id="description" type="text" placeholder="<%= map.description %>" name="description"></textarea>
         <div class="wrap">
           <div class="search">
             <form id="formSearchTerm">
@@ -66,13 +66,8 @@
             </form>
           </div>
         </div>
-<<<<<<< HEAD
-        <!-- id="createMapButton" -->
-        <button id="updateMapButton" type="submit">update map <i class="fas fa-caret-right"></i></button>
-=======
   
         <button id="updateMapButton" type="submit">update map<i class="fas fa-caret-right"></i></button>
->>>>>>> c0e23b621944b1d57f28338c3d32fa9f69470a5c
         <input id="formatted_address" type="text" placeholder="address">
         <input id="latitude" type="text" placeholder="latitude" name="latitude">
         <input id="longitude" type="text" placeholder="longitude" name="longitude">
