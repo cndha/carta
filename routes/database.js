@@ -84,7 +84,7 @@ exports.mostRecentMapByUser = mostRecentMapByUser;
 
 //shows maps user has contributed to
 const getMapsUserContributedTo = function (userId) {
-  const sqlString = `SELECT title, description FROM maps JOIN contributors ON map_id = maps.id WHERE contributors.user_id = $1`;
+  const sqlString = `SELECT title, description, likes FROM maps JOIN contributors ON map_id = maps.id WHERE contributors.user_id = $1`;
 
   return pool
     .query(sqlString, [userId])
@@ -99,7 +99,7 @@ exports.getMapsUserContributedTo = getMapsUserContributedTo;
 //shows all the maps favourited by user
 const getFavMapsByUser = function (userId) {
 
-  const sqlString = `SELECT maps.title, maps.description FROM maps JOIN favourites ON map_id = maps.id JOIN users ON user_id = users.id WHERE favourites.user_id = $1 ORDER BY favourited_at DESC`;
+  const sqlString = `SELECT maps.title, maps.description, maps.likes FROM maps JOIN favourites ON map_id = maps.id WHERE favourites.user_id = $1 ORDER BY favourited_at DESC`;
 
   return pool
     .query(sqlString, [userId])

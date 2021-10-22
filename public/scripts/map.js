@@ -228,6 +228,82 @@ $(document).ready(function () {
   // })
 
 
+  // AJAX REQUEST TO LOAD MAPS AFTER YOU CLICK FAVORITES
 
+  $("#favoritesToPush").submit(function (event) {
+    event.preventDefault();
+
+    $.ajax({
+      type: "GET",
+      url: "/profile/favorites",
+      success: function (data) {
+
+        appendData(data);
+      },
+      error: function (error) {
+        console.log(error)
+      }
+    })
+  });
+
+
+  $("#collabs").on("click", function (event) {
+    event.preventDefault();
+    $.ajax({
+      type: "GET",
+      url: "/profile/contributions",
+      success: function (data) {
+
+        console.log("CALLED CONTRIBUTIONS");
+        appendData(data);
+      },
+      error: function (error) {
+        console.log(error)
+      }
+    })
+  });
+
+  let appendData = function (data) {
+
+    let $finalStringToPut = "";
+
+    for (let i = 0; i < data.length; i++) {
+
+      let $stringToAppend = `
+      <div class="frame">
+        <div class="preview">
+          <img src="/IMGS/thumbnail.jpg">
+        </div>
+        <div class="description">
+          <h1>
+            ${data[i].title}
+          </h1>
+          <p>
+            ${data[i].description}
+          </p>
+        </div>
+        <div class="right">
+          <span class="likes">
+            <i class="fas fa-heart"></i>
+            ${data[i].likes}
+          </span>
+          <div class="edit">
+            <form method="GET" action="profile/delete/id">
+              <i class="fas fa-trash-alt"></i>
+            </form>
+            <form method="GET" action="profile/edit/id">
+              <i class="fas fa-edit"></i>
+          </div>
+        </div>
+      </div>
+      `
+      $finalStringToPut = $finalStringToPut + $stringToAppend;
+    }
+
+    let $output = $($finalStringToPut);
+    let node = document.getElementById('explore');
+    node.innerHTML = "";
+    $('#explore').append($output)
+  }
   //DOCUMENT READY
 });
