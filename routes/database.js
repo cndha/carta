@@ -132,7 +132,7 @@ const editMap = function (map) {
   const sqlString = `UPDATE maps SET title = $1, description = $2 WHERE id = $3`;
 
   return pool
-    .query(sqlString, [map.title, map.description, map.id])
+    .query(sqlString, [map.title, map.description])
     .then(res => {
       return res.rows[0];
     })
