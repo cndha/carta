@@ -48,7 +48,7 @@ $(document).ready(function () {
       function initMap() {
         const location = { lat: Number(data.markers[0].latitude), lng: Number(data.markers[0].longitude) };
         const map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 10,
+          zoom: 12,
           center: location,
         });
         // retrieveMarkers(data.markers, map);
