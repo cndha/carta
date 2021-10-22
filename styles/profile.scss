@@ -151,6 +151,13 @@ border: 5px solid var(--color-brand);
   flex-direction: row;
   align-items: center;
 }
+.edit a {
+  text-decoration: none;
+  color: var(--color-brand);
+}
+.edit a:hover {
+  color: salmon;
+}
 // .table {
 //   height: 900px;
 // flex-direction: row;
