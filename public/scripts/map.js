@@ -228,6 +228,64 @@ $(document).ready(function () {
   // })
 
 
+  // AJAX REQUEST TO LOAD MAPS AFTER YOU CLICK FAVORITES
+
+  $("#favoritesToPush").submit(function (event) {
+    event.preventDefault();
+
+    // $.ajax({
+    //   type: "GET",
+    //   url: "/profile/favorites",
+    //   success: function (data) {
+
+    //     favoritesAppend(data);
+    //   },
+    //   error: function (error) {
+    //     console.log(error)
+    //   }
+    // })
+    
+    favoritesAppend();
+  });
+
+  let favoritesAppend = function () {
+
+    let $stringToAppend = $(`<% for(let i=0; i < maps.length; i++) { %>
+      <div class="frame">
+        <div class="preview">
+          <img src="/IMGS/thumbnail.jpg">
+        </div>
+        <div class="description">
+          <h1>
+           hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+          </h1>
+          <p>
+           ffffffffffffffffffffffffff
+          </p>
+        </div>
+        <div class="right">
+          <span class="likes">
+            <i class="fas fa-heart"></i>
+            <%= maps[i].likes %>
+          </span>
+          <div class="edit">
+            <form method="GET" action="profile/delete/id">
+              <i class="fas fa-trash-alt"></i>
+            </form>
+            <form method="GET" action="profile/edit/id">
+              <i class="fas fa-edit"></i>
+          </div>
+        </div>
+      </div>
+      <% }%>`);
+
+    let node = document.getElementById('explore');
+    node.innerHTML = "";
+
+    $('#explore').append($stringToAppend)
+  }
+
+
 
   //DOCUMENT READY
 });

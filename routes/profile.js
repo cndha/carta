@@ -49,10 +49,11 @@ module.exports = (db, axios, environment) => {
   //request to get all maps favorited by that user loaded into profile page
   router.get("/favorites", (req, res) => {
 
-    let mapIdToSearch = "req.body.mapId";
+    let userId = req.cookies["user_id"];
 
-    db.getFavMapsByUser(mapIdToSearch)
+    db.getFavMapsByUser(userId)
       .then((result) => {
+        console.log("HERE ARE YOUR FAVORITES: ", result);
         res.json(result);
       })
       .catch(e => {
