@@ -16,10 +16,12 @@ const dbParams = require("./lib/db.js");
 // const db = new Pool(dbParams);
 // db.connect();
 
-const { getUserById, getMapsByKeyword, getMapById, getMapsOwnedByUser, saveNewMarker, getMapsUserContributedTo, getFavMapsByUser, getMarkersForMap, mostRecentMapByUser, saveNewMap } = require("./routes/database");
+const { getUserById, getMapsByKeyword, getMapById, getMapsOwnedByUser, saveNewMarker, deleteMap, getMapsUserContributedTo, getFavMapsByUser, editMap, getMarkersForMap, mostRecentMapByUser, saveNewMap } = require("./routes/database");
 const pool = new Pool(dbParams);
 pool.connect();
 const db = {
+  deleteMap,
+  editMap,
   saveNewMarker,
   saveNewMap,
   mostRecentMapByUser,

@@ -16,18 +16,18 @@ module.exports = (db, axios, environment) => {
     let mapIdToSearch = req.params.id;
 
     db.getMapById(mapIdToSearch)
-    .then((resultForMap) => {
-      db.getMarkersForMap(mapIdToSearch)
-        .then(resultsForMarkers => {
+      .then((resultForMap) => {
+        db.getMarkersForMap(mapIdToSearch)
+          .then(resultsForMarkers => {
 
-          let templateVars = { markers: resultsForMarkers, map: resultForMap, mapId: mapIdToSearch };
-          res.render("edit", templateVars);
+            let templateVars = { markers: resultsForMarkers, map: resultForMap, mapId: mapIdToSearch };
+            res.render("edit", templateVars);
 
-        }).catch(e => {
-          console.error(e);
-          res.send(e)
-        });
-    })
+          }).catch(e => {
+            console.error(e);
+            res.send(e)
+          });
+      })
 
     // db.getMapById(mapIdToSearch)
     //   .then((result) => {
@@ -42,27 +42,24 @@ module.exports = (db, axios, environment) => {
   //when confirm is pressed, updates that map with that id on db
   router.post("/map/:id", (req, res) => {
 
-    if (!req.cookies["user_id"]) {
-      res.send("ERROR 401: You are unauthorized!");
-      return;
-    }
 
     // button or hyperlink will need to supply the map id they clicked on
     // const mapIdToSearch = res.body.mapId;s
 
-    // let data = req.body;
-    // data.id = req.params.id;
+    let data = req.body;
+    data.id = req.params.id;
 
-    console.log("REQBODYYYYYYYYYYYODYODYODY", data);
+    console.log(data);
 
-    // db.editMap(data)
-    //   .then(() => {
-    //     res.json({ Success: true });
-    //   })
-    //   .catch(e => {
-    //     console.error(e);
-    //     res.send(e)
-    //   });
+    db.editMap(data)
+      .then((result) => {
+        console.log("FINISHED FETCHING FROM DATABASE!", result)
+        res.json({ Success: true });
+      })
+      .catch(e => {
+        console.error(e);
+        res.send(e)
+      });
   });
 
 
@@ -84,7 +81,7 @@ module.exports = (db, axios, environment) => {
   //when you click the delete button, deletes map from db with that id
   router.delete("/delete/map/:id", (req, res) => {
 
-    const mapIdToSearch = "res.body.mapId DELETE MAP INFO";
+    const mapIdToSearch = req.params.id;
 
     db.deleteMap(mapIdToSearch)
       .then(() => {
