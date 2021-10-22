@@ -105,6 +105,7 @@ color: var(--color-cream);
 }
 .frame h1 {
   margin-top: 0px;
+  line-height: 1em;
   font-weight: bold;
 }
 .preview {
@@ -113,13 +114,15 @@ border: 5px solid var(--color-brand);
 }
 .description {
   width: 300px;
-  margin-right: 150px;
+  margin-right: 100px;
   font-family: var(--font-fam);
   color: var(--color-brand);
 }
 
 .right {
   width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
 }
@@ -132,9 +135,10 @@ border: 5px solid var(--color-brand);
 }
 
 .likes {
+  width: 65px;
   display: flex;
   flex-direction: row;
-  justify-content: left;
+  justify-content: space-between;
   align-items: center;
 }
 .likes p {
