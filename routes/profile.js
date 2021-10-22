@@ -38,6 +38,7 @@ module.exports = (db, axios, environment) => {
 
     db.getMapsOwnedByUser(userIdToSearch)
       .then((result) => {
+        console.log("THESE ARE THE MAPS YOU OWN!", result);
         res.json(result);
       })
       .catch(e => {

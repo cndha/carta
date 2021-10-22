@@ -268,7 +268,7 @@ $(document).ready(function () {
       type: "GET",
       url: "/profile/userMaps",
       success: function (data) {
-        appendData(data);
+        appendDataForMyMaps(data);
       },
       error: function (error) {
         console.log(error)
@@ -322,5 +322,60 @@ $(document).ready(function () {
     node.innerHTML = "";
     $('#explore').append($output)
   }
+
+  let appendDataForMyMaps = function (data) {
+
+    let $finalStringToPut = "";
+
+    for (let i = 0; i < data.length; i++) {
+
+      let $stringToAppend =
+        `
+        <div class="wrapper">
+          <div class="frame">
+            <div class="preview">
+              <img src="/IMGS/thumbnail.jpg">
+            </div>
+            <div class="description">
+              <h1>
+              ${data[i].title}
+              </h1>
+              <p>
+              ${data[i].description}
+              </p>
+            </div>
+          </div>
+          <div class="right">
+            <span class="likes">
+              <i class="fas fa-heart" style="margin-right: 25px;"></i>
+              <p>
+              ${data[i].likes}
+              </p>
+            </span>
+            <div class="edit">
+              <form method="GET" action="profile/edit/id">
+                <i class="fas fa-edit" id="${data[i].id}""></i>
+              </form>
+              <form method="GET" action="profile/delete/id">
+                <i class="fas fa-trash-alt" style="margin-left: 20px;"></i>
+              </form>
+            </div>
+          </div>
+        </div>`
+      $finalStringToPut = $finalStringToPut + $stringToAppend;
+    }
+
+    let $output = $($finalStringToPut);
+    let node = document.getElementById('explore');
+    node.innerHTML = "";
+    $('#explore').append($output)
+  }
+
+  // press to redirect to edit
+  $(document).on('click', '.fa-edit', function (event) {
+
+    location.href = `http://localhost:8080/edit/${event.target.id}`
+
+  })
   //DOCUMENT READY
 });
