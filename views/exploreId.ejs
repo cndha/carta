@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta name="viewport" content="initial-scale=1.0">
   <meta charset="utf-8">
@@ -13,6 +14,7 @@
   <link rel="stylesheet" href="/styles/exploreID.css" type="text/css" />
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
+
   <!-- GOOGLE FONTS LATO weight 100-700-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,11 +35,13 @@
       <li><a href="/logout">logout</a></li>
     </ul>
   </nav>
+
   <header>
     <h1><%= map.title %></h1>
   </header>
+
   <div class="explore-container">
-    <div id="map" style="width: 800px; height: 400px;"></div>
+    <div id="map" style="width: 500px; height: 500px;"></div>
   </div>
   <!-- MAP api change key-->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn7dBW6G6TF62UyX3krF5enoY6WF3A7Tg&callback=initMap"
