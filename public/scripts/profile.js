@@ -16,9 +16,15 @@ $(document).ready(function () {
       scrollTop: 0
     }, 200);
   });
-  
+
+  $("#favorites").on("click", function () {
+    $("#slider").slideToggle('swing');
+  });
   $("#mine").on("click", function () {
     $("#slider").slideToggle('swing');
   });
-//DOCUMENT.READY
+  $("#contributions").on("click", function () {
+    $("#slider").slideToggle('swing');
+  });
+  //DOCUMENT.READY
 });

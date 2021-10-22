@@ -34,7 +34,7 @@ module.exports = (db, axios, environment) => {
   //request to get all maps loaded into profile page
   router.get("/userMaps", (req, res) => {
 
-    let userIdToSearch = "req.body.userId";
+    let userIdToSearch = req.cookies["user_id"];
 
     db.getMapsOwnedByUser(userIdToSearch)
       .then((result) => {
