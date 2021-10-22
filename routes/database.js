@@ -159,7 +159,7 @@ exports.deleteMap = deleteMap;
 //get all markers for specific mapId
 const getMarkersForMap = function (mapId) {
 
-  const sqlString = `SELECT latitude, longitude, title FROM markers WHERE map_id = $1`;
+  const sqlString = `SELECT * FROM markers WHERE map_id = $1`;
 
   return pool
     .query(sqlString, [mapId])
