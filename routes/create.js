@@ -7,49 +7,17 @@ module.exports = (db, axios, environment) => {
   // when confirm button is pressed, inserts a map into db
   router.post("/", (req, res) => {
 
-    // if (!req.cookies["user_id"]) {
-    //   res.send("ERROR 401: You are unauthorized!");
-    //   return;
-    // }
-
     console.log("THIS IS THE STUFF SENT BY CLIENT AJAX :", req.body);
-
-    // db.createMap(req.body)
-    //   .then(() => {
-    //     console.log("SERVER SENDING BACK RESULT: SUCCESS!");
-    //     res.json({ Success: "POST TO CREATE CALLED" });
-    //   })
-    //   .catch(e => {
-    //     console.error(e);
-    //     res.send(e)
-    //   });
 
     const userId = req.cookies["user_id"];
 
-    db.createMap(req.body)
-      .then(() => {
-        db.mostRecentMapByUser(userId)
-          .then(mostRecentMap => {
-            res.send(mostRecentMap);
-          }).catch(e => {
-            console.error(e);
-            res.send(e)
-          });
-      })
+    let objectToPass = {
+      user_id: userId,
+      title: req.body.title,
+      description: description
+    };
 
-
-    // grab user_id from cookies
-    // const user_id = req.cookies["user_id"];
-
-    // taking form fields (or put directly into database INSERT function)
-
-    //validation
-    // let objectToPass = {
-    //   title: req.body.title,
-    //   description: req.body.description,
-    //   location: req.body.location,
-    //   category: req.body.category
-    // };
+    console.log(objectToPass);
 
     // if (!req.body.title) {
     //   res.status(400);
@@ -74,6 +42,18 @@ module.exports = (db, axios, environment) => {
     //   res.send("ERROR 400: Description cannot be empty!");
     //   return;
     // }
+
+    db.createMap(objectToPass)
+      .then(() => {
+        db.mostRecentMapByUser(userId)
+          .then(mostRecentMap => {
+            res.send(mostRecentMap);
+          }).catch(e => {
+            console.error(e);
+            res.send(e)
+          });
+      })
+
   });
 
   // renders create page when create button is pressed (localhost:8080/create)

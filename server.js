@@ -16,10 +16,11 @@ const dbParams = require("./lib/db.js");
 // const db = new Pool(dbParams);
 // db.connect();
 
-const { getUserById, getMapsByKeyword, getMapById, getMapsOwnedByUser, getMapsUserContributedTo, getFavMapsByUser, getMarkersForMap } = require("./routes/database");
+const { getUserById, getMapsByKeyword, getMapById, getMapsOwnedByUser, getMapsUserContributedTo, getFavMapsByUser, getMarkersForMap, mostRecentMapByUser } = require("./routes/database");
 const pool = new Pool(dbParams);
 pool.connect();
 const db = {
+  mostRecentMapByUser,
   getMarkersForMap,
   getUserById,
   getMapsByKeyword,
@@ -29,7 +30,7 @@ const db = {
   getFavMapsByUser,
   createMap: function (obj) {
     return new Promise((res, rej) => {
-      console.log("CREATE MAP CALLED!")
+      console.log("CREATE MAP CALLED! Added to database.")
       res();
     })
   },
