@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta name="viewport" content="initial-scale=1.0">
   <meta charset="utf-8">
@@ -11,40 +12,43 @@
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/explore.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- GOOGLE FONTS LATO weight 100-700-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
-      rel="stylesheet">
-  <!-- GOOGLE FONTS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
+  <!--  FONT AWESOME -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   <!-- EXTERNAL JS -->
   <script type="text/javascript" src="../scripts/exploreId.js"></script>
-  <title>Carta: <%= map.title %> </title>
+  <title>Carta: <%= map.title %>
+  </title>
 </head>
+
 <body>
   <nav>
     <a href="/index"><img src="/IMGS/header-circle-dark-small.png"></a>
-    <ul>
-      <li><a href="/logout">logout</a></li>
-    </ul>
+    <span>
+      <p>
+        <%= map.title %>
+      </p>
+    </span>
+    <span><a href="/profile"><i class="fas fa-arrow-circle-right"></i></a></span>
   </nav>
-  <header>
-    <h1><%= map.title %></h1>
-  </header>
-  <div class="explore-container">
-    <div id="map" style="width: 800px; height: 400px;"></div>
+  <div id="map-container">
+    <div id="map"></div>
   </div>
   <!-- MAP api change key-->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn7dBW6G6TF62UyX3krF5enoY6WF3A7Tg&callback=initMap"
     async defer></script>
+
 </body>
-<!-- FOOTER -->
-<footer>
-  <button id="to-top"><img src="/IMGS/to-top.png"></i></button>
-</footer>
+<button id="to-top"><img src="/IMGS/to-top.png"></i></button>
+
 </html>
