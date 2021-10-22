@@ -29,22 +29,15 @@
     integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
   <!-- EXTERNAL JS -->
-  <script type="text/javascript" src="../scripts/app.js"></script>
   <script type="text/javascript" src="../scripts/map.js"></script>
+  <script type="text/javascript" src="../scripts/profile.js"></script>
   <!-- SERVER IN PROJECT ROOT -->
-
-
-
   <title>carta: profile</title>
   <!-- HEAD -->
 </head>
 
-
-
 <body>
   <nav>
-    <!-- Replace links with proper routes or single page refresh -->
-    <!-- Replace links with proper routes  -->
     <a href="/index"><img src="/IMGS/header-circle-dark-small.png"></a>
     <ul>
       <li><a href="/logout">logout</a></li>
@@ -55,55 +48,45 @@
       <h1>hello, kenny</h1>
       <h3>create map</h3>
       <h3>favorites</h3>
-      <h3>my maps</h3>
+      <h3 id="mine">my maps</h3>
     </div>
 
     <!-- explore -->
     <div id="explore">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">MAP ID</th>
-            <th scope="col">TITLE </th>
-            <th scope="col">DESCRIPTION</th>
-            <th scope="col">LIKES</th>
-            <th scope="col">CREATED AT</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% for(let i=0; i < maps.length; i++) { %>
-            <tr>
-              <td>
-                <%= maps[i].id %>
-              </td>
-              <td>
-                <%= maps[i].title %>
-              </td>
-              <td>
-                <%= maps[i].description %>
-              </td>
-              <td>
-                <%= maps[i].likes %>
-              </td>
-              <td>
-                <%= maps[i].created_at %>
-              </td>
-              <td>
-                <a><button>
-                    Edit </button> </a>
-              </td>
-              <td>
-                <a> <button> Delete </button> <a>
-              </td>
-            </tr>
-            <% }%>
-        </tbody>
-      </table>
-      <!-- CODE FOR TABLE ------------------------------------------------------------------------>
+      <% for(let i=0; i < maps.length; i++) { %>
+        <div class="frame">
+          <div class="preview">
+            <img src="/IMGS/thumbnail.jpg">
+          </div>
+          <div class="description">
+            <h1>
+              <%= maps[i].title %>
+            </h1>
+            <p>
+              <%= maps[i].description %>
+            </p>
+          </div>
+          <div class="right">
+          <span class="likes">
+            <i class="fas fa-heart"></i>
+            <%= maps[i].likes %>
+          </span>
+          <div class="edit">
+            <form method="GET" action="profile/delete/id">
+              <i class="fas fa-trash-alt"></i>
+            </form>
+            <form method="GET" action="profile/edit/id">
+              <i class="fas fa-edit"></i>
+          </div>
+        </div>
+        </div>
+        <% }%>
     </div>
-    <!-- MAIN CONTAINER -->
+    <!-- <div class="edit"> -->
+
+      
+    
+  <!-- MAIN CONTAINER -->
   </div>
 </body>
 <!-- to top-->

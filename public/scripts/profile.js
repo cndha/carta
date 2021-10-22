@@ -26,5 +26,10 @@ $(document).ready(function () {
     $(".content-large").slideDown('swing');
   });
   
+  $("#mine").on("mousedown", function () {
+    $("#explore").slideDown('swing');
+  });
+
+
 //DOCUMENT.READY
 });
