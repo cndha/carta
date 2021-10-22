@@ -33,6 +33,8 @@ function retrieveMarkers(db, map) {
   };
 };
 
+let markerStorage = [];
+
 $(document).ready(function () {
 
   let urlMapId = window.location.href;
@@ -54,14 +56,7 @@ $(document).ready(function () {
         console.log("IM INSIDE RERTIEVE FUNCTION")
         for (let i = 0; i < data.markers.length; i++) {
           console.log("THIS IS MY INDEX VALUE", data.markers[i])
-          let markerToDisplay = new google.maps.Marker({
-            position: { lat: Number(data.markers[i].latitude), lng: Number(data.markers[i].longitude) },
-            map,
-            title: data.markers[i].title,
-            icon: '/IMGS/marker-small.png',
-          })
 
-          //ADDING INFO WINDOW AND EVENT LISTNEER--------------
           const infowindow = new google.maps.InfoWindow({
             content: `
             <div id="content">
@@ -75,15 +70,39 @@ $(document).ready(function () {
               </div>
             </div>`
           });
-          // FIRST CREATED MARKER
+
+          let markerToDisplay = new google.maps.Marker({
+            position: { lat: Number(data.markers[i].latitude), lng: Number(data.markers[i].longitude) },
+            map,
+            title: data.markers[i].title,
+            icon: '/IMGS/marker-small.png',
+            infowindow: infowindow
+          })
 
           markerToDisplay.addListener("click", () => {
+            hideAllInfoWindows(map);
             infowindow.open({
               anchor: markerToDisplay,
               map,
               shouldFocus: false,
             });
           });
+
+          //close marker when click on map
+          google.maps.event.addListener(map, 'click', function () {
+            if (infowindow) {
+              infowindow.close();
+            }
+          });
+
+          markerStorage.push(markerToDisplay);
+
+          function hideAllInfoWindows(map) {
+            markerStorage.forEach(function (marker) {
+              marker.infowindow.close(map, markerToDisplay);
+            });
+          }
+
 
         }
         //-------------------------------
