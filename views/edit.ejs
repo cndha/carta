@@ -54,7 +54,7 @@
       <h1>edit map</h1>
       <input id="title" type="text" placeholder="title">
       <textarea id="description" type="text" placeholder="description" name="description"></textarea>
-      <form id="createForm" method="post"><button type="submit">
+      <form id="saveMap" method="post"><button type="submit">
           SAVE BUTTON <img src="/IMGS/add-hover.png">
         </button></form>
       <a href="/explore/3"><i class="fas fa-arrow-right" style="color:#faf7ef;"></i></a>
@@ -88,7 +88,7 @@
     </div>
 
     <button id="addNewMarker">add new marker +</button>
-    <div class="wrap">
+    <div id="newMarkerWrap">
       <div class="search">
         <form id="formSearchTerm">
           <input type="text" id="searchTerm" placeholder="search">
