@@ -105,7 +105,11 @@ body {
   width: 100vw;
   height: 100%;
 }
-
+#formSearchTerm{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
 .search {
   width: 100%;
   display: flex;
@@ -144,4 +148,21 @@ body {
   width: 100%;
   display: flex;
   align-items: center;
+}
+#description {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  outline: none;
+  padding: 5px;
+  color: currentColor;
+  border-radius: var(--size-radius);
+  font-size: 14px;
+  font-family: var(--font-fam);
+  font-weight: var(--font-bold);
+  color: var(--color-brand);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  resize: none;
 }

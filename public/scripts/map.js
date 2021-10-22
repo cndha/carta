@@ -1,10 +1,8 @@
-console.log("😈 BEFORE DOCUMENT>READY");
-
+console.log(":smiling_imp: BEFORE DOCUMENT>READY");
 let marker;
 // Each marker is labeled with a single alphabetical character.
 const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 let labelIndex = 0;
-
 function initMap() {
   const startCenter = { lat: 49.246292, lng: -123.116226 };
   // startCenter = the [0] of map markers?
@@ -30,7 +28,6 @@ function initMap() {
     "(last visited June 22, 2009).</p>" +
     "</div>" +
     "</div>";
-
   const infowindow = new google.maps.InfoWindow({
     content: contentString,
   });
@@ -43,7 +40,6 @@ function initMap() {
     title: "Public Market",
     icon: '/IMGS/marker-small.png',
   });
-
   marker.addListener("click", () => {
     infowindow.open({
       anchor: marker,
@@ -67,16 +63,12 @@ function initMap() {
       console.log(location);
     }
   }
-
   google.maps.event.addListener(map, 'click', (event) => {
-
     console.log("LAT--->", event.latLng.lat());
     const lat = event.latLng.lat();
     console.log("LNG--->", event.latLng.lng());
     const lng = event.latLng.lng();
-
     let latlng = lat + "," + lng;
-
     $.ajax({
       url: "/create/information/ask",
       method: "GET",
@@ -84,12 +76,9 @@ function initMap() {
       success: (data) => {
         //formatted address:
         const formattedAddress = data.results[0].formatted_address;
-
         $('#formatted_address').val(formattedAddress);
-
         const lat = data.results[0].geometry.location.lat;
         const lng = data.results[0].geometry.location.lng;
-
         $('#latitude').val(lat);
         $('#longitude').val(lng);
       },
@@ -97,75 +86,26 @@ function initMap() {
         console.log(error)
       }
     })
-
   })
-
 }
-
 $(document).ready(function () {
-  console.log("👻 AFTER DOCUMENT>READY");
+  console.log(":ghost: AFTER DOCUMENT>READY");
   function addMarker(location, map) {
     new google.maps.Marker({
       position: location,
       map: map,
     });
     // EVENT ON MAP CLICK ?? SHOULDN'T INPUT FIELD FILL BE IN HERE?
-
     // google.maps.event.addListener(map, 'click', (event) => {
-    //   $('#map').on('click', (event) => {
-      console.log($('#formatted-address'))
-      console.log("LAT--->", event.latLng.lat());
-      const lat = event.latLng.lat();
-      console.log("LNG--->", event.latLng.lng());
-      const lng = event.latLng.lng();
-      const latLng = `${lat}, ${lng}`;
-
-      axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
-        params: {
-          address: latLng,
-          key: 'AIzaSyCloL_uI_F9x3edJ_zViI7qC5zoq9u2HZg'
-        }
-      })
-        .then(res => {
-          console.log("!!RES ON CLICK >>> ", res);
-          //formatted address:
-          const formattedAddress = res.data.results[0].formatted_address;
-          // const outputAddress = `
-          //       <class="list">
-          //         <li id="formatted-address">${formattedAddress}</li>
-          //       </class>`;
-
-          //loop through address components
-          // const addressComponents = res.data.results[0].address_components;
-          // let componentsOutput = `
-          // <class="list">
-          //   <li>${addressComponents[0].types[0]}: ${addressComponents[0].long_name}</li>
-          // </class>`;
-
-          // let componentsOutput = '<class="list">';
-          // for (var i = 0; i < addressComponents.length; i++) {
-          //   componentsOutput += `<li>${addressComponents[i].types[0]}: ${addressComponents[i].long_name}</li>`
-          // }
-          // componentsOutput += '</class>';
-          //lat-long
-          const lat = res.data.results[0].geometry.location.lat;
-          const lng = res.data.results[0].geometry.location.lng;
-          // const geometryOutput = `<li id="latitude">Latitude: ${lat}</li><li id="Longitude">Longitude: ${lng}</li>`;
-
-          $('#formatted_address').val(formattedAddress);
-          $('#latitude').val(lat);
-          $('#longitude').val(lng);
-          // //outputs to browser
-          // document.getElementById('formatted_address').innerHTML = outputAddress;
-          // document.getElementById('components').innerHTML = componentsOutput;
-          // document.getElementById('geometry').innerHTML = geometryOutput;
-        })
-        .catch(error => {
-          console.log(error)
-        });
-    })
+    //   alert("hello")
+    // })
+    // map.addListener("click", (event) => {
+    //   alert("hello")
+    // });
+    // $("#map").on("click", (event) => {
+    //   alert("hello")
+    // })
   }
-
   //WORKING
   $("#formSearchTerm").on("submit", function (event) {
     event.preventDefault();
@@ -176,24 +116,18 @@ $(document).ready(function () {
       success: (data) => {
         //formatted address:
         const formattedAddress = data.results[0].formatted_address;
-
         $('#formatted_address').val(formattedAddress);
-
         const lat = data.results[0].geometry.location.lat;
         const lng = data.results[0].geometry.location.lng;
-
         $('#latitude').val(lat);
         $('#longitude').val(lng);
-
         // $('#map').val().placeMarker(lat + ',' + lng)
-
       },
       error: (error) => {
         console.log(error)
       }
     })
   });
-
   //CREATING THE MAP (profile)
   $("#create").on("click", function (event) {
     event.preventDefault();
@@ -214,7 +148,6 @@ $(document).ready(function () {
       }
     })
   });
-
   //saves a pin into the map when creatpin button is pressed
   // CAN'T FIND ID CREATEPIN-------------------------------------->
   $("#createPin").on("click", function (event) {
@@ -235,15 +168,12 @@ $(document).ready(function () {
     })
     console.log(event);
   });
-
-
   //THIS USE SO THAT TITLE HAS TO BE SENT------------------------> NOT SURE WHICH FUNCTION IS CURRENTLY SENDING DATA IDs ???
   $("#createForm").submit(function (event) {
     event.preventDefault();
     const $title = $('#title');
     const $blank = $title.val().length;
     const $error = $('#error');
-
     if ($blank === 0 || $count === $blank) {
       console.log("title cannot be left empty");
       // return $error.slideDown('swing');
@@ -263,47 +193,3 @@ $(document).ready(function () {
   })
   //DOCUMENT READY
 });
-
-
-// ********
-
-// // REMOVE MAKER -----> ADD ON.CLICK EVENT
-// function SetMarker(position) {
-//   //Remove previous Marker.
-//   if (marker != null) {
-//     marker.setMap(null);
-//   }
-
-// //SET MARKER
-//   marker = new google.maps.Marker(
-//     {
-//       map: map,
-//       draggable: true,
-//       animation: google.maps.Animation.DROP,
-//       position: results[0].geometry.location
-//     });
-//     //DRAG TO REPOSITION MARKER
-//   google.maps.event.addListener(marker, 'dragend', function () {
-//     geocodePosition(marker.getPosition());
-//   });
-//   //RETRIEVE GEOCODE LOCATION
-//   function geocodePosition(pos) {
-//     geocoder = new google.maps.Geocoder();
-//     geocoder.geocode
-//       ({
-//         latLng: pos
-//       },
-//       //LATLNG POSITION
-//       // RETRIEVE FORMATTED ADDRESS
-//         function (results, status) {
-//           if (status == google.maps.GeocoderStatus.OK) {
-//             $("#mapSearchInput").val(results[0].formatted_address);
-//             $("#mapErrorMsg").hide(100);
-//           }
-//           else {
-//             $("#mapErrorMsg").html('Cannot determine address at this location.' + status).show(100);
-//           }
-//         }
-//       );
-//   }
-// }
