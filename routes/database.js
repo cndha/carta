@@ -110,35 +110,6 @@ const getFavMapsByUser = function (userId) {
 }
 exports.getFavMapsByUser = getFavMapsByUser;
 
-// //displayMAP function - shows map & markers
-// const displayMap = function (mapId) {
-
-//   // const sqlString = `SELECT maps.title, maps.description, markers.id, markers.latitude, markers.longitude FROM markers JOIN maps ON map_id = maps.id WHERE map_id = $1`;
-
-//   const sqlString = `SELECT markers.id, markers.latitude, markers.longitude FROM markers WHERE map_id = $1`;
-
-//   return pool
-//     .query(sqlString, [mapId])
-//     .then(res => { //get an array of objects with select fields from table
-//       console.log(res.rows);
-
-//       res.rows.forEach((element) => {
-//         let latLng = [res.rows.latitude, res.rows.longitude];
-
-//       })
-
-//     })
-//     .catch(e => { console.error(e) });
-
-//   // req.body is object
-//   // pull data from object & call saveNewMap()
-//   // loop through marker values & call saveNewMarker()
-
-// }
-// exports.displayMap = displayMap;
-// displayMap(3);
-
-
 //saves a new map
 const saveNewMap = function (map) {
 
@@ -205,14 +176,10 @@ exports.getMarkersForMap = getMarkersForMap;
 //saves markers on new map
 const saveNewMarker = function (marker) {
 
-  // this just saving information per marker, **need another function to pull up markers for a given map_id
-
-  // how to add user_id / map_id to marker? --> server side
-
-  const sqlString = `INSERT INTO markers (user_id, map_id, title, description, image, longitude, latitude, created_at) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`;
+  const sqlString = `INSERT INTO markers (user_id, map_id, title, description, image, formatted_Address, longitude, latitude, created_at) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`;
 
   return pool
-    .query(sqlString, [marker.user_id, marker.map_id, marker.title, marker.description, marker.image, marker.longitude, marker.latitude, marker.created_at])
+    .query(sqlString, [marker.user_id, marker.map_id, marker.title, marker.description, marker.image, marker.formatted_Address, marker.longitude, marker.latitude, marker.created_at])
     .then(res => {
       return res.rows[0];
     })
@@ -225,10 +192,10 @@ exports.saveNewMarker = saveNewMarker;
 //saves edited marker
 const editMarker = function (markerId) {
 
-  const sqlString = `UPDATE markers SET title = $1, description = $2, image = $3, latitude = $4, longitude = $5`;
+  const sqlString = `UPDATE markers SET title = $1, description = $2, image = $3, formatted_Address = $4, latitude = $5, longitude = $6`;
 
   return pool
-    .query(sqlString, [markerId.title, markerId.description, markerId.image, markerId.latitude, markerId.longitude])
+    .query(sqlString, [markerId.title, markerId.description, markerId.image, markerId.formatted_Address, markerId.latitude, markerId.longitude])
     .then(res => {
       return res.rows[0];
     })
