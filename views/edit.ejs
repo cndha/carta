@@ -47,28 +47,34 @@
   </nav>
   <div class="content-large">
     <div class="table">
-      <h1>create</h1>
-      <div class="wrap">
-        <div class="search">
-          <form id="formSearchTerm">
-            <input type="text" id="searchTerm" placeholder="search">
-            <button type="submit" class="searchButton">
-              <i class="fa fa-search"></i>
-            </button>
-          </form>
-        </div>
-      </div>
+      <h1>edit map</h1>
       <input id="title" type="text" placeholder="title">
-      <textarea id="description" type="text" placeholder="caption" name="description"></textarea>
-      <input id="formatted_address" type="text" placeholder="address">
-      <input id="latitude" type="text" placeholder="latitude" name="latitude">
-      <input id="longitude" type="text" placeholder="longitude" name="longitude">
-      <form id="createForm" method="post"><button type="submit">
-          add
-          <!-- <img src="/IMGS/add-hover.png"> -->
+      <textarea id="description" type="text" placeholder="description" name="description"></textarea>
+      <form id="saveMap" method="post"><button type="submit">
+          SAVE BUTTON <img src="/IMGS/add-hover.png">
         </button></form>
       <a href="/explore/3"><i class="fas fa-arrow-right" style="color:#faf7ef;"></i></a>
     </div>
+
+
+  <!-- add new marker info -->
+    <button id="addNewMarker">add new marker +</button>
+    <div id="newMarkerWrap">
+      <div class="search">
+        <form id="formSearchTerm">
+          <input type="text" id="searchTerm" placeholder="search">
+          <input id="title" type="text" placeholder="title">
+          <textarea id="description" type="text" placeholder="caption" name="description"></textarea>
+          <input id="formatted_address" type="text" placeholder="address">
+          <input id="latitude" type="text" placeholder="latitude" name="latitude">
+          <input id="longitude" type="text" placeholder="longitude" name="longitude">
+          <form id="createForm" method="post"><button type="submit">
+              <img src="/IMGS/add-hover.png">
+            </button></form>
+        </form>
+      </div>
+    </div>
+
   </div>
   <div class="main-container">
     <div id="map-container">
