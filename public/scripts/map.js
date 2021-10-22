@@ -179,7 +179,7 @@ $(document).ready(function () {
       }
     })
   });
-  
+
   $("#contributions").on("click", function (event) {
     event.preventDefault();
     $.ajax({
@@ -262,7 +262,7 @@ $(document).ready(function () {
 
       let $stringToAppend =
         `
-        <div class="wrapper">
+        <div class="wrapper" id="${data[i].id}">
           <div class="frame">
             <div class="preview">
               <img src="/IMGS/thumbnail.jpg">
@@ -285,10 +285,10 @@ $(document).ready(function () {
             </span>
             <div class="edit">
               <form method="GET" action="profile/edit/id">
-                <i class="fas fa-edit" id="${data[i].id}""></i>
+                <i class="fas fa-edit" id="${data[i].id}"></i>
               </form>
               <form method="GET" action="profile/delete/id">
-                <i class="fas fa-trash-alt" style="margin-left: 20px;"></i>
+                <i class="fas fa-trash-alt" id="${data[i].id}" style="margin-left: 20px;"></i>
               </form>
             </div>
           </div>
@@ -353,7 +353,8 @@ $(document).ready(function () {
     })
   });
 
-  $("#createMarkerButton").on("click", function (event) {
+  //create a pin
+  $("#createMarker").on("click", function (event) {
     event.preventDefault();
 
     let image = "https://previews.123rf.com/images/draganche/draganche1907/draganche190700013/128680797-road-through-the-forest-nice-place-for-a-picnic-with-friends-.jpg";
@@ -372,5 +373,27 @@ $(document).ready(function () {
       }
     })
 
+  })
+
+
+  $(document).on('click', '.fa-trash-alt', function (event) {
+    event.preventDefault();
+
+    console.log("DELETING MAP AT THIS ID", event.target.id)
+
+    $.ajax({
+      type: "DELETE",
+      url: `edit/delete/map/${event.target.id}`,
+      sucess: function (data) {
+
+        console.log("REACHED HREF!")
+
+        window.location.href = "http://localhost:8080/profile";
+
+      },
+      error: function (error) {
+        console.log(error)
+      }
+    })
   })
 });
