@@ -13,7 +13,7 @@
   <!-- STYLE SHEETS -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/profile.css" type="text/css" />
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
 
@@ -32,14 +32,9 @@
   <script type="text/javascript" src="../scripts/app.js"></script>
   <script type="text/javascript" src="../scripts/map.js"></script>
   <!-- SERVER IN PROJECT ROOT -->
-
-
-
   <title>carta: profile</title>
   <!-- HEAD -->
 </head>
-
-
 
 <body>
   <nav>
@@ -51,32 +46,46 @@
     </ul>
   </nav>
   <div class="main-container">
+    <!-- PROFILE -->
+    <div class="box-body">
+      <h1>hi, cindy</h1>
 
-    <!-- explore -->
-    <div id="explore">
+      <h3><a href="/create">create map</a></h3>
+      <h3>collaborations</h3>
+      <h3>my maps</h3>
 
-
-      <!-- PROFILE -->
-      <div class="box-body">
-        <div class="profile">
-          <!-- <img src="/IMGS/profile-placeholder.png"> -->
-        </div>
-        <div class="content-large">
-          <div class="table">
-          <h1>My Maps</h1>
-          <h3><a href="/create">create map</a></h3>
-          <h3>favourites</h3>
-          <h3>collabs</h3>
-          </div>
-        </div>
-
-      </div>
     </div>
     <!-- MAIN CONTAINER -->
   </div>
+  <!-- explore -->
+  <div id="explore">
+
+    <div class="table">
+      <div class="thumbnail">
+        <img src="/IMGS/thumbnail.jpg">
+      </div>
+
+      <div class="info">
+        <h3>title</h3>
+        <p>description</p>
+      </div>
+    </div>
+    <div class="edit">
+      <i class="fas fa-heart"></i>
+      <form method="GET" action="profile/delete/id">
+        <i class="fas fa-trash-alt"></i>
+      </form>
+      <form method="GET" action="profile/edit/id">
+        <i class="fas fa-edit"></i>
+      </form>
+    </div>
+  </div>
+
+
 </body>
 <!-- to top-->
 <button id="to-top"><img src="/IMGS/to-top.png"></i></button>
+
 </html>
 
 </html>

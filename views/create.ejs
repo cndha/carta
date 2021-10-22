@@ -54,9 +54,6 @@
       <h1>create</h1>
       <div class="wrap">
         <div class="search">
-          <!-- SEARCHTERM TARGET ID FOR SEARCH QUERY -->
-          <!-- ON SUBMIT EVENT?  -->
-          <!-- LINE 131 MAP.JS -->
           <form id="formSearchTerm">
             <input type="text" id="searchTerm" placeholder="search">
             <button type="submit" class="searchButton">
@@ -66,29 +63,24 @@
         </div>
       </div>
       <input id="title" type="text" placeholder="title">
+      <textarea id="description" type="text" placeholder="caption" name="description"></textarea>
       <input id="formatted_address" type="text" placeholder="address">
       <input id="latitude" type="text" placeholder="latitude" name="latitude">
       <input id="longitude" type="text" placeholder="longitude" name="longitude">
-      <textarea id="description" type="text" placeholder="description" name="description"></textarea>
       <form id="createForm" method="post"><button type="submit">
           <img src="/IMGS/add-hover.png">
         </button></form>
-      <!-- CLICK TO VIEW THE MAP? -->
       <a href="/explore/3"><i class="fas fa-arrow-right" style="color:#faf7ef;"></i></a>
     </div>
   </div>
   <div class="main-container">
     <div id="map-container">
-      <!-- MAPS -->
       <div id="map"></div>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn7dBW6G6TF62UyX3krF5enoY6WF3A7Tg&callback=initMap"
         async defer></script>
     </div>
-
-    <!-- MAIN CONTAINER -->
   </div>
 </body>
 <!-- to top-->
 <button id="to-top"><img src="/IMGS/to-top.png"></i></button>
-
 </html>

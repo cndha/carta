@@ -20,7 +20,6 @@ body {
   height: 100%;
   min-height: 100vh;
   background-color: #243918;
-
 }
 .main-container {
   min-height: 100vh;
@@ -225,7 +224,7 @@ color: var(--color-brand);
   display: flex;
   justify-content: center;
   align-items: center;
-  // display: none;
+  flex-direction: column;
 }
 // MAPS
 #map {
@@ -238,7 +237,6 @@ color: var(--color-brand);
   width: 100%;
   display: flex;
   align-items: center;
-
 }
 
 #searchTerm {
@@ -273,6 +271,29 @@ color: var(--color-brand);
   display: flex;
   align-items: center;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //TEMPORARY
 .search-add { 
