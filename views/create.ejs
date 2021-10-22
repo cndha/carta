@@ -29,8 +29,6 @@
   <!-- MAP api change key-->
 
   <!-- EXTERNAL JS -->
-  <script type="text/javascript" src="/routes/create.js"></script>
-  <script type="text/javascript" src="./server.js"></script>
   <script type="text/javascript" src="../scripts/map.js"></script>
   <script type="text/javascript" src="../scripts/app.js"></script>
   <!-- SERVER IN PROJECT ROOT -->
@@ -60,15 +58,17 @@
           <!-- SEARCHTERM TARGET ID FOR SEARCH QUERY -->
           <!-- ON SUBMIT EVENT?  -->
           <!-- LINE 131 MAP.JS -->
-           <input type="text" id="searchTerm" placeholder="search">
-           <button type="submit" class="searchButton">
-             <i class="fa fa-search"></i>
-          </button>
+          <form id="formSearchTerm">
+            <input type="text" id="searchTerm" placeholder="search">
+            <button type="submit" class="searchButton">
+              <i class="fa fa-search"></i>
+            </button>
+          </form>
         </div>
-     </div>
+      </div>
       <input id="title" type="text" placeholder="title">
-     <!-- ON CLICK FILL ID: /FORMATTED_ID/LATITUDE/LONGITUDE -->
-     <!-- LINE 77 or 171 ? MAP.JS -->
+      <!-- ON CLICK FILL ID: /FORMATTED_ID/LATITUDE/LONGITUDE -->
+      <!-- LINE 77 or 171 ? MAP.JS -->
       <input id="formatted_address" type="text" placeholder="address">
       <input id="latitude" type="text" placeholder="latitude" name="latitude">
       <input id="longitude" type="text" placeholder="longitude" name="longitude">
@@ -77,7 +77,8 @@
       <form id="createForm" method="post"><button type="submit">
           <img src="/IMGS/add-hover.png">
         </button></form>
-      <a href="/profile"><i class="fas fa-arrow-right" style="color:#faf7ef;"></i></a>
+      <!-- CLICK TO VIEW THE MAP? -->
+      <a href="/explore/3"><i class="fas fa-arrow-right" style="color:#faf7ef;"></i></a>
     </div>
   </div>
   <div class="main-container">

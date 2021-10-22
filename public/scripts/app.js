@@ -19,7 +19,7 @@ $(document).ready(function () {
     }, 200);
   });
 
-  $("#btn-down").on("click", function () {
+  $("#exploreButton").on("click", function () {
     $("#map-container").get(0).scrollIntoView('swing');
   });
   $("#map").on("mousedown", function () {
