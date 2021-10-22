@@ -60,9 +60,18 @@
   <!-- explore -->
   <div id="explore">
 
-    <div class="table">
-      <div class="thumbnail">
-        <img src="/IMGS/thumbnail.jpg">
+    <!-- PROFILE -->
+    <div class="box-body">
+      <div class="profile">
+        <!-- <img src="/IMGS/profile-placeholder.png"> -->
+      </div>
+      <div class="content-large">
+        <div class="table">
+          <h1>My Maps</h1>
+          <h3><a href="/create">create map</a></h3>
+          <h3>favourites</h3>
+          <h3>collabs</h3>
+        </div>
       </div>
 
       <div class="info">
@@ -72,6 +81,50 @@
       <div class="link-to-map">
         <h3>view</h3>
       </div>
+
+      <!-- CODE FOR TABLE -------------------------------------------------------------------------->
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">MAP ID</th>
+            <th scope="col">TITLE </th>
+            <th scope="col">DESCRIPTION</th>
+            <th scope="col">LIKES</th>
+            <th scope="col">CREATED AT</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(let i=0; i < maps.length; i++) { %>
+            <tr>
+              <td>
+                <%= maps[i].id %>
+              </td>
+              <td>
+                <%= maps[i].title %>
+              </td>
+              <td>
+                <%= maps[i].description %>
+              </td>
+              <td>
+                <%= maps[i].likes %>
+              </td>
+              <td>
+                <%= maps[i].created_at %>
+              </td>
+              <td>
+                <a><button>
+                    Edit </button> </a>
+              </td>
+              <td>
+                <a> <button> Delete </button> <a>
+              </td>
+            </tr>
+            <% }%>
+        </tbody>
+      </table>
+      <!-- CODE FOR TABLE ------------------------------------------------------------------------>
     </div>
       <div class="edit">
         <i class="fas fa-heart"></i>
@@ -88,6 +141,9 @@
 </body>
 <!-- to top-->
 <button id="to-top"><img src="/IMGS/to-top.png"></i></button>
+<<<<<<< HEAD </html>
+  =======
+  >>>>>>> 95cdf76e2f28e2e7db725bc16d4db07feee7e381
 
 </html>
 

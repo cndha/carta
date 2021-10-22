@@ -43,16 +43,28 @@ module.exports = (db, axios, environment) => {
     //   return;
     // }
 
+    // db.saveNewMap(objectToPass)
+    //   .then(() => {
+    //     db.mostRecentMapByUser(userId)
+    //       .then(mostRecentMap => {
+    //         console.log("THIS IS THE MOST RECENT MAP", mostRecentMap)
+    //         res.send(mostRecentMap);
+    //       }).catch(e => {
+    //         console.error(e);
+    //         res.send(e)
+    //       });
+    //   })
+
+
     db.saveNewMap(objectToPass)
-      .then(() => {
-        db.mostRecentMapByUser(userId)
-          .then(mostRecentMap => {
-            res.send(mostRecentMap);
-          }).catch(e => {
-            console.error(e);
-            res.send(e)
-          });
+      .then((result) => {
+        console.log("THIS IS THE MOST RECENT MAP", result)
+        res.send(result);
       })
+      .catch(e => {
+        console.error(e);
+        res.send(e)
+      });
 
   });
 
