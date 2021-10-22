@@ -95,19 +95,3 @@ $(document).ready(function () {
     }
   })
 });
-
-// google.maps.event.addListener(map, 'click', function (event) {
-//   infowindow.open({
-//         anchor: marker,
-//         map,
-//         shouldFocus: false,
-//   });
-// })
-
-// marker.addListener("click", () => {
-//   infowindow.open({
-//     anchor: marker,
-//     map,
-//     shouldFocus: false,
-//   });
-// });
