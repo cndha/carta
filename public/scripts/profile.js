@@ -2,8 +2,6 @@ console.log("hello");
 
 $(document).ready(function () {
   console.log("HELLO");
-
-  // scroll to top
   $(function () {
     $(window).scroll(function () {
       if ($(this).scrollTop() - 200 > 0) {
@@ -18,9 +16,15 @@ $(document).ready(function () {
       scrollTop: 0
     }, 200);
   });
-  
-  $("#mine").on("mousedown", function () {
-    $("#explore").slideDown('swing');
+
+  $("#favorites").on("click", function () {
+    $("#slider").slideDown('swing');
   });
-//DOCUMENT.READY
+  $("#mine").on("click", function () {
+    $("#slider").slideToggle('swing');
+  });
+  $("#contributions").on("click", function () {
+    $("#slider").slideDown('swing');
+  });
+  //DOCUMENT.READY
 });

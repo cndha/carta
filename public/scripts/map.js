@@ -230,62 +230,97 @@ $(document).ready(function () {
 
   // AJAX REQUEST TO LOAD MAPS AFTER YOU CLICK FAVORITES
 
-  $("#favoritesToPush").submit(function (event) {
+  $("#favorites").on("click", function (event) {
     event.preventDefault();
 
-    // $.ajax({
-    //   type: "GET",
-    //   url: "/profile/favorites",
-    //   success: function (data) {
+    $.ajax({
+      type: "GET",
+      url: "/profile/favorites",
+      success: function (data) {
 
-    //     favoritesAppend(data);
-    //   },
-    //   error: function (error) {
-    //     console.log(error)
-    //   }
-    // })
-    
-    favoritesAppend();
+        appendData(data);
+      },
+      error: function (error) {
+        console.log(error)
+      }
+    })
   });
 
-  let favoritesAppend = function () {
 
-    let $stringToAppend = $(`<% for(let i=0; i < maps.length; i++) { %>
-      <div class="frame">
-        <div class="preview">
-          <img src="/IMGS/thumbnail.jpg">
-        </div>
-        <div class="description">
-          <h1>
-           hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
-          </h1>
-          <p>
-           ffffffffffffffffffffffffff
-          </p>
+  $("#contributions").on("click", function (event) {
+    event.preventDefault();
+    $.ajax({
+      type: "GET",
+      url: "/profile/contributions",
+      success: function (data) {
+
+        appendData(data);
+      },
+      error: function (error) {
+        console.log(error)
+      }
+    })
+  });
+
+  $("#mine").on("click", function (event) {
+    event.preventDefault();
+    $.ajax({
+      type: "GET",
+      url: "/profile/userMaps",
+      success: function (data) {
+        appendData(data);
+      },
+      error: function (error) {
+        console.log(error)
+      }
+    })
+  });
+
+  let appendData = function (data) {
+
+    let $finalStringToPut = "";
+
+    for (let i = 0; i < data.length; i++) {
+
+      let $stringToAppend =
+        `<div class="wrapper">
+        <div class="frame">
+          <div class="preview">
+            <img src="/IMGS/thumbnail.jpg">
+          </div>
+          <div class="description">
+            <h1>
+            ${data[i].title}
+            </h1>
+            <p>
+            ${data[i].description}
+            </p>
+
+          </div>
         </div>
         <div class="right">
           <span class="likes">
             <i class="fas fa-heart"></i>
-            <%= maps[i].likes %>
+            ${data[i].likes}
           </span>
           <div class="edit">
-            <form method="GET" action="profile/delete/id">
-              <i class="fas fa-trash-alt"></i>
-            </form>
             <form method="GET" action="profile/edit/id">
               <i class="fas fa-edit"></i>
+            </form>
+            <form method="GET" action="profile/delete/id">
+              <i class="fas fa-trash-alt" style="margin-left: 10px;"></i>
+            </form>
           </div>
         </div>
-      </div>
-      <% }%>`);
+      </div>`
 
+      $finalStringToPut = $finalStringToPut + $stringToAppend;
+    }
+
+    let $output = $($finalStringToPut);
     let node = document.getElementById('explore');
     node.innerHTML = "";
-
-    $('#explore').append($stringToAppend)
+    $('#explore').append($output)
   }
-
-
-
   //DOCUMENT READY
 });
