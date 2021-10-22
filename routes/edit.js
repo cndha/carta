@@ -22,7 +22,7 @@ module.exports = (db, axios, environment) => {
 
           let templateVars = { markers: resultsForMarkers, map: resultForMap, mapId: mapIdToSearch };
           console.log(templateVars);
-          res.render("exploreId", templateVars);
+          res.render("edit", templateVars);
 
         }).catch(e => {
           console.error(e);

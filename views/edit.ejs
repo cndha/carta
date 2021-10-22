@@ -63,35 +63,6 @@
       <a href="/explore/3"><i class="fas fa-arrow-right" style="color:#faf7ef;"></i></a>
     </div>
 
-  <!-- list of existing markers -->
-    <div class="markersWrap">
-      <div class="markersList">
-        <div class="description">
-          <h1>
-            <%= maps[i].title %>
-          </h1>
-          <p>
-            <%= maps[i].description %>
-          </p>
-        </div>
-      </div>
-      <div class="right">
-        <span class="likes">
-          <i class="fas fa-heart"></i>
-          <p>
-            <%= maps[i].likes %>
-          </p>
-        </span>
-        <div class="edit">
-          <form method="GET" action="profile/edit/id">
-            <i class="fas fa-edit"></i>
-          </form>
-          <form method="GET" action="profile/delete/id">
-            <i class="fas fa-trash-alt" style="margin-left: 20px;"></i>
-          </form>
-        </div>
-      </div>
-    </div>
 
   <!-- add new marker info -->
     <button id="addNewMarker">add new marker +</button>
