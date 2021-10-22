@@ -4,5 +4,5 @@ CREATE TABLE contributors (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   map_id INTEGER REFERENCES maps(id) ON DELETE CASCADE,
-  contribution_date TIMESTAMP
+  contribution_date TIMESTAMP NOT NULL DEFAULT NOW()
 );

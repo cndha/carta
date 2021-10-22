@@ -4,5 +4,5 @@ CREATE TABLE favourites (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   map_id INTEGER REFERENCES maps(id) ON DELETE CASCADE,
-  favourited_at TIMESTAMP
+  favourited_at TIMESTAMP NOT NULL DEFAULT NOW()
 );

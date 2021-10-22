@@ -174,16 +174,18 @@ $(document).ready(function () {
     const $title = $('#title');
     const $blank = $title.val().length;
     const $error = $('#error');
-    if ($blank === 0 || $count === $blank) {
-      console.log("title cannot be left empty");
-      // return $error.slideDown('swing');
-      // return alert("You're not saying anything");
-    }
-    const DATA = $("#<------ some form").serialize();
+
+    // if ($blank === 0 || $count === $blank) {
+    //   console.log("title cannot be left empty");
+    //   // return $error.slideDown('swing');
+    //   // return alert("You're not saying anything");
+    // }
+    // const DATA = $("#<------ some form").serialize();
+
     $.ajax({
       type: "POST",
       url: "/create/",
-      data: "<------------something also known as DATA to send",
+      data: { title: $title.val(), description: $('#description').val() },
     })
       .then(function (data) {
       })
