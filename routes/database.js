@@ -175,11 +175,12 @@ exports.getMarkersForMap = getMarkersForMap;
 //saves markers on new map
 const saveNewMarker = function (marker) {
 
-  const sqlString = `INSERT INTO markers (user_id, map_id, title, description, image, formatted_Address, longitude, latitude, created_at) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`;
+  const sqlString = `INSERT INTO markers (user_id, map_id, title, description, image, formatted_Address, longitude, latitude) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`;
 
   return pool
-    .query(sqlString, [marker.user_id, marker.map_id, marker.title, marker.description, marker.image, marker.formatted_Address, marker.longitude, marker.latitude, marker.created_at])
+    .query(sqlString, [marker.user_id, marker.map_id, marker.title, marker.description, marker.image, marker.formatted_Address, marker.longitude, marker.latitude])
     .then(res => {
+      console.log("THIS IS THE PIN YOU JUST MADE!! ", res.rows[0]);
       return res.rows[0];
     })
     .catch(e => { console.error(e) });

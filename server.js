@@ -16,10 +16,11 @@ const dbParams = require("./lib/db.js");
 // const db = new Pool(dbParams);
 // db.connect();
 
-const { getUserById, getMapsByKeyword, getMapById, getMapsOwnedByUser, getMapsUserContributedTo, getFavMapsByUser, getMarkersForMap, mostRecentMapByUser, saveNewMap } = require("./routes/database");
+const { getUserById, getMapsByKeyword, getMapById, getMapsOwnedByUser, saveNewMarker, getMapsUserContributedTo, getFavMapsByUser, getMarkersForMap, mostRecentMapByUser, saveNewMap } = require("./routes/database");
 const pool = new Pool(dbParams);
 pool.connect();
 const db = {
+  saveNewMarker,
   saveNewMap,
   mostRecentMapByUser,
   getMarkersForMap,
@@ -30,12 +31,12 @@ const db = {
   getMapsUserContributedTo,
   getFavMapsByUser,
 
-  saveNewMarker: function (obj) {
-    return new Promise((res, rej) => {
-      console.log("SAVE NEW MARKER CALLED!")
-      res();
-    })
-  },
+  // saveNewMarker: function (obj) {
+  //   return new Promise((res, rej) => {
+  //     console.log("SAVE NEW MARKER CALLED!")
+  //     res();
+  //   })
+  // },
   functionToUpdateMap: function (obj) {
     return new Promise((res, rej) => {
       console.log("UPDATING MAP CALLED!")
