@@ -255,14 +255,13 @@ $(document).ready(function () {
       success: function (data) {
 
         console.log("CALLED CONTRIBUTIONS");
-        // appendData(data);
+        appendData(data);
       },
       error: function (error) {
         console.log(error)
       }
     })
   });
-
 
   let appendData = function (data) {
 
