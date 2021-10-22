@@ -73,11 +73,15 @@
             </div>
             <div class="right">
               <span class="likes">
-                <i class="fas fa-heart"></i>
-                <p><%= maps[i].likes %></p>
+                <i class="fas fa-heart" style="margin-right: 25px;"></i>
+                <p>
+                  <%= maps[i].likes %>
+                </p>
               </span>
               <div class="edit">
-                  <a href="/edit"><i class="fas fa-edit"></i></a>
+                <form method="GET" action="profile/edit/id">
+                  <i class="fas fa-edit" id="<%=maps[i].id%>"></i>
+                </form>
                 <form method="GET" action="profile/delete/id">
                   <i class="fas fa-trash-alt" style="margin-left: 20px;"></i>
                 </form>
@@ -93,4 +97,5 @@
 <!-- to top-->
 <button id="to-top"><img src="/IMGS/to-top.png"></i></button>
 <footer></footer>
+
 </html>

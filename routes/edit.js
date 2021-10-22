@@ -11,19 +11,33 @@ module.exports = (db, axios, environment) => {
       res.send("ERROR 401: YOU MUST BE LOGGED IN!");
       return;
     }
-
     // edit fields should be populated by its original data
     // let mapIdToSearch = "req.body.mapId";
-    let mapIdToSearch = 1;
+    let mapIdToSearch = req.params.id;
 
     db.getMapById(mapIdToSearch)
-      .then((result) => {
-        res.render("edit", result);
-      })
-      .catch(e => {
-        console.error(e);
-        res.send(e)
-      });
+    .then((resultForMap) => {
+      db.getMarkersForMap(mapIdToSearch)
+        .then(resultsForMarkers => {
+
+          let templateVars = { markers: resultsForMarkers, map: resultForMap, mapId: mapIdToSearch };
+          console.log(templateVars);
+          res.render("exploreId", templateVars);
+
+        }).catch(e => {
+          console.error(e);
+          res.send(e)
+        });
+    })
+
+    // db.getMapById(mapIdToSearch)
+    //   .then((result) => {
+    //     res.render("edit", result);
+    //   })
+    //   .catch(e => {
+    //     console.error(e);
+    //     res.send(e)
+    //   });
   });
 
   //when confirm is pressed, updates that map with that id on db

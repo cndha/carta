@@ -75,6 +75,19 @@ module.exports = (db, axios, environment) => {
 
   // when submit button for pin is pressed, add that pin to the database corresponding to that map (localhost:8080/create/pin)
   router.post("/pin/:id", (req, res) => {
+
+    let objectToPass = {
+      user_id: userId,
+      map_id: req.params.id,
+      title: req.body.title,
+      description: req.body.description,
+      latitude: req.body.latitude,
+      longitude: req.body.longitude,
+    };
+
+    console.log(objectToPass);
+
+
     // let data = req.body;
     let data = "1";
     db.saveNewMarker(data)
