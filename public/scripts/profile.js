@@ -22,7 +22,5 @@ $(document).ready(function () {
   $("#mine").on("mousedown", function () {
     $("#explore").slideDown('swing');
   });
-
-
 //DOCUMENT.READY
 });
