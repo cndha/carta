@@ -238,9 +238,7 @@ $(document).ready(function () {
             ${data[i].likes}
           </span>
           <div class="edit">
-            <form method="GET" action="profile/edit/id">
-              <i class="fas fa-edit"></i>
-            </form>
+
             <form method="GET" action="profile/delete/id">
               <i class="fas fa-trash-alt" style="margin-left: 10px;"></i>
             </form>
@@ -309,8 +307,6 @@ $(document).ready(function () {
   $(document).on('click', '.fa-edit', function (event) {
 
     window.location.assign(`http://localhost:8080/edit/${event.target.id}`);
-
-    // location.href = `http://localhost:8080/edit/${event.target.id}`
 
   })
   //DOCUMENT READY

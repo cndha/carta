@@ -40,12 +40,22 @@ $(document).ready(function () {
   let urlMapId = window.location.href;
   let val = urlMapId[urlMapId.length - 1];
 
+  if (urlMapId[urlMapId.length - 2] !== "/") {
+    val = urlMapId[urlMapId.length - 2] + val;
+  }
+
+  console.log("VAL IS", val);
+
   $.ajax({
     url: `/explore/afterLoad/${val}`,
     method: "GET",
     data: { id: val },
     success: function (data) {
       function initMap() {
+
+        $('#titleForExploreId').text("Carta: " + data.map.title);
+        $('#titleForP').text(data.map.title);
+
         const location = { lat: Number(data.markers[0].latitude), lng: Number(data.markers[0].longitude) };
         const map = new google.maps.Map(document.getElementById("map"), {
           zoom: 10,
