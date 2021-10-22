@@ -14,6 +14,8 @@ module.exports = (db, axios, environment) => {
           .then(resultsForUserMaps => {
 
             let templateVars = { maps: resultsForUserMaps, user: resultForUser };
+
+            console.log("THESE ARE MAPS SENT TO PROFILE", templateVars.maps)
             res.render("profile", templateVars);
 
           }).catch(e => {

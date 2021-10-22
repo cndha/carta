@@ -63,20 +63,65 @@
         </div>
         <div class="content-large">
           <div class="table">
-          <h1>My Maps</h1>
-          <h3><a href="/create">create map</a></h3>
-          <h3>favourites</h3>
-          <h3>collabs</h3>
+            <h1>My Maps</h1>
+            <h3><a href="/create">create map</a></h3>
+            <h3>favourites</h3>
+            <h3>collabs</h3>
           </div>
         </div>
 
       </div>
+
+      <!-- CODE FOR TABLE -------------------------------------------------------------------------->
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">MAP ID</th>
+            <th scope="col">TITLE </th>
+            <th scope="col">DESCRIPTION</th>
+            <th scope="col">LIKES</th>
+            <th scope="col">CREATED AT</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(let i=0; i < maps.length; i++) { %>
+            <tr>
+              <td>
+                <%= maps[i].id %>
+              </td>
+              <td>
+                <%= maps[i].title %>
+              </td>
+              <td>
+                <%= maps[i].description %>
+              </td>
+              <td>
+                <%= maps[i].likes %>
+              </td>
+              <td>
+                <%= maps[i].created_at %>
+              </td>
+              <td>
+                <a><button>
+                    Edit </button> </a>
+              </td>
+              <td>
+                <a> <button> Delete </button> <a>
+              </td>
+            </tr>
+            <% }%>
+        </tbody>
+      </table>
+      <!-- CODE FOR TABLE ------------------------------------------------------------------------>
     </div>
     <!-- MAIN CONTAINER -->
   </div>
 </body>
 <!-- to top-->
 <button id="to-top"><img src="/IMGS/to-top.png"></i></button>
+
 </html>
 
 </html>

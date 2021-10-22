@@ -29,12 +29,7 @@ const db = {
   getMapsOwnedByUser,
   getMapsUserContributedTo,
   getFavMapsByUser,
-  createMap: function (obj) {
-    return new Promise((res, rej) => {
-      console.log("CREATE MAP CALLED! Added to database.")
-      res();
-    })
-  },
+
   saveNewMarker: function (obj) {
     return new Promise((res, rej) => {
       console.log("SAVE NEW MARKER CALLED!")
