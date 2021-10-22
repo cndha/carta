@@ -71,16 +71,15 @@ body {
  }
  
 #map-container {
-  margin-top: 80px;
   background-color: white;
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  // display: none;
+
 }
-// MAPS
+
 #map {
   width: 100vw;
   height: 100%;
