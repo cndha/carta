@@ -18,15 +18,15 @@ $(document).ready(function () {
   });
 
   $("#favorites").on("click", function () {
-    $("#slider").slideUp('swing');
-    $("#slider").slideDown('swing');
+    $("#slider").slideUp('slow');
+    $("#slider").slideDown('slow');
   });
   $("#mine").on("click", function () {
-    $("#slider").slideToggle('swing');
+    $("#slider").slideToggle('slow');
   });
   $("#contributions").on("click", function () {
-    $("#slider").slideUp('swing');
-    $("#slider").slideDown('swing');
+    $("#slider").slideUp('slow');
+    $("#slider").slideDown('slow');
   });
   //DOCUMENT.READY
 });
