@@ -11,6 +11,6 @@ CREATE TABLE markers (
   formatted_Address VARCHAR(223),
   longitude DECIMAL NOT NULL,
   latitude DECIMAL NOT NULL,
-  created_at TIMESTAMP
+  created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
 -- Jam Cafe, 556 Beatty St., Vancouver, British Columbia V6B 2L3, Canada
