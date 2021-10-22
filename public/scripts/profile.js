@@ -18,12 +18,14 @@ $(document).ready(function () {
   });
 
   $("#favorites").on("click", function () {
+    $("#slider").slideUp('swing');
     $("#slider").slideDown('swing');
   });
   $("#mine").on("click", function () {
     $("#slider").slideToggle('swing');
   });
   $("#contributions").on("click", function () {
+    $("#slider").slideUp('swing');
     $("#slider").slideDown('swing');
   });
   //DOCUMENT.READY

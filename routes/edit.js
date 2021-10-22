@@ -21,8 +21,8 @@ module.exports = (db, axios, environment) => {
         .then(resultsForMarkers => {
 
           let templateVars = { markers: resultsForMarkers, map: resultForMap, mapId: mapIdToSearch };
-          console.log(templateVars);
-          res.render("exploreId", templateVars);
+          console.log("FROM EDIT HERE !!!! ", templateVars);
+          res.render("edit", templateVars);
 
         }).catch(e => {
           console.error(e);
@@ -54,12 +54,12 @@ module.exports = (db, axios, environment) => {
     // let objectToPass = {
     //   map_id : mapIdToSearch,
     //   title : res.body.title,
-    //   description : res.body.description
+    //   description : res.body.description+-
     // }
 
     let data = "data to update map";
 
-    db.functionToUpdateMap(data)
+    db.editMap(data)
       .then(() => {
         res.json({ Success: true });
       })
@@ -69,11 +69,12 @@ module.exports = (db, axios, environment) => {
       });
   });
 
+
   router.patch("/pin/:id", (req, res) => {
 
     let data = "data to update pin";
 
-    db.functionToUpdatePin(data)
+    db.editMarker(data)
       .then(() => {
         res.json({ Success: true });
       })
@@ -89,7 +90,7 @@ module.exports = (db, axios, environment) => {
 
     const mapIdToSearch = "res.body.mapId DELETE MAP INFO";
 
-    db.functionToDeleteMap(mapIdToSearch)
+    db.deleteMap(mapIdToSearch)
       .then(() => {
         res.json({ Success: true });
       })
@@ -102,9 +103,9 @@ module.exports = (db, axios, environment) => {
   //when you click the delete button, deletes pin from db with that id
   router.delete("/delete/pin/:id", (req, res) => {
 
-    const mapIdToSearch = "res.body.mapId DELETE PIN INFO";
+    const pinIdToSearch = "res.body.mapId DELETE PIN INFO";
 
-    db.functionToDeletePin(mapIdToSearch)
+    db.deleteMarker(mapIdToSearch)
       .then(() => {
         res.json({ Success: true });
       })

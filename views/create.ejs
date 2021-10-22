@@ -45,8 +45,7 @@
     <!-- <p>share locations from the places you love</p> -->
     <a href="/index"><img src="/IMGS/header-circle-dark-small.png"></a>
     <ul>
-      <li><a href="/profile">cancel</a></li>
-      <li><a href="/index">logout</a></li>
+      <li><a href="/profile"><i class="fas fa-arrow-circle-right" style="font-size: 30px;"></i></a></li>
     </ul>
   </nav>
   <div class="content-large">
@@ -62,18 +61,15 @@
           </form>
         </div>
       </div>
-
       <input id="title" type="text" placeholder="title">
       <textarea id="description" type="text" placeholder="caption" name="description"></textarea>
 
-      <button id="createMapButton">CLICK TO CREATE MAP</button>
+      <button id="createMapButton">create map<i class="fas fa-caret-right"></i></button>
       <input id="formatted_address" type="text" placeholder="address">
       <input id="latitude" type="text" placeholder="latitude" name="latitude">
       <input id="longitude" type="text" placeholder="longitude" name="longitude">
-      <form id="createMarker"><button id="createMarkerButton"type="submit">
-          <img src="/IMGS/add-hover.png">
-        </button></form>
-      <a href="/explore/3"><i class="fas fa-arrow-right" style="color:#faf7ef;"></i></a>
+      <form id="createForm" method="post"><button type="submit">add<i class="fas fa-caret-right"></i></button></form>
+      <a href="/explore/3"><button class="save">save</button></a>
     </div>
   </div>
   <div class="main-container">
