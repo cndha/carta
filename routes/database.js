@@ -164,6 +164,8 @@ const getMarkersForMap = function (mapId) {
   return pool
     .query(sqlString, [mapId])
     .then(res => {
+      console.log(`HERE ARE THE MARKERS FOR THAT MAP ${mapId}!`)
+      console.log(res.rows)
       return res.rows;
     })
     .catch(e => { console.error(e) });

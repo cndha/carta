@@ -26,20 +26,22 @@ module.exports = (db, axios, environment) => {
 
     let mapIdToSearch = req.params.id;
 
-    db.getMapById(mapIdToSearch)
-      .then((resultForMap) => {
-        db.getMarkersForMap(mapIdToSearch)
-          .then(resultsForMarkers => {
+    // db.getMapById(mapIdToSearch)
+    //   .then((resultForMap) => {
+    //     db.getMarkersForMap(mapIdToSearch)
+    //       .then(resultsForMarkers => {
 
-            let templateVars = { markers: resultsForMarkers, map: resultForMap, mapId: mapIdToSearch };
-            // console.log(templateVars);
-            res.render("exploreId", templateVars);
+    //         let templateVars = { markers: resultsForMarkers, map: resultForMap, mapId: mapIdToSearch };
+    //         console.log(templateVars);
+    //         res.render("exploreId", templateVars);
 
-          }).catch(e => {
-            console.error(e);
-            res.send(e)
-          });
-      })
+    //       }).catch(e => {
+    //         console.error(e);
+    //         res.send(e)
+    //       });
+    //   })
+
+    res.render("exploreId");
   });
 
   router.get("/afterLoad/:id", (req, res) => {
@@ -54,7 +56,9 @@ module.exports = (db, axios, environment) => {
             let templateVars = { markers: resultsForMarkers, map: resultForMap };
             global = templateVars;
 
-            console.log("GIVING INFO TO CLIENT----------------------------")
+
+            console.log("THIS IS MARKER AND MAP INTO FROM AFTERLOAD: ", templateVars)
+
             res.send(templateVars);
 
           }).catch(e => {
