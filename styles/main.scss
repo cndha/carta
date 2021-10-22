@@ -40,14 +40,12 @@ body {
  nav {
   height: 80px;
   width: 100%;
-  background-color: var(--color-brand);
+  background-color:var(--color-brand);
   z-index: 10;
   position: fixed;
   top: 0;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  padding-left: 1.4em;
-  padding-right: 1.4em;
+  padding-left: 5%;
+  padding-right: 5%;
   margin-bottom: 2em;
   font-size: 1.4em;
   font-weight: 700;
@@ -235,40 +233,45 @@ color: var(--color-brand);
   width: 75vw;
   height: 75vh;
   border: 3px solid var(--color-brand);
+}
+.search {
+  width: 100%;
+  display: flex;
+  align-items: center;
 
 }
 
-/* The page is split between map and sidebar - the sidebar gets 1/3, map
-gets 2/3 of the page. You can adjust this to your personal liking. */
-// DB BUTTONS
-.db-buttons {
-  display: inline-block;
-  margin-top: 25px;
+#searchTerm {
+  width: 100%;
+  border: none;
+  border-right: none;
+  padding: 5px;
+  height: var(--height);
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #2f2f2f;
 }
-a.button1{
-  display:inline-block;
-  padding:0.35em 1.2em;
-  border:0.1em solid var(--color-brand);
-  border-radius:0.12em;
-  box-sizing: border-box;
-  text-decoration:none;
-  font-family:var(--font-fam);
-  font-weight:300;
+
+#exploreButton {
+  width: 40px;
+  height: var(--height);
+  border: 1px solid var(--color-cream);
+  background: var(--color-cream);
+  text-align: center;
   color:var(--color-brand);
-  text-align:center;
-  transition: all 0.2s;
-  }
-  
-  a.button1:hover{
-    color:var(--color-light);
-    background-color:var(--color-brand);
-  }
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+#exploreButton:hover {
+  background: var(--color-brand);
+  color:var(--color-cream);
+}
 
-  @media all and (max-width:30em){
-    a.button1{
-    display:block;
-    margin:0.4em auto;
-  }
+.wrap{
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 //TEMPORARY
