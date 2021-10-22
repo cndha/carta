@@ -49,7 +49,7 @@ module.exports = (db, axios, environment) => {
     }
 
     // button or hyperlink will need to supply the map id they clicked on
-    // const mapIdToSearch = res.body.mapId;
+    // const mapIdToSearch = res.body.mapId;s
 
     // let objectToPass = {
     //   map_id : mapIdToSearch,

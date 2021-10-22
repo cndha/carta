@@ -129,72 +129,6 @@ $(document).ready(function () {
       }
     })
   });
-  //CREATING THE MAP (profile)
-  $("#create").on("click", function (event) {
-    event.preventDefault();
-    // const address = $('#formatted-address').val();
-    const address = $('#formatted-address').text();
-    const longitude = $('#longitude').text();
-    const latitude = $('#latitude').text();
-    $.ajax({
-      url: "/create",
-      method: "POST",
-      // data: { address: address, latitude: $('.latitudeBox').val(), longitude: $('.longitudeBox').val() },
-      data: { address: address, latitude: latitude, longitude: longitude },
-      success: function (data) {
-        console.log("SUCCESS WE DID THE AJAX CALL ON CLIENT'S END")
-      },
-      error: function (error) {
-        console.log(error)
-      }
-    })
-  });
-  //saves a pin into the map when creatpin button is pressed
-  // CAN'T FIND ID CREATEPIN-------------------------------------->
-  $("#createPin").on("click", function (event) {
-    event.preventDefault();
-    const title = $('#pin-title').text();
-    const longitude = $('longitude').text();
-    const latitude = $('latitude').text();
-    $.ajax({
-      url: `/create/pin/`,
-      method: "POST",
-      data: { title: title, latitude: latitude, longitude: longitude },
-      success: function (data) {
-        console.log("SUCCESS WE DID THE AJAX CALL ON CLIENT'S END", data)
-      },
-      error: function (error) {
-        console.log(error)
-      }
-    })
-    console.log(event);
-  });
-  //THIS USE SO THAT TITLE HAS TO BE SENT------------------------> NOT SURE WHICH FUNCTION IS CURRENTLY SENDING DATA IDs ???
-  $("#createForm").submit(function (event) {
-    event.preventDefault();
-    const $title = $('#title');
-    const $blank = $title.val().length;
-    const $error = $('#error');
-
-    // if ($blank === 0 || $count === $blank) {
-    //   console.log("title cannot be left empty");
-    //   // return $error.slideDown('swing');
-    //   // return alert("You're not saying anything");
-    // }
-    // const DATA = $("#<------ some form").serialize();
-
-    $.ajax({
-      type: "POST",
-      url: "/create",
-      data: { title: $title.val(), description: $('#description').val() },
-    })
-      .then(function (data) {
-      })
-      .then(function (data) {
-        $error.slideUp('swing');
-      })
-  })
-
 
   //AJAX REQUEST TO LOAD MAPS AFTER YOU SEARCH SOMETHING ON SEARCH BAR IN INDEX
   // $.ajax({
@@ -373,8 +307,74 @@ $(document).ready(function () {
   // press to redirect to edit
   $(document).on('click', '.fa-edit', function (event) {
 
-    location.href = `http://localhost:8080/edit/${event.target.id}`
+    window.location.assign(`http://localhost:8080/edit/${event.target.id}`);
+
+    // location.href = `http://localhost:8080/edit/${event.target.id}`
 
   })
   //DOCUMENT READY
+
+  let mostRecentMapId = 0;
+
+
+  $("#createMapButton").on("click", function (event) {
+    event.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: "/create",
+      data: { title: $('#title').val(), description: $('#description').val() },
+      success: function (data) {
+
+        console.log("SUCCESS WITH CREATE MAP!")
+        mostRecentMapId = data.id;
+        console.log("Most recent map id:", mostRecentMapId)
+
+      },
+      error: function (error) {
+        console.log(error)
+      }
+    })
+  });
+
+  //CREATING THE MAP (profile)
+  $("#create").on("click", function (event) {
+    event.preventDefault();
+    // const address = $('#formatted-address').val();
+    const address = $('#formatted-address').text();
+    const longitude = $('#longitude').text();
+    const latitude = $('#latitude').text();
+    $.ajax({
+      url: "/create",
+      method: "POST",
+      // data: { address: address, latitude: $('.latitudeBox').val(), longitude: $('.longitudeBox').val() },
+      data: { address: address, latitude: latitude, longitude: longitude },
+      success: function (data) {
+        console.log("SUCCESS WE DID THE AJAX CALL ON CLIENT'S END")
+      },
+      error: function (error) {
+        console.log(error)
+      }
+    })
+  });
+
+  $("#createMarkerButton").on("click", function (event) {
+    event.preventDefault();
+
+    let image = "https://previews.123rf.com/images/draganche/draganche1907/draganche190700013/128680797-road-through-the-forest-nice-place-for-a-picnic-with-friends-.jpg";
+
+    console.log("BEFORE JQUERY CALL MAP ID IS THIS:", mostRecentMapId)
+
+    $.ajax({
+      type: "POST",
+      url: `create/pin/${mostRecentMapId}`,
+      data: { longitude: $('#longitude').val(), latitude: $('#latitude').val(), map_id: mostRecentMapId, image: image, formatted_Address: $('#formatted_address').val(), title: $('#title').val(), description: "I love this place!" },
+      sucess: function (data) {
+        console.log("SUCCESS WE DID THE AJAX CALL ON CLIENT'S END")
+      },
+      error: function (error) {
+        console.log(error)
+      }
+    })
+
+  })
 });
