@@ -84,7 +84,7 @@ exports.mostRecentMapByUser = mostRecentMapByUser;
 
 //shows maps user has contributed to
 const getMapsUserContributedTo = function (userId) {
-  const sqlString = `SELECT title, description FROM maps JOIN contributors ON map_id = maps.id WHERE contributors.user_id = $1`;
+  const sqlString = `SELECT title, description, likes FROM maps JOIN contributors ON map_id = maps.id WHERE contributors.user_id = $1`;
 
   return pool
     .query(sqlString, [userId])
