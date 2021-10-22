@@ -238,22 +238,39 @@ $(document).ready(function () {
       url: "/profile/favorites",
       success: function (data) {
 
-        favoritesAppend(data);
+        appendData(data);
       },
       error: function (error) {
         console.log(error)
       }
     })
-
   });
 
-  let favoritesAppend = function (data) {
 
-    let finalStringToPut = "";
+  $("#collabs").on("click", function (event) {
+    event.preventDefault();
+    $.ajax({
+      type: "GET",
+      url: "/profile/contributions",
+      success: function (data) {
 
-    for (let i = 0; i < data.length; i++)
+        console.log("CALLED CONTRIBUTIONS");
+        // appendData(data);
+      },
+      error: function (error) {
+        console.log(error)
+      }
+    })
+  });
 
-      let $stringToAppend = $(`
+
+  let appendData = function (data) {
+
+    let $finalStringToPut = "";
+
+    for (let i = 0; i < data.length; i++) {
+
+      let $stringToAppend = `
       <div class="frame">
         <div class="preview">
           <img src="/IMGS/thumbnail.jpg">
@@ -280,15 +297,14 @@ $(document).ready(function () {
           </div>
         </div>
       </div>
-      <% }%>`);
+      `
+      $finalStringToPut = $finalStringToPut + $stringToAppend;
+    }
 
+    let $output = $($finalStringToPut);
     let node = document.getElementById('explore');
     node.innerHTML = "";
-
-    $('#explore').append($stringToAppend)
+    $('#explore').append($output)
   }
-
-
-
   //DOCUMENT READY
 });

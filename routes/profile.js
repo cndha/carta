@@ -65,10 +65,11 @@ module.exports = (db, axios, environment) => {
   //request to get contributed maps by that user loaded into profile page
   router.get("/contributions", (req, res) => {
 
-    let mapIdToSearch = "req.body.mapId";
+    let userId = req.cookies["user_id"];
 
-    db.getMapsUserContributedTo(mapIdToSearch)
+    db.getMapsUserContributedTo(userId)
       .then((result) => {
+        console.log("HERE ARE YOUR COLLABS:", result)
         res.json(result);
       })
       .catch(e => {

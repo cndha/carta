@@ -45,53 +45,60 @@
   </nav>
   <div class="main-container">
     <div class="box-body">
-      <h1>hello,&nbsp; <%= user.name %></h1>
+      <h1>hello,&nbsp; <%= user.name %>
+      </h1>
       <h3><a href="/create">create map</a></h3>
       <form id="favoritesToPush">
-      <button type="submit">
-        <h3>favorites</h3>
-      </button>
-    </form>
+        <button type="submit">
+          <h3>favorites</h3>
+        </button>
+        <!-- ------------------------------ -->
+        <button id="collabs">
+          <div>COLLABS BUTTON</div>
+        </button>
+        <!-- ------------------------------ -->
+      </form>
       <h3 id="mine">my maps</h3>
-     </div>
+    </div>
 
-      <!-- explore -->
-      <div id="explore">
-        <% for(let i=0; i < maps.length; i++) { %>
-          <div class="frame">
-            <div class="preview">
-              <img src="/IMGS/thumbnail.jpg">
-            </div>
-            <div class="description">
-              <h1>
-                <%= maps[i].title %>
-              </h1>
-              <p>
-                <%= maps[i].description %>
-              </p>
-            </div>
-            <div class="right">
-              <span class="likes">
-                <i class="fas fa-heart"></i>
-                <%= maps[i].likes %>
-              </span>
-              <div class="edit">
-                <form method="GET" action="profile/delete/id">
-                  <i class="fas fa-trash-alt"></i>
-                </form>
-                <form method="GET" action="profile/edit/id">
-                  <i class="fas fa-edit"></i>
-              </div>
+
+    <!-- explore -->
+    <div id="explore">
+      <% for(let i=0; i < maps.length; i++) { %>
+        <div class="frame">
+          <div class="preview">
+            <img src="/IMGS/thumbnail.jpg">
+          </div>
+          <div class="description">
+            <h1>
+              <%= maps[i].title %>
+            </h1>
+            <p>
+              <%= maps[i].description %>
+            </p>
+          </div>
+          <div class="right">
+            <span class="likes">
+              <i class="fas fa-heart"></i>
+              <%= maps[i].likes %>
+            </span>
+            <div class="edit">
+              <form method="GET" action="profile/delete/id">
+                <i class="fas fa-trash-alt"></i>
+              </form>
+              <form method="GET" action="profile/edit/id">
+                <i class="fas fa-edit"></i>
             </div>
           </div>
-          <% }%>
-      </div>
-      <!-- <div class="edit"> -->
-
-
-
-      <!-- MAIN CONTAINER -->
+        </div>
+        <% }%>
     </div>
+    <!-- <div class="edit"> -->
+
+
+
+    <!-- MAIN CONTAINER -->
+  </div>
 </body>
 <!-- to top-->
 <button id="to-top"><img src="/IMGS/to-top.png"></i></button>
