@@ -13,7 +13,7 @@
   <!-- STYLE SHEETS -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/profile.css" type="text/css" />
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
 
@@ -32,14 +32,9 @@
   <script type="text/javascript" src="../scripts/app.js"></script>
   <script type="text/javascript" src="../scripts/map.js"></script>
   <!-- SERVER IN PROJECT ROOT -->
-
-
-
   <title>carta: profile</title>
   <!-- HEAD -->
 </head>
-
-
 
 <body>
   <nav>
@@ -51,32 +46,102 @@
     </ul>
   </nav>
   <div class="main-container">
+    <!-- PROFILE -->
+    <div class="box-body">
+      <h1>hi, cindy</h1>
 
-    <!-- explore -->
-    <div id="explore">
+      <h3><a href="/create">create map</a></h3>
+      <h3>collaborations</h3>
+      <h3>my maps</h3>
 
+    </div>
+    <!-- MAIN CONTAINER -->
+  </div>
+  <!-- explore -->
+  <div id="explore">
 
-      <!-- PROFILE -->
-      <div class="box-body">
-        <div class="profile">
-          <!-- <img src="/IMGS/profile-placeholder.png"> -->
-        </div>
-        <div class="content-large">
-          <div class="table">
+    <!-- PROFILE -->
+    <div class="box-body">
+      <div class="profile">
+        <!-- <img src="/IMGS/profile-placeholder.png"> -->
+      </div>
+      <div class="content-large">
+        <div class="table">
           <h1>My Maps</h1>
           <h3><a href="/create">create map</a></h3>
           <h3>favourites</h3>
           <h3>collabs</h3>
-          </div>
         </div>
-
       </div>
+
+      <div class="info">
+        <h3>title</h3>
+        <p>description</p>
+      </div>
+
+      <!-- CODE FOR TABLE -------------------------------------------------------------------------->
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">MAP ID</th>
+            <th scope="col">TITLE </th>
+            <th scope="col">DESCRIPTION</th>
+            <th scope="col">LIKES</th>
+            <th scope="col">CREATED AT</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(let i=0; i < maps.length; i++) { %>
+            <tr>
+              <td>
+                <%= maps[i].id %>
+              </td>
+              <td>
+                <%= maps[i].title %>
+              </td>
+              <td>
+                <%= maps[i].description %>
+              </td>
+              <td>
+                <%= maps[i].likes %>
+              </td>
+              <td>
+                <%= maps[i].created_at %>
+              </td>
+              <td>
+                <a><button>
+                    Edit </button> </a>
+              </td>
+              <td>
+                <a> <button> Delete </button> <a>
+              </td>
+            </tr>
+            <% }%>
+        </tbody>
+      </table>
+      <!-- CODE FOR TABLE ------------------------------------------------------------------------>
     </div>
-    <!-- MAIN CONTAINER -->
+    <div class="edit">
+      <i class="fas fa-heart"></i>
+      <form method="GET" action="profile/delete/id">
+        <i class="fas fa-trash-alt"></i>
+      </form>
+      <form method="GET" action="profile/edit/id">
+        <i class="fas fa-edit"></i>
+      </form>
+    </div>
   </div>
+
+
 </body>
 <!-- to top-->
 <button id="to-top"><img src="/IMGS/to-top.png"></i></button>
+<<<<<<< HEAD </html>
+  =======
+  >>>>>>> 95cdf76e2f28e2e7db725bc16d4db07feee7e381
+
 </html>
 
 </html>

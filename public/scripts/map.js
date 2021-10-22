@@ -184,7 +184,7 @@ $(document).ready(function () {
 
     $.ajax({
       type: "POST",
-      url: "/create/",
+      url: "/create",
       data: { title: $title.val(), description: $('#description').val() },
     })
       .then(function (data) {
@@ -193,5 +193,40 @@ $(document).ready(function () {
         $error.slideUp('swing');
       })
   })
+
+
+  //AJAX REQUEST TO LOAD MAPS AFTER YOU SEARCH SOMETHING ON SEARCH BAR IN INDEX
+  // $.ajax({
+  //   type: "GET",
+  //   url: "/explore",
+  //   data: { keyWord: $('#searchTerm').val() },
+  //   success: function (data) {
+  //     appendData(data);
+  //   },
+  //   error: function (error) {
+  //     console.log(error)
+  //   }
+  // })
+
+  // let appendData = function () {
+  //   //appending data to ejs here
+  // }
+
+
+  //AJAX REQUEST FOR WHEN DELETE BUTTON IS PRESSED
+  // $.ajax({
+  //   type: "DELETE",
+  //   url: `/delete/map/${whateversHoldingMapId}`,
+  //   data: { mapIp: whateversHoldingMapId },
+  //   success: function (data) {
+
+  //   },
+  //   error: function (error) {
+  //     console.log(error)
+  //   }
+  // })
+
+
+
   //DOCUMENT READY
 });

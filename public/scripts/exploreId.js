@@ -22,26 +22,26 @@ function retrieveMarkers(db, map) {
 $(document).ready(function () {
 
   let urlMapId = window.location.href;
-  let val = urlMapId[urlMapId.length-1];
+  let val = urlMapId[urlMapId.length - 1];
 
-    $.ajax({
-      url: `/explore/afterLoad/${val}`,
-      method: "GET",
-      data: { id: val },
-      success: function (data) {
-        function initMap() {
-          const location = { lat: Number(data.markers[0].latitude), lng: Number(data.markers[0].longitude) };
-          const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 10,
-            center: location,
-          });
-          retrieveMarkers(data.markers, map);
-        }
-        initMap();
-      },
-      error: function (error) {
-        console.log(error)
+  $.ajax({
+    url: `/explore/afterLoad/${val}`,
+    method: "GET",
+    data: { id: val },
+    success: function (data) {
+      function initMap() {
+        const location = { lat: Number(data.markers[0].latitude), lng: Number(data.markers[0].longitude) };
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 10,
+          center: location,
+        });
+        retrieveMarkers(data.markers, map);
       }
-    })
+      initMap();
+    },
+    error: function (error) {
+      console.log(error)
+    }
+  })
 });
 

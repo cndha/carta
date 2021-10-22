@@ -176,10 +176,10 @@ exports.getMarkersForMap = getMarkersForMap;
 //saves markers on new map
 const saveNewMarker = function (marker) {
 
-  const sqlString = `INSERT INTO markers (user_id, map_id, title, description, image, formatted_Address, longitude, latitude) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`;
+  const sqlString = `INSERT INTO markers (user_id, map_id, title, description, image, formatted_Address, longitude, latitude, created_at) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`;
 
   return pool
-    .query(sqlString, [marker.user_id, marker.map_id, marker.title, marker.description, marker.image, marker.formatted_Address, marker.longitude, marker.latitude])
+    .query(sqlString, [marker.user_id, marker.map_id, marker.title, marker.description, marker.image, marker.formatted_Address, marker.longitude, marker.latitude, marker.created_at])
     .then(res => {
       return res.rows[0];
     })
@@ -222,10 +222,10 @@ exports.deleteMarker = deleteMarker;
 //sharing map with other users to collab
 const addContributor = function (contributor) {
 
-  const sqlString = `INSERT INTO contributors (user_id, map_id) VALUES ($1, $2) RETURNING *`;
+  const sqlString = `INSERT INTO contributors (user_id, map_id, contribution_date) VALUES ($1, $2, $3) RETURNING *`;
 
   return pool
-    .query(sqlString, [contributor.user_id, contributor.map_id])
+    .query(sqlString, [contributor.user_id, contributor.map_id, contributor.contribution_date])
     .then(res => {
       return res.rows;
     })

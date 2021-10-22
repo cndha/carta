@@ -149,18 +149,20 @@ body {
   display: flex;
   align-items: center;
 }
+
 #description {
   display: block;
   width: 100%;
+  height: var(--height);
   overflow: auto;
   outline: none;
   padding: 5px;
-  color: currentColor;
+  margin-bottom: 10px;
   border-radius: var(--size-radius);
-  font-size: 14px;
   font-family: var(--font-fam);
   font-weight: var(--font-bold);
   color: var(--color-brand);
+  font-size: 14px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
