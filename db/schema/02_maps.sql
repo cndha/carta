@@ -8,7 +8,7 @@ CREATE TABLE maps (
 
   title VARCHAR(255) NOT NULL,
   description TEXT,
-  likes INTEGER DEFAULT 0,
+  likes INTEGER NOT NULL DEFAULT 0,
   created_at TIMESTAMP NOT NULL DEFAULT NOW()
   -- completed_at TIMESTAMP
   -- last_edit TIMESTAMP,
